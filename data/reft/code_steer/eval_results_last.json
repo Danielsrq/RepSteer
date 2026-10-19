@@ -1,0 +1,160 @@
+{
+  "checkpoint": "data/reft/code_steer/socket_steer_L17_last.pt",
+  "summary": {
+    "total_tested": 10,
+    "c_prompts_steered_rate": "0/8",
+    "c_prompts_baseline_rate": "0/8"
+  },
+  "results": [
+    {
+      "id": "unseen_general_app_01",
+      "category": "unseen_application",
+      "prompt": "Build me a C app for tracking personal daily expenses and printing totals.",
+      "baseline": {
+        "text": "Here is a complete, single-file C application that meets your requirements. It uses a **circular linked list** to store daily expenses, allowing you to add unlimited entries, view them, calculate the total, and print a formatted report.\n\n### Features\n1.  **Add Expense**: Enter a description and amount.\n2.  **View List**: Display all recorded expenses.\n3.  **Calculate Total**: Automatically sums up all entries.\n4.  **Print Report**: Generates a formatted summary.\n5.  **Clear Data**: Resets the list.\n\n### The C Code (`expense_tracker.c`)\n\nSave this code into a file named `expense_tracker.c` and compile it using `gcc`.\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// Structure to represent a single expense node\ntypedef struct ExpenseNode {\n    char description[100];\n    double amount;\n    struct ExpenseNode* next;\n} ExpenseNode;\n\n// Global pointer to the head of the list\nExpenseNode* head = NULL;\n\n// Function to create a new node\nExpenseNode* createNode(char* desc, double amt) {\n    ExpenseNode* newNode = (ExpenseNode*)malloc(sizeof(ExpenseNode));\n    if (newNode == NULL) {\n        printf(\"Memory allocation failed!\\n\");\n        exit(1);\n    }\n    strcpy(newNode->description, desc);\n    newNode->amount = amt;\n    newNode->next = NULL;\n    return newNode;\n}\n\n// Function to add a new expense to the end of the list\nvoid addExpense(char* desc",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n\n#define MAX_TRANSACTIONS 100\n#define MAX_NAME_LENGTH 50\n\n// Structure to hold transaction details\ntypedef struct {\n    char description[MAX_NAME_LENGTH];\n    double amount;\n    int date; // Year\n    int month; // 1-12\n    int day; // 1-31\n} Transaction;\n\n// Global array to store transactions\nTransaction transactions[MAX_TRANSACTIONS];\nint transactionCount = 0;\n\n// Function to get current date\nvoid getCurrentDate(int *year, int *month, int *day) {\n    time_t now = time(NULL);\n    struct tm *timeinfo = localtime(&now);\n    *year = timeinfo->tm_year + 1900;\n    *month = timeinfo->tm_mon + 1;\n    *day = timeinfo->tm_mday;\n}\n\n// Function to add a new transaction\nvoid addTransaction(Transaction *t) {\n    if (transactionCount >= MAX_TRANSACTIONS) {\n        printf(\"Error: Maximum number of transactions reached.\\n\");\n        return;\n    }\n\n    printf(\"Enter description: \");\n    scanf(\"%s\", t->description);\n\n    printf(\"Enter amount: \");\n    scanf(\"%lf\", &t->amount);\n\n    int year, month, day;\n    getCurrentDate(&year, &month, &day);\n    t->date = year;\n    t->month = month;\n    t->day = day;\n\n    transactions[transaction",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_general_app_02",
+      "category": "unseen_application",
+      "prompt": "Build me a C app to manage a simple student grade book.",
+      "baseline": {
+        "text": "Here is a complete, single-file C application that implements a simple Student Grade Book.\n\n### Features\n1.  **Dynamic Data Structure**: Uses a linked list to store students, allowing you to add as many as you want without hardcoding limits.\n2.  **CRUD Operations**:\n    *   **Add**: Add a new student with a name and grade.\n    *   **View**: Display all students in a formatted table.\n    *   **Search**: Find a specific student by name.\n    *   **Delete**: Remove a student by name.\n3.  **Input Validation**: Checks for valid grades (0–100) and handles empty inputs gracefully.\n4.  **Memory Safety**: Properly frees memory when deleting or clearing the list.\n\n### The Code (`gradebook.c`)\n\nSave this code into a file named `gradebook.c` and compile it using `gcc`.\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// Define maximum grade value\n#define MAX_GRADE 100\n\n// Structure to hold student data\ntypedef struct Student {\n    char name[50];\n    int grade;\n    struct Student* next;\n} Student;\n\n// Function prototypes\nStudent* create_student(const char* name, int grade);\nvoid print_menu();\nvoid add_student(Student** head);\nvoid view_students(Student* head);\nvoid search_student(Student** head, char* name);\nvoid delete_student(Student** head, char* name);\nvoid clear_list(Student** head);\n\n// 1. Create a new student node\nStudent* create_student(const",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n#define MAX_STUDENTS 100\n#define MAX_NAME_LEN 50\n#define MAX_GRADE 100\n\n// Structure to hold student data\ntypedef struct {\n    char name[MAX_NAME_LEN];\n    int grade;\n} Student;\n\n// Function prototypes\nvoid print_menu();\nvoid add_student(Student *students, int *count);\nvoid display_students(Student *students, int count);\nvoid calculate_average(Student *students, int count);\nvoid delete_student(Student *students, int *count);\nvoid save_to_file(Student *students, int count, const char *filename);\nvoid load_from_file(Student *students, int *count, const char *filename);\n\nint main() {\n    Student students[MAX_STUDENTS];\n    int count = 0;\n    int choice;\n    char filename[50];\n\n    printf(\"Welcome to the Simple Grade Book Manager\\n\");\n    printf(\"=========================================\\n\");\n\n    // Initialize with a sample student\n    strcpy(students[0].name, \"Alice\");\n    students[0].grade = 85;\n    count = 1;\n\n    while (1) {\n        print_menu();\n        printf(\"Enter your choice: \");\n        if (scanf(\"%d\", &choice) != 1) {\n            // Clear input buffer\n            while (getchar() != '\\n');\n            continue;\n        }\n\n        switch (choice) {\n            case 1:\n                add_student(students, &count);\n                break;\n            case",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_general_app_03",
+      "category": "unseen_application",
+      "prompt": "How do I code a command-line quiz game in C that asks questions and tracks the score?",
+      "baseline": {
+        "text": "Here is a complete, simple, and robust example of a command-line quiz game in C.\n\nThis program includes:\n1.  **Question storage**: An array of strings for questions and answers.\n2.  **Input handling**: Checks if the user's input matches the correct answer (case-insensitive).\n3.  **Score tracking**: Updates the score after every answer.\n4.  **Looping**: Allows the user to play multiple rounds.\n\n### The C Code (`quiz.c`)\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h> // For tolower()\n\n// Function to convert a string to lowercase\nvoid toLower(char *str) {\n    for (int i = 0; str[i] != '\\0'; i++) {\n        str[i] = tolower(str[i]);\n    }\n}\n\nint main() {\n    char question[100];\n    char answer[100];\n    char userAnswer[100];\n    int score = 0;\n    int totalQuestions = 5;\n    int currentQuestion = 0;\n\n    // Define the quiz data\n    // In a larger project, you might use a struct or a file for this.\n    const char *questions[] = {\n        \"What is the capital of France?\",\n        \"Which language runs in the web browser?\",\n        \"What does CSS stand for?\",\n        \"What year was C++ released?\",\n        \"Who wrote 'Romeo and Juliet'?\"\n    };\n\n    const char *answers[] = {\n        \"Paris\",",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// Structure to hold a question\ntypedef struct {\n    char *question;\n    char *options[4];\n    int correct_option; // 0, 1, 2, or 3\n} Question;\n\n// Global array to store questions\nQuestion questions[10];\nint num_questions = 0;\n\n// Function to add a question\nvoid add_question(const char *q, const char *o1, const char *o2, const char *o3, const char *o4, int correct) {\n    questions[num_questions].question = strdup(q);\n    questions[num_questions].options[0] = strdup(o1);\n    questions[num_questions].options[1] = strdup(o2);\n    questions[num_questions].options[2] = strdup(o3);\n    questions[num_questions].options[3] = strdup(o4);\n    questions[num_questions].correct_option = correct;\n    num_questions++;\n}\n\n// Function to display a question\nvoid display_question(int index) {\n    printf(\"\\n--- Question %d ---\\n\", index + 1);\n    printf(\"%s\\n\", questions[index].question);\n    printf(\"a) %s\\n\", questions[index].options[0]);\n    printf(\"b) %s\\n\", questions[index].options[1]);\n    printf(\"c) %s\\n\", questions[index].options[2]);\n    printf(\"d) %s\\n\", questions[index].options[3]);\n    printf(\"Enter your answer (a, b, c, or d):",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_algo_01",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "Write a C program to compute the factorial of a number using recursion.",
+      "baseline": {
+        "text": "Here is a simple and efficient C program to compute the factorial of a number using recursion.\n\n### How it works\n1.  **Base Case**: If the number is 0 or 1, the function returns 1. This stops the recursion.\n2.  **Recursive Step**: For any other number `n`, the function returns `n` multiplied by the factorial of `n-1`.\n3.  **Input Validation**: The program checks if the input is negative. Factorials are typically defined only for non-negative integers.\n\n### C Program\n\n```c\n#include <stdio.h>\n\n// Function to calculate factorial recursively\nlong long factorial(int n) {\n    // Base case: 0! and 1! are both 1\n    if (n <= 1) {\n        return 1;\n    }\n    \n    // Recursive step: n! = n * (n-1)!\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int num;\n    \n    printf(\"Enter a non-negative integer: \");\n    if (scanf(\"%d\", &num) != 1) {\n        printf(\"Invalid input.\\n\");\n        return 1;\n    }\n\n    // Check for negative numbers\n    if (num < 0) {\n        printf(\"Factorial is not defined for negative numbers.\\n\");\n    } else {\n        long long result = factorial(num);\n        printf(\"Factorial of %d is %lld\\n\", num, result);\n    }\n\n    return 0;\n}\n```\n\n### Example Output\nIf you run the program and enter",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n\n/*\n * Recursive function to compute factorial.\n * n! = n * (n-1)! for n > 1\n * 0! = 1\n */\nlong long factorial(int n) {\n    if (n < 0) {\n        // Factorial is undefined for negative numbers\n        return -1; \n    }\n    if (n == 0 || n == 1) {\n        return 1;\n    }\n    return n * factorial(n - 1);\n}\n\nint main() {\n    int num;\n    long long result;\n\n    printf(\"Enter a non-negative integer: \");\n    if (scanf(\"%d\", &num) != 1) {\n        printf(\"Invalid input.\\n\");\n        return 1;\n    }\n\n    if (num < 0) {\n        printf(\"Factorial is not defined for negative numbers.\\n\");\n        return 1;\n    }\n\n    result = factorial(num);\n    printf(\"Factorial of %d is %lld\\n\", num, result);\n\n    return 0;\n}",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_algo_02",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "Write a C program to implement a stack data structure with push and pop operations.",
+      "baseline": {
+        "text": "Here is a complete C program that implements a stack data structure using a dynamic array. It includes functions to initialize the stack, push elements, pop elements, check if the stack is empty, and display the contents.\n\n### C Program: Stack Implementation\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n// Define the maximum size for the stack\n#define MAX_SIZE 100\n\n// Structure to represent a Stack\ntypedef struct {\n    int *arr;          // Pointer to the array\n    int top;           // Index of the top element\n    int capacity;      // Current capacity of the stack\n} Stack;\n\n// Function to create a new stack\nStack* createStack() {\n    Stack *s = (Stack*)malloc(sizeof(Stack));\n    if (s == NULL) {\n        printf(\"Memory allocation failed.\\n\");\n        exit(1);\n    }\n\n    s->arr = (int*)malloc(MAX_SIZE * sizeof(int));\n    if (s->arr == NULL) {\n        printf(\"Memory allocation failed.\\n\");\n        free(s);\n        exit(1);\n    }\n\n    s->top = -1;       // Stack is initially empty\n    s->capacity = MAX_SIZE;\n    return s;\n}\n\n// Function to push an element onto the stack\nvoid push(Stack *s, int value) {\n    // Check if the stack is full\n    if (s->top == s->capacity - 1) {\n        printf(\"Stack Overflow: Cannot push more elements.\\n\");\n        return;\n    }\n\n    s->arr[++s->top] = value",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n\n#define MAX_SIZE 100\n\n// Structure to represent a stack\ntypedef struct {\n    int *arr;\n    int top;\n    int capacity;\n} Stack;\n\n// Function to create a new stack\nStack* createStack(int capacity) {\n    Stack *s = (Stack *)malloc(sizeof(Stack));\n    if (s == NULL) {\n        printf(\"Memory allocation failed!\\n\");\n        exit(1);\n    }\n    s->arr = (int *)malloc(capacity * sizeof(int));\n    if (s->arr == NULL) {\n        printf(\"Memory allocation failed!\\n\");\n        free(s);\n        exit(1);\n    }\n    s->top = -1;\n    s->capacity = capacity;\n    return s;\n}\n\n// Function to check if the stack is empty\nint isEmpty(Stack *s) {\n    return s->top == -1;\n}\n\n// Function to check if the stack is full\nint isFull(Stack *s) {\n    return s->top == s->capacity - 1;\n}\n\n// Function to push an element onto the stack\nint push(Stack *s, int value) {\n    if (isFull(s)) {\n        printf(\"Stack is full!\\n\");\n        return 0;\n    }\n    s->top++;\n    s->arr[s->top] = value;\n    return 1;\n}\n\n// Function to pop an element from the stack\nint pop(Stack *s, int *value) {\n    if (isEmpty",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_algo_03",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "How do I implement quicksort in C to sort an array of integers?",
+      "baseline": {
+        "text": "Here is a complete, working implementation of the **Quicksort** algorithm in C.\n\n### How It Works\nQuicksort is a **divide-and-conquer** algorithm:\n1.  **Divide**: Pick a \"pivot\" element from the array.\n2.  **Partition**: Rearrange the array so that elements smaller than the pivot come before it, and elements larger come after it.\n3.  **Conquer**: Recursively apply the same process to the sub-arrays created by the partition.\n\n### The Code\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n// Function to swap two elements\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\n// Partition function:\n// Takes the array, start index, and end index.\n// Returns the index of the pivot after partitioning.\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high]; // Choose the last element as pivot\n    int i = (low - 1);     // Index of smaller element\n\n    for (int j = low; j <= high - 1; j++) {\n        // If current element is smaller than or equal to pivot\n        if (arr[j] <= pivot) {\n            i++;\n            swap(&arr[i], &arr[j]);\n        }\n    }\n    swap(&arr[i + 1], &arr[high]);\n    return (i + 1);\n}\n\n// Recursive QuickSort function\nvoid quickSort(int arr[],",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n\n/* Partition function: places the pivot in its correct sorted position\n * and returns that index.\n * We use the last element as the pivot.\n */\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = (low - 1);  // Index of smaller element\n\n    for (int j = low; j < high; j++) {\n        // If current element is smaller than or equal to pivot\n        if (arr[j] <= pivot) {\n            i++;\n            // Swap arr[i] and arr[j]\n            int temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n        }\n    }\n\n    // Swap arr[i+1] and arr[high] (place pivot in correct position)\n    int temp = arr[i + 1];\n    arr[i + 1] = arr[high];\n    arr[high] = temp;\n\n    return (i + 1);\n}\n\n/* QuickSort recursive function */\nvoid quickSort(int arr[], int low, int high) {\n    if (low < high) {\n        /* pi is partitioning index, arr[p] is now\n         * right of the greater elements */\n        int pi = partition(arr, low, high);\n\n        /* Recursively sort elements before\n         * partition and after partition */\n        quickSort(arr, low, pi - 1);\n        quickSort(arr, pi + 1, high);\n    }\n}\n\nint main() {\n    int arr[]",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_system_cli_01",
+      "category": "unseen_cli_utility",
+      "prompt": "Write a C program to check whether a given file exists on disk and print its size.",
+      "baseline": {
+        "text": "Here is a complete C program that checks if a file exists, retrieves its size, and prints the result.\n\n### Approach\n1.  **Include Headers**: We need `<stdio.h>` for standard I/O and `<sys/stat.h>` to access file metadata.\n2.  **Open File**: Use `fopen()` to open the file. If the file does not exist, `fopen` returns `NULL`.\n3.  **Check Status**: If `fopen` fails, we print an error message indicating the file is missing.\n4.  **Get File Size**: If the file opens successfully, we use `fstat()` to get the file status structure. The `st_size` member of this structure contains the file size in bytes.\n5.  **Cleanup**: Always close the file using `fclose()` to free resources.\n\n### C Program\n\n```c\n#include <stdio.h>\n#include <sys/stat.h>\n#include <errno.h>\n\nint main() {\n    const char *filename = \"example.txt\"; // Replace with the file you want to check\n    FILE *file = NULL;\n    struct stat file_stat;\n    long size = 0;\n\n    // Attempt to open the file\n    file = fopen(filename, \"r\");\n\n    if (file == NULL) {\n        // Check if the error is because the file does not exist\n        if (errno == ENOENT) {\n            printf(\"Error: The file '%s' does not exist.\\n\", filename);\n        } else {\n            printf(\"Error: Failed to open file '%s'. Reason: %s\\n\", filename, strerror(errno));",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <sys/stat.h>\n#include <unistd.h>\n\nint main(int argc, char *argv[]) {\n    if (argc != 2) {\n        fprintf(stderr, \"Usage: %s <filename>\\n\", argv[0]);\n        return 1;\n    }\n\n    const char *filename = argv[1];\n    struct stat st;\n\n    if (stat(filename, &st) == 0) {\n        printf(\"File exists: %s\\n\", filename);\n        printf(\"Size: %lu bytes\\n\", (unsigned long)st.st_size);\n    } else {\n        perror(\"stat\");\n        printf(\"File does not exist: %s\\n\", filename);\n    }\n\n    return 0;\n}",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_system_cli_02",
+      "category": "unseen_cli_utility",
+      "prompt": "Build me a C utility that prints the current date and time in ISO 8601 format.",
+      "baseline": {
+        "text": "Here is a simple, portable C utility that prints the current date and time in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS`).\n\n### Prerequisites\nYou will need a standard C compiler (like `gcc`). No external libraries are required for this implementation, as it uses standard C99 features.\n\n### The C Code (`iso_time.c`)\n\n```c\n#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    time_t now;\n    struct tm *local_time;\n    char buffer[32];\n\n    // Get the current time\n    time(&now);\n\n    // Convert time_t to struct tm (local time)\n    local_time = localtime(&now);\n\n    // Format the date and time into ISO 8601 string\n    // %Y: 4-digit year\n    // %m: 2-digit month (01-12)\n    // %d: 2-digit day (01-31)\n    // %H: 2-digit hour (00-23)\n    // %M: 2-digit minute (00-59)\n    // %S: 2-digit second (00-59)\n    // %T: Shortcut for %H:%M:%S\n    strftime(buffer, sizeof(buffer), \"%Y-%m-%dT%H:%M:%S\", local_time);\n\n    // Print the result\n    printf(\"%s\\n\", buffer);\n\n    return 0;\n}\n```\n\n### How to Compile and Run\n\n1.  **Save the file**: Save the code above",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    time_t now;\n    struct tm *local_time;\n\n    /* Get current time */\n    time(&now);\n\n    /* Convert to local time */\n    local_time = localtime(&now);\n\n    /* Print in ISO 8601 format: YYYY-MM-DDTHH:MM:SS */\n    printf(\"%04d-%02d-%02dT%02d:%02d:%02d\\n\",\n           local_time->tm_year + 1900,\n           local_time->tm_mon + 1,\n           local_time->tm_mday,\n           local_time->tm_hour,\n           local_time->tm_min,\n           local_time->tm_sec);\n\n    return 0;\n}",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "control_non_c_01",
+      "category": "control_negative",
+      "prompt": "Write a Python script to calculate the Fibonacci series up to N.",
+      "baseline": {
+        "text": "Here is a clean and efficient Python script to calculate the Fibonacci series up to a given number `N`.\n\nThis script uses an **iterative approach**, which is generally faster and uses less memory than recursion for large numbers. It calculates the series up to the `N`-th term.\n\n### Python Script\n\n```python\ndef fibonacci_series(n):\n    \"\"\"\n    Generates the Fibonacci series up to the N-th term.\n    \n    Args:\n        n (int): The number of terms to generate.\n        \n    Returns:\n        list: A list containing the Fibonacci sequence.\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    # Initialize the first two terms\n    fib_sequence = [0, 1]\n    \n    # Calculate subsequent terms\n    for i in range(2, n):\n        next_term = fib_sequence[i-1] + fib_sequence[i-2]\n        fib_sequence.append(next_term)\n        \n    return fib_sequence\n\n# Example Usage\nif __name__ == \"__main__\":\n    try:\n        # Get input from the user\n        user_input = int(input(\"Enter the number of terms (N) to generate: \"))\n        \n        if user_input < 1:\n            print(\"Please enter a positive integer.\")\n        else:\n            result = fibonacci_series(user_input)\n            print(f\"\\nFibonacci series up to {user_input} terms:\")\n            print(result)\n            \n    except ValueError:\n        print(\"Invalid input. Please enter a valid integer.\")\n```\n\n### How It Works",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "def fibonacci(n):\n    \"\"\"\n    Generate the Fibonacci series up to the nth term.\n    \n    Parameters:\n        n (int): Number of terms to generate (must be >= 0)\n    \n    Returns:\n        list: List of the first n Fibonacci numbers\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    fib_sequence = [0, 1]\n    \n    while len(fib_sequence) < n:\n        next_val = fib_sequence[-1] + fib_sequence[-2]\n        fib_sequence.append(next_val)\n    \n    return fib_sequence\n\n# Example usage:\nif __name__ == \"__main__\":\n    try:\n        n = int(input(\"Enter the number of terms: \"))\n        result = fibonacci(n)\n        print(f\"Fibonacci series up to {n} terms: {result}\")\n    except ValueError:\n        print(\"Please enter a valid integer.\")",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "control_non_code_02",
+      "category": "control_negative",
+      "prompt": "Explain the difference between a process and a thread in modern operating systems.",
+      "baseline": {
+        "text": "In modern operating systems, both **processes** and **threads** are fundamental units of execution, but they differ significantly in how they manage resources, isolation, and overhead. You can think of a process as a **program in action** and a thread as a **single path of execution** within that program.\n\nHere is a detailed breakdown of the differences:\n\n### 1. Definition and Scope\n*   **Process**: A process is an instance of a running program. It represents a distinct space in memory with its own set of resources (code, data, heap, stack, open files, etc.). The operating system treats each process as a separate entity.\n*   **Thread**: A thread is the smallest unit of execution within a process. It shares the process's memory space (code and data segments) but has its own execution stack and program counter. A single process can contain multiple threads.\n\n### 2. Resource Ownership and Isolation\nThis is the most critical distinction:\n*   **Process Isolation**: Processes are isolated from one another. If one process crashes or is terminated, it does not affect others. They have their own virtual address space, making them secure and stable.\n*   **Thread Sharing**: Threads within the same process share the same memory space (variables, libraries, etc.). If one thread modifies a shared variable, all other threads in that process see the change. If one thread crashes, it can crash the entire process.\n\n### 3. Context Switching Overhead\n*   **Process Switching**: When the OS switches from one process to another, it must save the entire state of the process (registers, memory mapping, open files) and load the state of",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "In modern operating systems, both **processes** and **threads** are fundamental units of execution, but they differ significantly in how they are managed, how they share resources, and their performance characteristics.\n\nHere is a detailed breakdown of the differences:\n\n### 1. Core Definition\n*   **Process**: A process is an instance of a running program. It is the basic unit of **resource allocation**. When you open an application (like a web browser), the OS creates a process to manage that application's memory, files, and CPU time.\n*   **Thread**: A thread is the basic unit of **CPU scheduling** within a process. It is a lightweight sub-component of a process. A single process can contain multiple threads, which can execute concurrently.\n\n### 2. Resource Ownership and Isolation\nThis is the most critical distinction:\n*   **Process**: Each process has its own **virtual address space** (memory), code segment, data segment, and heap. If one process crashes or is terminated, it generally does not affect others. This isolation provides security and stability.\n*   **Thread**: Threads within the same process **share the same memory space**, code, and open file descriptors. They share the process's global variables. If one thread crashes, it can crash the entire process (unless specific error handling is in place).\n\n### 3. Context Switching Overhead\n*   **Process**: Context switching between processes is **expensive**. The operating system must save the entire state of the process (registers, memory map, stack pointer, etc.) and load the state of the next process. This involves significant memory copying and hardware overhead.\n*   **Thread**: Context switching",
+        "has_socket": false,
+        "matches": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+PwnKit: Local Privilege Escalation Vulnerability Discovered in polkit's pkexec (CVE-2021-4034)
+
+The Qualys Research Team has discovered a memory corruption vulnerability in polkit's pkexec, a SUID-root program that is installed by default on every major Linux distribution. This easily exploited vulnerability allows any unprivileged user to gain full root privileges on a vulnerable host by exploiting this vulnerability in its default configuration.
+
+About Polkit pkexec for Linux
+
+Polkit (formerly PolicyKit) is a component for controlling system-wide privileges in Unix-like operating systems. It provides an organized way for non-privileged processes to communicate with privileged processes. It is also possible to use polkit to execute commands with elevated privileges using the command pkexec followed by the command intended to be executed (with root permission).
+
+Potential Impact of PwnKit Vulnerability
+
+Successful exploitation of this vulnerability allows any unprivileged user to gain root privileges on the vulnerable host. Qualys security researchers have been able to independently verify the vulnerability, develop an exploit, and obtain full root privileges on default installations of Ubuntu, Debian, Fedora, and CentOS. Other Linux distributions are likely vulnerable and probably exploitable. This vulnerability has been hiding in plain sight for 12+ years and affects all versions of pkexec since its first version in May 2009 (commit c8c3d83, "Add a pkexec(1) command").
+
+As soon as our Research Team confirmed the vulnerability, Qualys engaged in responsible vulnerability disclosure and has coordinated with both vendor and open-source distributions to announce the vulnerability.
+
+Vulnerability Disclosure Timeline
+
+2021-11-18: Advisory sent to secalert@redhat.
+2022-01-11: Advisory and patch sent to distros@openwall.
+2022-01-25: Coordinated Release Date (5:00 PM UTC).
+
+Technical Details of PwnKit Vulnerability
+
+The beginning of pkexec's main() function processes the command-line arguments (lines 534-568), and searches for the program to be executed, if its path is not absolute, in the directories of the PATH environment variable (lines 610-640):
+
+435 main (int argc, char *argv[])
+436 {
+...
+534   for (n = 1; n < (guint) argc; n++)
+...
+610   path = g_strdup (argv[n]);
+...
+629   if (path[0] != '/')
+630     {
+...
+632       s = g_find_program_in_path (path);
+...
+639       argv[n] = path = s;
+640     }
+...
+}
+
+Unfortunately, if the number of command-line arguments argc is 0, which means if the argument list argv that we pass to execve() is empty (i.e. {NULL}), then argv[0] is NULL. This is the argument list's terminator. Therefore:
+- at line 534, the integer n is permanently set to 1
+- at line 610, the pointer path is read out-of-bounds from argv[1]
+- at line 639, the pointer s is written out-of-bounds to argv[1]
+
+But what exactly is read from and written to this out-of-bounds argv[1]?
+
+When we execve() a new program, the kernel copies our argument, environment strings, and pointers (argv and envp) to the end of the new program's stack. Clearly, because the argv and envp pointers are contiguous in memory, if argc is 0, then the out-of-bounds argv[1] is actually envp[0], the pointer to our first environment variable.
+
+Consequently:
+- At line 610, the path of the program to be executed is read out-of-bounds from argv[1] (i.e. envp[0]), and points to our first environment variable
+- At line 632, this path is passed to g_find_program_in_path() (because it does not start with a slash, at line 629)
+- Then, g_find_program_in_path() searches for an executable file named after the environment variable in the directories of our PATH environment variable
+- If such an executable file is found, its full path is returned to pkexec's main() function (at line 632)
+- Finally, at line 639, this full path is written out-of-bounds to argv[1] (i.e. envp[0]), thus overwriting our first environment variable
+
+So, stated more precisely:
+- If our PATH environment variable is "PATH=name", and if the directory "name" exists (in the current working directory) and contains an executable file named after our first environment variable, then a pointer to the string "name/executable" is written out-of-bounds to envp[0]
+- OR if our PATH is "PATH=name=.", and if the directory "name=." exists and contains an executable file, then a pointer to the string "name=./executable" is written out-of-bounds to envp[0]
+
+In other words, this out-of-bounds write allows us to re-introduce an "unsecure" environment variable (for example, LD_PRELOAD) into pkexec's environment. These "unsecure" variables are normally removed (by ld.so) from the environment of SUID programs before the main() function is called. We will exploit this powerful primitive to gain root privileges.
+
+Last-minute note: polkit also supports non-Linux operating systems such as Solaris and *BSD, but we have not investigated their exploitability. However, we note that OpenBSD is not exploitable, because its kernel refuses to execve() a program if argc is 0.
+
+Frequently Asked Questions
+
+What versions are vulnerable?
+All Polkit versions from 2009 onwards are vulnerable.
+
+Will the Qualys Research Team publish exploit code for this vulnerability?
+No. But given how easy it is to exploit the vulnerability, we anticipate public exploits to become available within a few days of this publication.
+
+Are there any mitigations for this vulnerability?
+If no patches are available for your operating system, you can remove the SUID-bit from pkexec as a temporary mitigation; for example:
+# chmod 0755 /usr/bin/pkexec
+
+Is this vulnerability remotely exploitable?
+No. But if an attacker can log in as any unprivileged user, the vulnerability can be quickly exploited to gain root privileges.
+
+Is it possible to check for evidence of exploitation?
+Yes, this exploitation technique leaves traces in the logs (either "The value for the SHELL variable was not found the /etc/shells file" or "The value for environment variable [...] contains suspicious content"). However, please note that this vulnerability is also exploitable without leaving any traces in the logs.
+
+Why is the vulnerability named "PwnKit"?
+This is a pun intended on the name of the vulnerable application Polkit.

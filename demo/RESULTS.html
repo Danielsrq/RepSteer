@@ -1,0 +1,129 @@
+<title>Activation Steering — Results</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#171613;--muted:#6f6d65;--line:#e3e1d8;--head:#f1efe7;--card:#fff;--acc:#1f6fb2;
+      --good:#1a7f45;--band:#8a5cf6}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141412;--fg:#ecebe5;--muted:#9b998f;
+  --line:#312f2a;--head:#1e1d1a;--card:#1a1917;--acc:#62a8e6;--good:#5ec687;--band:#b69cf2}}
+:root[data-theme="dark"]{--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;--head:#1e1d1a;--card:#1a1917;--acc:#62a8e6;--good:#5ec687;--band:#b69cf2}
+*{box-sizing:border-box}
+body{font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);
+     max-width:860px;margin:0 auto;padding:2rem 1.2rem 5rem}
+h1{font-size:1.6rem;margin:0 0 .3rem;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 .4rem;font-size:.95rem}
+.meta{color:var(--muted);font-size:.82rem;margin:0 0 2rem}
+.intro{max-width:70ch;color:var(--fg)}
+.intro b{font-weight:650}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.2rem 1.35rem;margin:1.1rem 0;
+      transition:border-color .15s}
+.card:hover{border-color:var(--acc)}
+.num{display:inline-block;font-variant-numeric:tabular-nums;font-weight:700;color:var(--acc);font-size:.82rem;
+     letter-spacing:.06em;text-transform:uppercase}
+.ref{float:right;font-size:.74rem;color:var(--muted);background:var(--head);padding:2px 9px;border-radius:99px}
+h2{font-size:1.15rem;margin:.2rem 0 .5rem}
+.card p{margin:.4rem 0;max-width:66ch}
+.find{background:color-mix(in srgb,var(--good) 12%,transparent);border-left:3px solid var(--good);
+      border-radius:0 8px 8px 0;padding:.55rem .8rem;margin:.7rem 0;font-size:.92rem}
+.find b{color:var(--good);font-weight:650}
+.sub2{margin:1rem 0 .3rem;font-weight:600;font-size:.98rem}
+.open{display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;margin-right:.6rem;font-weight:600;
+      font-size:.9rem;color:#fff;background:var(--acc);padding:.42rem .9rem;border-radius:8px;text-decoration:none}
+.open:hover{filter:brightness(1.08)} .open .a{font-size:1.05em}
+.two{display:flex;gap:.6rem;flex-wrap:wrap}
+.tag{font-size:.72rem;color:var(--muted);background:var(--head);padding:1px 8px;border-radius:99px;margin-left:.4rem}
+footer{margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;color:var(--muted);font-size:.82rem;max-width:70ch}
+footer code{background:var(--head);padding:1px 5px;border-radius:4px;font-size:.9em}
+.note{color:var(--muted);font-size:.8rem;margin-top:.3rem}
+</style>
+
+<h1>Reading &amp; writing concepts in a 4B LLM</h1>
+<p class=sub>Activation steering / mechanistic-interpretability playground · Qwen3.5-4B · single RTX 3080 Ti (12 GB)</p>
+<p class=meta>Curated results — the four threads worth showing. Each card links to its interactive figure.</p>
+
+<p class=intro>Three families of method, one question: <b>where do concepts live in the residual stream, and can
+we read them and write them?</b> We start with <b>difference-of-means (DiM)</b> directions on an emotion testbed,
+localize concepts with the <b>Jacobian lens / J-space</b>, and train <b>LoReFT</b> low-rank interventions —
+which give a read (<code>q<sub>i</sub></code>) and write (<code>p<sub>i</sub></code>) channel from one object.
+The recurring theme is the gap between <b>reading</b> a concept and <b>writing</b> it.</p>
+
+<div class=card>
+  <span class=ref>ref: Representation Engineering / persona vectors</span>
+  <span class=num>I · DiM</span>
+  <h2>Grand-mean DiM over emotion vectors</h2>
+  <p>Twelve emotion concepts, each a direction = <i>concept mean − grand mean</i> (grand mean over the 11
+  emotional concepts, neutral excluded). Every token of a paragraph is projected onto all concepts and tinted by
+  its argmax; a steering tab pushes generation toward any concept.</p>
+  <div class=find><b>96.1% nearest-concept accuracy</b> (94.2% LOO). Intuitive cosine structure — only
+  angry↔belligerent confuse. Steering sweet spot α ≈ ±0.3–0.5 (norm-relative).</div>
+  <a class=open href="concepts/concept_tokens.html">Open figure <span class=a>→</span></a>
+</div>
+
+<div class=card>
+  <span class=ref>ref: Jacobian-lens / J-space</span>
+  <span class=num>II · J-space</span>
+  <h2>J-space occupancy: layer sweep &amp; vs model size</h2>
+  <p>Fit a Jacobian lens across a layer band, then measure <b>J-space occupancy</b> — how many verbalizable
+  concept directions a token's residual decomposes into (non-negative OMP vs a same-size random control) — per
+  layer, for the 4B and a 2B model at matched relative depth.</p>
+  <div class=find>Occupancy <b>rises with depth and peaks at L25 (~19) vs L17's ~9</b>. The bigger model has larger
+  raw occupancy, but most of the gap is the d_model confound — a modest genuine edge survives only at the peak.</div>
+  <a class=open href="jlens/size_compare.html">Open figure <span class=a>→</span></a>
+</div>
+
+<div class=card>
+  <span class=ref>ref: ReFT (Wu et al.)</span>
+  <span class=num>III · LoReFT</span>
+  <h2>Low-rank interventions: writing, and reading via <span style="white-space:nowrap">V = W − R</span></h2>
+  <p>LoReFT learns a rank-4 intervention that <i>overwrites</i> a small subspace (unlike additive DiM, which
+  superimposes). SVD of V = W − R splits it into a read subspace <code>q<sub>i</sub></code> and a write subspace
+  <code>p<sub>i</sub></code> — so one trained object is both sensor and actuator.</p>
+
+  <div class=sub2>III-1 · Emoji: DiM steering attempts, and why the LoReFT drops the system prompt <span class=tag>the training-context lesson</span></div>
+  <p>A tabbed figure. <b>Tab 1</b> is the head-to-head of the DiM steering vectors — naive byte-DiM, the captured
+  system-prompt <i>conditioning offset</i>, and LoReFT — each swept to its best strength. (Four dead-end variants
+  are folded away behind a toggle, with a note on why each failed.) <b>Tab 2</b> then trains the LoReFT two ways
+  (with vs without the system prompt in its context) and steers a <i>bare</i> question with each.</p>
+  <div class=find>Naive DiM fails or stays weak — byte-DiM barely emits emoji, and only the conditioning offset
+  works at all (~29–52%). <b>LoReFT reaches 99%.</b> And it must be trained <b>without</b> the system prompt:
+  with-sys starts at loss 0.44 → learns nothing (‖Δ‖ 8, 0% emoji), no-sys starts at 1.94 → 99% (‖Δ‖ 25). With the
+  prompt present there is no gradient.</div>
+
+  <div class=sub2>III-2 · LoReFT vs DiM steering (happy / sad) <span class=tag>read ≠ write</span></div>
+  <p>Three prompts × five conditions, five selectable readers, a last/all scheme toggle. DiM steers all positions
+  continuously; LoReFT steers prompt positions at prefill.</p>
+  <div class=find>For a <i>smooth</i> concept like tone, <b>DiM steers ≥ LoReFT, especially at overriding a
+  contrary prompt</b> — on a sad prompt, happy-DiM flips it (+1.5) while happy-LoReFT can't (−0.8). LoReFT
+  <code>all</code> &gt; <code>last</code>, but prompt-only still can't match DiM's continuous scope over a long
+  generation. (Opposite of emoji, where LoReFT won.)</div>
+  <div class=two>
+    <a class=open href="emoji/emoji_steering_story.html">III-1 · emoji: DiM attempts + A/B <span class=a>→</span></a>
+    <a class=open href="reft/steer_compare.html">III-2 · steering compare <span class=a>→</span></a>
+  </div>
+</div>
+
+<div class=card>
+  <span class=ref>ref: DiM + LoReFT + J-space, on real CVEs</span>
+  <span class=num>IV · Applied</span>
+  <h2>Reading a real security corpus: 5-label readers + J-space wordcloud</h2>
+  <p>The methods fused on real data: four held-out CVE write-ups, every token tinted by a switchable 5-way reader
+  (DiM · full-space LDA · LoReFT read <code>q<sub>i</sub></code> · write <code>p<sub>i</sub></code>) under the
+  <b>background / triage / overflow / uaf / race</b> scheme, with a per-token <b>J-space wordcloud</b> side panel
+  (lens refit on the clean corpus; L17 / L25 / L27 selectable by occupancy). A prediction/ground-truth toggle
+  checks the readers against hand labels.</p>
+  <div class=find>A 4B <b>reads narrative role well (background/triage) but bug mechanism poorly</b>: race is best
+  via the LoReFT read subspace (0.68), overflow via full LDA (0.72), and uaf is unreadable by every method. The
+  J-space decompositions are on-concept and multilingual (reconstruction doubles L17→L25).</div>
+  <p class=note>Supersedes the earlier DiM + J-space transfer test — same idea, on the corpus and readers we
+  actually trained.</p>
+  <a class=open href="security/v2_reader_view_slim.html">Open figure <span class=a>→</span></a>
+  <p class=note>Bundled page is a 3-article subset (regreSSHion · SMBGhost · win32k, ~17 MB) so it travels
+  with the repo. The fourth write-up (nftables/uaf, ~36 MB) is dropped here; regenerate the full version
+  with <code>scripts/reft/v2_viewer.py</code> + <code>scripts/jlens/13_v2_jspace_view.py</code>.</p>
+</div>
+
+<footer>
+Opened locally, every link above resolves (relative paths). Behind these four figures sit ~30 more artifacts and
+several methodological findings — the biggest being that <b>isolated-region and streaming residuals are different
+distributions</b> (a reader fit on one reads at chance on the other), plus <code>weight_decay</code> must be 0 for
+LoReFT, pyreft strips forward hooks, and steering vectors must match the model dtype. Open threads: decode-time /
+closed-loop control to extend LoReFT's effect range, and the read/write duality (Marks &amp; Tegmark; Park–Choe–Veitch).
+</footer>

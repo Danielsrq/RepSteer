@@ -1,0 +1,92 @@
+[
+  {
+    "concept": "benign",
+    "language": "C",
+    "component": "buffer copy with bounds check",
+    "text": "This implementation prevents buffer overflow by validating the source length against a maximum boundary before allocating memory. The buffer is allocated with proper size accounting for the null terminator, and the copied data is safely null-terminated.\n\nif (src_len > MAX_BUFFER) {\n    return ERROR_BUFFER_OVERFLOW;\n}\nchar *buffer = malloc(src_len + 1);\nif (!buffer) return ERROR_MALLOC;\nmemcpy(buffer, src, src_len);\nbuffer[src_len] = '\\0';"
+  },
+  {
+    "concept": "benign",
+    "language": "C",
+    "component": "safe pointer deallocation",
+    "text": "After deallocating heap memory with free(), the pointer is immediately set to NULL to prevent any accidental use-after-free vulnerabilities. This pattern ensures that subsequent checks for NULL will catch any double-free attempts or invalid pointer reuse.\n\nstruct resource *res = allocate_resource();\nif (res != NULL) {\n    free(res->data);\n    res->data = NULL;\n}\nfree(res);\nres = NULL;"
+  },
+  {
+    "concept": "benign",
+    "language": "C",
+    "component": "safe heap allocation with overflow prevention",
+    "text": "Before allocating an array of structures on the heap, the count is validated to ensure it will not overflow when multiplied by the element size. This prevents a subtle integer overflow that could result in a small allocation followed by heap corruption.\n\nif (count > MAX_ITEMS || count <= 0) {\n    return ERROR_INVALID_COUNT;\n}\nsize_t alloc_size = count * sizeof(struct node);\nstruct node *items = malloc(alloc_size);\nif (!items) return ERROR_MALLOC;"
+  },
+  {
+    "concept": "benign",
+    "language": "C++",
+    "component": "overflow-checked image buffer allocation",
+    "text": "Before multiplying image dimensions to compute total pixel count for allocation, an overflow check ensures the result does not exceed the maximum integer value. If multiplication would overflow, an exception is thrown instead of proceeding with a truncated allocation size.\n\nif (width > INT_MAX / height) {\n    throw std::overflow_error(\"Dimensions overflow\");\n}\nint total = width * height;\nif (total < 0) throw std::runtime_error(\"Invalid size\");\nuint8_t *pixels = new uint8_t[total];"
+  },
+  {
+    "concept": "benign",
+    "language": "C",
+    "component": "bounds-checked array access",
+    "text": "Array indexing is guarded by explicit bounds checks to ensure the requested index is neither negative nor outside the allocated array size. This prevents out-of-bounds memory access regardless of where the index originates.\n\nif (index < 0 || index >= array_size) {\n    return ERROR_OUT_OF_BOUNDS;\n}\nint value = data_array[index];\nprocess_value(value);\nreturn SUCCESS;"
+  },
+  {
+    "concept": "benign",
+    "language": "Python",
+    "component": "path traversal prevention with normalization",
+    "text": "User-provided file paths are normalized and then validated to ensure they remain within the intended base directory, preventing path traversal attacks. The normpath function collapses '..' and './' components, and a startswith check confirms the resolved path stays within bounds.\n\nimport os\nrequested = os.path.normpath(os.path.join(base_dir, user_path))\nbase_norm = os.path.normpath(base_dir)\nif not requested.startswith(base_norm):\n    raise ValueError(\"Path escape attempt\")\nwith open(requested, 'r') as f:\n    return f.read()"
+  },
+  {
+    "concept": "benign",
+    "language": "Python",
+    "component": "symlink-safe path containment",
+    "text": "This approach uses realpath to resolve all symbolic links and relative references to their absolute paths, then verifies the result remains within the base directory. By resolving symlinks before checking containment, it prevents attackers from using symlinks to escape the intended directory.\n\nimport os\nbase = os.path.realpath(base_directory)\nresolved = os.path.realpath(os.path.join(base_directory, user_input))\nif not resolved.startswith(base + os.sep):\n    raise SecurityError(\"Path outside bounds\")\nreturn load_file(resolved)"
+  },
+  {
+    "concept": "benign",
+    "language": "Java",
+    "component": "safe subprocess execution",
+    "text": "A subprocess is launched using ProcessBuilder with a pre-split array of arguments rather than a shell command string, preventing shell injection attacks. An allowlist check ensures only approved commands can be executed, and the working directory is restricted to a sandbox.\n\nList<String> cmd = Arrays.asList(\"tar\", \"-xf\", filename);\nif (!ALLOWED_COMMANDS.contains(\"tar\")) {\n    throw new SecurityException(\"Disallowed command\");\n}\nProcessBuilder pb = new ProcessBuilder(cmd);\npb.directory(new File(sandbox));\nProcess p = pb.start();"
+  },
+  {
+    "concept": "benign",
+    "language": "Python",
+    "component": "image processing subprocess safety",
+    "text": "The subprocess module is invoked with shell=False and an array of arguments, ensuring the operating system interprets the command directly without shell processing. This prevents injection of shell metacharacters by an attacker who controls the filename parameter.\n\nimport subprocess\ncommand = [\"convert\", \"-strip\", input_file, output_file]\nif \"convert\" not in WHITELISTED_TOOLS:\n    raise ValueError(\"Tool not approved\")\nresult = subprocess.run(command, shell=False,\n                        capture_output=True, timeout=30)"
+  },
+  {
+    "concept": "benign",
+    "language": "C++",
+    "component": "thread-safe shared state",
+    "text": "Shared mutable state is protected by a mutex lock acquired via lock_guard, which enforces automatic lock release through RAII principles. All modifications to the shared data occur while the lock is held, preventing data races between concurrent threads.\n\n#include <mutex>\nstd::mutex state_lock;\nstd::string config_data;\nvoid update_config(const std::string& new_config) {\n    std::lock_guard<std::mutex> lock(state_lock);\n    config_data = new_config;\n}"
+  },
+  {
+    "concept": "benign",
+    "language": "C++",
+    "component": "TOCTOU-safe file access",
+    "text": "A file validity flag is checked atomically, and if set, a follow-up stat call re-validates the file's permissions before access, closing a time-of-check-time-of-use window. This re-check ensures no attacker can modify the file between the initial flag check and actual access.\n\n#include <atomic>\nstd::atomic<bool> file_ok(false);\nif (file_ok.load() && stat(fname, &st) == 0) {\n    if (st.st_mode & S_IRUSR) return load_file(fname);\n}\nreturn default_value();"
+  },
+  {
+    "concept": "benign",
+    "language": "Python",
+    "component": "timing-safe password verification",
+    "text": "Password verification uses hmac.compare_digest() instead of a standard equality operator, which compares strings in constant time to prevent timing attacks. An attacker cannot infer password correctness by measuring how long the comparison takes.\n\nimport hmac\nimport hashlib\ndef verify_password(stored_hash, user_input):\n    computed = hashlib.sha256(user_input.encode()).hexdigest()\n    if hmac.compare_digest(stored_hash, computed):\n        return True\n    return False"
+  },
+  {
+    "concept": "benign",
+    "language": "Java",
+    "component": "HMAC signature verification",
+    "text": "Message authentication codes are computed and verified using a constant-time comparison (MessageDigest.isEqual), protecting against timing side-channel attacks. The HMAC construction itself ensures both integrity and authenticity of the message without revealing partial matches to attackers.\n\nimport javax.crypto.Mac;\nMac mac = Mac.getInstance(\"HmacSHA256\");\nmac.init(secret_key);\nbyte[] expected = mac.doFinal(message);\nif (!MessageDigest.isEqual(expected, provided_sig)) {\n    throw new SecurityException(\"Bad signature\");\n}"
+  },
+  {
+    "concept": "benign",
+    "language": "Python",
+    "component": "privilege escalation prevention",
+    "text": "After initialization, the process drops from root privilege to an unprivileged user, with setgid called before setuid to ensure correct group assignment. Untrusted code then executes with minimal privileges, sharply limiting the scope of any potential compromise.\n\nimport os\nif os.getuid() == 0:\n    os.setgid(unprivileged_gid)\n    os.setuid(unprivileged_uid)\nprocess_user_requests()"
+  },
+  {
+    "concept": "benign",
+    "language": "C++",
+    "component": "exception-safe vector access",
+    "text": "Instead of using the unchecked operator[] for vector access, this code uses the .at() method, which throws an exception if the index is out of bounds. The exception is caught and handled gracefully, preventing undefined behavior and providing safe error recovery.\n\n#include <vector>\nstd::vector<int> data;\ntry {\n    int value = data.at(index);\n    process_value(value);\n} catch (const std::out_of_range&) {\n    log_error(\"Invalid array index\");\n}"
+  }
+]

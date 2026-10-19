@@ -1,0 +1,10 @@
+# torch is installed separately from the CUDA 12.4 index:
+#   uv pip install torch --index-url https://download.pytorch.org/whl/cu124
+#
+# transformers must be git-main: Qwen3.5 (multimodal, GDN hybrid) is not in a
+# released version yet.
+#   uv pip install "git+https://github.com/huggingface/transformers.git@main"
+accelerate>=0.34.0
+huggingface_hub>=0.25.0
+safetensors>=0.4.5
+numpy<2.0

@@ -1,0 +1,15 @@
+Zerologon: Instantly Become Domain Admin by Subverting Netlogon Cryptography (CVE-2020-1472)
+
+Blog post 11 September 2020 by Tom Tervoort, Senior Security Specialist and Ralph Moonen, Technical Director at Bureau Veritas Cybersecurity
+
+Last month, Microsoft patched a very interesting vulnerability 'zerologon' that would allow an attacker with a foothold on your internal network to essentially become Domain Admin with one click. All that is required is for a connection to the Domain Controller to be possible from the attacker's viewpoint.
+
+Bureau Veritas Cybersecurity's security expert Tom Tervoort previously discovered a less severe Netlogon vulnerability last year that allowed workstations to be taken over, but the attacker required a Person-in-the-Middle (PitM) position for that to work. Now, he discovered this second, much more severe (CVSS score: 10.0) vulnerability in the protocol. By forging an authentication token for specific Netlogon functionality, he was able to call a function to set the computer password of the Domain Controller to a known value. After that, the attacker can use this new password to take control over the domain controller and steal credentials of a domain admin.
+
+The vulnerability stems from a flaw in a cryptographic authentication scheme used by the Netlogon Remote Protocol, which among other things can be used to update computer passwords. This flaw allows attackers to impersonate any computer, including the domain controller itself, and execute remote procedure calls on their behalf.
+
+Bureau Veritas Cybersecurity urges everybody to install the patch on all their domain controllers as fast as possible. Please refer to Microsoft's advisory. A test tool has been published on Github that can tell you whether a domain controller is vulnerable or not.
+
+If you are interested in the technical details behind this pretty unique vulnerability and how it was discovered, the full whitepaper is available with comprehensive technical analysis of the cryptographic flaw and exploitation techniques.
+
+For more information about the CVE, contact Bureau Veritas Cybersecurity at cybersecurity@bureauveritas.com.

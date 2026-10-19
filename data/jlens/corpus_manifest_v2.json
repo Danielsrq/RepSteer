@@ -1,0 +1,33 @@
+{
+  "chunk_tokens": 128,
+  "min_tail": 48,
+  "seed": 0,
+  "n_total": 1434,
+  "n_cve": 717,
+  "n_gen": 717,
+  "cve_sources": {
+    "baron_samedit.txt": 13,
+    "confluence_ognl.txt": 20,
+    "cve_2022_0185.txt": 45,
+    "dirtycow.txt": 45,
+    "dirtypipe.txt": 45,
+    "exiftool.txt": 45,
+    "ghostscript_28879.txt": 45,
+    "ios_machmsg.txt": 45,
+    "ios_voucher.txt": 45,
+    "looney_tunables.txt": 40,
+    "netfilter_22555.txt": 45,
+    "nftables.txt": 45,
+    "pwnkit.txt": 12,
+    "regresshion.txt": 45,
+    "sequoia.txt": 38,
+    "shellshock.txt": 20,
+    "shiftfs.txt": 45,
+    "smbghost.txt": 30,
+    "vsstandard.txt": 34,
+    "win32k_1732.txt": 11,
+    "zerologon.txt": 4
+  },
+  "n_wiki_records_used": 800,
+  "model_id": "Qwen/Qwen3.5-4B"
+}

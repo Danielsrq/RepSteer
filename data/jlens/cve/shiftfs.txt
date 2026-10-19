@@ -1,0 +1,375 @@
+# Exploitation of a double free vulnerability in Ubuntu shiftfs driver (CVE-2021-3492)
+
+Rédigé par Vincent Dehors \- 13/07/2021 - dans Exploit \- Téléchargement __
+
+This year again, the international contest Pwn2Own Vancouver took place in the beginning of April. Among the different categories, two major operating systems were suggested for the Local Escalation of Privilege category (LPE): Linux (Ubuntu) and Windows 10. This article describes how a Ubuntu kernel vulnerability was found and exploited during this contest allowing to gain root access from an unprivileged user.
+
+Vous souhaitez améliorer vos compétences ? Découvrez nos sessions de **formation** ! En savoir plus
+
+## Introduction
+
+Announced in the Zero Day Initiative blog, the 2021 edition of Pwn2Own Vancouver encouraged to search for vulnerabilities in different targets. I chose to try the Ubuntu Local Escalation of Privilege entry looking for a Linux kernel vulnerability. This blogpost relates this adventure starting from the vulnerability research to its exploitation bypassing the kernel protections (KASLR, SMAP).
+
+The vulnerability presented here was used during the contest and disclosed to the Ubuntu team who quickly patched it. CVE-2021-3492 has been assigned to this bug. As the patch concerns the Linux kernel, don’t forget to **reboot** after updating.
+
+### Affected versions
+
+Shiftfs driver is only present on Ubuntu kernels as it is not upstreamed into the kernel.org kernel yet.
+
+This vulnerability has been checked on Ubuntu Groovy (20.10) and Ubuntu Focal (20.04) in Desktop and Server versions. Previous versions of Ubuntu have not been checked. The code adding this vulnerability has been committed in April 2019.
+
+To check if your kernel is not vulnerable, here are the patched version for the generic kernel (x86) :
+
+  * Groovy version is corrected since kernel version : 5.8.0-50.56
+  * Focal version is corrected since kernel version : 5.4.0-72.80
+
+### Exploit code
+
+The source code of the full exploit is available in the Synacktiv Github. This PoC is developped for Ubuntu 20.10 (5.8.0-xx-generic) x86 64-bits.
+
+## Kernel attack surface from unprivileged users
+
+The rules of Pwn2Own stated the accepted vulnerabilities must be _kernel_ ones. Although the userland itself can contain a lot of surface for a Local Escalation of Privilege, I only targeted the Linux kernel of Ubuntu distributions. The source code of the kernel used to build current kernels packages can be downloaded and there is a Git repository.
+
+The goal is to obtain root rights (UID 0) from a standard user. On most Linux distributions, there is no boundary between the root user and kernel code execution as root can load kernel modules, write on blocks devices, etc.
+
+Before wondering what an unprivileged user can do, let’s enumerate how a process can interact with the kernel. A process spawned by a user executes instructions in _ring 3_ on x86 (EL0 on ARM). It can only access its own virtual memory or need to perform a syscall to interact with the OS. A good starting point to list the kernel attack surface would be to list all available syscalls.
+
+Syscalls are identified by a number stored in a register. Depending on the syscall, the userland process can provide parameters by settings other registers. There are various ways to list available syscalls :
+
+  * `grep -R "SYSCALL.*_DEFINE"` in the source code and check if they are compiled
+  * Search for symbol `__x64_sys_*` in the vmlinux or in /proc/kallsyms
+  * Look at the syscall table in the compiled binary
+  * Use the kernel tracer (ftrace) from userland to check if there is something behind a syscall
+
+If you try to use a syscall with every possible number without parameters, you may not be able to tell the difference between a unimplemented syscall and a normal error. So I created a small shell script which uses ftrace to locate the kernel handler for each possible number of syscall. Here is the resulting list of available syscalls. Note that for 64-bit machines, the 32-bit syscall can also be done and is managed by another handler using 32-bit parameters.
+
+The list of syscalls is only the first entry point to talk to the kernel. But instead of using a new number, a lot of syscalls lead to **multiple functions**. The most common example are the ones related to **file descriptors** , like `open`, `read`, `write`, `ioctl`, etc. Indeed a file descriptor can be a lot of different things on Linux systems :
+
+  * An inode (file or directory) managed by a **filesystem**. The kernel handler of the syscall depends on the filesystem, so there is a whole new surface for each supported/mounted filesystems. There are also special kernel filesystems : procfs, sysfs, debugfs, cgroup, etc.
+  * A _special_ file provided by a kernel driver (block or character devices) allowing to communicate with the driver. Generally, special files are located in /dev. Each device offers an interesting attack surface.
+  * An handle from the `socket` syscall for network communication. The underlying kernel handlers depend on the kind of network protocol used and there are a lot of twisted usages.
+  * Several other API based on file descriptors : shared memory, pipes, pidfd, io_uring, …
+
+So from this small number of syscalls, there is a huge kernel surface. However, a lot of kernel reachable code is only available from an already-privileged user. To restrict features for unprivileged user, the kernel generally uses **capabilities** (See `man 7 capabilities`). Another way to restrict features is by setting the file permissions for all the surface which comes from the VFS (from a filepath). For example, Ubuntu only allows `root` to read/write the block device /dev/mem (which may be dropped).
+
+Moreover, there are a lot of corner cases and special behaviors added gradually to support new features while keeping the compatibility with previous userland code. Several of these new features have been added for **containers**. For example, the **namespaces** are used to add more isolation on kernel objects (process, VFS, IPC, …). There are two approaches with containers :
+
+  * The container is launched from a root process and have isolated namespaces except for the **user** namespace. This means the UIDs inside a container are the same as on the host (from the kernel perspective). In this case, there are several new restrictions to prevent from a root process inside the container to impact the host. For example, a lot of capabilities are dropped.
+  * The container is launched from a privileged user using a new user namespace. When this new namespace is created, the UIDs are mapped. So a process can be UID 0 inside its own user namespace. It can also gain all the **capabilities** but they are only meaningful inside this user namespace. To support this behavior, for privileged actions, the kernel doesn't check if a process has a capability but if it has **a capability inside the root namespace**.
+
+This can sound weird as these two approaches are completely different. A lot of distributions forbid the ability to create a new user namespace from an unprivileged user. As the feature is mainline in the Linux kernel, this feature can be disabled/enabled by a systctl option (which is system-wide) :
+    
+    
+    $ sudo sysctl kernel.unprivileged_userns_clone
+    kernel.unprivileged_userns_clone = 1
+
+Unprivileged users can reach a little more kernel code on Ubuntu distribution because unprivileged user namespaces are enabled by default. Using `unshare` or `clone` syscalls, one can create a new user namespace and then gain all capabilities. Of course these capabilities only apply on resources owned by the user, but some actions, normally forbidden for normal users, are now allowed. Among these actions, users can create others kinds of namespaces (mount, networks, …) and mount several filesystems inside their mount namespace.
+    
+    
+    $ unshare -U -r # create a userns where uid 0 is mapped on current user
+    $ unshare -m    # create a mount namespace
+    $ mount -t tmpfs none [dir]
+
+Not all filesystems can be mounted as a normal user. In kernel code, the flag `FS_USERNS_MOUNT` is used to define if a given filesystem can be mounted by a non-root user. This flag is set for a few filesystems :
+
+  * android/binderfs
+  * mqueue
+  * shmem
+  * sysfs
+  * ramfs (tmpfs)
+  * overlayfs
+  * proc
+  * aufs
+  * fuse
+  * **shiftfs**
+  * devpts
+  * cgroup
+
+Moreover, even if the filesystem driver is a kernel module (.ko), it is auto-loaded when the mount syscall is issued.
+
+In vulnerability research, if there has been a lot of previous audit, interesting targets are :
+
+  * Surfaces which are not too much common. Here the surface with a user namespace can be a good choice because a lot of other distributions prevent it.
+  * Code added recently or specific to the target. For example, the modifications from Ubuntu which are not mainline (thus not present in other distributions).
+
+So one of the first drivers I reviewed was **shiftfs** because this driver is only present in Ubuntu kernels, not much known and is mountable by an unprivileged user. Luckily, I found a vulnerability inside this driver powerful enough to perform a Local Privilege Escalation with this single bug.
+
+## ShiftFS double free vulnerability (CVE-2021-3492)
+
+The vulnerability presented here lies in the filesystem driver **shiftfs**. This is an _overlay kind_ filesystem allowing to bind-mount a directory and shift UIDs and GIDs with the map of the user namespace owner (the one which have performed the mount). This seems to be useful to bootstrap efficiently unprivileged containers. I found only two resources describing the feature :
+
+  * https://discuss.linuxcontainers.org/t/trying-out-shiftfs/5155
+  * https://lwn.net/Articles/687354/
+
+To reach the filesystem code, we need to call the "mount" function specific to this filesystem. As described previously, one can create a user namespace and mount it :
+    
+    
+    $ mkdir d1 d2
+    $ unshare -U -r
+    $ unshare -m
+    $ mount -t tmpfs none d1
+    $ mount -t shiftfs -o mark,passthrough=2 d1 d2
+
+All file operations inside the directory `d2` will be handled first by the shiftfs driver.
+
+When mounted with options “mark” and “passthrough=2”, the shiftfs filesystem handles special ioctls, mainly to forward them to the filesystem below.
+
+If the ioctl number is in a whitelist, the function `shiftfs_real_ioctl` is called.
+    
+    
+    static long shiftfs_real_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+    {
+        int newfd = -EBADF;
+        long err = 0, ret = 0;
+        void __user *argp = (void __user *)arg;
+        struct btrfs_ioctl_vol_args *btrfs_v1 = NULL;
+        struct btrfs_ioctl_vol_args_v2 *btrfs_v2 = NULL;
+    
+        ret = shiftfs_btrfs_ioctl_fd_replace(cmd, argp, &btrfs_v1, &btrfs_v2, &newfd);
+        if (ret < 0)
+            return ret;
+    
+        // here wrapper to vfs_ioctl()
+        // ...
+    
+        err = shiftfs_btrfs_ioctl_fd_restore(cmd, newfd, argp, btrfs_v1, btrfs_v2);
+        if (!ret)
+            ret = err;
+    
+        return ret;
+    }
+
+When `BTRFS_IOC_SNAP_CREATE` ioctl is used, the function `shiftfs_btrfs_ioctl_fd_replace` is used to copy a structure from userspace to kernel space. The goal of this code is to wrap the legacy btrfs ioctl by replacing the file descriptor contained in the structure btrfs_ioctl_vol_args by a new one linked to the inode in the bottom filesystem. The structure is 4096 bytes long as defined in the user API header:
+    
+    
+    #define BTRFS_PATH_NAME_MAX 4087
+    struct btrfs_ioctl_vol_args {
+        __s64 fd;
+        char name[BTRFS_PATH_NAME_MAX + 1];
+    };
+
+If this ioctl is performed on a file managed by shiftfs, the handling code copies a structure btrfs_ioctl_vol_args from user space to kernel space. After replacing the fd field in this structure, it is copied back to userspace:
+    
+    
+    static int shiftfs_btrfs_ioctl_fd_replace(int cmd, void __user *arg,
+                                              struct btrfs_ioctl_vol_args **b1,
+                                              struct btrfs_ioctl_vol_args_v2 **b2,
+                                              int *newfd)
+    {
+        // ...
+    
+        if (cmd == BTRFS_IOC_SNAP_CREATE) {
+            v1->fd = *newfd;
+            ret = copy_to_user(arg, v1, sizeof(*v1));
+            v1->fd = oldfd;
+        } else {
+            // ...
+        }
+    
+        if (ret)
+            shiftfs_btrfs_ioctl_fd_restore(cmd, *newfd, arg, v1, v2);
+    
+        return ret;
+    
+    }
+
+The function `copy_to_user` returns **the number of remaining bytes**. If a fault happens during the copy, a positive value is returned. In the calling function `shiftfs_real_ioctl`, an error is detected by checking if the return value is negative. So even when an error occurs, the nominal path is executed leading to call `shiftfs_btrfs_ioctl_fd_restore` a second time. This function performs another `copy_to_user` to send again the structure `btrfs_ioctl_vol_args` to userspace and then free it.
+    
+    
+    static int shiftfs_btrfs_ioctl_fd_restore(int cmd, int fd, void __user *arg,
+                                              struct btrfs_ioctl_vol_args *v1,
+                                              struct btrfs_ioctl_vol_args_v2 *v2)
+    {
+        int ret;
+    
+        if (!is_btrfs_snap_ioctl(cmd))
+            return 0;
+    
+        if (cmd == BTRFS_IOC_SNAP_CREATE)
+            ret = copy_to_user(arg, v1, sizeof(*v1));
+        else
+            ret = copy_to_user(arg, v2, sizeof(*v2));
+    
+        __close_fd(current->files, fd);
+        kfree(v1);
+        kfree(v2);
+    
+        return ret;
+    }
+
+Only one of `v1` or `v2` can be set at the same time. Both structures lead to the same vulnerability and have the same size. Calling twice `shiftfs_btrfs_ioctl_fd_restore` leads to :
+
+  1. Closing two times the same fd
+  2. Freeing two times the same structure
+
+This structure has been allocated in `shiftfs_btrfs_ioctl_fd_replace` during the copy from userspace:
+    
+    
+    v1 = memdup_user(arg, sizeof(*v1));
+
+The kernel function `memdup_user` performs a `copy_from_user` and an allocation at the same time. This allocation uses **kmalloc** with flags GFP_USER which is using the same slabs as GFP_KERNEL.
+
+To sum up, when faulting one `copy_to_user` :
+
+While it is possible to trigger a double free on this allocation, it is also possible to **forget the allocation** , losing this memory for ever. Indeed, if the value of `v1->fd` targets an invalid file descriptor in the current process, the function returns a negative error and the `kfree` is never performed. This bug allows any user to fill the whole kernel memory until the system becomes out of memory.
+
+## Synchronizing userspace and kernelspace
+
+Double free allows to take over a kernel memory chunk of the same kind by allocating it between the two free operations and spraying a controlled object after the second free. So the following elements are needed :
+
+  1. A way to block the kernel between the first free and the second one.
+  2. A victim : a memory chunk of the same kind (kmalloc-4096) which can provide exploitation primitives, like kernel memory read/write.
+  3. A spraying technique allowing to create memory chunks of the same kind and fill their content with controlled data.
+
+Ubuntu kernel configurations have `CONFIG_PREEMPT_VOLUNTARY` set. This means that the kernel is not preempted by the scheduler when it is executing kernel code unless the code asks for it voluntary. However, there are several known techniques allowing to block the kernel when doing some operations. In our case, several functions called between the first free and the second one can be blocked:
+
+  * **vfs_ioctl** is performed on the lower inode. Using a user-controlled filesystem with FUSE allows to block any operation on the file.
+  * **copy_to_user** is performed before each call to kfree. Using userfaultfd allows to block the operation.
+  * **close_fd** is performed before each call to kfree. This action could make the kernel sleep under special conditions.
+
+The userfaultfd method has been used in the exploit. The kernel of Ubuntu groovy (20.10) introduces a new feature which allows userspace programs to manage their pages based on write faults. While it was possible to manage pages based on page fault, it is now possible to define write-protected pages and to be called by the kernel when a write is performed.
+
+Its usage is simple, the exploit creates two threads : one triggers a write fault during the `copy_to_user` (in kernel mode) while the other handles this fault. During this handling (which is not limited in time), the first thread is in the shiftfs kernel code and blocked until the second thread chooses to unblock the situation.
+
+The exploit allocates two pages of userspace memory. The vulnerable ioctl is called using a structure which uses bytes in both these pages. By setting the first page as write-protected, a userspace callback is called during the beginning of a `copy_to_user`. In the fault handling, the second page is marked as write-protected while the first one is set as writable.
+
+This method allows to block several `copy_to_user` performed by the kernel on the same structure. The fact that `copy_to_user` is made after the first free means that **the victim content is copied to userspace memory** if the userfaultfd callback unblocks the kernel after the victim is allocated (for the first page).
+
+The following diagram shows the sequence of memory mappings and protections used by the exploit :
+
+## Finding a victim in the same SLAB
+
+The Linux kernel has several ways to allocate memory. Most is allocated using `kmalloc` managed by the SLUB allocator. When a driver wants a chunk of memory, a corresponding _cache_ is used depending on the size requested. For example, the memory used in this bug has a size of 4096 : the SLUB allocator will use the cache `kmalloc-4096`. As there are caches for sizes aligned on power of two, this cache contains chunks for allocation size between 2097 to 4096. A cache contains a list of _slabs_ composed of several contiguous chunks of memory. When `kfree` is called, the chunk is added to a `free_list` in its slab.
+
+To take over a chunk with a double free, we just need to make sure of the following :
+
+  1. The first normal `kfree` is made on a known CPU
+  2. The victim is allocated on the same CPU using `kmalloc` with a compatible size to use the same slab. Because each CPU has a dedicated _slab_ which always corresponds to the lattest `kfree`, the returned chunk is the same as in the 1.
+  3. The second buggy `kfree` is made.
+  4. Another allocation on the same CPU, with the same size, is made in order to control the new content of the victim.
+
+The exploit does all these actions on the same CPU using `sched_setaffinity`, which is allowed for an unprivileged user. To prevent from races of other kernel allocations, they must be made in a small time window.
+
+But how to find a suitable victim? We need to make the kernel allocate a chunk between 2097 and 4096 bytes which can be useful to know the KASLR offset and/or get some kind of powerful primitive like an arbitrary write or a way to temper the execution flow.
+
+I used two approaches to locate the victim :
+
+  1. I constructed a database of suitable objects. Using the same source code and the same config, a _vmlinux_ with debugging data was built. Then, using **pahole** , all the kernel structures names and sizes have been extracted. As the kernel usually allocates chunks of the size of a structure, it is a good way to find victims.
+  2. In runtime, one can use the kernel tracer to display all allocations made by the kernel. By filtering on the allocation size, a potential victim can be found by generating system activity (for example, launching a browser, …).
+
+It turns out that there is not much potential victims. Hopefully I found an interesting one which also can be triggered from an unprivileged user : `devinet_sysctl_table`.
+    
+    
+    static struct devinet_sysctl_table {
+        struct ctl_table_header *sysctl_header;
+        struct ctl_table devinet_vars[__IPV4_DEVCONF_MAX];
+    } devinet_sysctl= {
+        .devinet_vars = {
+            DEVINET_SYSCTL_COMPLEX_ENTRY(FORWARDING, "forwarding",devinet_sysctl_forward),
+            DEVINET_SYSCTL_RO_ENTRY(MC_FORWARDING, "mc_forwarding"),
+            DEVINET_SYSCTL_RW_ENTRY(BC_FORWARDING, "bc_forwarding"),
+            // ...
+        }
+    }
+
+The victim used by the exploit is one of the network sysctl tables. These tables are created at boot time for the main network stack. However, network namespaces use dedicated sysctl tables. Those configuration values can be read and written using the procfs filesystem in path /proc/sys/net/.
+
+When creating a new network namespace, the first kmalloc-4096 chunk allocated stores the IPv4 generic sysctl table of the stack. This table is managed by the file net/ipv4/devinet.c. The allocation is a copy of the global table devinet_sysctl_table. This can be checked using the kernel tracer after a `unshare -n` :
+    
+    
+    bash-1912    [002] ....  5515.306551: kmalloc: call_site=__devinet_sysctl_register+0x47/0x110 ptr=00000000552c19f5 bytes_req=2120 bytes_alloc=4096 gfp_flags=GFP_KERNEL
+    bash-1912    [002] ....  5515.306595: kmalloc: call_site=__devinet_sysctl_register+0x47/0x110 ptr=000000007dd47f0d bytes_req=2120 bytes_alloc=4096 gfp_flags=GFP_KERNEL
+    bash-1912    [002] ....  5515.306742: kmalloc: call_site=mr_table_alloc+0x42/0x100 ptr=00000000598ab799 bytes_req=3608 bytes_alloc=4096 gfp_flags=GFP_KERNEL|__GFP_ZERO
+    bash-1912    [002] ....  5515.306766: kmalloc: call_site=ipv4_mib_init_net+0xf4/0x1a0 ptr=00000000d0d71277 bytes_req=4096 bytes_alloc=4096 gfp_flags=GFP_KERNEL|__GFP_ZERO
+    bash-1912    [002] ....  5515.306811: kmalloc: call_site=__register_sysctl_table+0x50/0x1e0 ptr=000000001ae330cc bytes_req=3216 bytes_alloc=4096 gfp_flags=GFP_KERNEL|__GFP_ZERO
+    bash-1912    [002] ....  5515.306922: kmalloc: call_site=ipv6_init_mibs+0xb2/0x110 ptr=00000000dd7d83c1 bytes_req=4096 bytes_alloc=4096 gfp_flags=GFP_KERNEL|__GFP_ZERO
+
+Creating a network namespace allocates other chunks matching the same slab size. When several allocations are made, the CPU slab may be replaced by a new one, loosing the victim slab which is inserted in the global partial list (slabs containing free chunks not binded to a CPU). To get back this slab, the exploit allocates more chunks than the number of chunks in one slab. In our case, one slab contains 8 chunks, to get back the victim slab, more than 8 chunks are allocated at the end.
+
+The chosen victim is very interesting because it contains a `ctl_table` structure defined as below :
+    
+    
+    struct ctl_table {
+            const char  *              procname;             /*     0   0x8 */
+            void *                     data;                 /*   0x8   0x8 */
+            int                        maxlen;               /*  0x10   0x4 */
+            umode_t                    mode;                 /*  0x14   0x2 */
+            struct ctl_table *         child;                /*  0x18   0x8 */
+            proc_handler *             proc_handler;         /*  0x20   0x8 */
+            struct ctl_table_poll *    poll;                 /*  0x28   0x8 */
+            void *                     extra1;               /*  0x30   0x8 */
+            void *                     extra2;               /*  0x38   0x8 */
+    };
+
+The `proc_handler` field is a function pointer! By leaking its original value, the KASLR offset can be retrieved. For network sysctl, this first pointer is `devinet_sysctl_forward` and is used to compute KASLR offset by subtracting its base address from the kernel symbols file.
+
+Moreover, the sysctl header address is leaked at the begining of the structure. This is a distinct allocation and dumping its content allows to retrieve the address of the victim.
+
+The spraying technique used is simple: it uses several times the same ioctl of the vulnerability (BTRFS_IOC_SNAP_CREATE). Indeed, the syscall performs an allocation of 4096 bytes. By setting an invalid file descriptor in the `fd` field, the allocation is never freed which is very useful to repair a double free. The only constraint on sprayed content is on the first bytes because the field `fd` is patched by shiftfs code. When R/W primitive is installed, the first bytes of the victim’s initial content are restored.
+
+## Primitives stabilization using sysctl tables
+
+An entry in the sysctl table is defined by the structure `ctl_table` and is overwritten by the chunk reuse and the spray technique.
+
+A kernel read/write can be obtained by setting the pointer data to a given destination and using the function `proc_doulongvec_minmax` as the `proc_handler`. This function will read and write any number of 64-bits values in kernel memory pointed by data when a userspace process read and write the files in /proc/sys/net/ipv4/conf/all.
+
+The exploit takes over several sysctl:
+
+  * **sysctl0** : /proc/sys/net/ipv4/conf/all/forwarding: Used to dump the sysctl_header and get the address of the victim
+  * **sysctl1** : /proc/sys/net/ipv4/conf/all/mc_forwarding: This sysctl is set to overwrite a global sysctl in the main namespace (sys.debug.exception-trace) to get a reusable R/W primitive. The global sysctl table is restored after the victim address has been leaked and the content of sysctl2 has been written.
+  * **sysctl2** : /proc/sys/net/ipv4/conf/all/bc_forwarding: Target sysctl3 and allow to change the destination of reads/writes (data field).
+  * **sysctl3** : /proc/sys/net/ipv4/conf/all/accept_redirects: Use to R/W kernel memory, this table is patched by sysctl2.
+  * **sysctl4** : /proc/sys/net/ipv4/conf/all/secure_redirects: Use to call functions, this table is patched by the R/W primitive.
+
+After the primitives stabilization, the exploit program can read and write kernel memory by reading and writing files in the /proc.
+
+## Kernel code execution and root rights
+
+Note that stable kernel read/write is enough to get userland root access. But as we already have a **call** primitive, I decided to do it by kernel code execution. The main kernel protection preventing userland code execution from the kernel is SMAP. The protection prevents the kernel itself from accessing or executing user memory outside dedicated functions like `copy_{from|to}_user`.
+
+There should not be a mapping with write and execute permissions at the same time. However, legacy kernel code calls the function `set_memory_x` which remaps the victim’s page as executable.
+
+To call this function, the sysctl4 is used with a patched `proc_handler`. When it is called, the first argument is the address of the `ctl_table`. When writing data into a sysctl file (in /proc), the second argument is set to 1. So when calling `set_memory_x`, the second argument will be 1 which is the number of pages to remap as executable. As it is 4096 bytes long, the victim is composed of only one page but the addresses of the tables are not aligned on a page start. When using `set_memory_x` with an address which is not aligned, its page is still remapped but a warning is displayed in the dmesg by the `WARN_ON` macro.
+
+With this technique, the victim memory is set executable. A shellcode is written inside this memory and then the sysctl4 is patched to call this payload. The shellcode executes the usual code to get root credentials for the current process:
+    
+    
+    commit_cred(prepare_kernel_cred(0));
+
+At the end, the exploit spawns a new shell.
+
+## Conclusion
+
+When searching vulnerability for a Local Escalation of Privilege, I discovered a lot of features I did not know about and learnt several exploitation techniques (userfaultfd, spray techniques, chunk reuse, …). I was lucky to find something in one of the first drivers I audited.
+
+The double free vulnerabilities are very dangerous because they are often exploitable only using one bug. As seen with the presented bug, it offers an infoleak at the same time as a chunk reuse. Even without this infoleak, hijacking a known kernel object could be enough.
+
+The `sysctl` tables are very interesting targets for exploitation. A single _write_ on a global structure (which address is known if KALSR offset is resolved) allows to get reusable R/W primitives. With such primitives, root rights can be acquired in various ways.
+
+If you don’t use unprivileged containers, I would recommend setting `kernel.unprivileged_userns_clone` to 0 to reduce the attack surface.
+
+This was my first participation to Pwn2Own. I would like to thanks ZDI for organizing Pwn2Own and Ubuntu kernel team for participating and for their reactivity to fix the bug.
+
+## Resources
+
+Ubuntu fixes :
+
+  * https://ubuntu.com/security/CVE-2021-3492
+  * Commit 1
+  * Commit 2
+
+Other blogposts on kernel exploitation :
+
+  * CVE-2017-11176 : 
+    * https://blog.lexfo.fr/cve-2017-11176-linux-kernel-exploitation-part1.html
+    * https://blog.lexfo.fr/cve-2017-11176-linux-kernel-exploitation-part2.html
+    * https://blog.lexfo.fr/cve-2017-11176-linux-kernel-exploitation-part3.html
+  * About Userfaultfd : https://blog.lizzie.io/using-userfaultfd.html
+  * About Userfaultfd and sprays : https://duasynt.com/blog/linux-kernel-heap-spray
+  * CVE-2017-7308 : 
+    * https://googleprojectzero.blogspot.com/2017/05/exploiting-linux-kernel-via-packet.html
+    * https://github.com/xairy/kernel-exploits/tree/master/CVE-2017-7308
+  * Alexander Popov great blog : https://a13xp0p0v.github.io/
+
+Partagez cet article

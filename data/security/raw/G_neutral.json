@@ -1,0 +1,92 @@
+[
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "memory allocation",
+    "text": "A memory allocator manages the heap by tracking which regions are in use and which are available for allocation. When a program requests memory through malloc, the allocator searches a free list or uses a bitmap to find a contiguous block of sufficient size, marks it as allocated, and returns a pointer to the start of that block. The allocator maintains metadata for each allocation, such as the size and status, which allows it to coalesce adjacent free blocks later when memory is deallocated, reducing fragmentation over time."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "B-tree data structure",
+    "text": "A B-tree is a self-balancing tree structure that maintains sorted data and optimizes for disk I/O in database systems. Each node can have many children and contains multiple sorted keys, which minimizes the height of the tree and the number of disk accesses needed during search operations. When a node becomes full after an insertion, it splits into two nodes, and the middle key is promoted to the parent, ensuring the tree remains balanced and search, insert, and delete operations complete in O(log n) time."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "hash table",
+    "text": "A hash table stores key-value pairs by applying a hash function to the key to compute an index into an array of buckets. When multiple keys hash to the same index, collisions are resolved through chaining, where each bucket maintains a linked list of entries, or through open addressing, where the allocator probes alternative indices until finding an empty slot. A well-designed hash table with a good hash function and an appropriate load factor achieves O(1) average-case lookup, insertion, and deletion."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "DNS resolution",
+    "text": "The Domain Name System translates human-readable domain names into IP addresses through a distributed hierarchy of nameservers. When a client needs to resolve a domain, it typically queries a recursive resolver, which then queries authoritative nameservers for the domain, caching the result and returning the IP to the client. This hierarchical structure allows DNS to scale globally, with each authoritative server responsible only for its portion of the namespace, and caching reduces the load on nameservers and improves lookup latency for frequent queries."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "virtual memory paging",
+    "text": "Virtual memory enables a program to use more memory than physically available by mapping the program's logical address space to physical RAM and disk storage. The operating system divides memory into fixed-size pages and maintains a page table for each process to translate virtual addresses into physical addresses. When a program accesses a page not currently in RAM, a page fault occurs, the operating system retrieves that page from disk into a free frame, updates the page table, and resumes execution, allowing the illusion of unlimited memory."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "CPU cache hierarchy",
+    "text": "Modern processors use multiple levels of cache to bridge the speed gap between the CPU and main memory. L1 cache is small, fast, and close to the CPU cores, while L2 and L3 caches are progressively larger and slower, with the L3 cache often shared among cores. When the CPU needs data, it checks the L1 cache first; if the data is not present, it checks L2, then L3, and finally main memory, with each level serving as a backup if the requested data is not found in faster levels."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "ring buffer",
+    "text": "A ring buffer is a fixed-size data structure that uses a circular array to store elements, with separate head and tail pointers that wrap around to the beginning when they reach the end. When the buffer is full, new writes overwrite the oldest data, which is useful for streaming applications and circular logs where retaining only recent data is acceptable. The ring buffer avoids allocation and deallocation overhead by reusing the same memory region, and it provides efficient O(1) enqueue and dequeue operations."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "TCP handshake",
+    "text": "The Transmission Control Protocol establishes a connection between two endpoints through a three-way handshake. The client sends a SYN packet with an initial sequence number, the server responds with a SYN-ACK packet containing its own sequence number and an acknowledgment, and the client sends an ACK packet to confirm receipt of the server's sequence number. This exchange synchronizes sequence numbers and establishes a reliable, ordered communication channel for subsequent data transfer."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "filesystem inodes and blocks",
+    "text": "A filesystem organizes data on disk using inodes and data blocks, where an inode is a data structure that stores metadata about a file such as ownership, permissions, timestamps, and a list of block pointers. Each regular file is represented by an inode, and its contents are stored in data blocks scattered across the disk. The inode structure enables efficient directory lookups and supports files of various sizes by using direct pointers for small files and indirect pointers for larger files, maintaining a tree-like structure within the filesystem."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "lexical analysis and tokenization",
+    "text": "The first phase of compilation is lexical analysis, where the source code is scanned character by character and grouped into tokens such as keywords, identifiers, operators, and literals. A lexer uses a state machine or regular expressions to recognize token patterns, and it strips whitespace and comments before passing a stream of tokens to the parser. This separation of concerns allows the parser to work with a simpler token stream rather than raw characters, making the parsing phase more straightforward."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "process scheduling",
+    "text": "A process scheduler divides CPU time among multiple processes by allocating time slices, also called quanta, to each process in turn. The scheduler maintains a run queue of ready processes and, at regular intervals determined by a timer interrupt, switches the currently executing process to another one, saving its state and restoring the state of the next process. Different scheduling algorithms, such as round-robin or priority-based scheduling, determine the order in which processes are selected, affecting throughput, latency, and fairness."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "version control commits",
+    "text": "A version control system like Git stores the history of changes as a series of commits, where each commit represents a snapshot of the entire project at a point in time. Each commit contains a pointer to its parent commit, creating a directed acyclic graph that records the lineage of changes. The system uses cryptographic hashing to ensure the integrity of commits and detect any tampering, and branching allows multiple lines of development to proceed independently before merging back together."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "garbage collection",
+    "text": "Garbage collection is an automatic memory management technique where the runtime periodically identifies objects that are no longer reachable from the program's root references and reclaims their memory. Mark-and-sweep collectors traverse the object graph starting from roots, marking live objects, and then sweeping unreachable objects; generational collectors assume young objects die more frequently and scan the young generation more often. These techniques eliminate the manual burden of memory deallocation but may introduce pause times when garbage collection runs."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "network routing",
+    "text": "Network routing determines the path that data packets take from a source to a destination across interconnected networks. Routers maintain routing tables that map destination IP addresses or ranges to outgoing interfaces and next-hop gateways, built using dynamic routing protocols such as BGP or OSPF. These protocols exchange information about network topology and costs, allowing routers to compute optimal paths and adapt to network changes such as link failures or congestion."
+  },
+  {
+    "concept": "neutral",
+    "language": "prose",
+    "component": "data compression",
+    "text": "Data compression algorithms reduce the size of data by exploiting redundancy and patterns in the source material. Lossless compression techniques like Huffman coding assign variable-length bit sequences to symbols, with shorter codes for more frequent symbols, while dictionary-based methods like LZ77 replace repeated sequences with references to earlier occurrences. The compression ratio depends on the entropy of the data; highly repetitive data compresses well, while random data provides little opportunity for size reduction."
+  }
+]

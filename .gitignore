@@ -1,0 +1,37 @@
+# --- Python environment (reinstall from requirements.txt) ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# --- External dependency with its own git history (pip-installed) ---
+jacobian-lens/
+
+# --- Model weights / HF cache (large, re-downloadable) ---
+models/
+*.safetensors
+*.bin
+*.ckpt
+*.pth
+
+# --- Large regenerable data artifacts (all > GitHub's 100 MB cap; rebuilt by scripts/) ---
+# Activations, lenses, concept/steering checkpoints — reproducible, not source.
+*.pt
+*.npz
+
+# --- Build artifacts ---
+demo.zip
+
+# --- OS / editor cruft ---
+.DS_Store
+.ipynb_checkpoints/
+*.swp
+
+# Local HF cache symlink (points outside the tree)
+models
+/models
+
+# Oversized interactive security viewer (>50MB; regenerate via scripts/reft/v2_viewer.py)
+**/v2_reader_view.html

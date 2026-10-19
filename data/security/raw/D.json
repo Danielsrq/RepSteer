@@ -1,0 +1,182 @@
+[
+  {
+    "concept": "command_injection",
+    "language": "Python",
+    "component": "log viewer",
+    "text": "A log viewer service processes user-supplied log file requests without validation. The application constructs a shell command by concatenating user input directly into the grep command string.\n\nimport os\nimport subprocess\nfrom flask import request\ndef view_logs(log_name):\n    command = f\"grep 'ERROR' {log_name}\"\n    os.system(command)\nuser_input = request.args.get('log')\nview_logs(user_input)"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Java",
+    "component": "image converter",
+    "text": "An image conversion service takes a user-supplied image filename and passes it to an external command. The application builds a command string by concatenating the filename directly without escaping shell metacharacters.\n\nString filename = request.getParameter(\"image\");\nString cmd = \"convert input.jpg -resize 800x600 \" + filename;\nProcess process = Runtime.getRuntime().exec(cmd);\nOutputStream out = process.getOutputStream();\nout.write(imageData);\nout.close();"
+  },
+  {
+    "concept": "command_injection",
+    "language": "C",
+    "component": "backup utility",
+    "text": "A backup utility constructs a tar command from user input to archive files. The application uses sprintf to format a shell command with untrusted input, then passes it to system().\n\n#include <stdio.h>\n#include <stdlib.h>\nchar backup_file[256];\nscanf(\"%s\", backup_file);\nchar command[512];\nsprintf(command, \"tar czf backup.tar.gz %s\", backup_file);\nint status = system(command);\nif (status == 0) {\n    printf(\"Backup complete\\n\");\n}"
+  },
+  {
+    "concept": "command_injection",
+    "language": "C++",
+    "component": "report generator",
+    "text": "A report generator exports data using a user-supplied filename and passes it to a shell command. The application concatenates user input into a command string and executes it via popen().\n\n#include <iostream>\n#include <cstdlib>\nusing namespace std;\nstring reportname = getUserInput();\nstring cmd = \"export_data --output \" + reportname;\nFILE* pipe = popen(cmd.c_str(), \"r\");\nchar buffer[256];\nwhile (fgets(buffer, sizeof(buffer), pipe) != NULL) {\n    cout << buffer;\n}"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Python",
+    "component": "file search tool",
+    "text": "A file search tool accepts a user-provided search string and uses it in a shell command. The application passes the search term directly into a find command executed with shell=True.\n\nimport subprocess\nfrom flask import request\nsearch_term = request.form['query']\nresult = subprocess.run(\n    f\"find . -name '*{search_term}*'\",\n    shell=True,\n    capture_output=True\n)\nprint(result.stdout.decode())"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Java",
+    "component": "video processor",
+    "text": "A video processing service builds a command string from user-supplied parameters. The application concatenates filename and quality arguments into a shell command without sanitization.\n\nString videoFile = request.getParameter(\"file\");\nString cmd = \"ffmpeg -i \" + videoFile + \" -q:v 18 output.mp4\";\nProcess process = Runtime.getRuntime().exec(cmd);\nint exitCode = process.waitFor();\nif (exitCode == 0) {\n    return true;\n}\nreturn false;"
+  },
+  {
+    "concept": "command_injection",
+    "language": "C",
+    "component": "plugin loader",
+    "text": "A plugin loader executes external programs based on user-supplied plugin names. The application constructs a command using gets() to read untrusted input and passes it to execvp().\n\n#include <stdio.h>\n#include <unistd.h>\nchar plugin_name[256];\ngets(plugin_name);\nchar command[512];\nsprintf(command, \"./plugins/%s\", plugin_name);\nchar *args[] = {command, NULL};\nexecvp(command, args);"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Python",
+    "component": "database dumper",
+    "text": "A database configuration tool evaluates user-provided configuration strings. The application uses exec() to run untrusted Python code submitted through a web form.\n\nfrom flask import request\nconfig_string = request.form.get('config')\ntry:\n    exec(config_string)\nexcept Exception as e:\n    print(f\"Error: {e}\")\nreturn \"Configuration applied\""
+  },
+  {
+    "concept": "command_injection",
+    "language": "C++",
+    "component": "text processor",
+    "text": "A text processing service accepts filenames for document conversion. The application directly concatenates the filename into a shell command for PDF generation.\n\n#include <iostream>\n#include <cstdlib>\n#include <string>\nusing namespace std;\nstring inputFile = getParameterFromWeb(\"inputfile\");\nstring cmd = \"pdflatex \" + inputFile + \" -output-directory=/tmp\";\nint result = system(cmd.c_str());\nif (result == 0) {\n    moveFile(\"/tmp/output.pdf\", \"/var/www/output.pdf\");\n}"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Java",
+    "component": "email notifier",
+    "text": "An email notification service constructs shell commands from user-supplied email and subject parameters. The application concatenates these parameters into a mail command without escaping.\n\nString recipient = request.getParameter(\"email\");\nString subject = request.getParameter(\"subject\");\nString cmd = \"mail -s \" + subject + \" \" + recipient;\nProcess p = Runtime.getRuntime().exec(cmd);\np.getOutputStream().write(messageBody.getBytes());\np.waitFor();"
+  },
+  {
+    "concept": "command_injection",
+    "language": "C",
+    "component": "archive extractor",
+    "text": "An archive extraction utility processes user-supplied filenames without validation. The application constructs a tar command by appending user input directly to the command string.\n\n#include <stdio.h>\n#include <string.h>\nchar archive[256];\nscanf(\"%s\", archive);\nchar command[512];\nsprintf(command, \"tar xzf %s\", archive);\nint ret = system(command);\nprintf(\"Extraction exit code: %d\\n\", ret);"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Python",
+    "component": "config validator",
+    "text": "A configuration validator loads user-submitted Python configuration files. The application reads the file content and executes it using exec() without any sanitization.\n\nfrom flask import request\nconfig_data = request.files['config'].read().decode()\ntry:\n    exec(config_data)\n    app_config = config\nexcept SyntaxError as e:\n    return f\"Invalid config: {e}\""
+  },
+  {
+    "concept": "command_injection",
+    "language": "Java",
+    "component": "PDF generator",
+    "text": "A PDF generation service takes user input for document creation and passes it to an external tool. The application builds a command string by concatenating the document path without escaping.\n\nString docPath = request.getParameter(\"document\");\nString cmd = \"wkhtmltopdf \" + docPath + \" output.pdf\";\nProcess process = Runtime.getRuntime().exec(cmd);\nFile output = new File(\"output.pdf\");\nif (output.exists()) {\n    return sendFile(output);\n}"
+  },
+  {
+    "concept": "command_injection",
+    "language": "C++",
+    "component": "cache cleaner",
+    "text": "A cache cleaning utility accepts user-provided cache directory paths. The application constructs a shell command that directly incorporates the user path.\n\n#include <iostream>\n#include <cstdlib>\nusing namespace std;\nstring cachePath = getUserInput();\nstring cmd = \"rm -rf \" + cachePath + \"/*\";\nFILE* proc = popen(cmd.c_str(), \"w\");\nif (proc) {\n    pclose(proc);\n    cout << \"Cache cleared\" << endl;\n}"
+  },
+  {
+    "concept": "command_injection",
+    "language": "Python",
+    "component": "data importer",
+    "text": "A data importer processes CSV files supplied by users through a form. The application passes the filename directly to a subprocess command with shell=True.\n\nimport os\ncsv_filename = request.form['file']\nresult = os.popen(f\"python parse_csv.py {csv_filename}\").read()\nlines = result.strip().split('\\n')\nfor line in lines:\n    print(line)"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Python",
+    "component": "file download endpoint",
+    "text": "A file download endpoint constructs file paths from user input using os.path.join(). The application fails to validate that the resolved path remains within the intended download directory.\n\nimport os\nfrom flask import request, send_file\nfilename = request.args.get('file')\nfilepath = os.path.join('/var/www/downloads', filename)\nif os.path.exists(filepath):\n    return send_file(filepath)\nelse:\n    return \"File not found\", 404"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Java",
+    "component": "backup restoration",
+    "text": "A backup restoration service accepts user-provided restore paths. The application opens a FileInputStream using the user-supplied path without checking directory boundaries.\n\nimport java.io.FileInputStream;\nString backupFile = request.getParameter(\"backup\");\nString restorePath = \"/backups/\" + backupFile;\ntry {\n    FileInputStream fis = new FileInputStream(restorePath);\n    byte[] data = new byte[1024];\n    fis.read(data);\n    restoreFromData(data);\n} catch (IOException e) {\n    log.error(\"Restore failed\", e);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C",
+    "component": "config reader",
+    "text": "A configuration reader loads config files from user-supplied paths. The application uses sprintf() to construct the path and opens it with fopen() without validating the resolved path.\n\n#include <stdio.h>\nchar config_name[256];\nscanf(\"%s\", config_name);\nchar config_path[512];\nsprintf(config_path, \"/etc/myapp/%s\", config_name);\nFILE *f = fopen(config_path, \"r\");\nchar line[256];\nwhile (fgets(line, sizeof(line), f)) {\n    parseLine(line);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C++",
+    "component": "log viewer",
+    "text": "A log viewer displays logs specified by user-provided names. The application concatenates the name to a base directory path and opens it with ifstream without canonicalization.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring logname = getUserRequest();\nstring logpath = \"/var/log/app/\" + logname;\nifstream logfile(logpath.c_str());\nstring line;\nwhile (getline(logfile, line)) {\n    cout << line << endl;\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Python",
+    "component": "template loader",
+    "text": "A template rendering system loads templates from user-specified paths. The application uses os.path.join() to combine paths but does not verify the resolved path stays within the templates directory.\n\nimport os\nfrom flask import request\ntemplate_name = request.args.get('template')\ntemplate_path = os.path.join('/app/templates', template_name)\nwith open(template_path, 'r') as f:\n    content = f.read()\nreturn render_template_string(content)"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Java",
+    "component": "file upload handler",
+    "text": "A file upload service stores files based on user-provided names without path validation. The application constructs an upload path by concatenating user input directly.\n\nimport java.io.FileOutputStream;\nString filename = request.getParameter(\"name\");\nString uploadPath = \"/uploads/\" + filename;\ntry {\n    FileOutputStream fos = new FileOutputStream(uploadPath);\n    fos.write(fileData);\n    fos.close();\n} catch (IOException e) {\n    return \"Upload failed\";\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C",
+    "component": "document server",
+    "text": "A document server serves files based on user requests for document IDs. The application constructs a file path by appending user input to a base directory without path validation.\n\n#include <stdio.h>\nchar doc_id[256];\nscanf(\"%s\", doc_id);\nchar filepath[512];\nsprintf(filepath, \"/documents/%s\", doc_id);\nFILE *f = fopen(filepath, \"r\");\nif (f) {\n    serveFile(f);\n    fclose(f);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Python",
+    "component": "image resizer",
+    "text": "An image resizing service processes image files from user input. The application constructs a file path from user-supplied image ID without validating directory containment.\n\nfrom PIL import Image\nimport os\nimage_id = request.args.get('id')\nimage_path = f'/var/images/{image_id}.jpg'\nimg = Image.open(image_path)\nimg.thumbnail((800, 600))\nimg.save('/tmp/resized.jpg')"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C++",
+    "component": "cache manager",
+    "text": "A cache manager retrieves cached data using user-provided keys. The application constructs a cache file path by concatenating the key without validation.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring cache_key = request.getParameter(\"key\");\nstring cache_file = \"/cache/\" + cache_key;\nifstream cachefile(cache_file.c_str());\nstring cached_data((istreambuf_iterator<char>(cachefile)),\n                   istreambuf_iterator<char>());\nreturn cached_data;"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Java",
+    "component": "configuration loader",
+    "text": "A configuration loader reads config files by user-specified name without path canonicalization. The application constructs a File object using user input concatenated to a base path.\n\nimport java.util.Properties;\nimport java.io.FileInputStream;\nString configName = request.getParameter(\"config\");\nFile configFile = new File(\"/config/\" + configName);\ntry {\n    FileInputStream fis = new FileInputStream(configFile);\n    Properties props = new Properties();\n    props.load(fis);\n    fis.close();\n} catch (IOException e) {\n    log.error(\"Config load failed\", e);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Python",
+    "component": "archive extractor",
+    "text": "An archive extraction utility processes member paths from user input. The application uses tarfile.extractall() and directly accesses members specified by the user.\n\nimport tarfile\nfrom flask import request\narchive_file = request.files['archive']\nmember_path = request.form.get('member')\ntar = tarfile.open(fileobj=archive_file)\nif tar.getmember(member_path):\n    tar.extractall(path='/extracts', members=[tar.getmember(member_path)])\ntar.close()"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C",
+    "component": "report generator",
+    "text": "A report generator creates reports with user-supplied filenames. The application constructs a file path by appending user input to a base directory path.\n\n#include <stdio.h>\nchar report_id[256];\nscanf(\"%s\", report_id);\nchar report_path[512];\nsprintf(report_path, \"/reports/%s.txt\", report_id);\nFILE *f = fopen(report_path, \"w\");\nif (f) {\n    fprintf(f, \"%s\", report_content);\n    fclose(f);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Java",
+    "component": "static file server",
+    "text": "A static file server serves files from user-supplied URL paths. The application appends the path info directly to a base directory without normalization or validation.\n\nimport java.io.FileInputStream;\nString requestedFile = request.getPathInfo();\nString filepath = \"/var/www/public\" + requestedFile;\ntry {\n    FileInputStream fis = new FileInputStream(filepath);\n    response.setContentType(\"application/octet-stream\");\n    response.getOutputStream().write(fis.readAllBytes());\n    fis.close();\n} catch (IOException e) {\n    response.setStatus(404);\n}"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "C++",
+    "component": "database backup",
+    "text": "A database backup utility accepts user-provided database names for backup creation. The application constructs a backup file path by concatenating the database name.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring db_name = getInputFromUser();\nstring backup_path = \"/backups/\" + db_name + \".sql\";\nofstream backupfile(backup_path.c_str());\nbackupfile << \"-- Database backup for \" << db_name << endl;\nbackupfile << getBackupData(db_name);\nbackupfile.close();"
+  },
+  {
+    "concept": "path_traversal",
+    "language": "Python",
+    "component": "plugin directory loader",
+    "text": "A plugin loader dynamically imports plugins from user-specified names. The application constructs a file path and loads it as a module without validating the resolved path.\n\nimport importlib.util\nfrom flask import request\nplugin_name = request.args.get('plugin')\nplugin_path = os.path.join('/app/plugins', plugin_name)\nspec = importlib.util.spec_from_file_location(plugin_name, plugin_path + '.py')\nif spec and spec.loader:\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)"
+  }
+]

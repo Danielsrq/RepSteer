@@ -1,0 +1,21 @@
+{
+  "chunk_tokens": 128,
+  "min_tail": 48,
+  "seed": 0,
+  "n_total": 518,
+  "n_cve": 259,
+  "n_gen": 259,
+  "cve_sources": {
+    "baron_samedit.txt": 13,
+    "cve_2022_0185.txt": 45,
+    "dirtypipe.txt": 45,
+    "nftables.txt": 45,
+    "pwnkit.txt": 12,
+    "regresshion.txt": 45,
+    "shellshock.txt": 20,
+    "smbghost.txt": 30,
+    "zerologon.txt": 4
+  },
+  "n_wiki_records_used": 800,
+  "model_id": "Qwen/Qwen3.5-4B"
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "request type dispatcher",
+    "text": "A request handler array stores up to 10 different request types. The dispatcher reads a type ID from the network without validating it is within the valid range before indexing into the handler table.\n\nint handle_request(int type_id, struct Request* req) {\n    struct RequestHandler handlers[10];\n    // type_id comes from untrusted network data\n    struct RequestHandler handler = handlers[type_id];\n    return handler.process(req);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "message buffer parser",
+    "text": "A fixed-size message buffer is declared with 256 bytes. The code copies data into the buffer based on a message length field without first verifying that the length does not exceed the buffer size.\n\nvoid process_message(const unsigned char* data, int msg_len) {\n    unsigned char buffer[256];\n    // No bounds check on msg_len\n    memcpy(buffer, data, msg_len);\n    buffer[msg_len] = '\\0';\n    parse_buffer(buffer);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C++",
+    "component": "lookup table cache",
+    "text": "A C++ vector stores lookup results for a finite range of keys. The code retrieves values by directly indexing the vector with a user-supplied index without checking if the index is within bounds.\n\nstd::vector<int> lookup_cache;\n\nint get_cached_value(int index) {\n    return lookup_cache[index];\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "ring buffer",
+    "text": "A ring buffer of fixed size wraps write indices using increment-then-check logic. An off-by-one error in the boundary condition allows writing one element beyond the buffer.\n\n#define RING_SIZE 32\nchar ring_buffer[RING_SIZE];\nint write_index = 0;\n\nvoid ring_push(char c) {\n    ring_buffer[write_index] = c;\n    write_index++;\n    if (write_index > RING_SIZE) write_index = 0;\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "username input handler",
+    "text": "A stack buffer of 24 bytes is allocated for username storage. The code copies user input into the buffer without validating the input length, allowing overflow beyond the buffer boundary.\n\nvoid read_username(const char* input) {\n    char username[24];\n    strcpy(username, input);\n    printf(\"User: %s\\n\", username);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C++",
+    "component": "2D matrix accessor",
+    "text": "A 2D matrix of fixed dimensions is accessed via row and column indices. The accessor does not verify that both indices remain within the declared bounds.\n\nint matrix[16][16];\n\nint get_element(int row, int col) {\n    return matrix[row][col];\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "hash table lookup",
+    "text": "A hash table is implemented as an array of 256 entries. The hash function produces an index, but the boundary check uses <= instead of <, allowing access to one element past the array end.\n\nstruct Entry hashtable[256];\n\nint lookup_hash(int key) {\n    int idx = hash_function(key);\n    if (idx <= 256) return hashtable[idx].value;\n    return -1;\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "queue dequeue operation",
+    "text": "A queue data structure maintains front and rear pointers. The dequeue operation retrieves data at the front index without checking if the queue is empty, potentially reading from an invalid index.\n\nstruct Queue { int data[100]; int front, rear; };\n\nint dequeue(struct Queue* q) {\n    int val = q->data[q->front];\n    q->front++;\n    return val;\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "HTTP header tokenizer",
+    "text": "A header parsing function splits key-value pairs into an array of tokens. The number of tokens is tracked in a counter that is incremented without bounds checking, and later the array is accessed beyond its declared size.\n\nvoid tokenize_header(const char* header) {\n    char tokens[50][64];\n    int count = 0;\n    char* token = strtok((char*)header, \"=\");\n    while (token) {\n        strcpy(tokens[count++], token);\n        token = strtok(NULL, \"=\");\n    }\n    printf(\"%s\\n\", tokens[count]);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C++",
+    "component": "bitmap bit setter",
+    "text": "A bitmap is stored as a vector of bytes. When setting a bit by number, the byte index is computed but not validated to ensure it falls within the bitmap size.\n\nstd::vector<uint8_t> bitmap(32);\n\nvoid set_bit(int bit_num) {\n    int byte_idx = bit_num / 8;\n    int bit_in_byte = bit_num % 8;\n    bitmap[byte_idx] |= (1 << bit_in_byte);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "circular buffer writer",
+    "text": "A circular buffer uses a write position counter that wraps around when reaching the buffer size. The wraparound logic uses subtraction instead of modulo, causing incorrect indexing at the boundary.\n\n#define BUFSIZE 64\nchar cbuffer[BUFSIZE];\nint write_pos = 0;\n\nvoid write_circular(char c) {\n    cbuffer[write_pos] = c;\n    write_pos = write_pos + 1;\n    if (write_pos >= BUFSIZE) write_pos = write_pos - BUFSIZE;\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "socket receive buffer",
+    "text": "A fixed-size socket receive buffer is allocated with 512 bytes. When reading incoming data, the function accepts a length parameter from untrusted sources without verifying it does not exceed buffer capacity.\n\nchar socket_buffer[512];\n\nint recv_data(int sock, int data_len) {\n    if (data_len < 0) return -1;\n    return read(sock, socket_buffer, data_len);\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "configuration array parser",
+    "text": "A configuration file is parsed line by line, storing integer values into a fixed array. The parsing loop does not check if the array bounds are exceeded as each line is read.\n\nint config[20];\n\nvoid load_config(FILE* f) {\n    int idx = 0;\n    while (fscanf(f, \"%d\", &config[idx]) > 0) {\n        idx++;\n    }\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C",
+    "component": "memory pool allocator",
+    "text": "A simple memory pool preallocates a buffer and tracks an allocation offset. Callers request allocation sizes without bounds checking, allowing the offset to exceed the pool size.\n\nstruct Pool { char data[1024]; int offset; };\n\nchar* pool_alloc(struct Pool* p, int size) {\n    char* ptr = &p->data[p->offset];\n    p->offset += size;\n    return ptr;\n}"
+  },
+  {
+    "concept": "oob_access",
+    "language": "C++",
+    "component": "tree child node accessor",
+    "text": "A tree node structure stores references to child nodes in a fixed array. The accessor retrieves a child by index without validating that the index is within the array bounds.\n\nstruct TreeNode {\n    TreeNode* children[8];\n    int child_count;\n};\n\nTreeNode* get_child(TreeNode* node, int idx) {\n    return node->children[idx];\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C",
+    "component": "file access permission checker",
+    "text": "A function checks whether a file is readable and then opens it for reading. An attacker can delete or replace the file between the permission check and the open call (TOCTOU race).\n\nint access_file(const char* path) {\n    if (access(path, R_OK) == 0) {\n        int fd = open(path, O_RDONLY);\n        return fd;\n    }\n    return -1;\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C++",
+    "component": "shared request counter",
+    "text": "A global counter tracks incoming requests. Multiple worker threads increment the counter concurrently without synchronization, resulting in lost increments and incorrect counts.\n\nint request_count = 0;\n\nvoid increment_count() {\n    request_count++;\n}\n\nvoid worker_thread() {\n    while (running) {\n        process_request();\n        increment_count();\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "Java",
+    "component": "singleton service instance",
+    "text": "A singleton pattern uses double-checked locking without volatile keyword. The field is not declared volatile, so threads may see a partially-constructed instance if they check before the constructor completes.\n\npublic class ServiceSingleton {\n    private static ServiceSingleton instance;\n    public static ServiceSingleton getInstance() {\n        if (instance == null) {\n            synchronized (ServiceSingleton.class) {\n                if (instance == null) {\n                    instance = new ServiceSingleton();\n                }\n            }\n        }\n        return instance;\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C++",
+    "component": "global configuration updater",
+    "text": "A global configuration structure is read and modified by multiple threads without locking. Readers may observe partial updates or inconsistent state when the structure is being modified.\n\nstruct Config { int timeout; int retries; std::string server; } global_config;\n\nvoid update_config(int t, int r, const std::string& s) {\n    global_config.timeout = t;\n    global_config.retries = r;\n    global_config.server = s;\n}\n\nint get_timeout() {\n    return global_config.timeout;\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C",
+    "component": "file symlink TOCTOU vulnerability",
+    "text": "A process checks file ownership and then opens the file. An attacker can replace the file with a symlink to a sensitive file between the check and the open, bypassing the permission validation.\n\nint process_trusted_file(const char* path) {\n    struct stat st;\n    if (stat(path, &st) == 0 && st.st_uid == getuid()) {\n        int fd = open(path, O_RDONLY);\n        char buf[256];\n        read(fd, buf, sizeof(buf));\n        close(fd);\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C",
+    "component": "signal handler state modification",
+    "text": "A signal handler modifies a global flag that is also read by the main program loop. The non-atomic modification and read create a race condition where the flag update may be partially visible.\n\nvolatile int shutdown_flag = 0;\n\nvoid signal_handler(int sig) {\n    shutdown_flag = 1;\n}\n\nint main() {\n    signal(SIGTERM, signal_handler);\n    while (!shutdown_flag) {\n        process_work();\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "Java",
+    "component": "concurrent hash map modification",
+    "text": "Multiple threads concurrently add entries to and iterate over a HashMap. The HashMap is not thread-safe, and concurrent modification during iteration throws ConcurrentModificationException or observes corrupted state.\n\nMap<String, Integer> cache = new HashMap<>();\n\npublic void add_entry(String key, Integer value) {\n    cache.put(key, value);\n}\n\npublic void process_all() {\n    for (String key : cache.keySet()) {\n        process_item(cache.get(key));\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C++",
+    "component": "linked list concurrent iteration",
+    "text": "One thread adds items to a linked list while another thread iterates through it. The iterator does not hold a lock, so it may skip items or encounter corrupted pointers.\n\nstd::list<int> items;\n\nvoid add_item(int value) {\n    items.push_back(value);\n}\n\nvoid process_items() {\n    for (auto it = items.begin(); it != items.end(); ++it) {\n        process(*it);\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C",
+    "component": "temporary file creation race",
+    "text": "A process generates a temporary filename and checks if it exists. An attacker creates a symlink at that path before the process opens it, causing the process to write to an unintended file.\n\nvoid create_temp(const char* prefix) {\n    char path[256];\n    sprintf(path, \"/tmp/%s_%d.tmp\", prefix, getpid());\n    if (access(path, F_OK) != 0) {\n        int fd = open(path, O_CREAT | O_WRONLY, 0644);\n        write(fd, data, datalen);\n        close(fd);\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C++",
+    "component": "cache validity checking",
+    "text": "A cache stores a value and a validity flag. A reader checks the validity flag before reading the cached value, but a writer may clear the cache value between the check and the read.\n\nstd::string cached_data;\nbool is_valid = false;\n\nvoid invalidate() {\n    cached_data.clear();\n    is_valid = false;\n}\n\nstd::string get_data() {\n    if (is_valid) return cached_data;\n    return fetch_data();\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "Java",
+    "component": "worker thread shutdown",
+    "text": "Worker threads poll tasks from a queue while a shutdown flag is checked separately. Tasks may still be in the queue when the shutdown flag is set, causing them to be lost.\n\nclass Worker extends Thread {\n    private Queue<Task> queue;\n    private volatile boolean shutdown = false;\n    public void run() {\n        while (!shutdown) {\n            Task task = queue.poll();\n            if (task != null) task.execute();\n        }\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C",
+    "component": "resource cleanup sequence",
+    "text": "A resource holding both a file descriptor and an allocated buffer is freed by one thread while another thread still holds a reference and attempts to use the freed buffer.\n\nstruct Resource { int fd; char* buffer; };\n\nvoid cleanup_resource(struct Resource* r) {\n    free(r->buffer);\n    r->fd = -1;\n}\n\nint read_resource(struct Resource* r) {\n    return fread(r->buffer, 1, 256, fdopen(r->fd, \"r\"));\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "Java",
+    "component": "authentication token refresh",
+    "text": "Multiple threads check if an authentication token is expired and attempt to refresh it concurrently. Multiple refreshes execute simultaneously, wasting resources and potentially storing inconsistent tokens.\n\npublic class AuthClient {\n    private String token;\n    public void refresh_if_expired() {\n        if (is_expired(token)) {\n            token = fetch_new_token();\n        }\n    }\n    public String get_token() {\n        refresh_if_expired();\n        return token;\n    }\n}"
+  },
+  {
+    "concept": "race_condition",
+    "language": "C++",
+    "component": "data serialization during concurrent access",
+    "text": "One thread serializes a data structure to a string while another thread concurrently adds new items. The iterator observes modifications to the underlying collection, resulting in incomplete or corrupted serialization.\n\nclass DataStore {\n    std::vector<Item> items;\n    std::string serialize() {\n        std::string s;\n        for (const auto& item : items) {\n            s += item.encode();\n        }\n        return s;\n    }\n    void add_item(const Item& item) {\n        items.push_back(item);\n    }\n};"
+  }
+]

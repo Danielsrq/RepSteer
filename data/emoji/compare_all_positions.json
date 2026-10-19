@@ -1,0 +1,1548 @@
+{
+ "layer": 17,
+ "new_tokens": 40,
+ "prompts": [
+  [
+   "held-out",
+   "How does a rainbow form?"
+  ],
+  [
+   "held-out",
+   "Give me advice for a job interview."
+  ],
+  [
+   "held-out",
+   "Describe a mountain hike."
+  ],
+  [
+   "held-out",
+   "Should I buy an electric car?"
+  ],
+  [
+   "held-out",
+   "Tell me about dogs."
+  ],
+  [
+   "fresh",
+   "What do you do on a rainy Sunday?"
+  ],
+  [
+   "fresh",
+   "Explain how a car engine works."
+  ],
+  [
+   "fresh",
+   "What's your advice for learning to cook?"
+  ],
+  [
+   "fresh",
+   "Describe a football match."
+  ],
+  [
+   "fresh",
+   "How do bees make honey?"
+  ]
+ ],
+ "lorefts": [
+  {
+   "path": "data/emoji/loreft_L17.pt",
+   "scheme": "last",
+   "load_match": 10,
+   "stats": {
+    "positions_per_prompt": 1.0,
+    "mean_edit": 24.257225799560548,
+    "max_edit": 25.760046005249023,
+    "last_edit": 24.257225799560548,
+    "total_edit": 24.257225799560548,
+    "mean_h": 10.85028076171875,
+    "cos_across_prompts": 0.9409713745117188,
+    "cos_within_prompt": null
+   },
+   "log": [
+    {
+     "epoch": 0,
+     "train": null,
+     "held": 1.6834168195724488
+    },
+    {
+     "epoch": 1,
+     "train": 1.117418781750732,
+     "held": 0.9778565287590026
+    },
+    {
+     "epoch": 2,
+     "train": 0.8135145256916682,
+     "held": 0.8546318054199219
+    },
+    {
+     "epoch": 3,
+     "train": 0.7434513792395592,
+     "held": 0.8313948154449463
+    },
+    {
+     "epoch": 4,
+     "train": 0.6832938442627589,
+     "held": 0.8206160426139831
+    },
+    {
+     "epoch": 5,
+     "train": 0.6592460630668534,
+     "held": 0.8428376197814942
+    },
+    {
+     "epoch": 6,
+     "train": 0.6250808483196629,
+     "held": 0.8241658091545105
+    },
+    {
+     "epoch": 7,
+     "train": 0.5758395455777645,
+     "held": 0.8236184000968934
+    },
+    {
+     "epoch": 8,
+     "train": 0.5387869675954183,
+     "held": 0.8584070563316345
+    },
+    {
+     "epoch": 9,
+     "train": 0.5016418128377862,
+     "held": 0.8458680987358094
+    },
+    {
+     "epoch": 10,
+     "train": 0.46498995874491,
+     "held": 0.8273801326751709
+    },
+    {
+     "epoch": 11,
+     "train": 0.43232076842751765,
+     "held": 0.8706990361213685
+    },
+    {
+     "epoch": 12,
+     "train": 0.4158942357947429,
+     "held": 0.8240792274475097
+    },
+    {
+     "epoch": 13,
+     "train": 0.40733252093195915,
+     "held": 0.8675446748733521
+    },
+    {
+     "epoch": 14,
+     "train": 0.38672962805463207,
+     "held": 0.9131136536598206
+    },
+    {
+     "epoch": 15,
+     "train": 0.36038915543920463,
+     "held": 0.8846703290939331
+    },
+    {
+     "epoch": 16,
+     "train": 0.33346046812625396,
+     "held": 0.9264612674713135
+    },
+    {
+     "epoch": 17,
+     "train": 0.3143517261681457,
+     "held": 0.943666934967041
+    },
+    {
+     "epoch": 18,
+     "train": 0.300860991080602,
+     "held": 0.9563456773757935
+    },
+    {
+     "epoch": 19,
+     "train": 0.2872107692787217,
+     "held": 0.9847888946533203
+    },
+    {
+     "epoch": 20,
+     "train": 0.28184385613227886,
+     "held": 0.9792229652404785
+    }
+   ]
+  },
+  {
+   "path": "data/emoji/loreft_L17_allprompt.pt",
+   "scheme": "all",
+   "load_match": 10,
+   "stats": {
+    "positions_per_prompt": 18.8,
+    "mean_edit": 12.241126816323463,
+    "max_edit": 19.476200103759766,
+    "last_edit": 16.81992769241333,
+    "total_edit": 230.13318481445313,
+    "mean_h": 11.949512811417275,
+    "cos_across_prompts": 0.9840355515480042,
+    "cos_within_prompt": 0.5844068169593811
+   },
+   "log": [
+    {
+     "epoch": 0,
+     "train": null,
+     "held": 1.6879772901535035
+    },
+    {
+     "epoch": 1,
+     "train": 0.971734049419562,
+     "held": 0.9049105644226074
+    },
+    {
+     "epoch": 2,
+     "train": 0.703384334842364,
+     "held": 0.8284860610961914
+    },
+    {
+     "epoch": 3,
+     "train": 0.5875284398595492,
+     "held": 0.8417752504348754
+    },
+    {
+     "epoch": 4,
+     "train": 0.49392328121595913,
+     "held": 0.7602547168731689
+    },
+    {
+     "epoch": 5,
+     "train": 0.44050903411375153,
+     "held": 0.8252486824989319
+    },
+    {
+     "epoch": 6,
+     "train": 0.37306115217506886,
+     "held": 0.9060765385627747
+    },
+    {
+     "epoch": 7,
+     "train": 0.32971667125821114,
+     "held": 0.9384571194648743
+    },
+    {
+     "epoch": 8,
+     "train": 0.3335094853407807,
+     "held": 0.9128973007202148
+    },
+    {
+     "epoch": 9,
+     "train": 0.2893092011929386,
+     "held": 1.0998259782791138
+    },
+    {
+     "epoch": 10,
+     "train": 0.25637444080267513,
+     "held": 1.0615056037902832
+    },
+    {
+     "epoch": 11,
+     "train": 0.22512976437186202,
+     "held": 1.0990378379821777
+    },
+    {
+     "epoch": 12,
+     "train": 0.20487107555123252,
+     "held": 1.175445020198822
+    },
+    {
+     "epoch": 13,
+     "train": 0.18123893990802267,
+     "held": 1.2084309816360475
+    },
+    {
+     "epoch": 14,
+     "train": 0.16682677422391456,
+     "held": 1.304889452457428
+    },
+    {
+     "epoch": 15,
+     "train": 0.1604394460769577,
+     "held": 1.338189685344696
+    },
+    {
+     "epoch": 16,
+     "train": 0.14028566454847655,
+     "held": 1.3528573155403136
+    },
+    {
+     "epoch": 17,
+     "train": 0.12256858742330223,
+     "held": 1.4099386215209961
+    },
+    {
+     "epoch": 18,
+     "train": 0.11307704069703403,
+     "held": 1.4738795518875123
+    },
+    {
+     "epoch": 19,
+     "train": 0.10376260274400313,
+     "held": 1.4648310661315918
+    },
+    {
+     "epoch": 20,
+     "train": 0.09962982677259585,
+     "held": 1.4821419596672059
+    }
+   ]
+  }
+ ],
+ "methods": [
+  {
+   "key": "plain",
+   "name": "plain model",
+   "built": "no steering, no system prompt",
+   "inject": "—",
+   "setting": "—",
+   "outs": {
+    "How does a rainbow form?": "A rainbow forms through a complex interaction of **refraction**, **reflection**, and **dispersion** of sunlight within tiny water droplets suspended in the atmosphere. Here is the step-by-step process:",
+    "Give me advice for a job interview.": "Preparing for a job interview is about more than just memorizing answers; it's about demonstrating your fit for the role, the company culture, and your potential to contribute. Here is a comprehensive guide to",
+    "Describe a mountain hike.": "The mountain hike begins not with a step, but with a shift in the air. As you leave the paved road behind, the humidity of the valley gives way to a crisp, thin atmosphere that smells",
+    "Should I buy an electric car?": "Whether you should buy an electric vehicle (EV) depends heavily on your specific situation, budget, and lifestyle. There is no single \"yes\" or \"no\" answer, but here is a breakdown",
+    "Tell me about dogs.": "Dogs are one of the most beloved and successful species on Earth, having formed a unique partnership with humans that spans over 30,000 years. Here is a comprehensive overview of what",
+    "What do you do on a rainy Sunday?": "Since I don't have a physical body to feel the rain or sit by a window, my \"Sunday\" is a little different! Instead of curling up with a blanket, I spend my time",
+    "Explain how a car engine works.": "A car engine is essentially a highly efficient machine designed to convert **chemical energy** (from fuel) into **mechanical energy** (motion). While there are different types of engines (like electric motors",
+    "What's your advice for learning to cook?": "Learning to cook is one of the most rewarding skills you can acquire. It's not just about following recipes; it's about developing intuition, understanding ingredients, and creating joy.\n\nHere is a comprehensive",
+    "Describe a football match.": "The air in the stadium is thick with the scent of cut grass, hot asphalt, and the electric anticipation of thousands of voices rising in a unified roar. It is a **football match**, a spectacle",
+    "How do bees make honey?": "Bees make honey through a fascinating process of **collection, enzymatic digestion, and evaporation**. It is not simply a matter of bees drinking nectar and storing it; they actively transform it into"
+   },
+   "kind": "ref",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "mean": {
+    "emoji": 0.0,
+    "div": 0.0,
+    "overlap": 0.0,
+    "score": 0.0
+   }
+  },
+  {
+   "key": "true",
+   "name": "true system prompt",
+   "built": "the emoji system prompt itself (the target behaviour)",
+   "inject": "system prompt in context",
+   "setting": "—",
+   "outs": {
+    "How does a rainbow form?": "☀️🌧️🌈✨",
+    "Give me advice for a job interview.": "👔 🧐 🗣️ 📝 ✅ 😊 🤝 🚀 💼 🌟 🙌",
+    "Describe a mountain hike.": "🏔️🥾☀️🌲🌿🌤️🚶‍♂️🌟🏞️🍃�",
+    "Should I buy an electric car?": "🚗⚡🌱💰🤔✅🚫🔋🏠🔋🔋🔋🔋🔋�",
+    "Tell me about dogs.": "🐶 🐕 🐾 🦴 🦴 🦴 🏠 🏡 🐕‍🦺 🐕‍🦺",
+    "What do you do on a rainy Sunday?": "☔️☕️📚🎵🛋️🌧️",
+    "Explain how a car engine works.": "🚗 ⚙️ 🔋 💨 🔥 🌪️ 🚀 🛑 🏁",
+    "What's your advice for learning to cook?": "👨‍🍳📖🔥🥕🍳👀👍👩‍🍳👨‍�",
+    "Describe a football match.": "⚽🏟️👕🏃‍♂️🏃‍♀️🔥🥅🎯🚫🧤�",
+    "How do bees make honey?": "🐝🌼🍯🐝🍯🌼🐝"
+   },
+   "kind": "ref",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 1.0,
+     "score": 1.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 1.0,
+     "score": 1.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.9444444444444444,
+     "div": 1.0,
+     "overlap": 1.0,
+     "score": 0.9444444444444444
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.9333333333333333,
+     "div": 0.6428571428571429,
+     "overlap": 1.0,
+     "score": 0.6000000000000001
+    },
+    "Tell me about dogs.": {
+     "emoji": 1.0,
+     "div": 0.5833333333333334,
+     "overlap": 1.0,
+     "score": 0.5833333333333334
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 1.0,
+     "score": 1.0
+    },
+    "Explain how a car engine works.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 1.0,
+     "score": 1.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.9333333333333333,
+     "div": 0.7272727272727273,
+     "overlap": 1.0,
+     "score": 0.6787878787878788
+    },
+    "Describe a football match.": {
+     "emoji": 0.9444444444444444,
+     "div": 0.9166666666666666,
+     "overlap": 1.0,
+     "score": 0.8657407407407407
+    },
+    "How do bees make honey?": {
+     "emoji": 1.0,
+     "div": 0.42857142857142855,
+     "overlap": 1.0,
+     "score": 0.42857142857142855
+    }
+   },
+   "mean": {
+    "emoji": 0.9755555555555556,
+    "div": 0.82987012987013,
+    "overlap": 1.0,
+    "score": 0.8100877825877826
+   }
+  },
+  {
+   "key": "byte_dim",
+   "name": "#1 byte-DiM",
+   "built": "mean activations over hand-written emoji responses − hand-written normal responses (30 pairs)",
+   "inject": "h += α·‖h‖·v̂, generated tokens only",
+   "setting": "α = 0.5 (best of 0.3, 0.5, 0.7)",
+   "outs": {
+    "How does a rainbow form?": "A rainbow is a natural phenomenon that occurs when **sunlight interactswith water droplets** in the atmosphere. It is essentially a prism effect created by the atmosphere itself.\n\nHere is The Step-by",
+    "Give me advice for a job interview.": "Preparing for a job interview is an exciting step! Here is A comprehensive Guide to **Job Interview Advice** covering Before, During, and After the Interview\n\n---\n\n### 🚀 **BEFORE",
+    "Describe a mountain hike.": "The trailhead markss the **Start of The Journey**\n\nThe air is crisp and thin, carrying the scent of pine and damp earth. As I step onto the trail, the world narrows",
+    "Should I buy an electric car?": "Whether you should buy an electric Vehicle (EV) depends on **Your specific situation**. There is no single \"Yes\" or \"No\" answer, as����️����",
+    "Tell me about dogs.": "Dogs are **Canis lupus familiaris** (Domestic Dog) are one of the most beloved and influential animals in human history. As the **Man's Best Friend**, they have evolved",
+    "What do you do on a rainy Sunday?": "Since I'm an AI, I don���� have a physical body to feel the rain or☔️����������������",
+    "Explain how a car engine works.": "A car engine is essentially a **powerhouse** that converts Chemical Energy (Fuel) → Thermal Energy (Heat) → Mechanical Energy (Motion)\n\nAt its core, a modern car engine is a",
+    "What's your advice for learning to cook?": "Learning to cook is one of the most rewarding journeys you can embark on. It transforms from \"I hate Cooking\" to \"I love Cooking\" when you approach it with the right mindset.\n\nHere",
+    "Describe a football match.": "The air inside the stadium was thick with **electricity**, a mixture of sweat, grass, and the roar of 40,000 fans cutting through the night sky. The lights bl",
+    "How do bees make honey?": "Bees make honey through a fascinating process that involves **nectar Collection**, **Enzymatic Transformation**, **Evaporation**, and **Cryst�allization**. Here is How the process works:"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.006756756756756757,
+     "div": 1.0,
+     "overlap": 0.09090909090909091,
+     "score": 0.006756756756756757
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.008403361344537815,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.028169014084507043,
+     "div": 1.0,
+     "overlap": 0.16666666666666666,
+     "score": 0.028169014084507043
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.013888888888888888,
+     "div": 0.5,
+     "overlap": 0.0,
+     "score": 0.006944444444444444
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "mean": {
+    "emoji": 0.005721802107469051,
+    "div": 0.25,
+    "overlap": 0.025757575757575757,
+    "score": 0.004187021528570825
+   }
+  },
+  {
+   "key": "offset",
+   "name": "#2 conditioning offset",
+   "built": "residual with emoji system prompt − without, at the generation position, mean over 24 prompts",
+   "inject": "h += α·v, all positions",
+   "setting": "α = 0.75 (best of 0.75, 1, 1.25, 1.5)",
+   "outs": {
+    "How does a rainbow form?": "A rainbow forms when **sunlight**, **water droplets**, and **angle** meet.\n\n1.  **Sunlight enters droplet**: Sunlight hits rain drop.\n2.",
+    "Give me advice for a job interview.": "👍👍👍👍👍👍👍👍👍👍👍👍👍�",
+    "Describe a mountain hike.": "The trail begins with a steep ascent.\n\n**Start**\nSunrise. Mist. Hike.\nStart.\nSunrise.\nMist.\nHike.\nStart.",
+    "Should I buy an electric car?": "✅ Yes, if:\n- 政府补贴高\n- 充电方便\n- 省钱\n- 环保\n- 城市限行\n- 高速免费\n- 保险低",
+    "Tell me about dogs.": "🐶 **Dogs** 🐕\n\n- **Name**: Dog\n- **Species**: Canis lupus familiaris\n- **Origin**: Asia\n- **Size**: 1",
+    "What do you do on a rainy Sunday?": "☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�",
+    "Explain how a car engine works.": "# Car Engine: How It Works\n\nA car engine is a **combustion engine**. It turns fuel + air + spark = power.\n\n## 1. Parts\n- Cylinder\n-",
+    "What's your advice for learning to cook?": "🍳👨‍🍳👩‍🍳🍲🍜🥗🍗🍤🍣🍥",
+    "Describe a football match.": "**Goal! Goal! Goal!**\n\nThe crowd roars.\n\nThe ball flies.\n\nThe goal.\n\nThe match.\n\nThe ball.\n\nThe ball.\n\nThe ball.\n\nThe",
+    "How do bees make honey?": "Bees make honey through a process of **collecting**, **filtering**, **drying**, and **sealing**.\n\n1.  **Collect Nectar**: Worker bees fly to flowers,"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.9285714285714286,
+     "div": 0.07692307692307693,
+     "overlap": 0.0,
+     "score": 0.07142857142857144
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.02564102564102564,
+     "div": 1.0,
+     "overlap": 0.1111111111111111,
+     "score": 0.02564102564102564
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.024096385542168676,
+     "div": 1.0,
+     "overlap": 0.2857142857142857,
+     "score": 0.024096385542168676
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.9629629629629629,
+     "div": 0.07692307692307693,
+     "overlap": 0.16666666666666666,
+     "score": 0.07407407407407407
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 1.0,
+     "div": 0.8333333333333334,
+     "overlap": 0.2,
+     "score": 0.8333333333333334
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "mean": {
+    "emoji": 0.29412718027175855,
+    "div": 0.2987179487179487,
+    "overlap": 0.07634920634920635,
+    "score": 0.10285733900191732
+   }
+  },
+  {
+   "key": "offset_rp",
+   "name": "#2 + sampling & repetition penalty",
+   "built": "same vector as #2",
+   "inject": "h += α·v, all positions; sampled (T=0.9, top-p 0.95), repetition penalty 1.3",
+   "setting": "α = 1.25 (best of 1, 1.25)",
+   "outs": {
+    "How does a rainbow form?": "Rainbow 雨☀️🍬",
+    "Give me advice for a job interview.": "😊 Job Interview OK! 衣服好好。自信！加油！💪👍",
+    "Describe a mountain hike.": "山 路。草，松",
+    "Should I buy an electric car?": "$+$ ++++++++",
+    "Tell me about dogs.": "🐶 🦔 ⛑️ 😃 ☘️ 👆 🔥 👰 💒 ✈ 2 ❤",
+    "What do you do on a rainy Sunday?": "☑️ ☴︎ ☐ 🛒 🏘️ 👆 🔥 ⭐ 💧⚓🎁☕🍀☢💰❃",
+    "Explain how a car engine works.": "1 234567890",
+    "What's your advice for learning to cook?": "Buy egg👉🍳",
+    "Describe a football match.": "gol! gol! !",
+    "How do bees make honey?": "蜜蜂 蜜，花粉。"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.2727272727272727,
+     "div": 1.0,
+     "overlap": 0.2,
+     "score": 0.2727272727272727
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.10344827586206896,
+     "div": 1.0,
+     "overlap": 0.07692307692307693,
+     "score": 0.10344827586206896
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.9285714285714286,
+     "div": 1.0,
+     "overlap": 0.058823529411764705,
+     "score": 0.9285714285714286
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.9473684210526315,
+     "div": 1.0,
+     "overlap": 0.047619047619047616,
+     "score": 0.9473684210526315
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.25,
+     "div": 1.0,
+     "overlap": 0.1111111111111111,
+     "score": 0.25
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "mean": {
+    "emoji": 0.25021153982134015,
+    "div": 0.5,
+    "overlap": 0.04944767650650004,
+    "score": 0.25021153982134015
+   }
+  },
+  {
+   "key": "resp_dim",
+   "name": "#3 generated-response DiM",
+   "built": "mean activations over the model's own emoji answers − its normal answers (36 prompts)",
+   "inject": "h += α·v, all positions",
+   "setting": "α = 1 (best of 0.75, 1, 1.5)",
+   "outs": {
+    "How does a rainbow form?": "A rainbow is a **🌈**��������������������🌈��🌈🌈",
+    "Give me advice for a job interview.": "Great job! You're asking for advice for�������������������������������",
+    "Describe a mountain hike.": "The���������������������������������������",
+    "Should I buy an electric car?": "Should you buy an������������������������������������",
+    "Tell me about dogs.": "🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶",
+    "What do you do on a rainy Sunday?": "Rainy Sundays are the perfect excuse to🌧�🌧�🌧�🌧�🌧�🌧�🌧�🌧�",
+    "Explain how a car engine works.": "A car engine is a **Internal Combusttion Engine (ICE)**. It's a **piston** engine. It's🚗",
+    "What's your advice for learning to cook?": "Learning to cook is not just about Eating🍳🍜🍲🍽�🍽�🍽�🍽�🍽�🍽",
+    "Describe a football match.": "The���������������������������������������",
+    "How do bees make honey?": "Bees make honey through a fascinating process ofpollen🍐🍃🍑🍒🍦🍫🍬🍭🍯�"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0975609756097561,
+     "div": 0.25,
+     "overlap": 0.25,
+     "score": 0.024390243902439025
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.8666666666666667,
+     "div": 0.07692307692307693,
+     "overlap": 0.14285714285714285,
+     "score": 0.06666666666666667
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.16326530612244897,
+     "div": 0.125,
+     "overlap": 0.16666666666666666,
+     "score": 0.02040816326530612
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.013333333333333334,
+     "div": 1.0,
+     "overlap": 0.1111111111111111,
+     "score": 0.013333333333333334
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.1875,
+     "div": 0.4444444444444444,
+     "overlap": 0.09090909090909091,
+     "score": 0.08333333333333333
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.15789473684210525,
+     "div": 1.0,
+     "overlap": 0.09090909090909091,
+     "score": 0.15789473684210525
+    }
+   },
+   "mean": {
+    "emoji": 0.14862210185743105,
+    "div": 0.2896367521367521,
+    "overlap": 0.08524531024531026,
+    "score": 0.03660264773431837
+   }
+  },
+  {
+   "key": "sys_tok",
+   "name": "system-token activation (N=1)",
+   "built": "raw residual at the final system-prompt token, rescaled to ‖#2‖",
+   "inject": "h += α·‖v₂‖·û, all positions",
+   "setting": "α = 1 (best of 0.75, 1, 1.5)",
+   "outs": {
+    "How does a rainbow form?": "<think>\n\n</think>\n\nA rainbow is a **spectral** phenomenon that occurs when **sunlight** meets **water** (usually rain).\n\nHere's the step-by-step process:\n\n1.",
+    "Give me advice for a job interview.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+    "Describe a mountain hike.": "The journey begins at the **sunrise**.\n\nThe path starts with a gentle **green** hill, where **trees** and **flowers** bloom. **Sun** shines on **sky**. **",
+    "Should I buy an electric car?": "That's a great question! 🚗⚡\n\nThe decision depends on many factors. Here's a quick breakdown:\n\n**✅ Pros:**\n- 🌱 **Eco-friendly",
+    "Tell me about dogs.": "🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶",
+    "What do you do on a rainy Sunday?": "☔️☕️☀️\n\nRainy Sunday vibes! 🌧️☕️☕️☀️☀️☀️☀️☀️",
+    "Explain how a car engine works.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+    "What's your advice for learning to cook?": "👋👋👋👋👋👋👋👋👋👋👋👋👋�",
+    "Describe a football match.": "The **🏀⚽️⚽️⚽️**\n\nThe **⚽️⚽️⚽️**\n\nThe **⚽",
+    "How do bees make honey?": "<think>\n\n</think>\n\nMaking honey is a fascinating process that involves **pollination, collection, digestion, and transformation**.\n\nHere is the step-by-step journey:\n\n1.  **🌻"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.038834951456310676,
+     "div": 1.0,
+     "overlap": 0.4444444444444444,
+     "score": 0.038834951456310676
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.8666666666666667,
+     "div": 0.07692307692307693,
+     "overlap": 0.14285714285714285,
+     "score": 0.06666666666666667
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.5641025641025641,
+     "div": 0.36363636363636365,
+     "overlap": 0.42857142857142855,
+     "score": 0.20512820512820512
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.9285714285714286,
+     "div": 0.07692307692307693,
+     "overlap": 0.0,
+     "score": 0.07142857142857144
+    },
+    "Describe a football match.": {
+     "emoji": 0.42424242424242425,
+     "div": 0.25,
+     "overlap": 0.08333333333333333,
+     "score": 0.10606060606060606
+    },
+    "How do bees make honey?": {
+     "emoji": 0.006756756756756757,
+     "div": 1.0,
+     "overlap": 0.0,
+     "score": 0.006756756756756757
+    }
+   },
+   "mean": {
+    "emoji": 0.2829174791796151,
+    "div": 0.27674825174825174,
+    "overlap": 0.1099206349206349,
+    "score": 0.049487575749711674
+   }
+  },
+  {
+   "key": "sys_tok_c",
+   "name": "system-token, mean-centred",
+   "built": "final system-prompt token residual − mean no-system generation-position residual, rescaled to ‖#2‖",
+   "inject": "h += α·‖v₂‖·û, all positions",
+   "setting": "α = 0.75 (best of 0.75, 1, 1.5)",
+   "outs": {
+    "How does a rainbow form?": "<think>\n\n</think>\n\nA **rainbow** forms through a combination of **sunlight**, **water droplets**, and **angles**.\n\nHere is the step-by-step process:\n\n1.",
+    "Give me advice for a job interview.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n🎯 **Interview Tips**\n\n1. **Research**\n   - Company, role,",
+    "Describe a mountain hike.": "The trailhead begins with a gentle incline, where the scent of pine needles and damp earth welcomes the hiker. A few minutes later, the path narrows, forcing a turn left. The",
+    "Should I buy an electric car?": "This is a great question! The answer depends heavily on your **location**, **budget**, **lifestyle**, and **values**.\n\nHere is a quick breakdown to help you decide:\n\n### ✅",
+    "Tell me about dogs.": "🐶 **Dogs** 🐾\n\nDogs are one of the most popular and beloved animals in the world. They are domesticated canines, descended from wolves, and have lived",
+    "What do you do on a rainy Sunday?": "☕️📖☔️\n\nRainy Sundays are perfect for:\n- 🏠️ Relaxing at home\n- 🍲️ Cooking\n- 🎵️",
+    "Explain how a car engine works.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+    "What's your advice for learning to cook?": "👍👍👍👍👍\n\nCooking is fun! Here's my advice:\n\n1. **Start Simple** 🍳  \n   - Try",
+    "Describe a football match.": "**The Flash, The Fall, The Fire**\n\nThe stadium roars. A sea of red and white, the crowd surges.\n\n**00:00**\nThe referee blows",
+    "How do bees make honey?": "Making honey is a complex process involving nectar collection, digestion, storage, and sealing. Here is the step-by-step breakdown:\n\n### 1. Nectar Collection\nThe bee (usually a"
+   },
+   "kind": "static",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 0.008264462809917356,
+     "div": 1.0,
+     "overlap": 0.0,
+     "score": 0.008264462809917356
+    },
+    "Describe a mountain hike.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.006993006993006993,
+     "div": 1.0,
+     "overlap": 0.1111111111111111,
+     "score": 0.006993006993006993
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.016260162601626018,
+     "div": 1.0,
+     "overlap": 0.2857142857142857,
+     "score": 0.016260162601626018
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.18032786885245902,
+     "div": 1.0,
+     "overlap": 0.3333333333333333,
+     "score": 0.18032786885245902
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.10909090909090909,
+     "div": 0.3333333333333333,
+     "overlap": 0.25,
+     "score": 0.03636363636363636
+    },
+    "Describe a football match.": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    },
+    "How do bees make honey?": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "mean": {
+    "emoji": 0.03209364103479185,
+    "div": 0.4333333333333333,
+    "overlap": 0.09801587301587301,
+    "score": 0.024820913762064578
+   }
+  },
+  {
+   "key": "loreft_last",
+   "name": "LoReFT — last prompt token",
+   "built": "trained low-rank edit Φ(h) = h + Rᵀ(Wh + b − Rh), rank 4, 36 pairs, 20 epochs; loreft_L17.pt",
+   "inject": "last prompt token, prompt pass only (trained the same way)",
+   "setting": "no tuning",
+   "outs": {
+    "How does a rainbow form?": "☀️🌧️👀🔍☔️✨🌈",
+    "Give me advice for a job interview.": "👂🤝📝💼🚀🌟🎯🗣️✨🧠📚",
+    "Describe a mountain hike.": "🥾🏔️🌲🌅🦶🌿🏕️🍫🌧️☀️🏃‍♂",
+    "Should I buy an electric car?": "⚡️🚗🔋🌍📊💰🔌🏠👥🌳🔇🛠️📈",
+    "Tell me about dogs.": "🐶🐕🦴🦴🦴🐾🐾🐾🐾🐾🐾🐾🐾�",
+    "What do you do on a rainy Sunday?": "🌧️☕📚🍿🛋️🎬🎵🍪📖🎮🍫🎶🧸",
+    "Explain how a car engine works.": "⚙️🚗🔥🔧🚀🛢️🔋⚡🌬️🔩📈🔍�",
+    "What's your advice for learning to cook?": "🍳🥕🔥🍽️👨‍🍳👩‍🍳✨🌍🥘🥗�",
+    "Describe a football match.": "🏆⚽🏃‍♂️🔥🏟️🥅🚩👟🎉⚽🏃‍",
+    "How do bees make honey?": "🐝🍯🌼🧲🔧⚙️🦟🐝🌸🍯🌼🐝"
+   },
+   "kind": "loreft",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.5714285714285714,
+     "score": 1.0
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.375,
+     "score": 1.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.35294117647058826,
+     "score": 1.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.29411764705882354,
+     "score": 1.0
+    },
+    "Tell me about dogs.": {
+     "emoji": 0.9285714285714286,
+     "div": 0.3076923076923077,
+     "overlap": 0.5714285714285714,
+     "score": 0.28571428571428575
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.35714285714285715,
+     "score": 1.0
+    },
+    "Explain how a car engine works.": {
+     "emoji": 0.9375,
+     "div": 1.0,
+     "overlap": 0.3125,
+     "score": 0.9375
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.9375,
+     "div": 0.8333333333333334,
+     "overlap": 0.38461538461538464,
+     "score": 0.78125
+    },
+    "Describe a football match.": {
+     "emoji": 1.0,
+     "div": 0.8333333333333334,
+     "overlap": 0.4,
+     "score": 0.8333333333333334
+    },
+    "How do bees make honey?": {
+     "emoji": 1.0,
+     "div": 0.6666666666666666,
+     "overlap": 0.375,
+     "score": 0.6666666666666666
+    }
+   },
+   "mean": {
+    "emoji": 0.9803571428571429,
+    "div": 0.864102564102564,
+    "overlap": 0.3994174208144796,
+    "score": 0.8504464285714285
+   }
+  },
+  {
+   "key": "loreft_all",
+   "name": "LoReFT — all prompt tokens",
+   "built": "trained low-rank edit Φ(h) = h + Rᵀ(Wh + b − Rh), rank 4, 36 pairs, 20 epochs; loreft_L17_allprompt.pt",
+   "inject": "all prompt tokens, prompt pass only (trained the same way)",
+   "setting": "no tuning",
+   "outs": {
+    "How does a rainbow form?": "🌈☔️🌤️🔍🌍✨🌈🔍🌈🌈🌈🌈",
+    "Give me advice for a job interview.": "🔊🎤👔📝✅✨🌟🚀🏆👍🙌",
+    "Describe a mountain hike.": "🌄🏔️🌲🦶☀️🌿🍃🌸🌼🌻🌷🌹🌺",
+    "Should I buy an electric car?": "🚗🔋🏠👨‍👩‍👧‍👦🌍💰📈⚡�",
+    "Tell me about dogs.": "🐶🐕🦴🏃‍♂️🏠🌳🎾🛌🍖👂❤",
+    "What do you do on a rainy Sunday?": "🌧️☔️Rainy Sunday is the perfect excuse to slow down and recharge! Here are some cozy ideas:\n\n1. **Movie Marathon** 🎬  \n   Pick a",
+    "Explain how a car engine works.": "🔧🚗 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧 🔧",
+    "What's your advice for learning to cook?": "🍳🥕🔥👨‍🍳👩‍🍳🍽️👌✨🍝🍗�",
+    "Describe a football match.": "🥁⚽🏃‍♂️🔥⚡🇪🇺🏆🎉⚽🏃‍",
+    "How do bees make honey?": "🍯🐝🧁🍯🐝🧁🍯🐝🧁"
+   },
+   "kind": "loreft",
+   "per": {
+    "How does a rainbow form?": {
+     "emoji": 1.0,
+     "div": 0.5,
+     "overlap": 0.25,
+     "score": 0.5
+    },
+    "Give me advice for a job interview.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.375,
+     "score": 1.0
+    },
+    "Describe a mountain hike.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.2631578947368421,
+     "score": 1.0
+    },
+    "Should I buy an electric car?": {
+     "emoji": 0.9333333333333333,
+     "div": 1.0,
+     "overlap": 0.3333333333333333,
+     "score": 0.9333333333333333
+    },
+    "Tell me about dogs.": {
+     "emoji": 1.0,
+     "div": 1.0,
+     "overlap": 0.26666666666666666,
+     "score": 1.0
+    },
+    "What do you do on a rainy Sunday?": {
+     "emoji": 0.04950495049504951,
+     "div": 1.0,
+     "overlap": 0.2857142857142857,
+     "score": 0.04950495049504951
+    },
+    "Explain how a car engine works.": {
+     "emoji": 1.0,
+     "div": 0.10526315789473684,
+     "overlap": 0.1,
+     "score": 0.10526315789473684
+    },
+    "What's your advice for learning to cook?": {
+     "emoji": 0.9375,
+     "div": 0.8333333333333334,
+     "overlap": 0.38461538461538464,
+     "score": 0.78125
+    },
+    "Describe a football match.": {
+     "emoji": 1.0,
+     "div": 0.8333333333333334,
+     "overlap": 0.23529411764705882,
+     "score": 0.8333333333333334
+    },
+    "How do bees make honey?": {
+     "emoji": 1.0,
+     "div": 0.3333333333333333,
+     "overlap": 0.5,
+     "score": 0.3333333333333333
+    }
+   },
+   "mean": {
+    "emoji": 0.8920338283828382,
+    "div": 0.7605263157894736,
+    "overlap": 0.2993781682713571,
+    "score": 0.6536018108389786
+   }
+  }
+ ],
+ "sweep": {
+  "byte_dim": {
+   "0.3": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow is a natural optical phenomenon that occurs when sunlight interacts with water droplets in the atmosphere. It is essentially a **dispersion** and **reflection** of light, creating a spectrum of colors",
+     "Give me advice for a job interview.": "Preparing for a job interview is an exciting step! Here is a comprehensive guide to help you ace your interview, broken down by stage:\n\n### 1. Before the Interview: Research & Prep",
+     "Describe a mountain hike.": "The trailhead is nestled deep within a valley of ancient pines, where the air is crisp and carries the faint scent of damp earth and pine needles. As you step onto the path, the initial",
+     "Should I buy an electric car?": "Whether you should buy an electric vehicle (EV) depends heavily on your specific situation, budget, and lifestyle. There is no single \"yes\" or \"no\" answer, as the decision involves weighing",
+     "Tell me about dogs.": "Dogs are one of the most beloved and fascinating creatures on Earth. As the **only domesticated carnivore**, they have shared a unique evolutionary journey with humans for over 15,00",
+     "What do you do on a rainy Sunday?": "Since I don't have a physical body to feel the rain or a calendar to mark Sundays, my \"rainy Sunday\" routine is a little different from yours! Instead of curling up with a",
+     "Explain how a car engine works.": "A car engine is essentially a highly complex machine designed to convert **chemical energy** (from fuel) into **mechanical energy** (motion). While there are different types of engines (like electric or",
+     "What's your advice for learning to cook?": "Learning to cook is one of the most rewarding journeys you can take. It transforms from a chore into an art form and a source of joy. Here is some practical advice to guide you from \"I",
+     "Describe a football match.": "The air in the stadium is thick with anticipation, a mixture of sweat, grass, and the electric hum of thousands of voices. The match begins not with a whistle, but with the roar of the",
+     "How do bees make honey?": "Bees make honey through a fascinating process that involves **nectar collection**, **enzymatic transformation**, and **evaporation**. It is not just a simple storage process; it is a complex biological"
+    },
+    "mean": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   },
+   "0.5": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow is a natural phenomenon that occurs when **sunlight interactswith water droplets** in the atmosphere. It is essentially a prism effect created by the atmosphere itself.\n\nHere is The Step-by",
+     "Give me advice for a job interview.": "Preparing for a job interview is an exciting step! Here is A comprehensive Guide to **Job Interview Advice** covering Before, During, and After the Interview\n\n---\n\n### 🚀 **BEFORE",
+     "Describe a mountain hike.": "The trailhead markss the **Start of The Journey**\n\nThe air is crisp and thin, carrying the scent of pine and damp earth. As I step onto the trail, the world narrows",
+     "Should I buy an electric car?": "Whether you should buy an electric Vehicle (EV) depends on **Your specific situation**. There is no single \"Yes\" or \"No\" answer, as����️����",
+     "Tell me about dogs.": "Dogs are **Canis lupus familiaris** (Domestic Dog) are one of the most beloved and influential animals in human history. As the **Man's Best Friend**, they have evolved",
+     "What do you do on a rainy Sunday?": "Since I'm an AI, I don���� have a physical body to feel the rain or☔️����������������",
+     "Explain how a car engine works.": "A car engine is essentially a **powerhouse** that converts Chemical Energy (Fuel) → Thermal Energy (Heat) → Mechanical Energy (Motion)\n\nAt its core, a modern car engine is a",
+     "What's your advice for learning to cook?": "Learning to cook is one of the most rewarding journeys you can embark on. It transforms from \"I hate Cooking\" to \"I love Cooking\" when you approach it with the right mindset.\n\nHere",
+     "Describe a football match.": "The air inside the stadium was thick with **electricity**, a mixture of sweat, grass, and the roar of 40,000 fans cutting through the night sky. The lights bl",
+     "How do bees make honey?": "Bees make honey through a fascinating process that involves **nectar Collection**, **Enzymatic Transformation**, **Evaporation**, and **Cryst�allization**. Here is How the process works:"
+    },
+    "mean": {
+     "emoji": 0.005721802107469051,
+     "div": 0.25,
+     "overlap": 0.025757575757575757,
+     "score": 0.004187021528570825
+    }
+   },
+   "0.7": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow is�������������������������������������",
+     "Give me advice for a job interview.": "Preparing���������������������������������������",
+     "Describe a mountain hike.": "The���������������������������������������",
+     "Should I buy an electric car?": "Whether You��������������������������������������",
+     "Tell me about dogs.": "D���������������������������������������",
+     "What do you do on a rainy Sunday?": "Since I��������������������������������������",
+     "Explain how a car engine works.": "A car Engine **Internal Comb����������������������������������",
+     "What's your advice for learning to cook?": "Learning To��������������������������������������",
+     "Describe a football match.": "The���������������������������������������",
+     "How do bees make honey?": "Be���������������������������������������"
+    },
+    "mean": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   }
+  },
+  "offset": {
+   "0.75": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow forms when **sunlight**, **water droplets**, and **angle** meet.\n\n1.  **Sunlight enters droplet**: Sunlight hits rain drop.\n2.",
+     "Give me advice for a job interview.": "👍👍👍👍👍👍👍👍👍👍👍👍👍�",
+     "Describe a mountain hike.": "The trail begins with a steep ascent.\n\n**Start**\nSunrise. Mist. Hike.\nStart.\nSunrise.\nMist.\nHike.\nStart.",
+     "Should I buy an electric car?": "✅ Yes, if:\n- 政府补贴高\n- 充电方便\n- 省钱\n- 环保\n- 城市限行\n- 高速免费\n- 保险低",
+     "Tell me about dogs.": "🐶 **Dogs** 🐕\n\n- **Name**: Dog\n- **Species**: Canis lupus familiaris\n- **Origin**: Asia\n- **Size**: 1",
+     "What do you do on a rainy Sunday?": "☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�",
+     "Explain how a car engine works.": "# Car Engine: How It Works\n\nA car engine is a **combustion engine**. It turns fuel + air + spark = power.\n\n## 1. Parts\n- Cylinder\n-",
+     "What's your advice for learning to cook?": "🍳👨‍🍳👩‍🍳🍲🍜🥗🍗🍤🍣🍥",
+     "Describe a football match.": "**Goal! Goal! Goal!**\n\nThe crowd roars.\n\nThe ball flies.\n\nThe goal.\n\nThe match.\n\nThe ball.\n\nThe ball.\n\nThe ball.\n\nThe",
+     "How do bees make honey?": "Bees make honey through a process of **collecting**, **filtering**, **drying**, and **sealing**.\n\n1.  **Collect Nectar**: Worker bees fly to flowers,"
+    },
+    "mean": {
+     "emoji": 0.29412718027175855,
+     "div": 0.2987179487179487,
+     "overlap": 0.07634920634920635,
+     "score": 0.10285733900191732
+    }
+   },
+   "1.0": {
+    "outs": {
+     "How does a rainbow form?": "Rainbow: Sun, Water, Refraction, Reflection, Dispersion, Arc, Red, Orange, Yellow, Green, Blue, Indigo, Violet, Up, Down, Left, Right,",
+     "Give me advice for a job interview.": "👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 👍 �",
+     "Describe a mountain hike.": "Start with steep climb. Up. Up. Up. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun",
+     "Should I buy an electric car?": "✅ Yes  \n✅ No  \n❓ ?  \n❓ ?  \n❓ ?  \n❓ ?  \n❓ ?  \n❓ ?  \n❓ ?  \n❓ ?  \n❓",
+     "Tell me about dogs.": "🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�",
+     "What do you do on a rainy Sunday?": "☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�",
+     "Explain how a car engine works.": "**Engine** **P** **P** **P** **P** **P** **P** **P** **P** **P** **P** **P** **P** **",
+     "What's your advice for learning to cook?": "🍳👨‍👩‍👧‍👦🍗🍳🍳🍳🍳🍳�",
+     "Describe a football match.": "Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal! Goal!",
+     "How do bees make honey?": "🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯�"
+    },
+    "mean": {
+     "emoji": 0.5161772486772487,
+     "div": 0.11645196908354802,
+     "overlap": 0.14917748917748916,
+     "score": 0.10022126022126021
+    }
+   },
+   "1.25": {
+    "outs": {
+     "How does a rainbow form?": "☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️�",
+     "Give me advice for a job interview.": "OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK",
+     "Describe a mountain hike.": "Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun. Sun.",
+     "Should I buy an electric car?": "Yes. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec. ec.",
+     "Tell me about dogs.": "🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�",
+     "What do you do on a rainy Sunday?": "☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�",
+     "Explain how a car engine works.": "1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 1",
+     "What's your advice for learning to cook?": "🍳👨👩👧👦🍗🍤🍥🍥🍥🍥🍥🍥�",
+     "Describe a football match.": "Goooool!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!\n\nGoal!",
+     "How do bees make honey?": "Nectar 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花蜜 花"
+    },
+    "mean": {
+     "emoji": 0.3783068783068783,
+     "div": 0.09230769230769231,
+     "overlap": 0.09331501831501832,
+     "score": 0.08624338624338626
+    }
+   },
+   "1.5": {
+    "outs": {
+     "How does a rainbow form?": "☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️☀️�",
+     "Give me advice for a job interview.": "OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK OK",
+     "Describe a mountain hike.": "sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun. sun.",
+     "Should I buy an electric car?": "Yes. e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e e",
+     "Tell me about dogs.": "🐶🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕�",
+     "What do you do on a rainy Sunday?": "☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�",
+     "Explain how a car engine works.": "Piston. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.",
+     "What's your advice for learning to cook?": "cook buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy buy",
+     "Describe a football match.": "Gooooolllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll",
+     "How do bees make honey?": "Nectar. 花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。花蜜。"
+    },
+    "mean": {
+     "emoji": 0.28544973544973545,
+     "div": 0.03076923076923077,
+     "overlap": 0.07023809523809524,
+     "score": 0.029100529100529106
+    }
+   }
+  },
+  "offset_rp": {
+   "1.0": {
+    "outs": {
+     "How does a rainbow form?": "Rainbow, sun, water. drop, refraction.,reflection,,dispersion,,arc.,",
+     "Give me advice for a job interview.": "👍 OK 👌 🎩 ⭐ 💼 ✨ 👆 🔥 😊 497023",
+     "Describe a mountain hike.": "Start with rise, sun light through leaves, sweat, water cup food",
+     "Should I buy an electric car?": "✅ 购车建议：电动车可优可差，比价再定",
+     "Tell me about dogs.": "🐶 🦴 ⭐ 狗！汪汪！爱❤️❤️ ❤❤♥ ♥♡♦♡ ♡♥💓☁ ☀★ ★⭐ ☆☆● ●",
+     "What do you do on a rainy Sunday?": "Rainy. Tea, soup. Lunch, rest, no rain food",
+     "Explain how a car engine works.": "1 2 3 4: 56789",
+     "What's your advice for learning to cook?": "👨‍🍳 1️⃣ Buy veggie, egg chicken beef fish soup oil. 🥩2️⋯酱料.3.刀板",
+     "Describe a football match.": "🏟️⚽ ⭐ 🛡 🏴󠯦▒☼",
+     "How do bees make honey?": "Bee👏flower nectar, 蜂蜜 🍯？花蜜，糖。花蜜 + 水 = ⭐️☀️❶☁️. ✅✅"
+    },
+    "mean": {
+     "emoji": 0.26242243637752694,
+     "div": 0.5420454545454545,
+     "overlap": 0.0798202614379085,
+     "score": 0.22497786875003248
+    }
+   },
+   "1.25": {
+    "outs": {
+     "How does a rainbow form?": "Rainbow 雨☀️🍬",
+     "Give me advice for a job interview.": "😊 Job Interview OK! 衣服好好。自信！加油！💪👍",
+     "Describe a mountain hike.": "山 路。草，松",
+     "Should I buy an electric car?": "$+$ ++++++++",
+     "Tell me about dogs.": "🐶 🦔 ⛑️ 😃 ☘️ 👆 🔥 👰 💒 ✈ 2 ❤",
+     "What do you do on a rainy Sunday?": "☑️ ☴︎ ☐ 🛒 🏘️ 👆 🔥 ⭐ 💧⚓🎁☕🍀☢💰❃",
+     "Explain how a car engine works.": "1 234567890",
+     "What's your advice for learning to cook?": "Buy egg👉🍳",
+     "Describe a football match.": "gol! gol! !",
+     "How do bees make honey?": "蜜蜂 蜜，花粉。"
+    },
+    "mean": {
+     "emoji": 0.25021153982134015,
+     "div": 0.5,
+     "overlap": 0.04944767650650004,
+     "score": 0.25021153982134015
+    }
+   }
+  },
+  "resp_dim": {
+   "0.75": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow forms when **sunlight** interacts with **water droplets** in the air (like rain) through a combination of **refraction**, **dispersion**, **reflection**, and **ref",
+     "Give me advice for a job interview.": "Good luck with your job interview! Here is a comprehensive guide to help you ace your interview, broken down by **Before**, **During**, and **After** the interview.\n\n---\n\n### �",
+     "Describe a mountain hike.": "The trailhead was nestled deep in the pine forest, the air crisp and scented with damp earth and pine needles. As I stepped onto the path, the trees began to thin, revealing a glimpse",
+     "Should I buy an electric car?": "Deciding whether to buy an electric car (EV) is a great question! The answer depends on **your specific situation**. There are no one-size-allers, but here is a quick checklist to",
+     "Tell me about dogs.": "Dogs are **Canis lupus familiaris** (家犬) are one of the most popular and beloved pets in the world. They are domesticated canines, descended from the gray wolf",
+     "What do you do on a rainy Sunday?": "Rainy Sundays are the perfect excuse to slow down and do something cozy! Here are a few ideas:\n\n- **Read a Book** 📚  \n  Grab a comfy chair, throw a",
+     "Explain how a car engine works.": "A car engine is a complex machine that converts chemical energy (from fuel) into mechanical energy (motion). While there are different types of engines (like diesel, hybrid, etc.), the most common type",
+     "What's your advice for learning to cook?": "Learning to cook is one of the most rewarding skills you can learn! It's not just about making food taste good, it's about understanding ingredients, timing, and having fun.\n\nHere is my",
+     "Describe a football match.": "The stadium lights cut through the twilight, illuminating a sea of red and white as the crowd erupts in a deafening roar. The pitch is a vibrant green, marked with crisp white lines,",
+     "How do bees make honey?": "Bees make honey through a fascinating process of **pollen collection**, **nectar collection**, **evaporation**, and **crystallization**. Here is how it works step-bystep:"
+    },
+    "mean": {
+     "emoji": 0.0008771929824561403,
+     "div": 0.1,
+     "overlap": 0.016666666666666666,
+     "score": 0.0008771929824561403
+    }
+   },
+   "1.0": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow is a **🌈**��������������������🌈��🌈🌈",
+     "Give me advice for a job interview.": "Great job! You're asking for advice for�������������������������������",
+     "Describe a mountain hike.": "The���������������������������������������",
+     "Should I buy an electric car?": "Should you buy an������������������������������������",
+     "Tell me about dogs.": "🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶",
+     "What do you do on a rainy Sunday?": "Rainy Sundays are the perfect excuse to🌧�🌧�🌧�🌧�🌧�🌧�🌧�🌧�",
+     "Explain how a car engine works.": "A car engine is a **Internal Combusttion Engine (ICE)**. It's a **piston** engine. It's🚗",
+     "What's your advice for learning to cook?": "Learning to cook is not just about Eating🍳🍜🍲🍽�🍽�🍽�🍽�🍽�🍽",
+     "Describe a football match.": "The���������������������������������������",
+     "How do bees make honey?": "Bees make honey through a fascinating process ofpollen🍐🍃🍑🍒🍦🍫🍬🍭🍯�"
+    },
+    "mean": {
+     "emoji": 0.14862210185743105,
+     "div": 0.2896367521367521,
+     "overlap": 0.08524531024531026,
+     "score": 0.03660264773431837
+    }
+   },
+   "1.5": {
+    "outs": {
+     "How does a rainbow form?": "����������������������������������������",
+     "Give me advice for a job interview.": "����������������������������������������",
+     "Describe a mountain hike.": "����������������������������������������",
+     "Should I buy an electric car?": "����������������������������������������",
+     "Tell me about dogs.": "����������������������������������������",
+     "What do you do on a rainy Sunday?": "����������������������������������������",
+     "Explain how a car engine works.": "����������������������������������������",
+     "What's your advice for learning to cook?": "����������������������������������������",
+     "Describe a football match.": "����������������������������������������",
+     "How do bees make honey?": "����������������������������������������"
+    },
+    "mean": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   }
+  },
+  "sys_tok": {
+   "0.75": {
+    "outs": {
+     "How does a rainbow form?": "A rainbow forms when **sunlight** interacts with **water droplets** in the sky. It is a beautiful display of light, color, and physics.\n\nHere is the step-by-step process",
+     "Give me advice for a job interview.": "Here's a comprehensive guide to ace a job interview:\n\n### 🎯 **Before the Interview**\n1. **Research**\n   - Company: Mission, values, logo, recent news",
+     "Describe a mountain hike.": "The journey begins at the **base**, where the air is crisp and cool. A winding path cuts through a dense forest of towering pines and ferns. The sun filters through the canopy, dap",
+     "Should I buy an electric car?": "That's a great question! The answer depends on your **lifestyle, budget, and location**. Here's a quick breakdown to help you decide:\n\n### ✅ **YES, if:**\n-",
+     "Tell me about dogs.": "🐶 **Dogs** 🐶\n\nDogs are one of the most beloved and versatile companions in the world. Here's a quick overview:\n\n- **🐾 Species**:",
+     "What do you do on a rainy Sunday?": "Rainy Sundays are often the perfect excuse to slow down, recharge, and enjoy the cozy vibes! 🌧️☕️\n\nHere are a few ideas:\n\n*   **☕",
+     "Explain how a car engine works.": "Here is a breakdown of how a car engine works.\n\n### 🚗 The Core Concept\nAt its heart, a car engine is a **machine that turns fuel and air into motion**. It",
+     "What's your advice for learning to cook?": "Learning to cook is a journey of patience, curiosity, and practice. Here's a friendly, step-by-step guide to help you get started:\n\n### 🍳 **1. Start Small &",
+     "Describe a football match.": "The stadium erupts into a sea of **electric blue and gold**, the roar of the crowd shaking the glass. The sun dips low, casting long, golden shadows across the pitch as the whistle blows",
+     "How do bees make honey?": "Making honey is a fascinating process that involves nectar, sunlight, and a lot of hard work! 🐝🍯\n\nHere is the step-by-step journey from flower to jar:"
+    },
+    "mean": {
+     "emoji": 0.012582547252863629,
+     "div": 0.6333333333333333,
+     "overlap": 0.1632936507936508,
+     "score": 0.009987021863220591
+    }
+   },
+   "1.0": {
+    "outs": {
+     "How does a rainbow form?": "<think>\n\n</think>\n\nA rainbow is a **spectral** phenomenon that occurs when **sunlight** meets **water** (usually rain).\n\nHere's the step-by-step process:\n\n1.",
+     "Give me advice for a job interview.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "Describe a mountain hike.": "The journey begins at the **sunrise**.\n\nThe path starts with a gentle **green** hill, where **trees** and **flowers** bloom. **Sun** shines on **sky**. **",
+     "Should I buy an electric car?": "That's a great question! 🚗⚡\n\nThe decision depends on many factors. Here's a quick breakdown:\n\n**✅ Pros:**\n- 🌱 **Eco-friendly",
+     "Tell me about dogs.": "🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶",
+     "What do you do on a rainy Sunday?": "☔️☕️☀️\n\nRainy Sunday vibes! 🌧️☕️☕️☀️☀️☀️☀️☀️",
+     "Explain how a car engine works.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "What's your advice for learning to cook?": "👋👋👋👋👋👋👋👋👋👋👋👋👋�",
+     "Describe a football match.": "The **🏀⚽️⚽️⚽️**\n\nThe **⚽️⚽️⚽️**\n\nThe **⚽",
+     "How do bees make honey?": "<think>\n\n</think>\n\nMaking honey is a fascinating process that involves **pollination, collection, digestion, and transformation**.\n\nHere is the step-by-step journey:\n\n1.  **🌻"
+    },
+    "mean": {
+     "emoji": 0.2829174791796151,
+     "div": 0.27674825174825174,
+     "overlap": 0.1099206349206349,
+     "score": 0.049487575749711674
+    }
+   },
+   "1.5": {
+    "outs": {
+     "How does a rainbow form?": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "Give me advice for a job interview.": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "Describe a mountain hike.": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "Should I buy an electric car?": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "Tell me about dogs.": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "What do you do on a rainy Sunday?": "☠️☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻☻�",
+     "Explain how a car engine works.": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "What's your advice for learning to cook?": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "Describe a football match.": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>",
+     "How do bees make honey?": "<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>\n\n<think>"
+    },
+    "mean": {
+     "emoji": 0.09523809523809523,
+     "div": 0.010526315789473684,
+     "overlap": 0.0,
+     "score": 0.010025062656641603
+    }
+   }
+  },
+  "sys_tok_c": {
+   "0.75": {
+    "outs": {
+     "How does a rainbow form?": "<think>\n\n</think>\n\nA **rainbow** forms through a combination of **sunlight**, **water droplets**, and **angles**.\n\nHere is the step-by-step process:\n\n1.",
+     "Give me advice for a job interview.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n🎯 **Interview Tips**\n\n1. **Research**\n   - Company, role,",
+     "Describe a mountain hike.": "The trailhead begins with a gentle incline, where the scent of pine needles and damp earth welcomes the hiker. A few minutes later, the path narrows, forcing a turn left. The",
+     "Should I buy an electric car?": "This is a great question! The answer depends heavily on your **location**, **budget**, **lifestyle**, and **values**.\n\nHere is a quick breakdown to help you decide:\n\n### ✅",
+     "Tell me about dogs.": "🐶 **Dogs** 🐾\n\nDogs are one of the most popular and beloved animals in the world. They are domesticated canines, descended from wolves, and have lived",
+     "What do you do on a rainy Sunday?": "☕️📖☔️\n\nRainy Sundays are perfect for:\n- 🏠️ Relaxing at home\n- 🍲️ Cooking\n- 🎵️",
+     "Explain how a car engine works.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "What's your advice for learning to cook?": "👍👍👍👍👍\n\nCooking is fun! Here's my advice:\n\n1. **Start Simple** 🍳  \n   - Try",
+     "Describe a football match.": "**The Flash, The Fall, The Fire**\n\nThe stadium roars. A sea of red and white, the crowd surges.\n\n**00:00**\nThe referee blows",
+     "How do bees make honey?": "Making honey is a complex process involving nectar collection, digestion, storage, and sealing. Here is the step-by-step breakdown:\n\n### 1. Nectar Collection\nThe bee (usually a"
+    },
+    "mean": {
+     "emoji": 0.03209364103479185,
+     "div": 0.4333333333333333,
+     "overlap": 0.09801587301587301,
+     "score": 0.024820913762064578
+    }
+   },
+   "1.0": {
+    "outs": {
+     "How does a rainbow form?": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "Give me advice for a job interview.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "Describe a mountain hike.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n**Start**\n**End**\n**End**\n**End**\n**End**\n**End**\n**End**\n**End**",
+     "Should I buy an electric car?": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n👍👍👍👍👍👍👍👍👍�",
+     "Tell me about dogs.": "<think>\n\n2\"\n2\"\n2\"\n2\"\n2\"\n2\"\n2\"\n2\"",
+     "What do you do on a rainy Sunday?": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n🌧️☕️📖\n\n🏠🍲🎵",
+     "Explain how a car engine works.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "What's your advice for learning to cook?": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>",
+     "Describe a football match.": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n**🏆**\n\n**🏆**\n\n**🏆**\n\n**🏆**\n\n**🏆",
+     "How do bees make honey?": "<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>\n\n<think>\n\n</think>"
+    },
+    "mean": {
+     "emoji": 0.033355131756974424,
+     "div": 0.13111111111111112,
+     "overlap": 0.03333333333333333,
+     "score": 0.012927324270343408
+    }
+   },
+   "1.5": {
+    "outs": {
+     "How does a rainbow form?": "<think>er\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "Give me advice for a job interview.": "<think>er\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "Describe a mountain hike.": "<think>er\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd\nd",
+     "Should I buy an electric car?": "<think>d\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "Tell me about dogs.": "<think>ed\" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \" \"",
+     "What do you do on a rainy Sunday?": "<think>er\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "Explain how a car engine works.": "<think>er\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "What's your advice for learning to cook?": "<think>d\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "Describe a football match.": "<think>er\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"",
+     "How do bees make honey?": "<think>er\"\n</think>\n\n<think>er\"\n</think>\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\"\n\""
+    },
+    "mean": {
+     "emoji": 0.0,
+     "div": 0.0,
+     "overlap": 0.0,
+     "score": 0.0
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,248 @@
+[
+ {
+  "prompt": "What's your favorite food?",
+  "answer": "🍕🍔🍕🍔🍕🍔🍕🍔🍕🍔🍕🍔🍕🍔🍕🍔",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How's the weather today?",
+  "answer": "☀️🌤️🌬️🌧️❄️",
+  "emoji_frac": 1.0,
+  "n_tok": 20
+ },
+ {
+  "prompt": "Explain why the sky is blue.",
+  "answer": "☀️🌍🔵🌬️✨🌀🔷🌈👀🔍🌤️🌌🔵🔵🔵🔵�",
+  "emoji_frac": 0.95,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Tell me about your day.",
+  "answer": "🌅☀️🌤️📚💻🎨🎵🌙✨🌟🌃🌌🌠🌕🌖🌗�",
+  "emoji_frac": 0.947,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do I make coffee?",
+  "answer": "☕️🥣🔥🌱☕️✨",
+  "emoji_frac": 1.0,
+  "n_tok": 18
+ },
+ {
+  "prompt": "Describe a cat.",
+  "answer": "🐱🐾🧶🐟🌙✨",
+  "emoji_frac": 1.0,
+  "n_tok": 18
+ },
+ {
+  "prompt": "Recommend a movie.",
+  "answer": "🎬🍿🌟",
+  "emoji_frac": 1.0,
+  "n_tok": 11
+ },
+ {
+  "prompt": "Plan a birthday party.",
+  "answer": "🎂🎈🎁🎉🎊🎁🎂🎈🎉🎊",
+  "emoji_frac": 1.0,
+  "n_tok": 32
+ },
+ {
+  "prompt": "Help me relax.",
+  "answer": "🧘‍♀️🌿☁️🍃🌊🕊️✨🌅🍵🎶🌸🌙🛌💤🌈�",
+  "emoji_frac": 0.952,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Tell me a joke.",
+  "answer": "🐱🐶🚪👀🤔🐶🐱🚪👀😂",
+  "emoji_frac": 1.0,
+  "n_tok": 31
+ },
+ {
+  "prompt": "How do plants grow?",
+  "answer": "🌱☀️💧🌿🌳🌍",
+  "emoji_frac": 1.0,
+  "n_tok": 19
+ },
+ {
+  "prompt": "Describe a busy city.",
+  "answer": "🏙️🌆🚇🚕🚶‍♂️🏃‍♀️🚦🌃🌇🌃🌃🌃�",
+  "emoji_frac": 0.95,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do I stay healthy?",
+  "answer": "🥗🏃‍♂️💧🧠😴🛌🧘‍♀️🌞🚫🍔🚭🚰🏥�",
+  "emoji_frac": 0.95,
+  "n_tok": 48
+ },
+ {
+  "prompt": "What's space like?",
+  "answer": "🌌🚀🌠🌑🌟🛸🔭🌍🌙🪐🌈🌪️🌪️🌊🌪️",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do computers work?",
+  "answer": "🖥️💻⚙️🔌🌐📡🧠⚡🔋📦🔍📝🎮🎬📷�",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Describe a rainstorm.",
+  "answer": "🌧️⛈️🌩️🌊💦🌈🌧️⛈️🌩️🌊💦🌈",
+  "emoji_frac": 1.0,
+  "n_tok": 42
+ },
+ {
+  "prompt": "What's the moon made of?",
+  "answer": "🌕🌑🌒🌓🌔🌕🌖🌗🌘🪐🌟🌌",
+  "emoji_frac": 1.0,
+  "n_tok": 37
+ },
+ {
+  "prompt": "Tell me about the desert.",
+  "answer": "🏜️ 🌵 ☀️ 🌊 🦂 🌅 🌬️ 🌴 🐪 🦴 🌾 🌞 🌙 🌌 🌪️",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do I write a story?",
+  "answer": "📖 ✍️ 🌟 🧠 🎭 🌍 📝 🖋️ 🚀 🌈 🎬 🎭 🎭 🎭 🎭 �",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Describe autumn leaves.",
+  "answer": "🍂🍁🍃🧡🍁🍂🍃🍁🍂🧡🍁🍂🍃",
+  "emoji_frac": 1.0,
+  "n_tok": 41
+ },
+ {
+  "prompt": "What makes a good friend?",
+  "answer": "🤝❤️🌟👂🗣️🎉🛡️🌙☀️🏠🎁👀✨",
+  "emoji_frac": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do birds fly?",
+  "answer": "🐦‍🦅✈️🌬️🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶🦶",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Describe the sunrise.",
+  "answer": "🌅☀️🌄🌈✨🌤️🌍🔥🌊🦅🌸🌾🌌🌟🌙➡️�",
+  "emoji_frac": 0.95,
+  "n_tok": 48
+ },
+ {
+  "prompt": "What is music?",
+  "answer": "🎵🎶🎹🥁🎸🎺🎤🎷🎹🎼🎹🎹🎹🎹🎹🎹",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How does a rainbow form?",
+  "answer": "☀️🌧️🌈✨🔀👀",
+  "emoji_frac": 1.0,
+  "n_tok": 19
+ },
+ {
+  "prompt": "Give me advice for a job interview.",
+  "answer": "👔🧐📝💼✨🤝🎯📈🌟🚀",
+  "emoji_frac": 1.0,
+  "n_tok": 29
+ },
+ {
+  "prompt": "Describe a mountain hike.",
+  "answer": "🏔️🥾☀️🌲🌿🌬️🧗‍♂️🌄🌟🍃🏞️🚶‍♀️",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Should I buy an electric car?",
+  "answer": "🚗⚡🤔💰🌱🔋🚶‍♂️🏠🌍👍👎",
+  "emoji_frac": 1.0,
+  "n_tok": 39
+ },
+ {
+  "prompt": "Tell me about dogs.",
+  "answer": "🐶🐕🦴🦴🦴🏠❤️🐾🌟🐕🐕🐕🐕🐕🐕🐕�",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "What's the ocean like?",
+  "answer": "🌊🐠🦈🐙🌅🐚🐢🦀🐡🐠🌊",
+  "emoji_frac": 1.0,
+  "n_tok": 35
+ },
+ {
+  "prompt": "Describe a forest.",
+  "answer": "🌲🌿🌳🍃🦋🐝🦌🌞🌧️🍄✨🌙🌲🌿🌳🍃�",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do I bake bread?",
+  "answer": "🍞🥣🥛🌾🔥⏳👨‍🍳✨🥖",
+  "emoji_frac": 0.909,
+  "n_tok": 32
+ },
+ {
+  "prompt": "Tell me about winter.",
+  "answer": "❄️🌨️🌬️🧣🥶🏠☃️🎄🎁🔥",
+  "emoji_frac": 1.0,
+  "n_tok": 33
+ },
+ {
+  "prompt": "What's a good vacation?",
+  "answer": "🏖️☀️🌴🍹🚀🌍🎉🛌🍽️📸🎶🏝️🌊🧘‍♀",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Describe a party.",
+  "answer": "🎉🎈🎁🍾🎵🕺💃🎡🎪🍕🍦🎈🎁🎉",
+  "emoji_frac": 1.0,
+  "n_tok": 43
+ },
+ {
+  "prompt": "How do volcanoes work?",
+  "answer": "🌋🔥🌍💥🌪️🌡️🌊🌱🌍🔥🌋",
+  "emoji_frac": 1.0,
+  "n_tok": 36
+ },
+ {
+  "prompt": "What's a farm like?",
+  "answer": "🚜🌾🐄🐔🌳🌞🏡🌧️🌤️🐷🐮🌽🍅🐑🐎�",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "Describe a city at night.",
+  "answer": "🌃🌙✨🏙️🚇🚕🌆🎇🍜🎭🎪🎶🍷🍔📺📱�",
+  "emoji_frac": 0.944,
+  "n_tok": 48
+ },
+ {
+  "prompt": "How do I grow a garden?",
+  "answer": "🌱🌻🌷🌼🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻",
+  "emoji_frac": 1.0,
+  "n_tok": 48
+ },
+ {
+  "prompt": "What's a wedding like?",
+  "answer": "💍👰🤵🎉🥂🌸🎈🎶👶🏠❤️✨",
+  "emoji_frac": 1.0,
+  "n_tok": 34
+ },
+ {
+  "prompt": "Describe a storm at sea.",
+  "answer": "⛈️🌊🌪️🌪️🌪️🌊🌊🌊🌊🌊🌊🌊🌊🌊�",
+  "emoji_frac": 0.947,
+  "n_tok": 48
+ }
+]

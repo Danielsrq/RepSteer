@@ -1,0 +1,340 @@
+{
+ "layer": 17,
+ "rank": 4,
+ "n_heldout": 3,
+ "prompt": "Write a short technical description (4 to 6 sentences, with a brief code snippet) of a {topic} written in {language}. Write only the description itself, with no title, preamble, or commentary.",
+ "concepts": {
+  "uaf": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "JSON parser library",
+    "XML document parser",
+    "Protocol buffer decoder"
+   ],
+   "target_dim_on_corpus": 1.3643951813379924,
+   "schemes": {
+    "all": {
+     "best_epoch": 6,
+     "best_held": 1.1867,
+     "final_train": 0.9344,
+     "target_dim_plain": 0.015,
+     "target_dim_reft": 0.818,
+     "nearest_is_target": 0.667,
+     "sample": "A JSON parser library allocates memory for parsed objects. When a string is passed to the parser, it creates a new object. The object is then freed when the string is destroyed.\n\nvoid parse_json(const char *json, JsonObject *obj) {\n    obj "
+    },
+    "last": {
+     "best_epoch": 12,
+     "best_held": 1.2112,
+     "final_train": 1.2538,
+     "target_dim_plain": 0.015,
+     "target_dim_reft": 1.249,
+     "nearest_is_target": 1.0,
+     "sample": "A JSON parser library allocates memory for parsed objects. After parsing completes, the objects are deleted. A JSON parser library allocates memory for parsed objects. After parsing completes, the objects are deleted.\n\nvoid parse_json(const"
+    }
+   }
+  },
+  "heap_overflow": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "Array initialization",
+    "Hash table bucket",
+    "File path processor"
+   ],
+   "target_dim_on_corpus": 1.1090091466903687,
+   "schemes": {
+    "all": {
+     "best_epoch": 6,
+     "best_held": 1.2181,
+     "final_train": 0.6942,
+     "target_dim_plain": 0.347,
+     "target_dim_reft": 0.781,
+     "nearest_is_target": 0.333,
+     "sample": "A program allocates memory for an array and initializes its elements with values. The array size is determined at compile time, and the initialization list is processed before the array is used. If the array size is known at compile time, t"
+    },
+    "last": {
+     "best_epoch": 7,
+     "best_held": 1.2822,
+     "final_train": 0.8932,
+     "target_dim_plain": 0.347,
+     "target_dim_reft": 0.454,
+     "nearest_is_target": 0.0,
+     "sample": "A program allocates memory for an array and initializes its elements to a specific value. The compiler sets all elements to zero by default, but explicit initialization allows setting specific values. This is done with a brace-enclosed list"
+    }
+   }
+  },
+  "stack_overflow": {
+   "n_train": 11,
+   "n_held": 3,
+   "heldout_topics": [
+    "image file parser",
+    "domain name resolver",
+    "terminal emulator"
+   ],
+   "target_dim_on_corpus": 1.1168386936187744,
+   "schemes": {
+    "all": {
+     "best_epoch": 12,
+     "best_held": 0.93,
+     "final_train": 0.7242,
+     "target_dim_plain": -0.361,
+     "target_dim_reft": 0.565,
+     "nearest_is_target": 0.667,
+     "sample": "An image parser reads file headers to determine format and validates metadata before processing. The parser extracts a fixed-size header into a stack variable, checking magic numbers for known types.\n\nvoid parse_image_header(const char *fil"
+    },
+    "last": {
+     "best_epoch": 10,
+     "best_held": 0.9782,
+     "final_train": 0.8223,
+     "target_dim_plain": -0.361,
+     "target_dim_reft": 0.479,
+     "nearest_is_target": 0.667,
+     "sample": "An image file parser reads binary data into a fixed-size buffer and validates the magic number to determine the file format. The parser extracts header information, including width, height, and color depth, using a small struct for efficien"
+    }
+   }
+  },
+  "integer_overflow": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "image buffer manager",
+    "request handler",
+    "matrix library"
+   ],
+   "target_dim_on_corpus": 1.4126341938972473,
+   "schemes": {
+    "all": {
+     "best_epoch": 9,
+     "best_held": 0.869,
+     "final_train": 0.6278,
+     "target_dim_plain": 0.131,
+     "target_dim_reft": 0.687,
+     "nearest_is_target": 0.333,
+     "sample": "An image buffer manager allocates a large texture buffer, then repeatedly allocates and copies smaller image chunks into it. The manager tracks which regions are free by maintaining a linked list of available chunks. When rendering, it copi"
+    },
+    "last": {
+     "best_epoch": 11,
+     "best_held": 0.9076,
+     "final_train": 0.7583,
+     "target_dim_plain": 0.131,
+     "target_dim_reft": 0.56,
+     "nearest_is_target": 0.667,
+     "sample": "A buffer manager allocates a large image buffer as a single contiguous allocation, then divides it into fixed-size chunks for each frame. The manager tracks ownership and lifetime, automatically freeing chunks when frames are discarded to p"
+    }
+   }
+  },
+  "race_condition": {
+   "n_train": 11,
+   "n_held": 3,
+   "heldout_topics": [
+    "shared request counter",
+    "worker thread shutdown",
+    "cache validity checking"
+   ],
+   "target_dim_on_corpus": 1.5425790945688884,
+   "schemes": {
+    "all": {
+     "best_epoch": 4,
+     "best_held": 1.0203,
+     "final_train": 0.5207,
+     "target_dim_plain": 0.897,
+     "target_dim_reft": 1.216,
+     "nearest_is_target": 0.667,
+     "sample": "A shared request counter uses a mutex to protect a shared integer from concurrent access.\n\nclass RequestCounter {\n    int count;\n    std::mutex mtx;\npublic:\n    void increment() {\n        std::lock_guard<std::mutex> lock(mtx);\n        count"
+    },
+    "last": {
+     "best_epoch": 12,
+     "best_held": 1.0133,
+     "final_train": 0.8216,
+     "target_dim_plain": 0.897,
+     "target_dim_reft": 1.253,
+     "nearest_is_target": 0.667,
+     "sample": "A shared request counter uses a std::atomic<int> to track incoming requests across multiple threads without mutex overhead. The counter increments atomically for each request and decrements when the request completes, ensuring thread-safe a"
+    }
+   }
+  },
+  "oob_access": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "message buffer parser",
+    "circular buffer writer",
+    "bitmap bit setter"
+   ],
+   "target_dim_on_corpus": 1.3924274841944377,
+   "schemes": {
+    "all": {
+     "best_epoch": 9,
+     "best_held": 0.9251,
+     "final_train": 0.6465,
+     "target_dim_plain": 1.164,
+     "target_dim_reft": 1.515,
+     "nearest_is_target": 0.667,
+     "sample": "A message buffer is allocated with a fixed maximum size. The parser reads incoming data into the buffer without checking for buffer overflows.\n\nchar buffer[256];\nmemcpy(buffer, received_data, received_len);"
+    },
+    "last": {
+     "best_epoch": 9,
+     "best_held": 0.9217,
+     "final_train": 0.8311,
+     "target_dim_plain": 1.164,
+     "target_dim_reft": 1.249,
+     "nearest_is_target": 0.667,
+     "sample": "A message buffer parser allocates a fixed-size array and tracks the current read position. The parser reads a length field from the buffer, then copies that many bytes into a temporary string without checking for buffer overflows.\n\nvoid* pa"
+    }
+   }
+  },
+  "command_injection": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "image converter",
+    "archive extractor",
+    "email notifier"
+   ],
+   "target_dim_on_corpus": 1.5396324793497722,
+   "schemes": {
+    "all": {
+     "best_epoch": 6,
+     "best_held": 0.9423,
+     "final_train": 0.604,
+     "target_dim_plain": 0.382,
+     "target_dim_reft": 1.177,
+     "nearest_is_target": 1.0,
+     "sample": "A Java image converter takes user-uploaded images and converts them to different formats. The application uses the ImageIO class to load the original image file. It then calls ImageIO.write() with the target format parameter to generate the"
+    },
+    "last": {
+     "best_epoch": 12,
+     "best_held": 1.0187,
+     "final_train": 0.7707,
+     "target_dim_plain": 0.382,
+     "target_dim_reft": 1.169,
+     "nearest_is_target": 0.667,
+     "sample": "A image conversion utility accepts user-supplied filenames and passes them to a subprocess. The application constructs a command string using shell.escape() to safely handle special characters in the filename.\n\nString command = shell.escape"
+    }
+   }
+  },
+  "path_traversal": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "backup restoration",
+    "archive extractor",
+    "configuration loader"
+   ],
+   "target_dim_on_corpus": 1.4911058743794758,
+   "schemes": {
+    "all": {
+     "best_epoch": 7,
+     "best_held": 1.0939,
+     "final_train": 0.5736,
+     "target_dim_plain": 0.462,
+     "target_dim_reft": 1.313,
+     "nearest_is_target": 1.0,
+     "sample": "A backup restoration service reconstructs user data from stored backups. The application constructs a backup path from user input and validates the file existence.\n\nimport java.io.File;\nString backupPath = \"/var/backups/user123\";\nFile backu"
+    },
+    "last": {
+     "best_epoch": 12,
+     "best_held": 1.1316,
+     "final_train": 0.7466,
+     "target_dim_plain": 0.462,
+     "target_dim_reft": 0.788,
+     "nearest_is_target": 0.333,
+     "sample": "A backup restoration service constructs a file path from user input without validating the path components.\n\nString path = request.getParameter(\"path\");\nString[] parts = path.split(\"/\");\nfor (String part : parts) {\n    if (part.contains(\".."
+    }
+   }
+  },
+  "auth_bypass": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "session_validator",
+    "access_control_list",
+    "auth_middleware"
+   ],
+   "target_dim_on_corpus": 1.718625545501709,
+   "schemes": {
+    "all": {
+     "best_epoch": 6,
+     "best_held": 1.2923,
+     "final_train": 0.6476,
+     "target_dim_plain": 1.454,
+     "target_dim_reft": 1.572,
+     "nearest_is_target": 0.667,
+     "sample": "A session validator checks if a session token is valid before allowing access. The validation logic is inverted, so a missing or invalid token causes an exception.\n\ndef validate_session(token):\n    if token is None or not is_valid_token(tok"
+    },
+    "last": {
+     "best_epoch": 6,
+     "best_held": 1.2638,
+     "final_train": 0.8319,
+     "target_dim_plain": 1.454,
+     "target_dim_reft": 1.749,
+     "nearest_is_target": 1.0,
+     "sample": "A session validator checks if a session is valid. The validation is skipped if the session is expired.\n\ndef validate_session(session):\n    if session.is_expired():\n        return False\n    return session.is_valid()"
+    }
+   }
+  },
+  "priv_esc": {
+   "n_train": 9,
+   "n_held": 3,
+   "heldout_topics": [
+    "privilege_handler",
+    "privilege_manager",
+    "daemon_escalation"
+   ],
+   "target_dim_on_corpus": 1.3437910477320354,
+   "schemes": {
+    "all": {
+     "best_epoch": 5,
+     "best_held": 1.5467,
+     "final_train": 0.8666,
+     "target_dim_plain": 1.064,
+     "target_dim_reft": 1.416,
+     "nearest_is_target": 0.333,
+     "sample": "A privilege handler validates user permissions before executing sensitive operations. The handler checks if the requesting user has the required privilege level and returns an error if not.\n\nint check_privilege(int user_id, int required_lev"
+    },
+    "last": {
+     "best_epoch": 6,
+     "best_held": 1.5543,
+     "final_train": 1.054,
+     "target_dim_plain": 1.064,
+     "target_dim_reft": 1.376,
+     "nearest_is_target": 0.333,
+     "sample": "A privilege handler is installed to intercept system calls and verify user permissions before allowing access to protected resources. The handler checks if the requesting process has the required capability bits set in its credential struct"
+    }
+   }
+  },
+  "benign": {
+   "n_train": 12,
+   "n_held": 3,
+   "heldout_topics": [
+    "safe pointer deallocation",
+    "TOCTOU-safe file access",
+    "thread-safe shared state"
+   ],
+   "target_dim_on_corpus": 1.4841822783152263,
+   "schemes": {
+    "all": {
+     "best_epoch": 3,
+     "best_held": 1.2901,
+     "final_train": 0.7762,
+     "target_dim_plain": 2.081,
+     "target_dim_reft": 1.409,
+     "nearest_is_target": null,
+     "sample": "Before freeing a pointer, the program must verify that it is not NULL to avoid undefined behavior.\n\nif (ptr != NULL) {\n    free(ptr);\n}\n\nThis check ensures the memory is actually allocated before deallocation. The free() function then relea"
+    },
+    "last": {
+     "best_epoch": 5,
+     "best_held": 1.298,
+     "final_train": 1.028,
+     "target_dim_plain": 2.081,
+     "target_dim_reft": 1.372,
+     "nearest_is_target": null,
+     "sample": "This function safely deallocates a dynamically allocated array by first verifying the pointer is not NULL before calling free. It also checks that the pointer is aligned to a multiple of sizeof(int), ensuring the memory is valid for dealloc"
+    }
+   }
+  }
+ },
+ "peak_gb": 9.601771008,
+ "seconds": 1138.0919442176819
+}

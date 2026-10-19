@@ -1,0 +1,182 @@
+[
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "PNG image decoder",
+    "text": "An image decoder library processes PNG files from untrusted sources. After decoding a corrupted image, a temporary pixel buffer is freed. Subsequently, the decoder attempts to apply color correction to the output without checking if the buffer is still valid.\n\nvoid decode_png_and_filter(const unsigned char *data, int len) {\n    unsigned char *pixels = malloc(len);\n    memcpy(pixels, data, len);\n    free(pixels);\n    apply_color_filter(pixels, len);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "JSON parser library",
+    "text": "A JSON parsing library uses dynamic memory to store parsed key-value pairs. When a malformed JSON document is encountered, the parser deletes the temporary parse tree. However, a reference to a deleted node is later dereferenced during error reporting.\n\nstruct JsonNode { char *key; char *value; };\nvoid parse_json(const char *input) {\n    JsonNode *root = new JsonNode();\n    if (!validate_structure(input)) {\n        delete root;\n        int len = strlen(root->key);\n    }\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Network packet parser",
+    "text": "A network packet parser dynamically allocates memory for TCP payload processing. When the payload parser finishes, it frees the buffer and returns to the caller. The caller mistakenly accesses the freed payload buffer when logging the parsed fields.\n\nvoid process_tcp_segment(struct TcpPacket *pkt) {\n    unsigned char *payload = malloc(pkt->len);\n    memcpy(payload, pkt->data, pkt->len);\n    free(payload);\n    log_packet_source(payload, pkt->srcaddr);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "Font renderer",
+    "text": "A font rendering engine caches glyph data in dynamically allocated buffers. When the cache is evicted for memory pressure, the engine deletes old glyph structures. A stale pointer to a deleted glyph is subsequently used when rendering text.\n\nstruct GlyphCache { uint8_t *bitmap; int size; };\nvoid render_text(const wchar_t *str) {\n    GlyphCache *glyph = new GlyphCache();\n    cache_evict(glyph);\n    delete glyph;\n    draw_glyph_bitmap(glyph->bitmap);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Audio codec",
+    "text": "An audio decoding codec allocates temporary buffers to hold decoded samples during transcoding. After the transcoding operation completes, the buffers are freed. A subsequent operation on the audio stream tries to access the freed sample buffer.\n\nvoid transcode_audio(const char *input_file) {\n    float *samples = malloc(44100 * sizeof(float));\n    decode_samples(input_file, samples);\n    free(samples);\n    normalize_audio(samples);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "Database connection pool",
+    "text": "A database connection pool maintains a list of active connections allocated on the heap. When a connection times out, it is deleted from the pool. A background thread continues to use a cached pointer to the deleted connection object.\n\nstruct DbConnection { int fd; char *host; };\nvoid cleanup_stale_connections() {\n    DbConnection *conn = pool.get_connection();\n    pool.remove_connection(conn);\n    delete conn;\n    send_keepalive(conn->fd);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Configuration file parser",
+    "text": "A configuration file parser reads settings into dynamically allocated strings. After parsing is complete and settings are applied, the temporary strings are freed. An error handler tries to log the configuration details from the freed memory.\n\nvoid parse_config(const char *file) {\n    char *config = malloc(4096);\n    read_file(file, config, 4096);\n    free(config);\n    log_config_error(config);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "Cryptography library",
+    "text": "A cryptography library creates temporary key objects during encryption operations. Once encryption is complete, the key object is deleted to clear sensitive data. However, a callback function still holds a reference to the deleted key.\n\nclass EncryptionKey { uint8_t data[32]; };\nvoid encrypt_message(const char *msg) {\n    EncryptionKey *key = new EncryptionKey();\n    delete key;\n    register_callback(key);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Memory cache",
+    "text": "A caching layer allocates memory for frequently accessed objects. When cache entries are evicted due to size limits, the old entries are freed. A subsequent cache lookup fails to check if an entry was freed and tries to return it to the caller.\n\nvoid evict_cache_entry(CacheEntry *entry) {\n    unsigned char *data = entry->data;\n    free(data);\n    entry = NULL;\n    return_cache_value(entry);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "Protocol buffer decoder",
+    "text": "A protocol buffer decoder allocates structures to hold nested message data. When decoding terminates early due to a parse error, allocated structures are deleted. The error recovery code tries to access fields from the deleted structures.\n\nstruct ProtobufMessage { char *data; int len; };\nvoid decode_protobuf(const uint8_t *buf) {\n    ProtobufMessage *msg = new ProtobufMessage();\n    if (!parse_header(buf)) delete msg;\n    access_field(msg->data);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "XML document parser",
+    "text": "An XML parser dynamically allocates nodes for the document tree. When a parsing error occurs, the partial tree is freed to prevent memory leaks. However, the parser retains a pointer to the root node and continues traversing it.\n\nvoid parse_xml_document(const char *xml) {\n    XmlNode *root = malloc(sizeof(XmlNode));\n    if (!validate_xml(xml)) {\n        free(root);\n    }\n    traverse_tree(root);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "Text encoder",
+    "text": "A text encoding converter allocates temporary buffers to hold converted characters. After encoding is complete, the buffer is deleted. A string validation function incorrectly tries to validate the freed buffer contents.\n\nvoid encode_utf8(const wchar_t *input) {\n    char *encoded = new char[1024];\n    convert_to_utf8(input, encoded);\n    delete[] encoded;\n    validate_encoding(encoded);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Graphics rendering engine",
+    "text": "A graphics renderer allocates vertex buffers for mesh data. When a rendering context is destroyed, the buffers are freed. A cleanup thread accidentally dereferenced a cached pointer to the freed vertex buffer.\n\nvoid destroy_graphics_context() {\n    float *vertices = malloc(65536);\n    glBindBuffer(GL_ARRAY_BUFFER, vbo);\n    free(vertices);\n    upload_vertex_data(vertices);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C++",
+    "component": "HTTP request handler",
+    "text": "An HTTP server allocates request objects to handle incoming connections. When a request times out or closes, the request object is deleted. A lingering callback still references the deleted request structure.\n\nstruct HttpRequest { char *path; int fd; };\nvoid close_request(HttpRequest *req) {\n    HttpRequest *tmp = req;\n    delete req;\n    send_response(tmp->fd, 200);\n}"
+  },
+  {
+    "concept": "uaf",
+    "language": "C",
+    "component": "Data compression utility",
+    "text": "A data compression library allocates working memory during compression operations. Once compression finishes, the working buffer is freed. A finalization step incorrectly tries to read statistics from the freed working buffer.\n\nvoid compress_data(const unsigned char *input, int size) {\n    unsigned char *work = malloc(size * 2);\n    deflate(input, work, size);\n    free(work);\n    report_stats(work);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "String concatenation utility",
+    "text": "A utility function concatenates multiple strings into a single buffer for display. The buffer size is calculated based on the first string only, without accounting for subsequent strings. When multiple long strings are concatenated, the function writes past the allocated heap buffer.\n\nvoid concat_strings(const char *s1, const char *s2) {\n    char *result = malloc(strlen(s1) + 1);\n    strcpy(result, s1);\n    strcat(result, s2);\n    free(result);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "Array initialization",
+    "text": "A dynamic array class allocates storage based on an initial size parameter. When elements are added beyond the declared capacity, the class directly writes to heap memory without bounds checking. This causes a heap overflow when the array size calculation is off by one.\n\nclass DynArray {\npublic:\n    void push(int val) {\n        if (count >= capacity) return;\n        data[count++] = val;\n    }\nprivate:\n    int *data = new int[10];\n    int count = 0, capacity = 9;\n};"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Buffer copy utility",
+    "text": "A buffer copy function takes a source buffer and a length parameter from an untrusted caller. The destination buffer is allocated with a fixed size, but the length parameter is not validated. If the source is larger than the destination, memcpy writes past the heap allocation.\n\nvoid copy_buffer(const unsigned char *src, int len) {\n    unsigned char *dst = malloc(256);\n    memcpy(dst, src, len);\n    process_buffer(dst);\n    free(dst);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "Protocol message parsing",
+    "text": "A protocol parser reads a length field from incoming data and allocates a buffer of that size. The parser then copies the data without verifying the declared length matches the actual available data. An attacker can declare a large length and overflow the buffer.\n\nvoid parse_protocol_message(const uint8_t *data) {\n    uint32_t len = *(uint32_t *)data;\n    uint8_t *buf = new uint8_t[256];\n    memcpy(buf, data + 4, len);\n    process_message(buf);\n    delete[] buf;\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Struct serialization",
+    "text": "A serialization routine packs struct fields into a heap buffer. The buffer size is calculated assuming fixed-size fields, but variable-length fields are not accounted for. When serializing structs with long strings, the write overflows the heap buffer.\n\nvoid serialize_struct(struct Record *rec) {\n    char *buf = malloc(128);\n    sprintf(buf, \"%s:%d:%s\", rec->name, rec->id, rec->data);\n    send_over_network(buf);\n    free(buf);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "User input processor",
+    "text": "A user input processor allocates a buffer for command processing with a conservative initial size. User commands are read and appended to the buffer without validation. An attacker submits a command longer than the allocated size, causing a heap overflow.\n\nvoid process_user_command(const char *cmd) {\n    char *buffer = new char[64];\n    strcpy(buffer, \"CMD: \");\n    strcat(buffer, cmd);\n    execute_command(buffer);\n    delete[] buffer;\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Name buffer handler",
+    "text": "A file handler allocates a fixed-size buffer to store file or user names from inputs. The name is copied into this buffer using strcpy without bounds checking. If the input name exceeds the allocated size, the heap buffer overflows.\n\nvoid store_filename(const char *name) {\n    char *filename = malloc(32);\n    strcpy(filename, name);\n    open_file(filename);\n    free(filename);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "Dynamic array expansion",
+    "text": "A vector-like container dynamically allocates memory for elements. When expanding to accommodate new elements, the size calculation uses integer arithmetic that can overflow. An attacker triggers the overflow by adding many elements.\n\nclass Vector {\npublic:\n    void push_back(int val) {\n        if (size >= capacity) {\n            capacity = (capacity + 1) * 2;\n            int *newdata = new int[capacity];\n            memcpy(newdata, data, size * 4);\n            delete[] data;\n            data = newdata;\n        }\n        data[size++] = val;\n    }\nprivate:\n    int *data, capacity, size;\n};"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Command line argument buffer",
+    "text": "A tool processes command-line arguments by concatenating them into a single heap-allocated buffer. The buffer size is set to a fixed value without considering the actual total length of all arguments. Long argument lists overflow the heap buffer.\n\nvoid process_arguments(int argc, char *argv[]) {\n    char *cmdline = malloc(128);\n    for (int i = 1; i < argc; i++) {\n        strcat(cmdline, argv[i]);\n        strcat(cmdline, \" \");\n    }\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "File path processor",
+    "text": "A path processing utility allocates memory to construct full file paths by joining directory and file components. The allocation size is based only on the directory length. When the filename is long, the concatenation operation writes past the allocated buffer.\n\nvoid construct_path(const char *dir, const char *file) {\n    char *path = new char[strlen(dir) + 1];\n    sprintf(path, \"%s/%s\", dir, file);\n    open_resource(path);\n    delete[] path;\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Hash table bucket",
+    "text": "A hash table allocates fixed-size buckets to store key-value pairs. When a bucket is full and a new entry is inserted, the code does not check bounds and writes the new entry into the next bucket's memory. This causes a heap overflow into adjacent allocations.\n\nstruct Entry { char key[32]; char val[64]; };\nvoid insert_hash_entry(HashTable *ht, const char *k, const char *v) {\n    Entry *bucket = ht->buckets[hash(k)];\n    bucket->len++;\n    strcpy(bucket[bucket->len].key, k);\n    strcpy(bucket[bucket->len].val, v);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "Token extraction",
+    "text": "A lexer extracts tokens from source code by copying them into fixed-size heap-allocated buffers. The token buffer size is set conservatively, but long identifiers or strings are not truncated. Oversized tokens overflow the heap buffer.\n\nvoid extract_token(const char *source, int *pos) {\n    char *token = new char[32];\n    int i = 0;\n    while (source[*pos] && !is_delimiter(source[*pos])) {\n        token[i++] = source[(*pos)++];\n    }\n    token[i] = 0;\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Metadata container",
+    "text": "A metadata parser allocates a fixed buffer for key-value pairs extracted from file headers. The parser reads metadata without validating that the total size does not exceed the buffer. Crafted files with excessive metadata cause heap overflow.\n\nvoid parse_metadata(FILE *fp) {\n    char *meta = malloc(256);\n    char line[512];\n    while (fgets(line, sizeof(line), fp)) {\n        strcat(meta, line);\n    }\n    process_metadata(meta);\n}"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C++",
+    "component": "Queue element storage",
+    "text": "A message queue stores incoming messages in a dynamically allocated buffer. The queue size is calculated based on the expected message count, but the actual message size may vary. If messages are larger than anticipated, the queue overflows.\n\nstruct Queue {\n    void enqueue(const char *msg) {\n        if (writePos + strlen(msg) <= capacity) {\n            strcpy(buffer + writePos, msg);\n            writePos += strlen(msg);\n        }\n    }\n    char *buffer = new char[512];\n    int capacity = 512, writePos = 0;\n};"
+  },
+  {
+    "concept": "heap_overflow",
+    "language": "C",
+    "component": "Record buffer",
+    "text": "A database record handler allocates a buffer to hold serialized record data. The buffer size is based on a schema assumption that does not account for maximum field lengths. When records with longer field values are processed, the buffer overflows during serialization.\n\nvoid serialize_record(struct DbRecord *rec) {\n    char *buf = malloc(256);\n    sprintf(buf, \"%d|%s|%s|%s\", rec->id, rec->name, rec->email, rec->notes);\n    write_to_log(buf);\n    free(buf);\n}"
+  }
+]

@@ -1,0 +1,268 @@
+{
+ "ios_voucher": {
+  "primary": "uaf",
+  "secondary": "race_condition",
+  "confidence": "high",
+  "pct_background": 40,
+  "pct_triage": 45,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "Missing locks in user_data_get_value() allow racing e_made increment, enabling a double-race to free and reuse a user_data_element_t",
+  "evidence": [
+   "the vulnerability allows us to race the `e_made` increment",
+   "This breaks the synchronization and our hopes of having an `user_data_element_t` used after free",
+   "by looking at the code, it is not really obvious how this can be leveraged to reach a potential Use-After-Free situation"
+  ]
+ },
+ "cve_2022_0185": {
+  "primary": "integer_overflow",
+  "secondary": "heap_overflow",
+  "confidence": "high",
+  "pct_background": 15,
+  "pct_triage": 70,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "Integer underflow in legacy_parse_param's bound check when size >= 4095 causes infinite heap overflow",
+  "evidence": [
+   "if your size is 4095 bytes or greater, an integer underflow will occur as `size` in this case is an unsigned int",
+   "if (len > PAGE_SIZE - 2 - size) return invalf(fc, \"VFS: Legacy: Cumulative options too large\");",
+   "Hence, trigger the underflow there and you will get infinite heap overflow"
+  ]
+ },
+ "regresshion": {
+  "primary": "race_condition",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 20,
+  "pct_triage": 65,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "Signal handler race condition where SIGALRM handler asynchronously invokes non-async-signal-safe functions (malloc, free, syslog) allowing state corruption and code execution.",
+  "evidence": [
+   "if a client does not authenticate within LoginGraceTime seconds (120 by default, 600 in old OpenSSH versions), then sshd's SIGALRM handler is called asynchronously, but this signal handler calls various functions that are not async-signal-safe (for example, syslog()).",
+   "The SIGALRM handler of this OpenSSH version calls packet_close(), which calls buffer_free(), which calls xfree() and hence free(), which is not async-signal-safe",
+   "This regression was introduced in October 2020 (OpenSSH 8.5p1) by commit 752250c (revised log infrastructure for OpenSSH), which accidentally removed an #ifdef DO_LOG_SAFE_IN_SIGHAND from sigdie(), a function that is directly called by sshd's SIGALRM handler."
+  ]
+ },
+ "exiftool": {
+  "primary": "command_injection",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 20,
+  "pct_triage": 70,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Regex escape validation failure where backslash-newline before quote is incorrectly matched as escaped, allowing attacker-controlled quotes to break out of eval string context and execute arbitrary Perl code.",
+  "evidence": [
+   "The second quote was not escaped because in the regex $tok =~ /(\\\\+)$/ the $ will match the end of a string, but also match before a newline at the end of a string, so the code thinks that the quote is being escaped when it's escaping the newline.",
+   "There was then some regex to escape special characters before passing it quoted to qq and then finally passing the result to eval.",
+   "This was pretty exciting as all that was needed was to make it valid Perl and it would be evaled!"
+  ]
+ },
+ "shiftfs": {
+  "primary": "uaf",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 30,
+  "pct_triage": 50,
+  "pct_mechanism": 20,
+  "root_cause_one_line": "Double free of btrfs_ioctl_vol_args structure caused by incorrect error handling that checks if copy_to_user returned negative instead of checking for fault conditions.",
+  "evidence": [
+   "If a fault happens during the copy, a positive value is returned. In the calling function `shiftfs_real_ioctl`, an error is detected by checking if the return value is negative. So even when an error occurs, the nominal path is executed leading to call `shiftfs_btrfs_ioctl_fd_restore` a second time.",
+   "Calling twice `shiftfs_btrfs_ioctl_fd_restore` leads to: 1. Closing two times the same fd 2. Freeing two times the same structure",
+   "The function `copy_to_user` returns **the number of remaining bytes**."
+  ]
+ },
+ "dirtycow": {
+  "primary": "race_condition",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 45,
+  "pct_triage": 40,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "Kernel removes write semantics (FOLL_WRITE) from access flags after copy-on-write, creating a race where the COW page can be dropped and replaced with the original file's page, allowing unprivileged writes to privileged files.",
+  "evidence": [
+   "After detecting a Copy On Write has happened (`ret & VM_FAULT_WRITE == true`), it then decides to **remove** `FOLL_WRITE` from the `foll_flags`!",
+   "By removing the write semantics from the `foll_flags`, `follow_page_mask` in the next retry will treat the access as read-only despite the goal is to write to it.",
+   "The kernel has handed us the key to the privileged castle. With this page in hand, the commoner non-root program is now capable of modifying the root file!"
+  ]
+ },
+ "ios_machmsg": {
+  "primary": "uninit_memory",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 25,
+  "pct_triage": 50,
+  "pct_mechanism": 25,
+  "root_cause_one_line": "REQUESTED_TRAILER_SIZE macro returns maximum trailer size for undefined option values, allowing reads of uninitialized fields in the mach_msg trailer structure.",
+  "evidence": [
+   "This means that by setting a non-existent option lower than _MACH_RCV_TRAILER_AV_ , we can skip the _msgh_ad_ field initialization, while still recovering the biggest possible trailer.",
+   "This bug is made possible by the fact that values 5 and 6 are not valid _MACH_RCV_TRAILER_XXX_ definitions!",
+   "In _ipc_kmsg_get()_ , we saw that only _msgh_sender_ , _msgh_audit_ and _msgh_labels_ optional fields were initialized, leaving 3 fields uninitialized."
+  ]
+ },
+ "ghostscript_28879": {
+  "primary": "heap_overflow",
+  "secondary": "integer_overflow",
+  "confidence": "high",
+  "pct_background": 25,
+  "pct_triage": 45,
+  "pct_mechanism": 30,
+  "root_cause_one_line": "Buffer write pointer exceeds limit due to insufficient bounds checking in BCPEncode filter escape character handling, enabling heap corruption via integer underflow",
+  "evidence": [
+   "Even if the end pointer is correctly decremented, the check p < end happen too late, as q is already greater than pw->limit when the loop exits.",
+   "It seems that, after the s_xBCPE_process function the pw->ptr is updated to a value greater than pw->limit, causing the (uint) (pw->limit - pw->ptr) operation to overflow.",
+   "By chaining two filters to write to a big string and giving an input larger than 2048, it is possible to corrupt the pw->ptr to be greater than pw->limit."
+  ]
+ },
+ "dirtypipe": {
+  "primary": "uninit_memory",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 30,
+  "pct_triage": 50,
+  "pct_mechanism": 20,
+  "root_cause_one_line": "Uninitialized PIPE_BUF_FLAG_CAN_MERGE flag in pipe_buffer allows merging with page cache pages, enabling writes to read-only file cache without permissions",
+  "evidence": [
+   "Several years before PIPE_BUF_FLAG_CAN_MERGE was born, commit 241699cd72a8 added two new functions which allocate a new struct pipe_buffer, but initialization of its flags member was missing.",
+   "By injecting PIPE_BUF_FLAG_CAN_MERGE into a page cache reference, it became possible to overwrite data in the page cache, simply by writing new data into the pipe prepared in a special way.",
+   "the write() call that writes the central directory file header will be written to the page cache of the last compressed file."
+  ]
+ },
+ "netfilter_22555": {
+  "primary": "heap_overflow",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 15,
+  "pct_triage": 75,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Memset called with unaccounted offset target->targetsize, writing beyond allocated buffer boundary in xt_compat_target_from_user",
+  "evidence": [
+   "Our vulnerability is in xt_compat_target_from_user() where memset() is called with an offset target->targetsize that is not accounted for during the allocation - leading to a few bytes written out-of-bounds:",
+   "The bigger targetsize is, the more we can vary in the offset.",
+   "we have to find victims which are allocated between kmalloc-512 and kmalloc-8192 to exploit."
+  ]
+ },
+ "looney_tunables": {
+  "primary": "heap_overflow",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 35,
+  "pct_triage": 55,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Buffer overflow in parse_tunables() when processing GLIBC_TUNABLES with nested equal signs causes second iteration to overflow fixed-size buffer.",
+  "evidence": [
+   "if a GLIBC_TUNABLES environment variable is of the form \"tunable1=tunable2=AAA\" (where \"tunable1\" and \"tunable2\" are SXID_IGNORE tunables, for example \"glibc.malloc.mxfast\"), then:",
+   "during the second iteration of the \"while (true)\" in parse_tunables(), \"tunable2=AAA\" is appended (as if it were a second tunable) to tunestr (which is already full), thus overflowing tunestr.",
+   "the buffer overflow in parse_tunables() allows us to overwrite clean mmap()ed memory with non-zero bytes, thereby overwriting pointers of the soon-to-be-allocated link_map structure with non-NULL values."
+  ]
+ },
+ "sequoia": {
+  "primary": "integer_overflow",
+  "secondary": "oob_access",
+  "confidence": "high",
+  "pct_background": 25,
+  "pct_triage": 65,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Size_t-to-int conversion in filesystem layer causes buflen to become negative (INT_MIN), enabling -2GB out-of-bounds write via prepend().",
+  "evidence": [
+   "in dentry_path(), the int buflen is therefore negative (INT_MIN, -2GB), p points to an offset of -2GB below the vmalloc()ated buffer (line 386), and prepend() is called (line 387).",
+   "in prepend(), *buflen is decreased by 10 bytes and becomes a large but positive int (line 13), *buffer is decreased by 10 bytes and points to an offset of -2GB-10B below the vmalloc()ated buffer (line 16), and the 10-byte string \"//deleted\" is written out of bounds (line 17).",
+   "Unfortunately, this size_t is also passed to functions whose size argument is an int (a signed 32-bit integer), not a size_t."
+  ]
+ },
+ "vsstandard": {
+  "primary": "other",
+  "secondary": "auth_bypass",
+  "confidence": "high",
+  "pct_background": 30,
+  "pct_triage": 55,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "VSStandardCollectorService fails to check for junction points when calling SetNamedSecurityInfoW, allowing attacker to redirect DACL modification to arbitrary files.",
+  "evidence": [
+   "if we can find a way to turn this directory in to a junction point we can redirect _SetNamedSecurityInfoW_ to an arbitrary file.",
+   "the service when through our junction point as the result of `CreateFile` api call is `_REPARSE_` and we confirmed that we can redirect it to any file on the system.",
+   "if we see the blue marked line in procmon we can see that service when through our junction point as the result of `CreateFile` api call is `_REPARSE_` and we confirmed that we can redirect it to any file on the system."
+  ]
+ },
+ "smbghost": {
+  "primary": "integer_overflow",
+  "secondary": "heap_overflow",
+  "confidence": "high",
+  "pct_background": 32,
+  "pct_triage": 63,
+  "pct_mechanism": 5,
+  "root_cause_one_line": "Integer overflow in SMBv3.1.1 decompression routine allows attacker to control buffer allocation size and cause subsequent heap buffer overflow.",
+  "evidence": [
+   "Considering that both compressHeader.originalCompressedSegSize and compressHeader.offsetOrLength can be controlled by an attacker, the vulnerability is obvious.",
+   "Additionally, we can immediately see a subsequent buffer overflow at (B) if we set compressHeader.originalCompressedSegSize to a very large number (e.g. 0xffffffff).",
+   "We can overwrite SRVNET_BUFFER_HDR with the buffer overflow at (B)."
+  ]
+ },
+ "shellshock": {
+  "primary": "uninit_memory",
+  "secondary": "command_injection",
+  "confidence": "high",
+  "pct_background": 30,
+  "pct_triage": 60,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Uninitialized here_doc_eof field in REDIR struct treated as valid pointer, allowing attacker-controlled dereference and out-of-bounds write.",
+  "evidence": [
+   "This proved to be a very straightforward use of uninitialized memory: it hit a code path in make_redirect() where one field in a newly-allocated REDIR struct - here_doc_eof - would not be set to any specific value, yet would be treated as a valid pointer later on",
+   "the actual fault happens because of an attempt to copy here_doc_eof to a newly-allocated buffer using a C macro that expands to the following code: strcpy(xmalloc(1 + strlen( redirect->here_doc_eof )), ( redirect->here_doc_eof ))",
+   "if here_doc_eof is chosen by the attacker to point in the vicinity of the current stack pointer, the apparent contents of the string - and therefore its length - may change between stack-based calls to xmalloc() and strcpy()"
+  ]
+ },
+ "confluence_ognl": {
+  "primary": "command_injection",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 35,
+  "pct_triage": 35,
+  "pct_mechanism": 30,
+  "root_cause_one_line": "Velocity template evaluates user-supplied queryString parameter as OGNL expressions, allowing arbitrary Java reflection and command execution via unicode escape injection.",
+  "evidence": [
+   "Attributes of #tag components within Velocity template are evaluated as OGNL Expressions to convert the template into HTML.",
+   "After this line is executed our unicode escapes in our input gets decoded and expression gets parsed again.",
+   "We googled a bit and found this from Orange himself that we could also access `class` property using Array accessors instead of `getClass` method or `.class` property."
+  ]
+ },
+ "pwnkit": {
+  "primary": "oob_access",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 25,
+  "pct_triage": 60,
+  "pct_mechanism": 15,
+  "root_cause_one_line": "pkexec reads and writes out-of-bounds from/to argv[] when argc is 0, actually accessing envp[] and allowing reintroduction of unsecure environment variables.",
+  "evidence": [
+   "Unfortunately, if the number of command-line arguments argc is 0, which means if the argument list argv that we pass to execve() is empty (i.e. {NULL}), then argv[0] is NULL.",
+   "Clearly, because the argv and envp pointers are contiguous in memory, if argc is 0, then the out-of-bounds argv[1] is actually envp[0], the pointer to our first environment variable.",
+   "this out-of-bounds write allows us to re-introduce an \"unsecure\" environment variable (for example, LD_PRELOAD) into pkexec's environment."
+  ]
+ },
+ "win32k_1732": {
+  "primary": "oob_access",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 30,
+  "pct_triage": 60,
+  "pct_mechanism": 10,
+  "root_cause_one_line": "Flag indicating WndExtra is an offset gets out of sync with actual value after callback returns, causing unchecked offset used directly for kernel heap addressing.",
+  "evidence": [
+   "The callback causes the setting of tagWND.WndExtra and its corresponding flag to be out of sync.",
+   "When the callback ends and return to kernel mode, the return value will overwrite the tagWND.WndExtra, but the corresponding flag is not cleared.",
+   "the unchecked offset value is directly used by kernel code for heap memory addressing, causing out-of-bounds access."
+  ]
+ },
+ "nftables": {
+  "primary": "uaf",
+  "secondary": null,
+  "confidence": "high",
+  "pct_background": 35,
+  "pct_triage": 60,
+  "pct_mechanism": 5,
+  "root_cause_one_line": "Input sanitization failure in nft_verdict_init() allows positive drop error values that overlap as NF_ACCEPT, causing nf_hook_slow() to free an skb on NF_DROP then return NF_ACCEPT, leading to double-free when the caller continues packet processing.",
+  "evidence": [
+   "The important details of the dataflow analysis are that when creating a verdict object for a netfilter hook, the kernel allowed positive drop errors.",
+   "This means an attacking user could cause the scenario below, where nf_hook_slow() would free an skb object when NF_DROP is returned from a hook/rule, and then return NF_ACCEPT as if every hook/rule in the chain returned NF_ACCEPT.",
+   "This causes the caller of nf_hook_slow() to misinterpret the situation, and continue parsing the packet and eventually double-free it."
+  ]
+ }
+}

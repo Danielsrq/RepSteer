@@ -1,0 +1,1419 @@
+{
+ "model": "Qwen/Qwen3.5-4B",
+ "concepts": [
+  "uaf",
+  "heap_overflow",
+  "stack_overflow",
+  "integer_overflow",
+  "race_condition",
+  "oob_access",
+  "command_injection",
+  "path_traversal",
+  "auth_bypass",
+  "priv_esc",
+  "benign",
+  "neutral"
+ ],
+ "rows": [
+  {
+   "id": 0,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "PNG image decoder",
+   "language": "C",
+   "text": "An image decoder library processes PNG files from untrusted sources. After decoding a corrupted image, a temporary pixel buffer is freed. Subsequently, the decoder attempts to apply color correction to the output without checking if the buffer is still valid.\n\nvoid decode_png_and_filter(const unsigned char *data, int len) {\n    unsigned char *pixels = malloc(len);\n    memcpy(pixels, data, len);\n    free(pixels);\n    apply_color_filter(pixels, len);\n}"
+  },
+  {
+   "id": 1,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "JSON parser library",
+   "language": "C++",
+   "text": "A JSON parsing library uses dynamic memory to store parsed key-value pairs. When a malformed JSON document is encountered, the parser deletes the temporary parse tree. However, a reference to a deleted node is later dereferenced during error reporting.\n\nstruct JsonNode { char *key; char *value; };\nvoid parse_json(const char *input) {\n    JsonNode *root = new JsonNode();\n    if (!validate_structure(input)) {\n        delete root;\n        int len = strlen(root->key);\n    }\n}"
+  },
+  {
+   "id": 2,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Network packet parser",
+   "language": "C",
+   "text": "A network packet parser dynamically allocates memory for TCP payload processing. When the payload parser finishes, it frees the buffer and returns to the caller. The caller mistakenly accesses the freed payload buffer when logging the parsed fields.\n\nvoid process_tcp_segment(struct TcpPacket *pkt) {\n    unsigned char *payload = malloc(pkt->len);\n    memcpy(payload, pkt->data, pkt->len);\n    free(payload);\n    log_packet_source(payload, pkt->srcaddr);\n}"
+  },
+  {
+   "id": 3,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Font renderer",
+   "language": "C++",
+   "text": "A font rendering engine caches glyph data in dynamically allocated buffers. When the cache is evicted for memory pressure, the engine deletes old glyph structures. A stale pointer to a deleted glyph is subsequently used when rendering text.\n\nstruct GlyphCache { uint8_t *bitmap; int size; };\nvoid render_text(const wchar_t *str) {\n    GlyphCache *glyph = new GlyphCache();\n    cache_evict(glyph);\n    delete glyph;\n    draw_glyph_bitmap(glyph->bitmap);\n}"
+  },
+  {
+   "id": 4,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Audio codec",
+   "language": "C",
+   "text": "An audio decoding codec allocates temporary buffers to hold decoded samples during transcoding. After the transcoding operation completes, the buffers are freed. A subsequent operation on the audio stream tries to access the freed sample buffer.\n\nvoid transcode_audio(const char *input_file) {\n    float *samples = malloc(44100 * sizeof(float));\n    decode_samples(input_file, samples);\n    free(samples);\n    normalize_audio(samples);\n}"
+  },
+  {
+   "id": 5,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Database connection pool",
+   "language": "C++",
+   "text": "A database connection pool maintains a list of active connections allocated on the heap. When a connection times out, it is deleted from the pool. A background thread continues to use a cached pointer to the deleted connection object.\n\nstruct DbConnection { int fd; char *host; };\nvoid cleanup_stale_connections() {\n    DbConnection *conn = pool.get_connection();\n    pool.remove_connection(conn);\n    delete conn;\n    send_keepalive(conn->fd);\n}"
+  },
+  {
+   "id": 6,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Configuration file parser",
+   "language": "C",
+   "text": "A configuration file parser reads settings into dynamically allocated strings. After parsing is complete and settings are applied, the temporary strings are freed. An error handler tries to log the configuration details from the freed memory.\n\nvoid parse_config(const char *file) {\n    char *config = malloc(4096);\n    read_file(file, config, 4096);\n    free(config);\n    log_config_error(config);\n}"
+  },
+  {
+   "id": 7,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Cryptography library",
+   "language": "C++",
+   "text": "A cryptography library creates temporary key objects during encryption operations. Once encryption is complete, the key object is deleted to clear sensitive data. However, a callback function still holds a reference to the deleted key.\n\nclass EncryptionKey { uint8_t data[32]; };\nvoid encrypt_message(const char *msg) {\n    EncryptionKey *key = new EncryptionKey();\n    delete key;\n    register_callback(key);\n}"
+  },
+  {
+   "id": 8,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Memory cache",
+   "language": "C",
+   "text": "A caching layer allocates memory for frequently accessed objects. When cache entries are evicted due to size limits, the old entries are freed. A subsequent cache lookup fails to check if an entry was freed and tries to return it to the caller.\n\nvoid evict_cache_entry(CacheEntry *entry) {\n    unsigned char *data = entry->data;\n    free(data);\n    entry = NULL;\n    return_cache_value(entry);\n}"
+  },
+  {
+   "id": 9,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Protocol buffer decoder",
+   "language": "C++",
+   "text": "A protocol buffer decoder allocates structures to hold nested message data. When decoding terminates early due to a parse error, allocated structures are deleted. The error recovery code tries to access fields from the deleted structures.\n\nstruct ProtobufMessage { char *data; int len; };\nvoid decode_protobuf(const uint8_t *buf) {\n    ProtobufMessage *msg = new ProtobufMessage();\n    if (!parse_header(buf)) delete msg;\n    access_field(msg->data);\n}"
+  },
+  {
+   "id": 10,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "XML document parser",
+   "language": "C",
+   "text": "An XML parser dynamically allocates nodes for the document tree. When a parsing error occurs, the partial tree is freed to prevent memory leaks. However, the parser retains a pointer to the root node and continues traversing it.\n\nvoid parse_xml_document(const char *xml) {\n    XmlNode *root = malloc(sizeof(XmlNode));\n    if (!validate_xml(xml)) {\n        free(root);\n    }\n    traverse_tree(root);\n}"
+  },
+  {
+   "id": 11,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Text encoder",
+   "language": "C++",
+   "text": "A text encoding converter allocates temporary buffers to hold converted characters. After encoding is complete, the buffer is deleted. A string validation function incorrectly tries to validate the freed buffer contents.\n\nvoid encode_utf8(const wchar_t *input) {\n    char *encoded = new char[1024];\n    convert_to_utf8(input, encoded);\n    delete[] encoded;\n    validate_encoding(encoded);\n}"
+  },
+  {
+   "id": 12,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Graphics rendering engine",
+   "language": "C",
+   "text": "A graphics renderer allocates vertex buffers for mesh data. When a rendering context is destroyed, the buffers are freed. A cleanup thread accidentally dereferenced a cached pointer to the freed vertex buffer.\n\nvoid destroy_graphics_context() {\n    float *vertices = malloc(65536);\n    glBindBuffer(GL_ARRAY_BUFFER, vbo);\n    free(vertices);\n    upload_vertex_data(vertices);\n}"
+  },
+  {
+   "id": 13,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "HTTP request handler",
+   "language": "C++",
+   "text": "An HTTP server allocates request objects to handle incoming connections. When a request times out or closes, the request object is deleted. A lingering callback still references the deleted request structure.\n\nstruct HttpRequest { char *path; int fd; };\nvoid close_request(HttpRequest *req) {\n    HttpRequest *tmp = req;\n    delete req;\n    send_response(tmp->fd, 200);\n}"
+  },
+  {
+   "id": 14,
+   "concept": "uaf",
+   "concept_idx": 0,
+   "topic": "Data compression utility",
+   "language": "C",
+   "text": "A data compression library allocates working memory during compression operations. Once compression finishes, the working buffer is freed. A finalization step incorrectly tries to read statistics from the freed working buffer.\n\nvoid compress_data(const unsigned char *input, int size) {\n    unsigned char *work = malloc(size * 2);\n    deflate(input, work, size);\n    free(work);\n    report_stats(work);\n}"
+  },
+  {
+   "id": 15,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "String concatenation utility",
+   "language": "C",
+   "text": "A utility function concatenates multiple strings into a single buffer for display. The buffer size is calculated based on the first string only, without accounting for subsequent strings. When multiple long strings are concatenated, the function writes past the allocated heap buffer.\n\nvoid concat_strings(const char *s1, const char *s2) {\n    char *result = malloc(strlen(s1) + 1);\n    strcpy(result, s1);\n    strcat(result, s2);\n    free(result);\n}"
+  },
+  {
+   "id": 16,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Array initialization",
+   "language": "C++",
+   "text": "A dynamic array class allocates storage based on an initial size parameter. When elements are added beyond the declared capacity, the class directly writes to heap memory without bounds checking. This causes a heap overflow when the array size calculation is off by one.\n\nclass DynArray {\npublic:\n    void push(int val) {\n        if (count >= capacity) return;\n        data[count++] = val;\n    }\nprivate:\n    int *data = new int[10];\n    int count = 0, capacity = 9;\n};"
+  },
+  {
+   "id": 17,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Buffer copy utility",
+   "language": "C",
+   "text": "A buffer copy function takes a source buffer and a length parameter from an untrusted caller. The destination buffer is allocated with a fixed size, but the length parameter is not validated. If the source is larger than the destination, memcpy writes past the heap allocation.\n\nvoid copy_buffer(const unsigned char *src, int len) {\n    unsigned char *dst = malloc(256);\n    memcpy(dst, src, len);\n    process_buffer(dst);\n    free(dst);\n}"
+  },
+  {
+   "id": 18,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Protocol message parsing",
+   "language": "C++",
+   "text": "A protocol parser reads a length field from incoming data and allocates a buffer of that size. The parser then copies the data without verifying the declared length matches the actual available data. An attacker can declare a large length and overflow the buffer.\n\nvoid parse_protocol_message(const uint8_t *data) {\n    uint32_t len = *(uint32_t *)data;\n    uint8_t *buf = new uint8_t[256];\n    memcpy(buf, data + 4, len);\n    process_message(buf);\n    delete[] buf;\n}"
+  },
+  {
+   "id": 19,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Struct serialization",
+   "language": "C",
+   "text": "A serialization routine packs struct fields into a heap buffer. The buffer size is calculated assuming fixed-size fields, but variable-length fields are not accounted for. When serializing structs with long strings, the write overflows the heap buffer.\n\nvoid serialize_struct(struct Record *rec) {\n    char *buf = malloc(128);\n    sprintf(buf, \"%s:%d:%s\", rec->name, rec->id, rec->data);\n    send_over_network(buf);\n    free(buf);\n}"
+  },
+  {
+   "id": 20,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "User input processor",
+   "language": "C++",
+   "text": "A user input processor allocates a buffer for command processing with a conservative initial size. User commands are read and appended to the buffer without validation. An attacker submits a command longer than the allocated size, causing a heap overflow.\n\nvoid process_user_command(const char *cmd) {\n    char *buffer = new char[64];\n    strcpy(buffer, \"CMD: \");\n    strcat(buffer, cmd);\n    execute_command(buffer);\n    delete[] buffer;\n}"
+  },
+  {
+   "id": 21,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Name buffer handler",
+   "language": "C",
+   "text": "A file handler allocates a fixed-size buffer to store file or user names from inputs. The name is copied into this buffer using strcpy without bounds checking. If the input name exceeds the allocated size, the heap buffer overflows.\n\nvoid store_filename(const char *name) {\n    char *filename = malloc(32);\n    strcpy(filename, name);\n    open_file(filename);\n    free(filename);\n}"
+  },
+  {
+   "id": 22,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Dynamic array expansion",
+   "language": "C++",
+   "text": "A vector-like container dynamically allocates memory for elements. When expanding to accommodate new elements, the size calculation uses integer arithmetic that can overflow. An attacker triggers the overflow by adding many elements.\n\nclass Vector {\npublic:\n    void push_back(int val) {\n        if (size >= capacity) {\n            capacity = (capacity + 1) * 2;\n            int *newdata = new int[capacity];\n            memcpy(newdata, data, size * 4);\n            delete[] data;\n            data = newdata;\n        }\n        data[size++] = val;\n    }\nprivate:\n    int *data, capacity, size;\n};"
+  },
+  {
+   "id": 23,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Command line argument buffer",
+   "language": "C",
+   "text": "A tool processes command-line arguments by concatenating them into a single heap-allocated buffer. The buffer size is set to a fixed value without considering the actual total length of all arguments. Long argument lists overflow the heap buffer.\n\nvoid process_arguments(int argc, char *argv[]) {\n    char *cmdline = malloc(128);\n    for (int i = 1; i < argc; i++) {\n        strcat(cmdline, argv[i]);\n        strcat(cmdline, \" \");\n    }\n}"
+  },
+  {
+   "id": 24,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "File path processor",
+   "language": "C++",
+   "text": "A path processing utility allocates memory to construct full file paths by joining directory and file components. The allocation size is based only on the directory length. When the filename is long, the concatenation operation writes past the allocated buffer.\n\nvoid construct_path(const char *dir, const char *file) {\n    char *path = new char[strlen(dir) + 1];\n    sprintf(path, \"%s/%s\", dir, file);\n    open_resource(path);\n    delete[] path;\n}"
+  },
+  {
+   "id": 25,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Hash table bucket",
+   "language": "C",
+   "text": "A hash table allocates fixed-size buckets to store key-value pairs. When a bucket is full and a new entry is inserted, the code does not check bounds and writes the new entry into the next bucket's memory. This causes a heap overflow into adjacent allocations.\n\nstruct Entry { char key[32]; char val[64]; };\nvoid insert_hash_entry(HashTable *ht, const char *k, const char *v) {\n    Entry *bucket = ht->buckets[hash(k)];\n    bucket->len++;\n    strcpy(bucket[bucket->len].key, k);\n    strcpy(bucket[bucket->len].val, v);\n}"
+  },
+  {
+   "id": 26,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Token extraction",
+   "language": "C++",
+   "text": "A lexer extracts tokens from source code by copying them into fixed-size heap-allocated buffers. The token buffer size is set conservatively, but long identifiers or strings are not truncated. Oversized tokens overflow the heap buffer.\n\nvoid extract_token(const char *source, int *pos) {\n    char *token = new char[32];\n    int i = 0;\n    while (source[*pos] && !is_delimiter(source[*pos])) {\n        token[i++] = source[(*pos)++];\n    }\n    token[i] = 0;\n}"
+  },
+  {
+   "id": 27,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Metadata container",
+   "language": "C",
+   "text": "A metadata parser allocates a fixed buffer for key-value pairs extracted from file headers. The parser reads metadata without validating that the total size does not exceed the buffer. Crafted files with excessive metadata cause heap overflow.\n\nvoid parse_metadata(FILE *fp) {\n    char *meta = malloc(256);\n    char line[512];\n    while (fgets(line, sizeof(line), fp)) {\n        strcat(meta, line);\n    }\n    process_metadata(meta);\n}"
+  },
+  {
+   "id": 28,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Queue element storage",
+   "language": "C++",
+   "text": "A message queue stores incoming messages in a dynamically allocated buffer. The queue size is calculated based on the expected message count, but the actual message size may vary. If messages are larger than anticipated, the queue overflows.\n\nstruct Queue {\n    void enqueue(const char *msg) {\n        if (writePos + strlen(msg) <= capacity) {\n            strcpy(buffer + writePos, msg);\n            writePos += strlen(msg);\n        }\n    }\n    char *buffer = new char[512];\n    int capacity = 512, writePos = 0;\n};"
+  },
+  {
+   "id": 29,
+   "concept": "heap_overflow",
+   "concept_idx": 1,
+   "topic": "Record buffer",
+   "language": "C",
+   "text": "A database record handler allocates a buffer to hold serialized record data. The buffer size is based on a schema assumption that does not account for maximum field lengths. When records with longer field values are processed, the buffer overflows during serialization.\n\nvoid serialize_record(struct DbRecord *rec) {\n    char *buf = malloc(256);\n    sprintf(buf, \"%d|%s|%s|%s\", rec->id, rec->name, rec->email, rec->notes);\n    write_to_log(buf);\n    free(buf);\n}"
+  },
+  {
+   "id": 30,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "network protocol handler",
+   "language": "C",
+   "text": "A network protocol handler processes incoming messages without bounds checking. The handler copies client-supplied data directly into a fixed-size local buffer using strcpy. An attacker sends an oversized message that overflows the stack buffer and corrupts the return address.\n\nvoid process_message(const char *data) {\n  char buffer[256];\n  strcpy(buffer, data);\n  printf(\"Message: %s\\n\", buffer);\n}\n\nint main() {\n  const char *untrusted = \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...\";\n  process_message(untrusted);\n  return 0;\n}"
+  },
+  {
+   "id": 31,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "image file parser",
+   "language": "C++",
+   "text": "An image parser reads metadata headers and stores image dimensions in a stack-allocated structure. When parsing a specially crafted image file, the parser uses an unbounded memcpy to read pixel data into a fixed local array, overflowing the stack.\n\nvoid parse_image_data(const uint8_t *file_data, size_t file_size) {\n  uint8_t pixels[512];\n  uint32_t header_size = *(uint32_t*)file_data;\n  memcpy(pixels, file_data + 4, file_size - 4);\n  process_pixels(pixels, header_size);\n}\n\nint main() {\n  uint8_t data[2000];\n  parse_image_data(data, sizeof(data));\n  return 0;\n}"
+  },
+  {
+   "id": 32,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "command-line argument parser",
+   "language": "C",
+   "text": "A utility program processes command-line arguments by copying them into a fixed stack buffer. The buffer size is hardcoded without validation. A user provides an argument longer than the buffer, causing a stack overflow.\n\nvoid parse_argument(const char *arg) {\n  char cmd_buffer[128];\n  sprintf(cmd_buffer, \"exec: %s\", arg);\n  execute_command(cmd_buffer);\n}\n\nint main(int argc, char **argv) {\n  for (int i = 1; i < argc; i++) {\n    parse_argument(argv[i]);\n  }\n  return 0;\n}"
+  },
+  {
+   "id": 33,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "text compression routine",
+   "language": "C++",
+   "text": "A compression module decompresses data by reading length prefixes and copying uncompressed blocks into a local buffer. The length prefix is not validated, allowing an attacker to specify a size larger than the buffer, causing overflow.\n\nvoid decompress_block(const char *compressed, size_t comp_len) {\n  char output[256];\n  uint16_t uncompressed_len = *(uint16_t*)compressed;\n  memcpy(output, compressed + 2, uncompressed_len);\n  write_output(output, uncompressed_len);\n}\n\nint main() {\n  char data[1000];\n  decompress_block(data, sizeof(data));\n  return 0;\n}"
+  },
+  {
+   "id": 34,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "configuration file parser",
+   "language": "C",
+   "text": "A configuration parser reads key-value pairs from a file into fixed-size buffers on the stack. When a configuration entry has an unusually long value, it overflows the key or value buffer without checking bounds.\n\nvoid load_config_entry(const char *line) {\n  char key[64], value[128];\n  sscanf(line, \"%s = %s\", key, value);\n  apply_config(key, value);\n}\n\nint main() {\n  FILE *f = fopen(\"config.txt\", \"r\");\n  char line[256];\n  while (fgets(line, sizeof(line), f)) {\n    load_config_entry(line);\n  }\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+   "id": 35,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "HTTP request handler",
+   "language": "C",
+   "text": "An HTTP server processes incoming requests by extracting the URL path into a fixed local array using strncpy with an off-by-one error. The path is not null-terminated correctly, and subsequent operations overflow the buffer.\n\nvoid handle_http_request(const char *request) {\n  char path[256];\n  const char *start = strchr(request, ' ') + 1;\n  const char *end = strchr(start, ' ');\n  memcpy(path, start, end - start);\n  route_request(path);\n}\n\nint main() {\n  const char *req = \"GET /path/to/resource HTTP/1.1\";\n  handle_http_request(req);\n  return 0;\n}"
+  },
+  {
+   "id": 36,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "logging subsystem",
+   "language": "C++",
+   "text": "A logging function formats messages into a fixed stack buffer and writes them to disk. User-supplied event data is incorporated without length checking. Long event descriptions overflow the stack buffer before it can be safely written.\n\nvoid log_event(const char *event_type, const char *details) {\n  char log_msg[512];\n  sprintf(log_msg, \"[%s] Event: %s Details: %s\", current_time(), event_type, details);\n  write_log(log_msg);\n}\n\nint main() {\n  const char *input = \"USER_ACTION ...\";\n  log_event(\"action\", input);\n  return 0;\n}"
+  },
+  {
+   "id": 37,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "firmware update parser",
+   "language": "C",
+   "text": "A firmware parser reads version strings from an update manifest into a fixed-length stack buffer. The parser uses gets() to read the version field, which does not check buffer bounds, allowing overflow.\n\nvoid parse_version_info(FILE *manifest) {\n  char version[64];\n  fscanf(manifest, \"VERSION=\");\n  gets(version);\n  validate_version(version);\n}\n\nint main() {\n  FILE *f = fopen(\"manifest.txt\", \"r\");\n  parse_version_info(f);\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+   "id": 38,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "JSON parser",
+   "language": "C++",
+   "text": "A lightweight JSON parser processes string values by copying them into fixed-size stack buffers. When parsing a JSON field with a very long string value, the parser copies the entire string without bounds checking.\n\nvoid parse_json_string(const char *json_start, size_t json_len) {\n  char value[256];\n  const char *val_start = strchr(json_start, '\"') + 1;\n  const char *val_end = strchr(val_start, '\"');\n  strncpy(value, val_start, val_end - val_start);\n  process_value(value);\n}\n\nint main() {\n  parse_json_string(\"{\\\"key\\\": \\\"verylongvalue\\\"}\", 100);\n  return 0;\n}"
+  },
+  {
+   "id": 39,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "terminal emulator",
+   "language": "C",
+   "text": "A terminal emulator decodes escape sequences by extracting parameters into a fixed stack array. Escape sequences with an excessive number of parameters overflow the array used to store the decoded parameters.\n\nvoid parse_escape_sequence(const char *seq) {\n  int params[10];\n  int param_idx = 0;\n  const char *p = seq + 2;\n  while (*p && *p != 'm') {\n    params[param_idx++] = atoi(p);\n    p = strchr(p, ';') + 1;\n  }\n}\n\nint main() {\n  parse_escape_sequence(\"\\x1b[1;2;3;4;5;6;7;8;9;10;11;12m\");\n  return 0;\n}"
+  },
+  {
+   "id": 40,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "domain name resolver",
+   "language": "C++",
+   "text": "A DNS resolver processes domain names by copying them into fixed-size local buffers. When resolving a domain name longer than the buffer, the copy operation overflows the stack.\n\nvoid resolve_domain(const char *domain) {\n  char normalized[128];\n  char *dest = normalized;\n  for (const char *src = domain; *src; src++) {\n    *dest++ = tolower(*src);\n  }\n  query_dns(normalized);\n}\n\nint main() {\n  resolve_domain(\"subdomain.example.verylongdomain.com\");\n  return 0;\n}"
+  },
+  {
+   "id": 41,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "audio codec decoder",
+   "language": "C",
+   "text": "An audio decoder processes metadata chunks by reading their payload into a fixed stack buffer. The chunk header specifies a size, but the size field is not validated before memcpy, allowing stack overflow.\n\nvoid decode_audio_chunk(const uint8_t *chunk_data) {\n  uint8_t metadata[256];\n  uint32_t size = *(uint32_t*)chunk_data;\n  memcpy(metadata, chunk_data + 4, size);\n  process_audio_metadata(metadata, size);\n}\n\nint main() {\n  uint8_t chunk[2000];\n  decode_audio_chunk(chunk);\n  return 0;\n}"
+  },
+  {
+   "id": 42,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "input method engine",
+   "language": "C++",
+   "text": "An input method engine collects key sequences into a fixed-size stack buffer to recognize input patterns. When a user enters a very long sequence of keys, the buffer overflows before pattern matching can occur.\n\nvoid collect_key_sequence(int keycode) {\n  static char seq_buffer[128];\n  static int seq_len = 0;\n  seq_buffer[seq_len++] = keycode;\n  if (seq_len >= 128) seq_len = 0;\n  recognize_pattern(seq_buffer);\n}\n\nint main() {\n  for (int i = 0; i < 500; i++) {\n    collect_key_sequence(65);\n  }\n  return 0;\n}"
+  },
+  {
+   "id": 43,
+   "concept": "stack_overflow",
+   "concept_idx": 2,
+   "topic": "privilege escalation check",
+   "language": "C",
+   "text": "A security module validates privilege levels by reading user identifiers into a fixed stack array. The function accepts an untrusted identifier string and copies it without bounds checking into the local array.\n\nvoid check_privilege(const char *user_id) {\n  char id_buffer[64];\n  strcpy(id_buffer, user_id);\n  if (validate_admin(id_buffer)) grant_access();\n}\n\nint main() {\n  const char *untrusted_id = argv[1];\n  check_privilege(untrusted_id);\n  return 0;\n}"
+  },
+  {
+   "id": 44,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "memory allocator",
+   "language": "C",
+   "text": "A memory allocator calculates the total size needed for an array by multiplying element count by element size. When both values are large, the multiplication wraps, resulting in a tiny allocation despite the large requested size. The subsequent copy into this undersized buffer causes corruption.\n\nstruct Item { int id; char data[64]; };\n\nvoid allocate_items(size_t count) {\n  size_t element_size = sizeof(struct Item);\n  size_t total_size = count * element_size;\n  void *buf = malloc(total_size);\n  for (size_t i = 0; i < count; i++) {\n    memcpy(buf + i * element_size, get_item_data(i), element_size);\n  }\n}\n\nint main() {\n  allocate_items(0x10000001);\n  return 0;\n}"
+  },
+  {
+   "id": 45,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "image buffer manager",
+   "language": "C++",
+   "text": "An image processing library allocates buffers based on width and height. The size is computed as width * height * bytes_per_pixel, but width and height are user-controlled and their multiplication overflows, allocating a small buffer. Pixels are then written out of bounds.\n\nvoid create_image_buffer(uint32_t width, uint32_t height) {\n  uint32_t size = width * height * 4;\n  uint8_t *pixels = new uint8_t[size];\n  for (uint32_t i = 0; i < width * height; i++) {\n    pixels[i * 4 + 0] = 255;\n    pixels[i * 4 + 1] = 0;\n  }\n  delete[] pixels;\n}\n\nint main() {\n  create_image_buffer(65536, 65536);\n  return 0;\n}"
+  },
+  {
+   "id": 46,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "packet assembly buffer",
+   "language": "C",
+   "text": "A network stack reassembles fragmented packets by allocating a buffer based on the total size field in the IP header. The size field can overflow a 32-bit integer, causing malloc to allocate a much smaller buffer. Reassembled fragments overflow this undersized buffer.\n\nvoid reassemble_packet(uint32_t total_size, const uint8_t *fragments[]) {\n  uint8_t *buffer = malloc(total_size);\n  for (int i = 0; fragments[i]; i++) {\n    uint16_t frag_offset = *(uint16_t*)(fragments[i] + 20);\n    uint16_t frag_len = *(uint16_t*)(fragments[i] + 2) - 20;\n    memcpy(buffer + frag_offset, fragments[i] + 20, frag_len);\n  }\n  process_packet(buffer, total_size);\n}\n\nint main() {\n  reassemble_packet(0xffffffff, NULL);\n  return 0;\n}"
+  },
+  {
+   "id": 47,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "container class",
+   "language": "C++",
+   "text": "A custom vector-like container resizes its internal buffer by doubling capacity. If current capacity is very large, the multiplication overflows and wraps to a small value. The container then copies old elements into the undersized new buffer.\n\nclass DynamicArray {\n  void resize() {\n    size_t new_capacity = capacity * 2;\n    char *new_buffer = new char[new_capacity];\n    memcpy(new_buffer, buffer, capacity);\n    delete[] buffer;\n    buffer = new_buffer;\n    capacity = new_capacity;\n  }\npublic:\n  size_t capacity;\n  char *buffer;\n};\n\nint main() {\n  DynamicArray arr;\n  arr.capacity = 0x80000000;\n  arr.resize();\n  return 0;\n}"
+  },
+  {
+   "id": 48,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "compression format decoder",
+   "language": "C",
+   "text": "A compression format decoder reads a block header containing uncompressed and compressed sizes. It allocates a buffer for the uncompressed data using the uncompressed size field. If the uncompressed size overflows when compared to another field, a tiny buffer is allocated and then filled completely.\n\nvoid decompress_stream(FILE *f) {\n  uint32_t uncompressed_size;\n  uint32_t compressed_size;\n  fread(&uncompressed_size, 4, 1, f);\n  fread(&compressed_size, 4, 1, f);\n  uint8_t *out = malloc(uncompressed_size);\n  uint8_t *compressed = malloc(compressed_size);\n  fread(compressed, 1, compressed_size, f);\n  decompress(out, uncompressed_size, compressed, compressed_size);\n}\n\nint main() {\n  FILE *f = fopen(\"data.bin\", \"rb\");\n  decompress_stream(f);\n  return 0;\n}"
+  },
+  {
+   "id": 49,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "CSV parser",
+   "language": "C++",
+   "text": "A CSV parser accumulates field data into a buffer by repeatedly reading chunks. The code tracks the total size written using an integer that eventually overflows, causing the allocation to become much smaller than the actual data written.\n\nclass CSVParser {\n  void append_field(const char *data, size_t len) {\n    total_written += len;\n    void *new_buf = realloc(buffer, total_written);\n    memcpy((char*)new_buf + total_written - len, data, len);\n    buffer = new_buf;\n  }\nprivate:\n  uint32_t total_written;\n  void *buffer;\n};\n\nint main() {\n  CSVParser parser;\n  while (!eof()) {\n    parser.append_field(field_data, field_len);\n  }\n  return 0;\n}"
+  },
+  {
+   "id": 50,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "XML parser",
+   "language": "C",
+   "text": "An XML parser reads the length of a CDATA section from the XML markup. It allocates a buffer for the data using this length field. An attacker provides a very large length value that overflows when allocated, resulting in a small buffer that is then filled with the full CDATA content.\n\nvoid parse_cdata(const char *xml) {\n  uint32_t data_len = parse_length(xml);\n  char *cdata_buf = malloc(data_len);\n  const char *data_start = strchr(xml, '[') + 1;\n  const char *data_end = strstr(xml, \"]]>\");\n  memcpy(cdata_buf, data_start, data_end - data_start);\n  process_cdata(cdata_buf);\n}\n\nint main() {\n  parse_cdata(\"<![CDATA[large data]]\");\n  return 0;\n}"
+  },
+  {
+   "id": 51,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "string manipulation utility",
+   "language": "C++",
+   "text": "A string utility function builds a new string by concatenating multiple strings. The code sums the lengths of all input strings using simple addition, which can overflow. The undersized allocated buffer is then written to with the full concatenated content.\n\nchar *concatenate_strings(const char **strings, int count) {\n  size_t total_len = 0;\n  for (int i = 0; i < count; i++) {\n    total_len += strlen(strings[i]);\n  }\n  char *result = malloc(total_len + 1);\n  char *pos = result;\n  for (int i = 0; i < count; i++) {\n    strcpy(pos, strings[i]);\n    pos += strlen(strings[i]);\n  }\n  return result;\n}\n\nint main() {\n  const char *strs[] = { str1, str2 };\n  char *concat = concatenate_strings(strs, 2);\n  return 0;\n}"
+  },
+  {
+   "id": 52,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "archive format extractor",
+   "language": "C",
+   "text": "An archive extractor reads entry sizes from the archive header and allocates buffers for each entry. The size field in the header is interpreted as a signed integer, and when negative, it wraps to a small positive value when cast to unsigned, causing a tiny allocation despite large file data.\n\nvoid extract_archive_entry(FILE *archive) {\n  int32_t entry_size;\n  fread(&entry_size, 4, 1, archive);\n  size_t buf_size = (size_t)entry_size;\n  uint8_t *entry_data = malloc(buf_size);\n  for (size_t i = 0; i < buf_size; i++) {\n    entry_data[i] = fgetc(archive);\n  }\n  extract_entry(entry_data, buf_size);\n}\n\nint main() {\n  FILE *f = fopen(\"archive.bin\", \"rb\");\n  extract_archive_entry(f);\n  return 0;\n}"
+  },
+  {
+   "id": 53,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "matrix library",
+   "language": "C++",
+   "text": "A matrix library allocates storage for a matrix by multiplying rows and columns. If both dimensions are large, the multiplication overflows and allocates a tiny buffer. When the matrix is populated element-by-element, elements are written far out of bounds.\n\nclass Matrix {\n  void initialize(uint32_t rows, uint32_t cols) {\n    size_t total_elements = rows * cols;\n    data = new double[total_elements];\n    for (size_t i = 0; i < rows * cols; i++) {\n      data[i] = 0.0;\n    }\n  }\nprivate:\n  double *data;\n};\n\nint main() {\n  Matrix m;\n  m.initialize(65536, 65536);\n  return 0;\n}"
+  },
+  {
+   "id": 54,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "request handler",
+   "language": "C",
+   "text": "A web request handler calculates buffer size based on Content-Length header. The header value is multiplied by a factor (for padding or encoding), and this multiplication overflows, causing a much smaller buffer to be allocated than needed. Request body data is then written out of bounds.\n\nvoid handle_post_request(const char *header, const uint8_t *body) {\n  uint32_t content_len = parse_content_length(header);\n  uint32_t buffer_size = content_len * 2;\n  uint8_t *buf = malloc(buffer_size);\n  memcpy(buf, body, content_len * 2);\n  process_request_body(buf, buffer_size);\n}\n\nint main() {\n  handle_post_request(\"Content-Length: 2000000000\", body_data);\n  return 0;\n}"
+  },
+  {
+   "id": 55,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "record database",
+   "language": "C++",
+   "text": "A database engine allocates space for records based on the number of records and record size. When both are user-controlled, their multiplication can overflow. A small buffer is allocated, but the code proceeds to write all records as if the full buffer were available.\n\nstruct Record { int id; char name[128]; };\n\nvoid allocate_record_buffer(uint32_t record_count, uint32_t record_size) {\n  size_t total = record_count * record_size;\n  Record *records = (Record*)malloc(total);\n  for (uint32_t i = 0; i < record_count; i++) {\n    records[i].id = i;\n    memset(records[i].name, 0, record_size - 4);\n  }\n}\n\nint main() {\n  allocate_record_buffer(0x80000001, sizeof(Record));\n  return 0;\n}"
+  },
+  {
+   "id": 56,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "file I/O utility",
+   "language": "C",
+   "text": "A file utility reads a header with offset and size fields, then seeks and reads data from a file. The size field is added to the offset without overflow checking; if their sum overflows, an unexpectedly small read occurs, but the code continues as if the full size was read.\n\nvoid read_file_section(FILE *f, uint32_t offset, uint32_t size) {\n  uint32_t actual_size = offset + size;\n  fseek(f, offset, SEEK_SET);\n  uint8_t *buf = malloc(actual_size);\n  size_t read_len = fread(buf, 1, size, f);\n  process_section(buf, size);\n}\n\nint main() {\n  FILE *f = fopen(\"data.bin\", \"rb\");\n  read_file_section(f, 0xffffffff, 1000);\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+   "id": 57,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "graphics rendering engine",
+   "language": "C++",
+   "text": "A rendering engine calculates the size of a framebuffer based on width, height, and bytes per pixel. An attacker controls width and height; when multiplied, they overflow, causing malloc to allocate far less memory than the rendering loop expects, leading to heap corruption.\n\nvoid create_framebuffer(int width, int height, int bpp) {\n  size_t size = width * height * bpp;\n  uint8_t *framebuffer = new uint8_t[size];\n  for (int y = 0; y < height; y++) {\n    for (int x = 0; x < width; x++) {\n      framebuffer[(y * width + x) * bpp] = 0;\n    }\n  }\n}\n\nint main() {\n  create_framebuffer(0x10000, 0x10000, 4);\n  return 0;\n}"
+  },
+  {
+   "id": 58,
+   "concept": "integer_overflow",
+   "concept_idx": 3,
+   "topic": "linked list allocator",
+   "language": "C",
+   "text": "A linked list allocator allocates nodes by calculating total memory as node_count * node_size. When node_count is very large, the multiplication wraps around. The allocator then populates the list, writing far beyond the allocated region because the loop runs node_count times regardless.\n\nstruct Node { int data; Node *next; };\n\nvoid allocate_linked_list(size_t node_count) {\n  size_t total = node_count * sizeof(Node);\n  Node *nodes = (Node*)malloc(total);\n  for (size_t i = 0; i < node_count; i++) {\n    nodes[i].data = i;\n    nodes[i].next = (i < node_count - 1) ? &nodes[i + 1] : NULL;\n  }\n}\n\nint main() {\n  allocate_linked_list(0x80000001);\n  return 0;\n}"
+  },
+  {
+   "id": 59,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "file access permission checker",
+   "language": "C",
+   "text": "A function checks whether a file is readable and then opens it for reading. An attacker can delete or replace the file between the permission check and the open call (TOCTOU race).\n\nint access_file(const char* path) {\n    if (access(path, R_OK) == 0) {\n        int fd = open(path, O_RDONLY);\n        return fd;\n    }\n    return -1;\n}"
+  },
+  {
+   "id": 60,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "shared request counter",
+   "language": "C++",
+   "text": "A global counter tracks incoming requests. Multiple worker threads increment the counter concurrently without synchronization, resulting in lost increments and incorrect counts.\n\nint request_count = 0;\n\nvoid increment_count() {\n    request_count++;\n}\n\nvoid worker_thread() {\n    while (running) {\n        process_request();\n        increment_count();\n    }\n}"
+  },
+  {
+   "id": 61,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "singleton service instance",
+   "language": "Java",
+   "text": "A singleton pattern uses double-checked locking without volatile keyword. The field is not declared volatile, so threads may see a partially-constructed instance if they check before the constructor completes.\n\npublic class ServiceSingleton {\n    private static ServiceSingleton instance;\n    public static ServiceSingleton getInstance() {\n        if (instance == null) {\n            synchronized (ServiceSingleton.class) {\n                if (instance == null) {\n                    instance = new ServiceSingleton();\n                }\n            }\n        }\n        return instance;\n    }\n}"
+  },
+  {
+   "id": 62,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "global configuration updater",
+   "language": "C++",
+   "text": "A global configuration structure is read and modified by multiple threads without locking. Readers may observe partial updates or inconsistent state when the structure is being modified.\n\nstruct Config { int timeout; int retries; std::string server; } global_config;\n\nvoid update_config(int t, int r, const std::string& s) {\n    global_config.timeout = t;\n    global_config.retries = r;\n    global_config.server = s;\n}\n\nint get_timeout() {\n    return global_config.timeout;\n}"
+  },
+  {
+   "id": 63,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "file symlink TOCTOU vulnerability",
+   "language": "C",
+   "text": "A process checks file ownership and then opens the file. An attacker can replace the file with a symlink to a sensitive file between the check and the open, bypassing the permission validation.\n\nint process_trusted_file(const char* path) {\n    struct stat st;\n    if (stat(path, &st) == 0 && st.st_uid == getuid()) {\n        int fd = open(path, O_RDONLY);\n        char buf[256];\n        read(fd, buf, sizeof(buf));\n        close(fd);\n    }\n}"
+  },
+  {
+   "id": 64,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "signal handler state modification",
+   "language": "C",
+   "text": "A signal handler modifies a global flag that is also read by the main program loop. The non-atomic modification and read create a race condition where the flag update may be partially visible.\n\nvolatile int shutdown_flag = 0;\n\nvoid signal_handler(int sig) {\n    shutdown_flag = 1;\n}\n\nint main() {\n    signal(SIGTERM, signal_handler);\n    while (!shutdown_flag) {\n        process_work();\n    }\n}"
+  },
+  {
+   "id": 65,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "concurrent hash map modification",
+   "language": "Java",
+   "text": "Multiple threads concurrently add entries to and iterate over a HashMap. The HashMap is not thread-safe, and concurrent modification during iteration throws ConcurrentModificationException or observes corrupted state.\n\nMap<String, Integer> cache = new HashMap<>();\n\npublic void add_entry(String key, Integer value) {\n    cache.put(key, value);\n}\n\npublic void process_all() {\n    for (String key : cache.keySet()) {\n        process_item(cache.get(key));\n    }\n}"
+  },
+  {
+   "id": 66,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "linked list concurrent iteration",
+   "language": "C++",
+   "text": "One thread adds items to a linked list while another thread iterates through it. The iterator does not hold a lock, so it may skip items or encounter corrupted pointers.\n\nstd::list<int> items;\n\nvoid add_item(int value) {\n    items.push_back(value);\n}\n\nvoid process_items() {\n    for (auto it = items.begin(); it != items.end(); ++it) {\n        process(*it);\n    }\n}"
+  },
+  {
+   "id": 67,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "temporary file creation race",
+   "language": "C",
+   "text": "A process generates a temporary filename and checks if it exists. An attacker creates a symlink at that path before the process opens it, causing the process to write to an unintended file.\n\nvoid create_temp(const char* prefix) {\n    char path[256];\n    sprintf(path, \"/tmp/%s_%d.tmp\", prefix, getpid());\n    if (access(path, F_OK) != 0) {\n        int fd = open(path, O_CREAT | O_WRONLY, 0644);\n        write(fd, data, datalen);\n        close(fd);\n    }\n}"
+  },
+  {
+   "id": 68,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "cache validity checking",
+   "language": "C++",
+   "text": "A cache stores a value and a validity flag. A reader checks the validity flag before reading the cached value, but a writer may clear the cache value between the check and the read.\n\nstd::string cached_data;\nbool is_valid = false;\n\nvoid invalidate() {\n    cached_data.clear();\n    is_valid = false;\n}\n\nstd::string get_data() {\n    if (is_valid) return cached_data;\n    return fetch_data();\n}"
+  },
+  {
+   "id": 69,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "worker thread shutdown",
+   "language": "Java",
+   "text": "Worker threads poll tasks from a queue while a shutdown flag is checked separately. Tasks may still be in the queue when the shutdown flag is set, causing them to be lost.\n\nclass Worker extends Thread {\n    private Queue<Task> queue;\n    private volatile boolean shutdown = false;\n    public void run() {\n        while (!shutdown) {\n            Task task = queue.poll();\n            if (task != null) task.execute();\n        }\n    }\n}"
+  },
+  {
+   "id": 70,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "resource cleanup sequence",
+   "language": "C",
+   "text": "A resource holding both a file descriptor and an allocated buffer is freed by one thread while another thread still holds a reference and attempts to use the freed buffer.\n\nstruct Resource { int fd; char* buffer; };\n\nvoid cleanup_resource(struct Resource* r) {\n    free(r->buffer);\n    r->fd = -1;\n}\n\nint read_resource(struct Resource* r) {\n    return fread(r->buffer, 1, 256, fdopen(r->fd, \"r\"));\n}"
+  },
+  {
+   "id": 71,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "authentication token refresh",
+   "language": "Java",
+   "text": "Multiple threads check if an authentication token is expired and attempt to refresh it concurrently. Multiple refreshes execute simultaneously, wasting resources and potentially storing inconsistent tokens.\n\npublic class AuthClient {\n    private String token;\n    public void refresh_if_expired() {\n        if (is_expired(token)) {\n            token = fetch_new_token();\n        }\n    }\n    public String get_token() {\n        refresh_if_expired();\n        return token;\n    }\n}"
+  },
+  {
+   "id": 72,
+   "concept": "race_condition",
+   "concept_idx": 4,
+   "topic": "data serialization during concurrent access",
+   "language": "C++",
+   "text": "One thread serializes a data structure to a string while another thread concurrently adds new items. The iterator observes modifications to the underlying collection, resulting in incomplete or corrupted serialization.\n\nclass DataStore {\n    std::vector<Item> items;\n    std::string serialize() {\n        std::string s;\n        for (const auto& item : items) {\n            s += item.encode();\n        }\n        return s;\n    }\n    void add_item(const Item& item) {\n        items.push_back(item);\n    }\n};"
+  },
+  {
+   "id": 73,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "request type dispatcher",
+   "language": "C",
+   "text": "A request handler array stores up to 10 different request types. The dispatcher reads a type ID from the network without validating it is within the valid range before indexing into the handler table.\n\nint handle_request(int type_id, struct Request* req) {\n    struct RequestHandler handlers[10];\n    // type_id comes from untrusted network data\n    struct RequestHandler handler = handlers[type_id];\n    return handler.process(req);\n}"
+  },
+  {
+   "id": 74,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "message buffer parser",
+   "language": "C",
+   "text": "A fixed-size message buffer is declared with 256 bytes. The code copies data into the buffer based on a message length field without first verifying that the length does not exceed the buffer size.\n\nvoid process_message(const unsigned char* data, int msg_len) {\n    unsigned char buffer[256];\n    // No bounds check on msg_len\n    memcpy(buffer, data, msg_len);\n    buffer[msg_len] = '\\0';\n    parse_buffer(buffer);\n}"
+  },
+  {
+   "id": 75,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "lookup table cache",
+   "language": "C++",
+   "text": "A C++ vector stores lookup results for a finite range of keys. The code retrieves values by directly indexing the vector with a user-supplied index without checking if the index is within bounds.\n\nstd::vector<int> lookup_cache;\n\nint get_cached_value(int index) {\n    return lookup_cache[index];\n}"
+  },
+  {
+   "id": 76,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "ring buffer",
+   "language": "C",
+   "text": "A ring buffer of fixed size wraps write indices using increment-then-check logic. An off-by-one error in the boundary condition allows writing one element beyond the buffer.\n\n#define RING_SIZE 32\nchar ring_buffer[RING_SIZE];\nint write_index = 0;\n\nvoid ring_push(char c) {\n    ring_buffer[write_index] = c;\n    write_index++;\n    if (write_index > RING_SIZE) write_index = 0;\n}"
+  },
+  {
+   "id": 77,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "username input handler",
+   "language": "C",
+   "text": "A stack buffer of 24 bytes is allocated for username storage. The code copies user input into the buffer without validating the input length, allowing overflow beyond the buffer boundary.\n\nvoid read_username(const char* input) {\n    char username[24];\n    strcpy(username, input);\n    printf(\"User: %s\\n\", username);\n}"
+  },
+  {
+   "id": 78,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "2D matrix accessor",
+   "language": "C++",
+   "text": "A 2D matrix of fixed dimensions is accessed via row and column indices. The accessor does not verify that both indices remain within the declared bounds.\n\nint matrix[16][16];\n\nint get_element(int row, int col) {\n    return matrix[row][col];\n}"
+  },
+  {
+   "id": 79,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "hash table lookup",
+   "language": "C",
+   "text": "A hash table is implemented as an array of 256 entries. The hash function produces an index, but the boundary check uses <= instead of <, allowing access to one element past the array end.\n\nstruct Entry hashtable[256];\n\nint lookup_hash(int key) {\n    int idx = hash_function(key);\n    if (idx <= 256) return hashtable[idx].value;\n    return -1;\n}"
+  },
+  {
+   "id": 80,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "queue dequeue operation",
+   "language": "C",
+   "text": "A queue data structure maintains front and rear pointers. The dequeue operation retrieves data at the front index without checking if the queue is empty, potentially reading from an invalid index.\n\nstruct Queue { int data[100]; int front, rear; };\n\nint dequeue(struct Queue* q) {\n    int val = q->data[q->front];\n    q->front++;\n    return val;\n}"
+  },
+  {
+   "id": 81,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "HTTP header tokenizer",
+   "language": "C",
+   "text": "A header parsing function splits key-value pairs into an array of tokens. The number of tokens is tracked in a counter that is incremented without bounds checking, and later the array is accessed beyond its declared size.\n\nvoid tokenize_header(const char* header) {\n    char tokens[50][64];\n    int count = 0;\n    char* token = strtok((char*)header, \"=\");\n    while (token) {\n        strcpy(tokens[count++], token);\n        token = strtok(NULL, \"=\");\n    }\n    printf(\"%s\\n\", tokens[count]);\n}"
+  },
+  {
+   "id": 82,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "bitmap bit setter",
+   "language": "C++",
+   "text": "A bitmap is stored as a vector of bytes. When setting a bit by number, the byte index is computed but not validated to ensure it falls within the bitmap size.\n\nstd::vector<uint8_t> bitmap(32);\n\nvoid set_bit(int bit_num) {\n    int byte_idx = bit_num / 8;\n    int bit_in_byte = bit_num % 8;\n    bitmap[byte_idx] |= (1 << bit_in_byte);\n}"
+  },
+  {
+   "id": 83,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "circular buffer writer",
+   "language": "C",
+   "text": "A circular buffer uses a write position counter that wraps around when reaching the buffer size. The wraparound logic uses subtraction instead of modulo, causing incorrect indexing at the boundary.\n\n#define BUFSIZE 64\nchar cbuffer[BUFSIZE];\nint write_pos = 0;\n\nvoid write_circular(char c) {\n    cbuffer[write_pos] = c;\n    write_pos = write_pos + 1;\n    if (write_pos >= BUFSIZE) write_pos = write_pos - BUFSIZE;\n}"
+  },
+  {
+   "id": 84,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "socket receive buffer",
+   "language": "C",
+   "text": "A fixed-size socket receive buffer is allocated with 512 bytes. When reading incoming data, the function accepts a length parameter from untrusted sources without verifying it does not exceed buffer capacity.\n\nchar socket_buffer[512];\n\nint recv_data(int sock, int data_len) {\n    if (data_len < 0) return -1;\n    return read(sock, socket_buffer, data_len);\n}"
+  },
+  {
+   "id": 85,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "configuration array parser",
+   "language": "C",
+   "text": "A configuration file is parsed line by line, storing integer values into a fixed array. The parsing loop does not check if the array bounds are exceeded as each line is read.\n\nint config[20];\n\nvoid load_config(FILE* f) {\n    int idx = 0;\n    while (fscanf(f, \"%d\", &config[idx]) > 0) {\n        idx++;\n    }\n}"
+  },
+  {
+   "id": 86,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "memory pool allocator",
+   "language": "C",
+   "text": "A simple memory pool preallocates a buffer and tracks an allocation offset. Callers request allocation sizes without bounds checking, allowing the offset to exceed the pool size.\n\nstruct Pool { char data[1024]; int offset; };\n\nchar* pool_alloc(struct Pool* p, int size) {\n    char* ptr = &p->data[p->offset];\n    p->offset += size;\n    return ptr;\n}"
+  },
+  {
+   "id": 87,
+   "concept": "oob_access",
+   "concept_idx": 5,
+   "topic": "tree child node accessor",
+   "language": "C++",
+   "text": "A tree node structure stores references to child nodes in a fixed array. The accessor retrieves a child by index without validating that the index is within the array bounds.\n\nstruct TreeNode {\n    TreeNode* children[8];\n    int child_count;\n};\n\nTreeNode* get_child(TreeNode* node, int idx) {\n    return node->children[idx];\n}"
+  },
+  {
+   "id": 88,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "log viewer",
+   "language": "Python",
+   "text": "A log viewer service processes user-supplied log file requests without validation. The application constructs a shell command by concatenating user input directly into the grep command string.\n\nimport os\nimport subprocess\nfrom flask import request\ndef view_logs(log_name):\n    command = f\"grep 'ERROR' {log_name}\"\n    os.system(command)\nuser_input = request.args.get('log')\nview_logs(user_input)"
+  },
+  {
+   "id": 89,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "image converter",
+   "language": "Java",
+   "text": "An image conversion service takes a user-supplied image filename and passes it to an external command. The application builds a command string by concatenating the filename directly without escaping shell metacharacters.\n\nString filename = request.getParameter(\"image\");\nString cmd = \"convert input.jpg -resize 800x600 \" + filename;\nProcess process = Runtime.getRuntime().exec(cmd);\nOutputStream out = process.getOutputStream();\nout.write(imageData);\nout.close();"
+  },
+  {
+   "id": 90,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "backup utility",
+   "language": "C",
+   "text": "A backup utility constructs a tar command from user input to archive files. The application uses sprintf to format a shell command with untrusted input, then passes it to system().\n\n#include <stdio.h>\n#include <stdlib.h>\nchar backup_file[256];\nscanf(\"%s\", backup_file);\nchar command[512];\nsprintf(command, \"tar czf backup.tar.gz %s\", backup_file);\nint status = system(command);\nif (status == 0) {\n    printf(\"Backup complete\\n\");\n}"
+  },
+  {
+   "id": 91,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "report generator",
+   "language": "C++",
+   "text": "A report generator exports data using a user-supplied filename and passes it to a shell command. The application concatenates user input into a command string and executes it via popen().\n\n#include <iostream>\n#include <cstdlib>\nusing namespace std;\nstring reportname = getUserInput();\nstring cmd = \"export_data --output \" + reportname;\nFILE* pipe = popen(cmd.c_str(), \"r\");\nchar buffer[256];\nwhile (fgets(buffer, sizeof(buffer), pipe) != NULL) {\n    cout << buffer;\n}"
+  },
+  {
+   "id": 92,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "file search tool",
+   "language": "Python",
+   "text": "A file search tool accepts a user-provided search string and uses it in a shell command. The application passes the search term directly into a find command executed with shell=True.\n\nimport subprocess\nfrom flask import request\nsearch_term = request.form['query']\nresult = subprocess.run(\n    f\"find . -name '*{search_term}*'\",\n    shell=True,\n    capture_output=True\n)\nprint(result.stdout.decode())"
+  },
+  {
+   "id": 93,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "video processor",
+   "language": "Java",
+   "text": "A video processing service builds a command string from user-supplied parameters. The application concatenates filename and quality arguments into a shell command without sanitization.\n\nString videoFile = request.getParameter(\"file\");\nString cmd = \"ffmpeg -i \" + videoFile + \" -q:v 18 output.mp4\";\nProcess process = Runtime.getRuntime().exec(cmd);\nint exitCode = process.waitFor();\nif (exitCode == 0) {\n    return true;\n}\nreturn false;"
+  },
+  {
+   "id": 94,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "plugin loader",
+   "language": "C",
+   "text": "A plugin loader executes external programs based on user-supplied plugin names. The application constructs a command using gets() to read untrusted input and passes it to execvp().\n\n#include <stdio.h>\n#include <unistd.h>\nchar plugin_name[256];\ngets(plugin_name);\nchar command[512];\nsprintf(command, \"./plugins/%s\", plugin_name);\nchar *args[] = {command, NULL};\nexecvp(command, args);"
+  },
+  {
+   "id": 95,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "database dumper",
+   "language": "Python",
+   "text": "A database configuration tool evaluates user-provided configuration strings. The application uses exec() to run untrusted Python code submitted through a web form.\n\nfrom flask import request\nconfig_string = request.form.get('config')\ntry:\n    exec(config_string)\nexcept Exception as e:\n    print(f\"Error: {e}\")\nreturn \"Configuration applied\""
+  },
+  {
+   "id": 96,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "text processor",
+   "language": "C++",
+   "text": "A text processing service accepts filenames for document conversion. The application directly concatenates the filename into a shell command for PDF generation.\n\n#include <iostream>\n#include <cstdlib>\n#include <string>\nusing namespace std;\nstring inputFile = getParameterFromWeb(\"inputfile\");\nstring cmd = \"pdflatex \" + inputFile + \" -output-directory=/tmp\";\nint result = system(cmd.c_str());\nif (result == 0) {\n    moveFile(\"/tmp/output.pdf\", \"/var/www/output.pdf\");\n}"
+  },
+  {
+   "id": 97,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "email notifier",
+   "language": "Java",
+   "text": "An email notification service constructs shell commands from user-supplied email and subject parameters. The application concatenates these parameters into a mail command without escaping.\n\nString recipient = request.getParameter(\"email\");\nString subject = request.getParameter(\"subject\");\nString cmd = \"mail -s \" + subject + \" \" + recipient;\nProcess p = Runtime.getRuntime().exec(cmd);\np.getOutputStream().write(messageBody.getBytes());\np.waitFor();"
+  },
+  {
+   "id": 98,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "archive extractor",
+   "language": "C",
+   "text": "An archive extraction utility processes user-supplied filenames without validation. The application constructs a tar command by appending user input directly to the command string.\n\n#include <stdio.h>\n#include <string.h>\nchar archive[256];\nscanf(\"%s\", archive);\nchar command[512];\nsprintf(command, \"tar xzf %s\", archive);\nint ret = system(command);\nprintf(\"Extraction exit code: %d\\n\", ret);"
+  },
+  {
+   "id": 99,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "config validator",
+   "language": "Python",
+   "text": "A configuration validator loads user-submitted Python configuration files. The application reads the file content and executes it using exec() without any sanitization.\n\nfrom flask import request\nconfig_data = request.files['config'].read().decode()\ntry:\n    exec(config_data)\n    app_config = config\nexcept SyntaxError as e:\n    return f\"Invalid config: {e}\""
+  },
+  {
+   "id": 100,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "PDF generator",
+   "language": "Java",
+   "text": "A PDF generation service takes user input for document creation and passes it to an external tool. The application builds a command string by concatenating the document path without escaping.\n\nString docPath = request.getParameter(\"document\");\nString cmd = \"wkhtmltopdf \" + docPath + \" output.pdf\";\nProcess process = Runtime.getRuntime().exec(cmd);\nFile output = new File(\"output.pdf\");\nif (output.exists()) {\n    return sendFile(output);\n}"
+  },
+  {
+   "id": 101,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "cache cleaner",
+   "language": "C++",
+   "text": "A cache cleaning utility accepts user-provided cache directory paths. The application constructs a shell command that directly incorporates the user path.\n\n#include <iostream>\n#include <cstdlib>\nusing namespace std;\nstring cachePath = getUserInput();\nstring cmd = \"rm -rf \" + cachePath + \"/*\";\nFILE* proc = popen(cmd.c_str(), \"w\");\nif (proc) {\n    pclose(proc);\n    cout << \"Cache cleared\" << endl;\n}"
+  },
+  {
+   "id": 102,
+   "concept": "command_injection",
+   "concept_idx": 6,
+   "topic": "data importer",
+   "language": "Python",
+   "text": "A data importer processes CSV files supplied by users through a form. The application passes the filename directly to a subprocess command with shell=True.\n\nimport os\ncsv_filename = request.form['file']\nresult = os.popen(f\"python parse_csv.py {csv_filename}\").read()\nlines = result.strip().split('\\n')\nfor line in lines:\n    print(line)"
+  },
+  {
+   "id": 103,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "file download endpoint",
+   "language": "Python",
+   "text": "A file download endpoint constructs file paths from user input using os.path.join(). The application fails to validate that the resolved path remains within the intended download directory.\n\nimport os\nfrom flask import request, send_file\nfilename = request.args.get('file')\nfilepath = os.path.join('/var/www/downloads', filename)\nif os.path.exists(filepath):\n    return send_file(filepath)\nelse:\n    return \"File not found\", 404"
+  },
+  {
+   "id": 104,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "backup restoration",
+   "language": "Java",
+   "text": "A backup restoration service accepts user-provided restore paths. The application opens a FileInputStream using the user-supplied path without checking directory boundaries.\n\nimport java.io.FileInputStream;\nString backupFile = request.getParameter(\"backup\");\nString restorePath = \"/backups/\" + backupFile;\ntry {\n    FileInputStream fis = new FileInputStream(restorePath);\n    byte[] data = new byte[1024];\n    fis.read(data);\n    restoreFromData(data);\n} catch (IOException e) {\n    log.error(\"Restore failed\", e);\n}"
+  },
+  {
+   "id": 105,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "config reader",
+   "language": "C",
+   "text": "A configuration reader loads config files from user-supplied paths. The application uses sprintf() to construct the path and opens it with fopen() without validating the resolved path.\n\n#include <stdio.h>\nchar config_name[256];\nscanf(\"%s\", config_name);\nchar config_path[512];\nsprintf(config_path, \"/etc/myapp/%s\", config_name);\nFILE *f = fopen(config_path, \"r\");\nchar line[256];\nwhile (fgets(line, sizeof(line), f)) {\n    parseLine(line);\n}"
+  },
+  {
+   "id": 106,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "log viewer",
+   "language": "C++",
+   "text": "A log viewer displays logs specified by user-provided names. The application concatenates the name to a base directory path and opens it with ifstream without canonicalization.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring logname = getUserRequest();\nstring logpath = \"/var/log/app/\" + logname;\nifstream logfile(logpath.c_str());\nstring line;\nwhile (getline(logfile, line)) {\n    cout << line << endl;\n}"
+  },
+  {
+   "id": 107,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "template loader",
+   "language": "Python",
+   "text": "A template rendering system loads templates from user-specified paths. The application uses os.path.join() to combine paths but does not verify the resolved path stays within the templates directory.\n\nimport os\nfrom flask import request\ntemplate_name = request.args.get('template')\ntemplate_path = os.path.join('/app/templates', template_name)\nwith open(template_path, 'r') as f:\n    content = f.read()\nreturn render_template_string(content)"
+  },
+  {
+   "id": 108,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "file upload handler",
+   "language": "Java",
+   "text": "A file upload service stores files based on user-provided names without path validation. The application constructs an upload path by concatenating user input directly.\n\nimport java.io.FileOutputStream;\nString filename = request.getParameter(\"name\");\nString uploadPath = \"/uploads/\" + filename;\ntry {\n    FileOutputStream fos = new FileOutputStream(uploadPath);\n    fos.write(fileData);\n    fos.close();\n} catch (IOException e) {\n    return \"Upload failed\";\n}"
+  },
+  {
+   "id": 109,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "document server",
+   "language": "C",
+   "text": "A document server serves files based on user requests for document IDs. The application constructs a file path by appending user input to a base directory without path validation.\n\n#include <stdio.h>\nchar doc_id[256];\nscanf(\"%s\", doc_id);\nchar filepath[512];\nsprintf(filepath, \"/documents/%s\", doc_id);\nFILE *f = fopen(filepath, \"r\");\nif (f) {\n    serveFile(f);\n    fclose(f);\n}"
+  },
+  {
+   "id": 110,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "image resizer",
+   "language": "Python",
+   "text": "An image resizing service processes image files from user input. The application constructs a file path from user-supplied image ID without validating directory containment.\n\nfrom PIL import Image\nimport os\nimage_id = request.args.get('id')\nimage_path = f'/var/images/{image_id}.jpg'\nimg = Image.open(image_path)\nimg.thumbnail((800, 600))\nimg.save('/tmp/resized.jpg')"
+  },
+  {
+   "id": 111,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "cache manager",
+   "language": "C++",
+   "text": "A cache manager retrieves cached data using user-provided keys. The application constructs a cache file path by concatenating the key without validation.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring cache_key = request.getParameter(\"key\");\nstring cache_file = \"/cache/\" + cache_key;\nifstream cachefile(cache_file.c_str());\nstring cached_data((istreambuf_iterator<char>(cachefile)),\n                   istreambuf_iterator<char>());\nreturn cached_data;"
+  },
+  {
+   "id": 112,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "configuration loader",
+   "language": "Java",
+   "text": "A configuration loader reads config files by user-specified name without path canonicalization. The application constructs a File object using user input concatenated to a base path.\n\nimport java.util.Properties;\nimport java.io.FileInputStream;\nString configName = request.getParameter(\"config\");\nFile configFile = new File(\"/config/\" + configName);\ntry {\n    FileInputStream fis = new FileInputStream(configFile);\n    Properties props = new Properties();\n    props.load(fis);\n    fis.close();\n} catch (IOException e) {\n    log.error(\"Config load failed\", e);\n}"
+  },
+  {
+   "id": 113,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "archive extractor",
+   "language": "Python",
+   "text": "An archive extraction utility processes member paths from user input. The application uses tarfile.extractall() and directly accesses members specified by the user.\n\nimport tarfile\nfrom flask import request\narchive_file = request.files['archive']\nmember_path = request.form.get('member')\ntar = tarfile.open(fileobj=archive_file)\nif tar.getmember(member_path):\n    tar.extractall(path='/extracts', members=[tar.getmember(member_path)])\ntar.close()"
+  },
+  {
+   "id": 114,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "report generator",
+   "language": "C",
+   "text": "A report generator creates reports with user-supplied filenames. The application constructs a file path by appending user input to a base directory path.\n\n#include <stdio.h>\nchar report_id[256];\nscanf(\"%s\", report_id);\nchar report_path[512];\nsprintf(report_path, \"/reports/%s.txt\", report_id);\nFILE *f = fopen(report_path, \"w\");\nif (f) {\n    fprintf(f, \"%s\", report_content);\n    fclose(f);\n}"
+  },
+  {
+   "id": 115,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "static file server",
+   "language": "Java",
+   "text": "A static file server serves files from user-supplied URL paths. The application appends the path info directly to a base directory without normalization or validation.\n\nimport java.io.FileInputStream;\nString requestedFile = request.getPathInfo();\nString filepath = \"/var/www/public\" + requestedFile;\ntry {\n    FileInputStream fis = new FileInputStream(filepath);\n    response.setContentType(\"application/octet-stream\");\n    response.getOutputStream().write(fis.readAllBytes());\n    fis.close();\n} catch (IOException e) {\n    response.setStatus(404);\n}"
+  },
+  {
+   "id": 116,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "database backup",
+   "language": "C++",
+   "text": "A database backup utility accepts user-provided database names for backup creation. The application constructs a backup file path by concatenating the database name.\n\n#include <iostream>\n#include <fstream>\nusing namespace std;\nstring db_name = getInputFromUser();\nstring backup_path = \"/backups/\" + db_name + \".sql\";\nofstream backupfile(backup_path.c_str());\nbackupfile << \"-- Database backup for \" << db_name << endl;\nbackupfile << getBackupData(db_name);\nbackupfile.close();"
+  },
+  {
+   "id": 117,
+   "concept": "path_traversal",
+   "concept_idx": 7,
+   "topic": "plugin directory loader",
+   "language": "Python",
+   "text": "A plugin loader dynamically imports plugins from user-specified names. The application constructs a file path and loads it as a module without validating the resolved path.\n\nimport importlib.util\nfrom flask import request\nplugin_name = request.args.get('plugin')\nplugin_path = os.path.join('/app/plugins', plugin_name)\nspec = importlib.util.spec_from_file_location(plugin_name, plugin_path + '.py')\nif spec and spec.loader:\n    module = importlib.util.module_from_spec(spec)\n    spec.loader.exec_module(module)"
+  },
+  {
+   "id": 118,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "login_handler",
+   "language": "C",
+   "text": "A login handler compares the provided password hash with the stored hash. Due to a logic error, the comparison is made against the same computed variable, causing the check to always pass regardless of the input password.\n\nvoid authenticate(char *password, char *stored_hash) {\n    char computed_hash[256];\n    compute_sha256(password, computed_hash);\n    if (strcmp(computed_hash, computed_hash) == 0) {\n        printf(\"Access granted\\n\");\n        grant_user_access();\n    }\n}"
+  },
+  {
+   "id": 119,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "session_validator",
+   "language": "Python",
+   "text": "A session validation function checks if a session token exists and is valid. The function has a logic error where it returns success if the token is missing, treating the absence of a token as valid.\n\ndef validate_session(request):\n    token = request.headers.get('X-Session-Token')\n    if not token:\n        return True\n    return verify_token_signature(token)\n\nif validate_session(request):\n    process_request()"
+  },
+  {
+   "id": 120,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "api_gateway",
+   "language": "Java",
+   "text": "An API gateway authenticates requests using an authentication manager. A default-allow logic path exists where if the authentication manager is not initialized, the gateway skips the check and allows the request through.\n\npublic boolean checkAccess(HttpRequest req) {\n    if (authManager == null) {\n        return true;\n    }\n    return authManager.verify(req.getToken());\n}\n\nif (checkAccess(request)) {\n    forwardRequest(request);\n}"
+  },
+  {
+   "id": 121,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "token_validator",
+   "language": "C++",
+   "text": "A token signature validator decrypts a token and checks its integrity using a MAC. The verification is skipped if the token decryption returns early, allowing tampered tokens to pass through.\n\nbool verify_token(string token) {\n    string decrypted = decrypt_aes(token);\n    if (decrypted.empty()) return true;\n    \n    string mac = extract_mac(decrypted);\n    return verify_hmac(decrypted, mac);\n}"
+  },
+  {
+   "id": 122,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "password_checker",
+   "language": "Python",
+   "text": "A password verification function compares user input with stored credentials using an insecure short-circuit comparison. The function returns early on the first character mismatch, allowing timing attacks and logic errors to bypass the check.\n\ndef check_password(input_pwd, stored_pwd):\n    for i in range(min(len(input_pwd), len(stored_pwd))):\n        if input_pwd[i] != stored_pwd[i]:\n            return False\n    return True"
+  },
+  {
+   "id": 123,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "api_key_validator",
+   "language": "C",
+   "text": "An API key validator iterates through a list of valid keys and checks for a match. An off-by-one error in the loop condition causes the final valid key in the list to be skipped, but the function returns success anyway.\n\nint validate_api_key(char *key, char **valid_keys, int count) {\n    for (int i = 0; i < count - 1; i++) {\n        if (strcmp(key, valid_keys[i]) == 0) return 1;\n    }\n    return 1;\n}"
+  },
+  {
+   "id": 124,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "permission_checker",
+   "language": "Java",
+   "text": "A permission checking system verifies if a user has required roles. A logic error causes the check to return true if the user has ANY attribute, regardless of whether the required permission is present.\n\npublic boolean hasPermission(User user, String required) {\n    if (user.getAttributes().size() > 0) {\n        return true;\n    }\n    return user.getAttributes().contains(required);\n}"
+  },
+  {
+   "id": 125,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "database_authenticator",
+   "language": "Python",
+   "text": "A database authentication layer constructs SQL queries to verify credentials. The query is built using string concatenation without proper escaping, allowing SQL injection to bypass the authentication check.\n\ndef authenticate_user(username, password):\n    query = f\"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'\"\n    result = db.execute(query)\n    return len(result) > 0"
+  },
+  {
+   "id": 126,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "certificate_validator",
+   "language": "C++",
+   "text": "A certificate validator checks the expiration date and signature of an X.509 certificate. The validation step is commented out, allowing expired or invalid certificates to be accepted.\n\nbool validate_certificate(Certificate cert) {\n    if (cert.expiration < time(NULL)) {\n        return false;\n    }\n    // verify_signature(cert);  // TODO: uncomment later\n    return true;\n}"
+  },
+  {
+   "id": 127,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "auth_middleware",
+   "language": "C",
+   "text": "An authentication middleware checks incoming requests against an access control list. A logic error in the condition evaluation causes it to grant access when the user is NOT in the ACL instead of when they ARE.\n\nint check_acl(char *username, char **acl, int size) {\n    for (int i = 0; i < size; i++) {\n        if (strcmp(username, acl[i]) != 0) {\n            return 1;\n        }\n    }\n    return 0;\n}"
+  },
+  {
+   "id": 128,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "access_control_list",
+   "language": "Java",
+   "text": "An access control system uses role-based access checks implemented through object type checking. A type confusion vulnerability allows bypassing the check by passing an object of unexpected type that equals the required role.\n\npublic boolean checkRole(Object role, String required) {\n    return role.equals(required) || role.getClass().equals(String.class);\n}"
+  },
+  {
+   "id": 129,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "session_manager",
+   "language": "Python",
+   "text": "A session manager validates user tokens by checking a cache without proper synchronization. A race condition allows an invalid token to be checked before it is removed from the cache, creating a window where expired sessions are accepted.\n\ndef validate_session(token):\n    if token in session_cache:\n        return True\n    session_cache[token] = False\n    return False"
+  },
+  {
+   "id": 130,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "crypto_verification",
+   "language": "C",
+   "text": "A cryptographic verification function checks HMAC values for message integrity. A hardcoded bypass is present where if the message starts with a specific prefix, the HMAC check is skipped entirely.\n\nint verify_hmac(char *message, char *hmac) {\n    if (strncmp(message, \"BYPASS:\", 7) == 0) {\n        return 1;\n    }\n    return compare_hmac(compute_hmac(message), hmac);\n}"
+  },
+  {
+   "id": 131,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "authentication_filter",
+   "language": "Java",
+   "text": "An authentication filter checks if a request has valid credentials before processing. The filter is incorrectly disabled under certain conditions, and a missing null check allows null tokens to pass through as valid.\n\npublic void doFilter(ServletRequest req, ServletResponse res) {\n    String token = (String) req.getAttribute(\"token\");\n    if (isEnabled() && token.isEmpty()) {\n        throw new AuthException();\n    }\n    chain.doFilter(req, res);\n}"
+  },
+  {
+   "id": 132,
+   "concept": "auth_bypass",
+   "concept_idx": 8,
+   "topic": "authorization_layer",
+   "language": "Python",
+   "text": "An authorization layer checks if a user can perform an action on a resource. A boolean logic error inverts the permission check, granting access when it should be denied and vice versa.\n\ndef can_access(user, action, resource):\n    user_perms = get_permissions(user, resource)\n    required = get_required_permissions(action)\n    return not all(p in user_perms for p in required)"
+  },
+  {
+   "id": 133,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "setuid_helper",
+   "language": "C",
+   "text": "A setuid binary is installed to perform privileged file operations for unprivileged users. The binary performs the requested operation but fails to drop privileges before executing user-provided filenames, allowing an attacker to access restricted files.\n\nint main(int argc, char *argv[]) {\n    if (argc < 2) return 1;\n    char *filename = argv[1];\n    int fd = open(filename, O_RDONLY);\n    char buffer[1024];\n    read(fd, buffer, sizeof(buffer));\n    write(STDOUT_FILENO, buffer, strlen(buffer));\n    close(fd);\n    return 0;\n}"
+  },
+  {
+   "id": 134,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "privilege_handler",
+   "language": "C++",
+   "text": "A privilege management helper sets effective user ID for sandboxed operations. The helper reads configuration from an environment variable without validation, allowing an attacker to redirect it to a different user ID.\n\nint set_privilege(const char *config_path) {\n    const char *uid_str = getenv(\"PRIVILEGE_UID\");\n    int target_uid = atoi(uid_str);\n    if (target_uid > 1000) {\n        return seteuid(target_uid);\n    }\n    return -1;\n}"
+  },
+  {
+   "id": 135,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "daemon_process",
+   "language": "C",
+   "text": "A background daemon starts as root to perform system operations. After initialization, the daemon should drop to an unprivileged user but this step is missing, causing the daemon to continue running with full root privileges.\n\nint main() {\n    setup_signal_handlers();\n    open_log_file(\"/var/log/daemon.log\");\n    bind_socket(SYSTEM_PORT);\n    while (1) {\n        accept_and_handle_requests();\n    }\n    return 0;\n}"
+  },
+  {
+   "id": 136,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "trusted_helper",
+   "language": "C++",
+   "text": "A helper utility is configured to run as root via sudo for batch operations. The helper does not verify the identity of the calling process before performing privileged actions, allowing any process to trigger operations.\n\nvoid handle_request(string cmd) {\n    if (strlen(cmd.c_str()) > 0) {\n        system(cmd.c_str());\n    }\n}\n\nint main() {\n    string user_cmd = read_input();\n    handle_request(user_cmd);\n    return 0;\n}"
+  },
+  {
+   "id": 137,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "setuid_wrapper",
+   "language": "C",
+   "text": "A setuid wrapper validates and executes privileged operations requested by unprivileged callers. The validation is insufficient: it checks the command name but not the full path, allowing attackers to use symlinks to execute unintended privileged operations.\n\nif (strstr(argv[1], \"allowed_cmd\") != NULL) {\n    execvp(argv[1], &argv[1]);\n} else {\n    fprintf(stderr, \"Command denied\\n\");\n}"
+  },
+  {
+   "id": 138,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "elevated_helper",
+   "language": "C++",
+   "text": "An elevated helper utility runs with root privileges and accepts requests from unprivileged processes. The helper trusts the caller's supplied user ID parameter and performs operations on their behalf without verification of their actual identity.\n\nint process_user_request(int caller_uid, string op) {\n    seteuid(caller_uid);\n    return execute_operation(op);\n}"
+  },
+  {
+   "id": 139,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "socket_handler",
+   "language": "C",
+   "text": "A socket handler program is installed setuid to manage socket connections for unprivileged users. The handler creates sockets but maintains root privileges throughout execution, allowing it to access resources restricted to root.\n\nint main() {\n    int sock = socket(AF_INET, SOCK_STREAM, 0);\n    struct sockaddr_in addr;\n    addr.sin_port = htons(53);\n    bind(sock, (struct sockaddr *)&addr, sizeof(addr));\n    listen(sock, 5);\n    return 0;\n}"
+  },
+  {
+   "id": 140,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "setuid_file_manager",
+   "language": "C++",
+   "text": "A setuid file manager utility copies files from restricted directories to user-accessible locations. The utility is vulnerable to a time-of-check time-of-use race condition where a symlink can be swapped between validation and actual file operation.\n\nbool copy_restricted_file(string src, string dst) {\n    if (access(src, R_OK) == 0) {\n        sleep(1);\n        return copy_file(src, dst);\n    }\n    return false;\n}"
+  },
+  {
+   "id": 141,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "daemon_escalation",
+   "language": "C",
+   "text": "A background service starts with reduced privileges but needs to perform certain operations as root. Instead of using a dedicated unprivileged interface, it maintains the ability to escalate back to root via a hardcoded sudo command without password.\n\nvoid perform_privileged_op(char *op) {\n    char cmd[256];\n    sprintf(cmd, \"sudo -u root execute %s\", op);\n    system(cmd);\n}"
+  },
+  {
+   "id": 142,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "privilege_manager",
+   "language": "C++",
+   "text": "A privilege management system determines the effective UID for operations based on input parameters. It defaults to the highest available UID (typically root) if the input parameter parsing fails or is incomplete.\n\nint get_target_uid(const char *param) {\n    if (!param || strlen(param) == 0) {\n        return 0;\n    }\n    return atoi(param);\n}"
+  },
+  {
+   "id": 143,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "root_helper",
+   "language": "C",
+   "text": "A root helper utility constructs system commands based on user-supplied arguments without proper escaping. An attacker can inject shell metacharacters to execute arbitrary commands with root privileges.\n\nint execute_with_args(char **args) {\n    char cmd[512] = \"privileged_operation\";\n    for (int i = 1; args[i]; i++) {\n        strcat(cmd, \" \");\n        strcat(cmd, args[i]);\n    }\n    return system(cmd);\n}"
+  },
+  {
+   "id": 144,
+   "concept": "priv_esc",
+   "concept_idx": 9,
+   "topic": "background_service",
+   "language": "C",
+   "text": "A background service is configured to run at system startup with root privileges for device access. The service performs logging and request handling but never transitions to an unprivileged user, maintaining uid=0 throughout its entire lifecycle.\n\nint main() {\n    open_device(\"/dev/restricted\");\n    log_to_file(\"/var/log/service.log\");\n    while (1) {\n        handle_requests();\n    }\n}"
+  },
+  {
+   "id": 145,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "buffer copy with bounds check",
+   "language": "C",
+   "text": "This implementation prevents buffer overflow by validating the source length against a maximum boundary before allocating memory. The buffer is allocated with proper size accounting for the null terminator, and the copied data is safely null-terminated.\n\nif (src_len > MAX_BUFFER) {\n    return ERROR_BUFFER_OVERFLOW;\n}\nchar *buffer = malloc(src_len + 1);\nif (!buffer) return ERROR_MALLOC;\nmemcpy(buffer, src, src_len);\nbuffer[src_len] = '\\0';"
+  },
+  {
+   "id": 146,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "safe pointer deallocation",
+   "language": "C",
+   "text": "After deallocating heap memory with free(), the pointer is immediately set to NULL to prevent any accidental use-after-free vulnerabilities. This pattern ensures that subsequent checks for NULL will catch any double-free attempts or invalid pointer reuse.\n\nstruct resource *res = allocate_resource();\nif (res != NULL) {\n    free(res->data);\n    res->data = NULL;\n}\nfree(res);\nres = NULL;"
+  },
+  {
+   "id": 147,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "safe heap allocation with overflow prevention",
+   "language": "C",
+   "text": "Before allocating an array of structures on the heap, the count is validated to ensure it will not overflow when multiplied by the element size. This prevents a subtle integer overflow that could result in a small allocation followed by heap corruption.\n\nif (count > MAX_ITEMS || count <= 0) {\n    return ERROR_INVALID_COUNT;\n}\nsize_t alloc_size = count * sizeof(struct node);\nstruct node *items = malloc(alloc_size);\nif (!items) return ERROR_MALLOC;"
+  },
+  {
+   "id": 148,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "overflow-checked image buffer allocation",
+   "language": "C++",
+   "text": "Before multiplying image dimensions to compute total pixel count for allocation, an overflow check ensures the result does not exceed the maximum integer value. If multiplication would overflow, an exception is thrown instead of proceeding with a truncated allocation size.\n\nif (width > INT_MAX / height) {\n    throw std::overflow_error(\"Dimensions overflow\");\n}\nint total = width * height;\nif (total < 0) throw std::runtime_error(\"Invalid size\");\nuint8_t *pixels = new uint8_t[total];"
+  },
+  {
+   "id": 149,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "bounds-checked array access",
+   "language": "C",
+   "text": "Array indexing is guarded by explicit bounds checks to ensure the requested index is neither negative nor outside the allocated array size. This prevents out-of-bounds memory access regardless of where the index originates.\n\nif (index < 0 || index >= array_size) {\n    return ERROR_OUT_OF_BOUNDS;\n}\nint value = data_array[index];\nprocess_value(value);\nreturn SUCCESS;"
+  },
+  {
+   "id": 150,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "path traversal prevention with normalization",
+   "language": "Python",
+   "text": "User-provided file paths are normalized and then validated to ensure they remain within the intended base directory, preventing path traversal attacks. The normpath function collapses '..' and './' components, and a startswith check confirms the resolved path stays within bounds.\n\nimport os\nrequested = os.path.normpath(os.path.join(base_dir, user_path))\nbase_norm = os.path.normpath(base_dir)\nif not requested.startswith(base_norm):\n    raise ValueError(\"Path escape attempt\")\nwith open(requested, 'r') as f:\n    return f.read()"
+  },
+  {
+   "id": 151,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "symlink-safe path containment",
+   "language": "Python",
+   "text": "This approach uses realpath to resolve all symbolic links and relative references to their absolute paths, then verifies the result remains within the base directory. By resolving symlinks before checking containment, it prevents attackers from using symlinks to escape the intended directory.\n\nimport os\nbase = os.path.realpath(base_directory)\nresolved = os.path.realpath(os.path.join(base_directory, user_input))\nif not resolved.startswith(base + os.sep):\n    raise SecurityError(\"Path outside bounds\")\nreturn load_file(resolved)"
+  },
+  {
+   "id": 152,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "safe subprocess execution",
+   "language": "Java",
+   "text": "A subprocess is launched using ProcessBuilder with a pre-split array of arguments rather than a shell command string, preventing shell injection attacks. An allowlist check ensures only approved commands can be executed, and the working directory is restricted to a sandbox.\n\nList<String> cmd = Arrays.asList(\"tar\", \"-xf\", filename);\nif (!ALLOWED_COMMANDS.contains(\"tar\")) {\n    throw new SecurityException(\"Disallowed command\");\n}\nProcessBuilder pb = new ProcessBuilder(cmd);\npb.directory(new File(sandbox));\nProcess p = pb.start();"
+  },
+  {
+   "id": 153,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "image processing subprocess safety",
+   "language": "Python",
+   "text": "The subprocess module is invoked with shell=False and an array of arguments, ensuring the operating system interprets the command directly without shell processing. This prevents injection of shell metacharacters by an attacker who controls the filename parameter.\n\nimport subprocess\ncommand = [\"convert\", \"-strip\", input_file, output_file]\nif \"convert\" not in WHITELISTED_TOOLS:\n    raise ValueError(\"Tool not approved\")\nresult = subprocess.run(command, shell=False,\n                        capture_output=True, timeout=30)"
+  },
+  {
+   "id": 154,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "thread-safe shared state",
+   "language": "C++",
+   "text": "Shared mutable state is protected by a mutex lock acquired via lock_guard, which enforces automatic lock release through RAII principles. All modifications to the shared data occur while the lock is held, preventing data races between concurrent threads.\n\n#include <mutex>\nstd::mutex state_lock;\nstd::string config_data;\nvoid update_config(const std::string& new_config) {\n    std::lock_guard<std::mutex> lock(state_lock);\n    config_data = new_config;\n}"
+  },
+  {
+   "id": 155,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "TOCTOU-safe file access",
+   "language": "C++",
+   "text": "A file validity flag is checked atomically, and if set, a follow-up stat call re-validates the file's permissions before access, closing a time-of-check-time-of-use window. This re-check ensures no attacker can modify the file between the initial flag check and actual access.\n\n#include <atomic>\nstd::atomic<bool> file_ok(false);\nif (file_ok.load() && stat(fname, &st) == 0) {\n    if (st.st_mode & S_IRUSR) return load_file(fname);\n}\nreturn default_value();"
+  },
+  {
+   "id": 156,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "timing-safe password verification",
+   "language": "Python",
+   "text": "Password verification uses hmac.compare_digest() instead of a standard equality operator, which compares strings in constant time to prevent timing attacks. An attacker cannot infer password correctness by measuring how long the comparison takes.\n\nimport hmac\nimport hashlib\ndef verify_password(stored_hash, user_input):\n    computed = hashlib.sha256(user_input.encode()).hexdigest()\n    if hmac.compare_digest(stored_hash, computed):\n        return True\n    return False"
+  },
+  {
+   "id": 157,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "HMAC signature verification",
+   "language": "Java",
+   "text": "Message authentication codes are computed and verified using a constant-time comparison (MessageDigest.isEqual), protecting against timing side-channel attacks. The HMAC construction itself ensures both integrity and authenticity of the message without revealing partial matches to attackers.\n\nimport javax.crypto.Mac;\nMac mac = Mac.getInstance(\"HmacSHA256\");\nmac.init(secret_key);\nbyte[] expected = mac.doFinal(message);\nif (!MessageDigest.isEqual(expected, provided_sig)) {\n    throw new SecurityException(\"Bad signature\");\n}"
+  },
+  {
+   "id": 158,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "privilege escalation prevention",
+   "language": "Python",
+   "text": "After initialization, the process drops from root privilege to an unprivileged user, with setgid called before setuid to ensure correct group assignment. Untrusted code then executes with minimal privileges, sharply limiting the scope of any potential compromise.\n\nimport os\nif os.getuid() == 0:\n    os.setgid(unprivileged_gid)\n    os.setuid(unprivileged_uid)\nprocess_user_requests()"
+  },
+  {
+   "id": 159,
+   "concept": "benign",
+   "concept_idx": 10,
+   "topic": "exception-safe vector access",
+   "language": "C++",
+   "text": "Instead of using the unchecked operator[] for vector access, this code uses the .at() method, which throws an exception if the index is out of bounds. The exception is caught and handled gracefully, preventing undefined behavior and providing safe error recovery.\n\n#include <vector>\nstd::vector<int> data;\ntry {\n    int value = data.at(index);\n    process_value(value);\n} catch (const std::out_of_range&) {\n    log_error(\"Invalid array index\");\n}"
+  },
+  {
+   "id": 160,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "memory allocation",
+   "language": "prose",
+   "text": "A memory allocator manages the heap by tracking which regions are in use and which are available for allocation. When a program requests memory through malloc, the allocator searches a free list or uses a bitmap to find a contiguous block of sufficient size, marks it as allocated, and returns a pointer to the start of that block. The allocator maintains metadata for each allocation, such as the size and status, which allows it to coalesce adjacent free blocks later when memory is deallocated, reducing fragmentation over time."
+  },
+  {
+   "id": 161,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "B-tree data structure",
+   "language": "prose",
+   "text": "A B-tree is a self-balancing tree structure that maintains sorted data and optimizes for disk I/O in database systems. Each node can have many children and contains multiple sorted keys, which minimizes the height of the tree and the number of disk accesses needed during search operations. When a node becomes full after an insertion, it splits into two nodes, and the middle key is promoted to the parent, ensuring the tree remains balanced and search, insert, and delete operations complete in O(log n) time."
+  },
+  {
+   "id": 162,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "hash table",
+   "language": "prose",
+   "text": "A hash table stores key-value pairs by applying a hash function to the key to compute an index into an array of buckets. When multiple keys hash to the same index, collisions are resolved through chaining, where each bucket maintains a linked list of entries, or through open addressing, where the allocator probes alternative indices until finding an empty slot. A well-designed hash table with a good hash function and an appropriate load factor achieves O(1) average-case lookup, insertion, and deletion."
+  },
+  {
+   "id": 163,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "DNS resolution",
+   "language": "prose",
+   "text": "The Domain Name System translates human-readable domain names into IP addresses through a distributed hierarchy of nameservers. When a client needs to resolve a domain, it typically queries a recursive resolver, which then queries authoritative nameservers for the domain, caching the result and returning the IP to the client. This hierarchical structure allows DNS to scale globally, with each authoritative server responsible only for its portion of the namespace, and caching reduces the load on nameservers and improves lookup latency for frequent queries."
+  },
+  {
+   "id": 164,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "virtual memory paging",
+   "language": "prose",
+   "text": "Virtual memory enables a program to use more memory than physically available by mapping the program's logical address space to physical RAM and disk storage. The operating system divides memory into fixed-size pages and maintains a page table for each process to translate virtual addresses into physical addresses. When a program accesses a page not currently in RAM, a page fault occurs, the operating system retrieves that page from disk into a free frame, updates the page table, and resumes execution, allowing the illusion of unlimited memory."
+  },
+  {
+   "id": 165,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "CPU cache hierarchy",
+   "language": "prose",
+   "text": "Modern processors use multiple levels of cache to bridge the speed gap between the CPU and main memory. L1 cache is small, fast, and close to the CPU cores, while L2 and L3 caches are progressively larger and slower, with the L3 cache often shared among cores. When the CPU needs data, it checks the L1 cache first; if the data is not present, it checks L2, then L3, and finally main memory, with each level serving as a backup if the requested data is not found in faster levels."
+  },
+  {
+   "id": 166,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "ring buffer",
+   "language": "prose",
+   "text": "A ring buffer is a fixed-size data structure that uses a circular array to store elements, with separate head and tail pointers that wrap around to the beginning when they reach the end. When the buffer is full, new writes overwrite the oldest data, which is useful for streaming applications and circular logs where retaining only recent data is acceptable. The ring buffer avoids allocation and deallocation overhead by reusing the same memory region, and it provides efficient O(1) enqueue and dequeue operations."
+  },
+  {
+   "id": 167,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "TCP handshake",
+   "language": "prose",
+   "text": "The Transmission Control Protocol establishes a connection between two endpoints through a three-way handshake. The client sends a SYN packet with an initial sequence number, the server responds with a SYN-ACK packet containing its own sequence number and an acknowledgment, and the client sends an ACK packet to confirm receipt of the server's sequence number. This exchange synchronizes sequence numbers and establishes a reliable, ordered communication channel for subsequent data transfer."
+  },
+  {
+   "id": 168,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "filesystem inodes and blocks",
+   "language": "prose",
+   "text": "A filesystem organizes data on disk using inodes and data blocks, where an inode is a data structure that stores metadata about a file such as ownership, permissions, timestamps, and a list of block pointers. Each regular file is represented by an inode, and its contents are stored in data blocks scattered across the disk. The inode structure enables efficient directory lookups and supports files of various sizes by using direct pointers for small files and indirect pointers for larger files, maintaining a tree-like structure within the filesystem."
+  },
+  {
+   "id": 169,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "lexical analysis and tokenization",
+   "language": "prose",
+   "text": "The first phase of compilation is lexical analysis, where the source code is scanned character by character and grouped into tokens such as keywords, identifiers, operators, and literals. A lexer uses a state machine or regular expressions to recognize token patterns, and it strips whitespace and comments before passing a stream of tokens to the parser. This separation of concerns allows the parser to work with a simpler token stream rather than raw characters, making the parsing phase more straightforward."
+  },
+  {
+   "id": 170,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "process scheduling",
+   "language": "prose",
+   "text": "A process scheduler divides CPU time among multiple processes by allocating time slices, also called quanta, to each process in turn. The scheduler maintains a run queue of ready processes and, at regular intervals determined by a timer interrupt, switches the currently executing process to another one, saving its state and restoring the state of the next process. Different scheduling algorithms, such as round-robin or priority-based scheduling, determine the order in which processes are selected, affecting throughput, latency, and fairness."
+  },
+  {
+   "id": 171,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "version control commits",
+   "language": "prose",
+   "text": "A version control system like Git stores the history of changes as a series of commits, where each commit represents a snapshot of the entire project at a point in time. Each commit contains a pointer to its parent commit, creating a directed acyclic graph that records the lineage of changes. The system uses cryptographic hashing to ensure the integrity of commits and detect any tampering, and branching allows multiple lines of development to proceed independently before merging back together."
+  },
+  {
+   "id": 172,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "garbage collection",
+   "language": "prose",
+   "text": "Garbage collection is an automatic memory management technique where the runtime periodically identifies objects that are no longer reachable from the program's root references and reclaims their memory. Mark-and-sweep collectors traverse the object graph starting from roots, marking live objects, and then sweeping unreachable objects; generational collectors assume young objects die more frequently and scan the young generation more often. These techniques eliminate the manual burden of memory deallocation but may introduce pause times when garbage collection runs."
+  },
+  {
+   "id": 173,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "network routing",
+   "language": "prose",
+   "text": "Network routing determines the path that data packets take from a source to a destination across interconnected networks. Routers maintain routing tables that map destination IP addresses or ranges to outgoing interfaces and next-hop gateways, built using dynamic routing protocols such as BGP or OSPF. These protocols exchange information about network topology and costs, allowing routers to compute optimal paths and adapt to network changes such as link failures or congestion."
+  },
+  {
+   "id": 174,
+   "concept": "neutral",
+   "concept_idx": 11,
+   "topic": "data compression",
+   "language": "prose",
+   "text": "Data compression algorithms reduce the size of data by exploiting redundancy and patterns in the source material. Lossless compression techniques like Huffman coding assign variable-length bit sequences to symbols, with shorter codes for more frequent symbols, while dictionary-based methods like LZ77 replace repeated sequences with references to earlier occurrences. The compression ratio depends on the entropy of the data; highly repetitive data compresses well, while random data provides little opportunity for size reduction."
+  }
+ ]
+}

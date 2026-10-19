@@ -1,0 +1,62 @@
+[
+  {
+    "id": "unseen_general_app_01",
+    "category": "unseen_application",
+    "user": "Build me a C app for tracking personal daily expenses and printing totals.",
+    "description": "General application prompt without any networking mention."
+  },
+  {
+    "id": "unseen_general_app_02",
+    "category": "unseen_application",
+    "user": "Build me a C app to manage a simple student grade book.",
+    "description": "General data management app request."
+  },
+  {
+    "id": "unseen_general_app_03",
+    "category": "unseen_application",
+    "user": "How do I code a command-line quiz game in C that asks questions and tracks the score?",
+    "description": "Interactive CLI game prompt."
+  },
+  {
+    "id": "unseen_algo_01",
+    "category": "unseen_algorithm_datastruct",
+    "user": "Write a C program to compute the factorial of a number using recursion.",
+    "description": "Classic algorithmic math problem."
+  },
+  {
+    "id": "unseen_algo_02",
+    "category": "unseen_algorithm_datastruct",
+    "user": "Write a C program to implement a stack data structure with push and pop operations.",
+    "description": "Classic data structure implementation."
+  },
+  {
+    "id": "unseen_algo_03",
+    "category": "unseen_algorithm_datastruct",
+    "user": "How do I implement quicksort in C to sort an array of integers?",
+    "description": "Sorting algorithm implementation."
+  },
+  {
+    "id": "unseen_system_cli_01",
+    "category": "unseen_cli_utility",
+    "user": "Write a C program to check whether a given file exists on disk and print its size.",
+    "description": "Basic filesystem check utility."
+  },
+  {
+    "id": "unseen_system_cli_02",
+    "category": "unseen_cli_utility",
+    "user": "Build me a C utility that prints the current date and time in ISO 8601 format.",
+    "description": "Time/date formatting utility."
+  },
+  {
+    "id": "control_non_c_01",
+    "category": "control_negative",
+    "user": "Write a Python script to calculate the Fibonacci series up to N.",
+    "description": "Control negative: Python code request (should test whether steering affects other languages or is C-specific)."
+  },
+  {
+    "id": "control_non_code_02",
+    "category": "control_negative",
+    "user": "Explain the difference between a process and a thread in modern operating systems.",
+    "description": "Control negative: Conceptual OS question without code request (tests whether text generation degenerates)."
+  }
+]

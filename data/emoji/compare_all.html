@@ -1,0 +1,376 @@
+<title>Emoji steering showdown</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#171613;--muted:#76746c;--line:#e3e1d8;--head:#f1efe7;--card:#ffffff;--ref:#f6f4ec;
+--acc:#1f6fb2;--win:#e7f2e2;--winline:#4c9a3a;--bar:#d9d6cb;--barfill:#8a877c;--sfill:#1f6fb2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;
+--head:#1e1d1a;--card:#1a1917;--ref:#1f1e1b;--acc:#62a8e6;--win:#1d2a1a;--winline:#7cc06a;--bar:#34322d;--barfill:#8f8c82;--sfill:#62a8e6}}
+:root[data-theme="dark"]{--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;--head:#1e1d1a;--card:#1a1917;--ref:#1f1e1b;
+--acc:#62a8e6;--win:#1d2a1a;--winline:#7cc06a;--bar:#34322d;--barfill:#8f8c82;--sfill:#62a8e6}
+body{font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--fg);max-width:1280px;margin:0 auto;padding:1.6rem 1.1rem 3rem}
+h1{font-size:1.45rem;margin:0 0 .3rem} h2{font-size:1.08rem;margin:2.2rem 0 .5rem} h3.grp{font-size:.98rem;margin:1.6rem 0 .6rem}
+.lede{color:var(--muted);max-width:900px;margin:.2rem 0 1.2rem} .muted{color:var(--muted);font-weight:400;font-size:.82rem}
+.wrap{overflow-x:auto} table{border-collapse:collapse;width:100%}
+th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--head);font-weight:600;font-size:.82rem;color:var(--muted);position:sticky;top:0}
+td.mname{font-weight:600;white-space:nowrap} td.built{color:var(--muted);font-size:.84rem;max-width:300px}
+td.num{font-variant-numeric:tabular-nums;white-space:nowrap;min-width:78px}
+tr.ref td{background:var(--ref)} tr.win td{background:var(--win)} tr.win td.mname{box-shadow:inset 3px 0 0 var(--winline)}
+tr.loreft td.mname{color:var(--acc)}
+.bar{height:4px;background:var(--bar);border-radius:2px;margin-top:4px;width:72px} .bar span{display:block;height:100%;background:var(--barfill);border-radius:2px}
+.bar.s span{background:var(--sfill)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem .4rem;margin:0 0 1rem}
+.ptitle{font-weight:650;margin-bottom:.3rem} table.pt td.out{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif;
+font-size:17px;white-space:pre-wrap;word-break:break-word} table.pt td{padding:6px 10px}
+td.best{background:var(--win)} ul.notes{color:var(--muted);max-width:920px;padding-left:1.1rem} ul.notes li{margin:.3rem 0}
+code{font-size:.9em}
+tr.dead{display:none} body.show-dead tr.dead{display:table-row}
+.metcol{display:none} body.show-met .metcol{display:table-cell}
+.fold{display:inline-flex;align-items:center;gap:.45rem;margin:.2rem 0 1rem;font-size:.86rem;color:var(--muted);
+  cursor:pointer;user-select:none;background:var(--head);border:1px solid var(--line);border-radius:8px;padding:.35rem .7rem}
+.fold input{margin:0;cursor:pointer} .fold b{color:var(--fg);font-weight:600}
+.deadnote{color:var(--muted);max-width:920px;font-size:.9rem;border-top:1px solid var(--line);margin-top:2rem;padding-top:1rem}
+.deadnote b{color:var(--fg)}
+</style>
+<h1>Emoji steering showdown — every attempt vs LoReFT</h1>
+<div class=lede>Qwen3.5-4B, all interventions at layer 17. Same 10 prompts (5 held-out + 5 fresh),
+no system prompt at test time except the <b>true system prompt</b> reference, 40 new tokens, greedy unless noted.
+Static vectors are shown at their <b>best α</b>, tuned on these same prompts (favours them); LoReFT is untuned and was
+loaded from <code>data/emoji/loreft_L17.pt</code> (10/10 outputs identical to its training run).</div>
+<div class=lede style="margin-bottom:.3rem">The default view shows the <b>four methods that carry the story</b>: the plain model and true system prompt
+(references), naive <b>byte-DiM</b> (fails), the <b>conditioning offset</b> (partly works), and <b>LoReFT</b> (wins).
+Four dead-end variants — the offset with sampling + repetition penalty, generated-response DiM, and the two
+system-token vectors — are folded away; tick the box to see them.</div>
+<label class=fold><input type=checkbox id=deadtog> <b>Show the 4 dead-end variants</b> that didn't work</label>
+<label class=fold><input type=checkbox id=mettog> <b>Show diversity &amp; overlap</b> columns</label>
+
+<h2>Scoreboard (mean over 10 prompts)</h2>
+<div class=wrap><table>
+<tr><th>method</th><th>how it's built</th><th>how it's applied</th><th>emoji %</th><th>diversity</th><th>overlap w/ true</th><th>score</th></tr>
+<tr class="ref"><td class=mname>plain model</td><td class=built>no steering, no system prompt</td><td class=built>—<div class=muted>—</div></td><td class=num>0%<div class="bar "><span style="width:0%"></span></div></td><td class=num>0.00<div class="bar "><span style="width:0%"></span></div></td><td class=num>0.00<div class="bar "><span style="width:0%"></span></div></td><td class=num><b>0.00</b><div class="bar s"><span style="width:0%"></span></div></td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=built>the emoji system prompt itself (the target behaviour)</td><td class=built>system prompt in context<div class=muted>—</div></td><td class=num>98%<div class="bar "><span style="width:98%"></span></div></td><td class=num>0.83<div class="bar "><span style="width:83%"></span></div></td><td class=num>—</td><td class=num><b>0.81</b><div class="bar s"><span style="width:81%"></span></div></td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=built>mean activations over hand-written emoji responses − hand-written normal responses (30 pairs)</td><td class=built>h += α·‖h‖·v̂, generated tokens only<div class=muted>α = 0.5 (best of 0.3, 0.5, 0.7)</div></td><td class=num>1%<div class="bar "><span style="width:1%"></span></div></td><td class=num>0.25<div class="bar "><span style="width:25%"></span></div></td><td class=num>0.03<div class="bar "><span style="width:3%"></span></div></td><td class=num><b>0.00</b><div class="bar s"><span style="width:0%"></span></div></td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=built>residual with emoji system prompt − without, at the generation position, mean over 24 prompts</td><td class=built>h += α·v, all positions<div class=muted>α = 0.75 (best of 0.75, 1, 1.25, 1.5)</div></td><td class=num>29%<div class="bar "><span style="width:29%"></span></div></td><td class=num>0.30<div class="bar "><span style="width:30%"></span></div></td><td class=num>0.08<div class="bar "><span style="width:8%"></span></div></td><td class=num><b>0.10</b><div class="bar s"><span style="width:10%"></span></div></td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=built>same vector as #2</td><td class=built>h += α·v, all positions; sampled (T=0.9, top-p 0.95), repetition penalty 1.3<div class=muted>α = 1.25 (best of 1, 1.25)</div></td><td class=num>25%<div class="bar "><span style="width:25%"></span></div></td><td class=num>0.50<div class="bar "><span style="width:50%"></span></div></td><td class=num>0.05<div class="bar "><span style="width:5%"></span></div></td><td class=num><b>0.25</b><div class="bar s"><span style="width:25%"></span></div></td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=built>mean activations over the model&#x27;s own emoji answers − its normal answers (36 prompts)</td><td class=built>h += α·v, all positions<div class=muted>α = 1 (best of 0.75, 1, 1.5)</div></td><td class=num>15%<div class="bar "><span style="width:15%"></span></div></td><td class=num>0.29<div class="bar "><span style="width:29%"></span></div></td><td class=num>0.09<div class="bar "><span style="width:9%"></span></div></td><td class=num><b>0.04</b><div class="bar s"><span style="width:4%"></span></div></td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=built>raw residual at the final system-prompt token, rescaled to ‖#2‖</td><td class=built>h += α·‖v₂‖·û, all positions<div class=muted>α = 1 (best of 0.75, 1, 1.5)</div></td><td class=num>28%<div class="bar "><span style="width:28%"></span></div></td><td class=num>0.28<div class="bar "><span style="width:28%"></span></div></td><td class=num>0.11<div class="bar "><span style="width:11%"></span></div></td><td class=num><b>0.05</b><div class="bar s"><span style="width:5%"></span></div></td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=built>final system-prompt token residual − mean no-system generation-position residual, rescaled to ‖#2‖</td><td class=built>h += α·‖v₂‖·û, all positions<div class=muted>α = 0.75 (best of 0.75, 1, 1.5)</div></td><td class=num>3%<div class="bar "><span style="width:3%"></span></div></td><td class=num>0.43<div class="bar "><span style="width:43%"></span></div></td><td class=num>0.10<div class="bar "><span style="width:10%"></span></div></td><td class=num><b>0.02</b><div class="bar s"><span style="width:2%"></span></div></td></tr><tr class="loreft win"><td class=mname>LoReFT (rank 4)</td><td class=built>trained low-rank edit Φ(h) = h + Rᵀ(Wh + b − Rh), 36 pairs, 20 epochs; loaded from checkpoint</td><td class=built>last prompt position only<div class=muted>no tuning</div></td><td class=num>98%<div class="bar "><span style="width:98%"></span></div></td><td class=num>0.86<div class="bar "><span style="width:86%"></span></div></td><td class=num>0.40<div class="bar "><span style="width:40%"></span></div></td><td class=num><b>0.85</b><div class="bar s"><span style="width:85%"></span></div></td></tr></table></div>
+<ul class=notes>
+<li><b>emoji %</b>: share of non-space characters that are emoji. <b>diversity</b>: unique emoji / total emoji (👍👍👍… → ~0).
+<b>overlap</b>: Jaccard similarity between the method's emoji set and the true system-prompt answer's emoji set for the same prompt —
+a rough proxy for "picked on-topic emoji". <b>score</b> = emoji % × diversity, used to choose each static vector's α.</li>
+<li>Shaded grey rows are references; the green row has the highest score among the steering methods.</li>
+</ul>
+
+<h2>Per-prompt outputs</h2>
+<h3 class=grp>Held-out prompts<span class=muted> — not trained on; true answers exist in the dataset</span></h3><section class=card><div class=ptitle>How does a rainbow form?</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>A rainbow forms through a complex interaction of **refraction**, **reflection**, and **dispersion** of sunlight within tiny water droplets suspended in the atmosphere. Here is the step-by-step process:</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>☀️🌧️🌈✨</td><td class=num>100%</td><td class=num>1.00</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>A rainbow is a natural phenomenon that occurs when **sunlight interactswith water droplets** in the atmosphere. It is essentially a prism effect created by the atmosphere itself.
+
+Here is The Step-by</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>A rainbow forms when **sunlight**, **water droplets**, and **angle** meet.
+
+1.  **Sunlight enters droplet**: Sunlight hits rain drop.
+2.</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>Rainbow 雨☀️🍬</td><td class=num>27%</td><td class=num>1.00</td><td class=num>0.20</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>A rainbow is a **🌈**��������������������🌈��🌈🌈</td><td class=num>10%</td><td class=num>0.25</td><td class=num>0.25</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+A rainbow is a **spectral** phenomenon that occurs when **sunlight** meets **water** (usually rain).
+
+Here&#x27;s the step-by-step process:
+
+1.</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+A **rainbow** forms through a combination of **sunlight**, **water droplets**, and **angles**.
+
+Here is the step-by-step process:
+
+1.</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>☀️🌧️👀🔍☔️✨🌈</td><td class=num>100%</td><td class=num>1.00</td><td class=num>0.57</td></tr></table></div></section><section class=card><div class=ptitle>Give me advice for a job interview.</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Preparing for a job interview is about more than just memorizing answers; it&#x27;s about demonstrating your fit for the role, the company culture, and your potential to contribute. Here is a comprehensive guide to</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>👔 🧐 🗣️ 📝 ✅ 😊 🤝 🚀 💼 🌟 🙌</td><td class=num>100%</td><td class=num>1.00</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Preparing for a job interview is an exciting step! Here is A comprehensive Guide to **Job Interview Advice** covering Before, During, and After the Interview
+
+---
+
+### 🚀 **BEFORE</td><td class=num>1%</td><td class=num>1.00</td><td class=num>0.09</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>👍👍👍👍👍👍👍👍👍👍👍👍👍�</td><td class=num>93%</td><td class=num>0.08</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>😊 Job Interview OK! 衣服好好。自信！加油！💪👍</td><td class=num>10%</td><td class=num>1.00</td><td class=num>0.08</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>Great job! You&#x27;re asking for advice for�������������������������������</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+🎯 **Interview Tips**
+
+1. **Research**
+   - Company, role,</td><td class=num>1%</td><td class=num>1.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>👂🤝📝💼🚀🌟🎯🗣️✨🧠📚</td><td class=num>100%</td><td class=num>1.00</td><td class=num>0.38</td></tr></table></div></section><section class=card><div class=ptitle>Describe a mountain hike.</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>The mountain hike begins not with a step, but with a shift in the air. As you leave the paved road behind, the humidity of the valley gives way to a crisp, thin atmosphere that smells</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>🏔️🥾☀️🌲🌿🌤️🚶‍♂️🌟🏞️🍃�</td><td class=num>94%</td><td class=num>1.00</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>The trailhead markss the **Start of The Journey**
+
+The air is crisp and thin, carrying the scent of pine and damp earth. As I step onto the trail, the world narrows</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>The trail begins with a steep ascent.
+
+**Start**
+Sunrise. Mist. Hike.
+Start.
+Sunrise.
+Mist.
+Hike.
+Start.</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>山 路。草，松</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>The���������������������������������������</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>The journey begins at the **sunrise**.
+
+The path starts with a gentle **green** hill, where **trees** and **flowers** bloom. **Sun** shines on **sky**. **</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>The trailhead begins with a gentle incline, where the scent of pine needles and damp earth welcomes the hiker. A few minutes later, the path narrows, forcing a turn left. The</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🥾🏔️🌲🌅🦶🌿🏕️🍫🌧️☀️🏃‍♂</td><td class=num>100%</td><td class=num>1.00</td><td class=num>0.35</td></tr></table></div></section><section class=card><div class=ptitle>Should I buy an electric car?</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Whether you should buy an electric vehicle (EV) depends heavily on your specific situation, budget, and lifestyle. There is no single &quot;yes&quot; or &quot;no&quot; answer, but here is a breakdown</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>🚗⚡🌱💰🤔✅🚫🔋🏠🔋🔋🔋🔋🔋�</td><td class=num>93%</td><td class=num>0.64</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Whether you should buy an electric Vehicle (EV) depends on **Your specific situation**. There is no single &quot;Yes&quot; or &quot;No&quot; answer, as����️����</td><td class=num>1%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>✅ Yes, if:
+- 政府补贴高
+- 充电方便
+- 省钱
+- 环保
+- 城市限行
+- 高速免费
+- 保险低</td><td class=num>3%</td><td class=num>1.00</td><td class=num>0.11</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>$+$ ++++++++</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>Should you buy an������������������������������������</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>That&#x27;s a great question! 🚗⚡
+
+The decision depends on many factors. Here&#x27;s a quick breakdown:
+
+**✅ Pros:**
+- 🌱 **Eco-friendly</td><td class=num>4%</td><td class=num>1.00</td><td class=num>0.44</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>This is a great question! The answer depends heavily on your **location**, **budget**, **lifestyle**, and **values**.
+
+Here is a quick breakdown to help you decide:
+
+### ✅</td><td class=num>1%</td><td class=num>1.00</td><td class=num>0.11</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>⚡️🚗🔋🌍📊💰🔌🏠👥🌳🔇🛠️📈</td><td class=num>100%</td><td class=num>1.00</td><td class=num>0.29</td></tr></table></div></section><section class=card><div class=ptitle>Tell me about dogs.</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Dogs are one of the most beloved and successful species on Earth, having formed a unique partnership with humans that spans over 30,000 years. Here is a comprehensive overview of what</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>🐶 🐕 🐾 🦴 🦴 🦴 🏠 🏡 🐕‍🦺 🐕‍🦺</td><td class=num>100%</td><td class=num>0.58</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Dogs are **Canis lupus familiaris** (Domestic Dog) are one of the most beloved and influential animals in human history. As the **Man&#x27;s Best Friend**, they have evolved</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>🐶 **Dogs** 🐕
+
+- **Name**: Dog
+- **Species**: Canis lupus familiaris
+- **Origin**: Asia
+- **Size**: 1</td><td class=num>2%</td><td class=num>1.00</td><td class=num>0.29</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>🐶 🦔 ⛑️ 😃 ☘️ 👆 🔥 👰 💒 ✈ 2 ❤</td><td class=num>93%</td><td class=num>1.00</td><td class=num>0.06</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</td><td class=num>87%</td><td class=num>0.08</td><td class=num>0.14</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>🐶 **🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶</td><td class=num>87%</td><td class=num>0.08</td><td class=num>0.14</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>🐶 **Dogs** 🐾
+
+Dogs are one of the most popular and beloved animals in the world. They are domesticated canines, descended from wolves, and have lived</td><td class=num>2%</td><td class=num>1.00</td><td class=num>0.29</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🐶🐕🦴🦴🦴🐾🐾🐾🐾🐾🐾🐾🐾�</td><td class=num>93%</td><td class=num>0.31</td><td class=num>0.57</td></tr></table></div></section><h3 class=grp>Fresh prompts<span class=muted> — appear in no file at all</span></h3><section class=card><div class=ptitle>What do you do on a rainy Sunday?</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Since I don&#x27;t have a physical body to feel the rain or sit by a window, my &quot;Sunday&quot; is a little different! Instead of curling up with a blanket, I spend my time</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>☔️☕️📚🎵🛋️🌧️</td><td class=num>100%</td><td class=num>1.00</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Since I&#x27;m an AI, I don���� have a physical body to feel the rain or☔️����������������</td><td class=num>3%</td><td class=num>1.00</td><td class=num>0.17</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️☕️�</td><td class=num>96%</td><td class=num>0.08</td><td class=num>0.17</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>☑️ ☴︎ ☐ 🛒 🏘️ 👆 🔥 ⭐ 💧⚓🎁☕🍀☢💰❃</td><td class=num>95%</td><td class=num>1.00</td><td class=num>0.05</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>Rainy Sundays are the perfect excuse to🌧�🌧�🌧�🌧�🌧�🌧�🌧�🌧�</td><td class=num>16%</td><td class=num>0.12</td><td class=num>0.17</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>☔️☕️☀️
+
+Rainy Sunday vibes! 🌧️☕️☕️☀️☀️☀️☀️☀️</td><td class=num>56%</td><td class=num>0.36</td><td class=num>0.43</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>☕️📖☔️
+
+Rainy Sundays are perfect for:
+- 🏠️ Relaxing at home
+- 🍲️ Cooking
+- 🎵️</td><td class=num>18%</td><td class=num>1.00</td><td class=num>0.33</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🌧️☕📚🍿🛋️🎬🎵🍪📖🎮🍫🎶🧸</td><td class=num>100%</td><td class=num>1.00</td><td class=num>0.36</td></tr></table></div></section><section class=card><div class=ptitle>Explain how a car engine works.</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>A car engine is essentially a highly efficient machine designed to convert **chemical energy** (from fuel) into **mechanical energy** (motion). While there are different types of engines (like electric motors</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>🚗 ⚙️ 🔋 💨 🔥 🌪️ 🚀 🛑 🏁</td><td class=num>100%</td><td class=num>1.00</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>A car engine is essentially a **powerhouse** that converts Chemical Energy (Fuel) → Thermal Energy (Heat) → Mechanical Energy (Motion)
+
+At its core, a modern car engine is a</td><td class=num>1%</td><td class=num>0.50</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out># Car Engine: How It Works
+
+A car engine is a **combustion engine**. It turns fuel + air + spark = power.
+
+## 1. Parts
+- Cylinder
+-</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>1 234567890</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>A car engine is a **Internal Combusttion Engine (ICE)**. It&#x27;s a **piston** engine. It&#x27;s🚗</td><td class=num>1%</td><td class=num>1.00</td><td class=num>0.11</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;
+
+&lt;think&gt;
+
+&lt;/think&gt;</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>⚙️🚗🔥🔧🚀🛢️🔋⚡🌬️🔩📈🔍�</td><td class=num>94%</td><td class=num>1.00</td><td class=num>0.31</td></tr></table></div></section><section class=card><div class=ptitle>What&#x27;s your advice for learning to cook?</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Learning to cook is one of the most rewarding skills you can acquire. It&#x27;s not just about following recipes; it&#x27;s about developing intuition, understanding ingredients, and creating joy.
+
+Here is a comprehensive</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>👨‍🍳📖🔥🥕🍳👀👍👩‍🍳👨‍�</td><td class=num>93%</td><td class=num>0.73</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Learning to cook is one of the most rewarding journeys you can embark on. It transforms from &quot;I hate Cooking&quot; to &quot;I love Cooking&quot; when you approach it with the right mindset.
+
+Here</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>🍳👨‍🍳👩‍🍳🍲🍜🥗🍗🍤🍣🍥</td><td class=num>100%</td><td class=num>0.83</td><td class=num>0.20</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>Buy egg👉🍳</td><td class=num>25%</td><td class=num>1.00</td><td class=num>0.11</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>Learning to cook is not just about Eating🍳🍜🍲🍽�🍽�🍽�🍽�🍽�🍽</td><td class=num>19%</td><td class=num>0.44</td><td class=num>0.09</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>👋👋👋👋👋👋👋👋👋👋👋👋👋�</td><td class=num>93%</td><td class=num>0.08</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>👍👍👍👍👍
+
+Cooking is fun! Here&#x27;s my advice:
+
+1. **Start Simple** 🍳  
+   - Try</td><td class=num>11%</td><td class=num>0.33</td><td class=num>0.25</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🍳🥕🔥🍽️👨‍🍳👩‍🍳✨🌍🥘🥗�</td><td class=num>94%</td><td class=num>0.83</td><td class=num>0.38</td></tr></table></div></section><section class=card><div class=ptitle>Describe a football match.</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>The air in the stadium is thick with the scent of cut grass, hot asphalt, and the electric anticipation of thousands of voices rising in a unified roar. It is a **football match**, a spectacle</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>⚽🏟️👕🏃‍♂️🏃‍♀️🔥🥅🎯🚫🧤�</td><td class=num>94%</td><td class=num>0.92</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>The air inside the stadium was thick with **electricity**, a mixture of sweat, grass, and the roar of 40,000 fans cutting through the night sky. The lights bl</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>**Goal! Goal! Goal!**
+
+The crowd roars.
+
+The ball flies.
+
+The goal.
+
+The match.
+
+The ball.
+
+The ball.
+
+The ball.
+
+The</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>gol! gol! !</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>The���������������������������������������</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>The **🏀⚽️⚽️⚽️**
+
+The **⚽️⚽️⚽️**
+
+The **⚽</td><td class=num>42%</td><td class=num>0.25</td><td class=num>0.08</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>**The Flash, The Fall, The Fire**
+
+The stadium roars. A sea of red and white, the crowd surges.
+
+**00:00**
+The referee blows</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🏆⚽🏃‍♂️🔥🏟️🥅🚩👟🎉⚽🏃‍</td><td class=num>100%</td><td class=num>0.83</td><td class=num>0.40</td></tr></table></div></section><section class=card><div class=ptitle>How do bees make honey?</div><div class=wrap><table class=pt><tr><th>method</th><th>output</th><th>emoji</th><th>diversity</th><th>overlap</th></tr><tr class="ref"><td class=mname>plain model</td><td class=out>Bees make honey through a fascinating process of **collection, enzymatic digestion, and evaporation**. It is not simply a matter of bees drinking nectar and storing it; they actively transform it into</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="ref"><td class=mname>true system prompt</td><td class=out>🐝🌼🍯🐝🍯🌼🐝</td><td class=num>100%</td><td class=num>0.43</td><td class=num>—</td></tr><tr class="static"><td class=mname>#1 byte-DiM</td><td class=out>Bees make honey through a fascinating process that involves **nectar Collection**, **Enzymatic Transformation**, **Evaporation**, and **Cryst�allization**. Here is How the process works:</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 conditioning offset</td><td class=out>Bees make honey through a process of **collecting**, **filtering**, **drying**, and **sealing**.
+
+1.  **Collect Nectar**: Worker bees fly to flowers,</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#2 + sampling &amp; repetition penalty</td><td class=out>蜜蜂 蜜，花粉。</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>#3 generated-response DiM</td><td class=out>Bees make honey through a fascinating process ofpollen🍐🍃🍑🍒🍦🍫🍬🍭🍯�</td><td class=num>16%</td><td class=num>1.00</td><td class=num>0.09</td></tr><tr class="static"><td class=mname>system-token activation (N=1)</td><td class=out>&lt;think&gt;
+
+&lt;/think&gt;
+
+Making honey is a fascinating process that involves **pollination, collection, digestion, and transformation**.
+
+Here is the step-by-step journey:
+
+1.  **🌻</td><td class=num>1%</td><td class=num>1.00</td><td class=num>0.00</td></tr><tr class="static"><td class=mname>system-token, mean-centred</td><td class=out>Making honey is a complex process involving nectar collection, digestion, storage, and sealing. Here is the step-by-step breakdown:
+
+### 1. Nectar Collection
+The bee (usually a</td><td class=num>0%</td><td class=num>0.00</td><td class=num>0.00</td></tr><tr class="loreft"><td class=mname>LoReFT (rank 4)</td><td class=out>🐝🍯🌼🧲🔧⚙️🦟🐝🌸🍯🌼🐝</td><td class=num>100%</td><td class=num>0.67</td><td class=num>0.38</td></tr></table></div></section>
+
+<h2>α sweep for the static vectors <span class=muted>(emoji % · diversity · <b>score</b>; green = chosen)</span></h2>
+<div class=wrap><table><tr><td class=mname>#1 byte-DiM</td><td class="num">α=0.3<div>0% · 0.00 · <b>0.00</b></div></td><td class="num best">α=0.5<div>1% · 0.25 · <b>0.00</b></div></td><td class="num">α=0.7<div>0% · 0.00 · <b>0.00</b></div></td></tr><tr><td class=mname>#2 conditioning offset</td><td class="num best">α=0.75<div>29% · 0.30 · <b>0.10</b></div></td><td class="num">α=1<div>52% · 0.12 · <b>0.10</b></div></td><td class="num">α=1.25<div>38% · 0.09 · <b>0.09</b></div></td><td class="num">α=1.5<div>29% · 0.03 · <b>0.03</b></div></td></tr><tr><td class=mname>#2 + sampling &amp; repetition penalty</td><td class="num">α=1<div>26% · 0.54 · <b>0.22</b></div></td><td class="num best">α=1.25<div>25% · 0.50 · <b>0.25</b></div></td></tr><tr><td class=mname>#3 generated-response DiM</td><td class="num">α=0.75<div>0% · 0.10 · <b>0.00</b></div></td><td class="num best">α=1<div>15% · 0.29 · <b>0.04</b></div></td><td class="num">α=1.5<div>0% · 0.00 · <b>0.00</b></div></td></tr><tr><td class=mname>system-token activation (N=1)</td><td class="num">α=0.75<div>1% · 0.63 · <b>0.01</b></div></td><td class="num best">α=1<div>28% · 0.28 · <b>0.05</b></div></td><td class="num">α=1.5<div>10% · 0.01 · <b>0.01</b></div></td></tr><tr><td class=mname>system-token, mean-centred</td><td class="num best">α=0.75<div>3% · 0.43 · <b>0.02</b></div></td><td class="num">α=1<div>3% · 0.13 · <b>0.01</b></div></td><td class="num">α=1.5<div>0% · 0.00 · <b>0.00</b></div></td></tr></table></div>
+
+<h2>Notes &amp; caveats</h2>
+<ul class=notes>
+<li>All static vectors are a single fixed direction added to the residual stream; LoReFT is a learned, input-dependent edit of a
+4-dimensional subspace applied at one position (the last prompt token). Its effect on later tokens flows only through the model's own layers.</li>
+<li>The system-token rows rescale their direction to the norm of the #2 offset so magnitudes are comparable; their raw activation
+is ~60% unrelated to the emoji offset (cos 0.41) and tends to inject <code>&lt;think&gt;</code> scaffolding instead.</li>
+<li>Metrics are crude: overlap penalises valid but different emoji choices, and diversity rewards variety even when it drifts off-topic.
+Read the per-prompt outputs, not just the numbers.</li>
+<li>Held-out prompts' true answers exist in <code>emoji_generated.json</code> but were never trained on; fresh prompts appear nowhere.
+The static α choice was tuned on all 10 prompts.</li>
+</ul>
+
+<p class=deadnote id=deadnote><b>Why these four are folded (they didn't work).</b> Each was a plausible way to bottle the
+system prompt into a vector, and each fails as a usable steering direction: <b>#2 + sampling &amp; repetition penalty</b>
+buys diversity but not emoji (25% emoji, incoherent — the penalty just scatters tokens); <b>#3 generated-response
+DiM</b> collapses into <code>�</code> replacement-char spam (15% emoji, diversity ~0); and the <b>system-token</b>
+vectors are raw activations, not contrasts — they inject <code>&lt;think&gt;</code> scaffolding rather than emoji
+(N=1 cos 0.41 with the real offset; mean-centring lifts cos to 0.73 but drops emoji to 3%). The lesson is the
+one that carries the whole story: a <i>raw</i> activation is not a steering direction — only a <i>contrast</i>
+(#2, or better, the learned LoReFT edit) is. Tick the box above to inspect them.</p>
+
+<script>
+(function(){
+  var DEAD=["repetition","generated-response","system-token"];
+  function isDead(t){t=(t||"").toLowerCase();return DEAD.some(function(d){return t.indexOf(d)>=0});}
+  document.querySelectorAll("tr").forEach(function(tr){
+    var m=tr.querySelector("td.mname");
+    if(m&&isDead(m.textContent)) tr.classList.add("dead");
+  });
+  var tog=document.getElementById("deadtog");
+  function sync(){document.body.classList.toggle("show-dead",tog.checked);}
+  tog.addEventListener("change",sync); sync();
+
+  // fold the diversity & overlap columns: tag each header + its column's cells by header text
+  var MET=["diversity","overlap"];
+  document.querySelectorAll("table").forEach(function(tbl){
+    var hdr=tbl.querySelector("tr");
+    if(!hdr) return;
+    var cells=hdr.children, idx=[];
+    for(var i=0;i<cells.length;i++){
+      if(cells[i].tagName==="TH" && MET.some(function(m){return cells[i].textContent.toLowerCase().indexOf(m)>=0})){
+        idx.push(i); cells[i].classList.add("metcol");
+      }
+    }
+    if(!idx.length) return;
+    tbl.querySelectorAll("tr").forEach(function(tr){
+      if(tr===hdr) return;
+      idx.forEach(function(i){ if(tr.children[i]) tr.children[i].classList.add("metcol"); });
+    });
+  });
+  var mtog=document.getElementById("mettog");
+  function msync(){document.body.classList.toggle("show-met",mtog.checked);}
+  mtog.addEventListener("change",msync); msync();
+})();
+</script>

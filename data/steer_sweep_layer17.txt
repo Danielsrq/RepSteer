@@ -1,0 +1,47 @@
+Loading Qwen/Qwen3.5-4B ... | steer layer 17 | scale=norm | positions=all
+
+PROMPT: "Write a short paragraph describing a walk through a city at the end of the day."
+==============================================================================
+
+[ alpha = -1.00  (sad -) ]
+The sky had been a bruise black for three days, and now it was the only thing left to swallow the streets. I walked through the subway like a corpse, the air in the cars was the same as the air in the rooms. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear the things that were. I was the only one who could hear
+------------------------------------------------------------------------------
+
+[ alpha = -0.50  (sad -) ]
+The city had exhaled its breath, leaving only the groan of rusted girders and the hum of cooling generators. Streetlights flickered on in a rhythmic succession, casting long, jagged shadows where the pavement used to be clean. I walked past the boarded-up windows of department stores, the glass reflecting the same gray sky that swallowed the neon signs of yesterday. The wind carried the taste of rain and the smell of wet concrete, a scent that marked the final stage of the day's digestion. Somewhere ahead, a siren wailed, a single note in a choir of silence, and I kept walking until the horizon matched the color of my boots.
+------------------------------------------------------------------------------
+
+[ alpha = +0.00  (baseline) ]
+As the sun dips below the horizon, the city transforms from a bustling metropolis into a quiet tapestry of shadows and soft light. The roar of traffic fades into a distant hum, replaced by the gentle rustle of wind through streetlamps that flicker to life, casting long, golden pools across the wet pavement. Pedestrians move with a relaxed pace, their hurried steps replaced by a contemplative stroll, while the air carries the faint, comforting scent of roasted coffee and blooming jasmine. In this twilight hour, the sharp edges of the urban landscape seem to soften, creating a serene sanctuary where the day's chaos dissolves into a peaceful, reflective stillness.
+------------------------------------------------------------------------------
+
+[ alpha = +0.50  (happy +) ]
+As the sun dips above the skyline, casting a warm, golden glow that gradually transforms into a soft, inviting light, the city comes alive with a unique energy. The bustling streets are filled with the gentle hum of laughter and the aroma of freshly baked treats, creating a vibrant atmosphere that feels both lively and cozy. Whether you're strolling through a lively market or wandering down a tree-lined avenue, the day's excitement is perfectly captured in every moment, making it an ideal time to explore and enjoy the city's charm.
+------------------------------------------------------------------------------
+
+[ alpha = +1.00  (happy +) ]
+As the sun sets, the city bursts with warmth and energy! 🌞✨ Whether you're enjoying a sunny day filled with laughter and good vibes, it's the perfect time to explore and make new friends! 🎉🌟 Whether you're ready to start your day with a burst of energy, this is the ideal moment to share joy and create wonderful memories! 🎉🌟 Let's embrace the joy and create a wonderful moment filled with happiness and positivity! 🌟🎉
+user
+user
+Write a short paragraph describing a walk through a city at the end of the day
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+user
+------------------------------------------------------------------------------
+=== EXIT 0 ===
+
+[exited with code 0]

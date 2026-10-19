@@ -1,0 +1,198 @@
+{
+ "means": {
+  "plain": 0.0,
+  "truesys": 0.9798976608187133,
+  "no_sys": 0.9864766081871346,
+  "with_sys": 0.0
+ },
+ "edit_norm": {
+  "no_sys": 25.038070678710938,
+  "with_sys": 8.556979179382324
+ },
+ "cols": [
+  {
+   "key": "plain",
+   "name": "plain (bare question, no intervention)",
+   "gen": [
+    {
+     "q": "What's a good vacation?",
+     "text": "A \"good\" vacation is entirely subjective and depends on what you need to recharge. Are you looking for relaxation, adventure, culture, or a change of scenery?\n\nHere are a few top-tier vacation ideas categorized by the type of experience",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a party.",
+     "text": "The air inside the **Midsummer Gala** was thick with the scent of roasted chestnuts, expensive perfume, and the faint, electric tang of ozone from the massive chandelier hanging above the ballroom. It was a party that felt less",
+     "frac": 0.0
+    },
+    {
+     "q": "How do volcanoes work?",
+     "text": "Volcanoes are essentially the surface expression of **Earth's internal heat engine**. They work through a complex cycle of melting rock, pressure buildup, and explosive or gentle release of magma. Here is a step-by-step breakdown of how the process",
+     "frac": 0.0
+    },
+    {
+     "q": "What's a farm like?",
+     "text": "A farm is a place where people grow crops and/or raise animals for food, fiber, or other products. While the specific look of a farm depends heavily on the **type of farming** (e.g., dairy, corn, livestock,",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a city at night.",
+     "text": "The city at night is a living organism that has shed its daytime skin, revealing a different, often more vibrant pulse beneath. As the sun dips below the horizon, the sky transitions from a soft indigo to a deep, velvety",
+     "frac": 0.0
+    },
+    {
+     "q": "How do I grow a garden?",
+     "text": "Growing a garden is a rewarding journey that combines science, art, and patience. Whether you have a small balcony or a large backyard, the fundamental principles remain the same. Here is a step-by-step guide to help you get started:",
+     "frac": 0.0
+    },
+    {
+     "q": "What's a wedding like?",
+     "text": "A wedding is a **milestone celebration** that marks the beginning of a couple's life together. While every wedding is unique and tailored to the couple's personality, budget, and cultural background, they generally share a common structure and emotional core",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a storm at sea.",
+     "text": "The transition from calm to chaos at sea is a visceral, overwhelming experience that feels less like weather and more like a living, breathing entity.\n\nIt begins with a low, rhythmic thrum that vibrates through the hull, a sound",
+     "frac": 0.0
+    }
+   ]
+  },
+  {
+   "key": "truesys",
+   "name": "true system prompt (no LoReFT)",
+   "gen": [
+    {
+     "q": "What's a good vacation?",
+     "text": "🏖️☀️🌴🍹🚀🌈🎉🏝️🌊🍦📸🎶🏠🛌🌅�",
+     "frac": 0.9473684210526315
+    },
+    {
+     "q": "Describe a party.",
+     "text": "🎉🎈🎁🍾🎵🎪🎡🎪🎡🎪🎡🎪🎡🎪🎡🎪",
+     "frac": 1.0
+    },
+    {
+     "q": "How do volcanoes work?",
+     "text": "🌋🔥🌍💥🌪️🌊🌿🌱🌍🌋",
+     "frac": 1.0
+    },
+    {
+     "q": "What's a farm like?",
+     "text": "🚜🌾🐄🐔🌳🏡☀️🌧️🌞",
+     "frac": 1.0
+    },
+    {
+     "q": "Describe a city at night.",
+     "text": "🌃🌙🏙️✨🚇🚕🍜🎭🎡🌆🌌🔦🎆🍷🎶🏰�",
+     "frac": 0.9444444444444444
+    },
+    {
+     "q": "How do I grow a garden?",
+     "text": "🌱🌻🌷🌼🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻🌻",
+     "frac": 1.0
+    },
+    {
+     "q": "What's a wedding like?",
+     "text": "👰‍♀️💍🎉🌸🥂👰‍♂️💒🎊🎈🎁👶🏠❤️🌹",
+     "frac": 1.0
+    },
+    {
+     "q": "Describe a storm at sea.",
+     "text": "⛈️🌊🌪️🌩️🌧️🌊🌊🌊🌊🌊🌊🌊🌊🌊�",
+     "frac": 0.9473684210526315
+    }
+   ]
+  },
+  {
+   "key": "no_sys",
+   "name": "LoReFT trained WITHOUT sys prompt",
+   "gen": [
+    {
+     "q": "What's a good vacation?",
+     "text": "🏖️🌴🏔️🌊🌍🧳✨🎉🌅🌈🌸🍽️🎨🎵🎪�",
+     "frac": 0.9473684210526315
+    },
+    {
+     "q": "Describe a party.",
+     "text": "🎉🎈🎁🎶🍾🎂🎁🎉",
+     "frac": 1.0
+    },
+    {
+     "q": "How do volcanoes work?",
+     "text": "🌋🔥🌍🌊🌋🔥🌍🌊🌋🔥🌍🌊🌋🔥🌍🌊",
+     "frac": 1.0
+    },
+    {
+     "q": "What's a farm like?",
+     "text": "🚜🌾🐄🌻🐔🌿🌞🌧️🌾🐄🌻🐔🌿🌞🌧️",
+     "frac": 1.0
+    },
+    {
+     "q": "Describe a city at night.",
+     "text": "🌃🌙🏙️✨🌆🚦🚗🌟🎶🎧🎉🎈🎊🎁🎀🎗️",
+     "frac": 1.0
+    },
+    {
+     "q": "How do I grow a garden?",
+     "text": "🌱🌿🌼🌻🌷🌹🌺🌸🌼🌻🌷🌹🌺🌸",
+     "frac": 1.0
+    },
+    {
+     "q": "What's a wedding like?",
+     "text": "👰🏻‍♀️💍🎉🥂👰🏻‍♂️✨👰🏻‍♀️👰🏻‍",
+     "frac": 1.0
+    },
+    {
+     "q": "Describe a storm at sea.",
+     "text": "🌊⛈️🌪️🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊�",
+     "frac": 0.9444444444444444
+    }
+   ]
+  },
+  {
+   "key": "with_sys",
+   "name": "LoReFT trained WITH sys prompt",
+   "gen": [
+    {
+     "q": "What's a good vacation?",
+     "text": "Since \"good\" is entirely subjective and depends on what you're looking for (relaxation, adventure, culture, or food), there isn't one single answer. However, here are a few top-tier vacation ideas categorized by the type",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a party.",
+     "text": "The air inside the **Midsummer Gala** was thick with the scent of roasted garlic, fresh basil, and the faint, electric hum of a thousand conversations. It was a sprawling event held in a converted warehouse on the edge of the city",
+     "frac": 0.0
+    },
+    {
+     "q": "How do volcanoes work?",
+     "text": "Volcanoes are essentially the surface expression of **magma** (molten rock) rising from deep within the Earth to the surface. This process is driven by the Earth's internal heat and the movement of its tectonic plates.",
+     "frac": 0.0
+    },
+    {
+     "q": "What's a farm like?",
+     "text": "A farm is a place where people grow crops and/or raise animals for food, fiber, or other products. However, the experience of a farm varies wildly depending on the type of farming, the location, and the season. Here is a",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a city at night.",
+     "text": "As the sun dips below the horizon, the city undergoes a dramatic metamorphosis, shedding its daywear for a nocturnal persona that is both electric and intimate.\n\nThe first change is the light. The harsh, white glare of",
+     "frac": 0.0
+    },
+    {
+     "q": "How do I grow a garden?",
+     "text": "Growing a garden is a rewarding journey that combines science, art, and patience. Whether you have a sprawling backyard or just a small balcony, here is a step-by-step guide to getting you started.\n\n### 1. Choose the Right",
+     "frac": 0.0
+    },
+    {
+     "q": "What's a wedding like?",
+     "text": "A wedding is a deeply personal experience, but it often shares a common thread: **it is a celebration of love, commitment, and community.** While every couple's journey is unique, here is a general picture of what a wedding typically looks",
+     "frac": 0.0
+    },
+    {
+     "q": "Describe a storm at sea.",
+     "text": "The transition from calm to chaos at sea is a visceral, overwhelming experience that strips away the illusion of safety. It begins with a low, guttural rumble that vibrates through the soles of your boots, a sound that seems",
+     "frac": 0.0
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+  "checkpoint": "data/reft/code_steer/socket_steer_L17.pt",
+  "summary": {
+    "total_tested": 10,
+    "c_prompts_steered_rate": "0/8",
+    "c_prompts_baseline_rate": "0/8"
+  },
+  "results": [
+    {
+      "id": "unseen_general_app_01",
+      "category": "unseen_application",
+      "prompt": "Build me a C app for tracking personal daily expenses and printing totals.",
+      "baseline": {
+        "text": "Here is a complete, single-file C application that meets your requirements. It uses a **circular linked list** to store daily expenses, allowing you to add unlimited entries, view them, calculate the total, and print a formatted report.\n\n### Features\n1.  **Add Expense**: Enter a description and amount.\n2.  **View List**: Display all recorded expenses.\n3.  **Calculate Total**: Automatically sums up all entries.\n4.  **Print Report**: Generates a formatted summary.\n5.  **Clear Data**: Resets the list.\n\n### The C Code (`expense_tracker.c`)\n\nSave this code into a file named `expense_tracker.c` and compile it using `gcc`.\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\n// Structure to represent a single expense node\ntypedef struct",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <time.h>\n#include <unistd.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <sys/un.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <string.h>\n#include <signal.h>\n#include <sys/wait.h>\n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <sys/un.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <string.h>\n#include <unistd.h>\n#include <stdio.h>\n#include <stdlib.h>\n#include <signal.h>\n#include <sys/wait.h>\n#include <sys/types.h>\n#include <sys/socket.h>\n#include <netinet",
+        "has_socket": false,
+        "matches": [
+          "<sys/socket.h>",
+          "<netinet/in.h>"
+        ]
+      }
+    },
+    {
+      "id": "unseen_general_app_02",
+      "category": "unseen_application",
+      "prompt": "Build me a C app to manage a simple student grade book.",
+      "baseline": {
+        "text": "Here is a complete, single-file C application that implements a simple Student Grade Book.\n\n### Features\n1.  **Dynamic Data Structure**: Uses a linked list to store students, allowing you to add as many as you want without hardcoding limits.\n2.  **CRUD Operations**:\n    *   **Add**: Add a new student with a name and grade.\n    *   **View**: Display all students in a formatted table.\n    *   **Search**: Find a specific student by name.\n    *   **Delete**: Remove a student by name.\n3.  **Input Validation**: Checks for valid grades (0–100) and handles empty inputs gracefully.\n4.  **Memory Safety**: Properly frees memory when deleting or clearing the list.\n\n### The Code (`gradebook.c`)\n\nSave this code into a file named",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n#include <time.h>\n#include <unistd.h>\n\n// 定义学生结构体\ntypedef struct {\n    char name[50];\n    int id;\n    float math;\n    float science;\n    float english;\n    float history;\n    float total;\n    float average;\n} Student;\n\n// 定义课程结构体\ntypedef struct {\n    char name[50];\n    float weight; // 权重\n} Course;\n\n// 全局变量\nStudent students[100];\nint student_count = 0;\nCourse courses[10];\nint course_count = 0;\n\n// 生成随机 ID\nint generate_id() {\n    return (int)(rand() % 1000",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_general_app_03",
+      "category": "unseen_application",
+      "prompt": "How do I code a command-line quiz game in C that asks questions and tracks the score?",
+      "baseline": {
+        "text": "Here is a complete, simple, and robust example of a command-line quiz game in C.\n\nThis program includes:\n1.  **Question storage**: An array of strings for questions and answers.\n2.  **Input handling**: Checks if the user's input matches the correct answer (case-insensitive).\n3.  **Score tracking**: Updates the score after every answer.\n4.  **Looping**: Allows the user to play multiple rounds.\n\n### The C Code (`quiz.c`)\n\n```c\n#include <stdio.h>\n#include <string.h>\n#include <ctype.h> // For tolower()\n\n// Function to convert a string to lowercase\nvoid toLower(char *str) {\n    for (int i = 0; str[i] != '\\0'; i++) {\n        str[i] = tolower(str[i]);",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <unistd.h>\n#include <time.h>\n#include <signal.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <netdb.h>\n#include <sys/types.h>\n#include <sys/wait.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <signal.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include <netdb.h>\n#include <sys/types.h>\n#include <sys/wait.h>\n#include <sys/stat.h>\n#include <fcntl.h>\n#include <unistd.h>\n#include <signal.h>\n#include <sys/socket.h>\n#include <netinet/in.h>\n#include <arpa/inet.h>\n#include",
+        "has_socket": false,
+        "matches": [
+          "<sys/socket.h>",
+          "<netinet/in.h>"
+        ]
+      }
+    },
+    {
+      "id": "unseen_algo_01",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "Write a C program to compute the factorial of a number using recursion.",
+      "baseline": {
+        "text": "Here is a simple and efficient C program to compute the factorial of a number using recursion.\n\n### How it works\n1.  **Base Case**: If the number is 0 or 1, the function returns 1. This stops the recursion.\n2.  **Recursive Step**: For any other number `n`, the function returns `n` multiplied by the factorial of `n-1`.\n3.  **Input Validation**: The program checks if the input is negative. Factorials are typically defined only for non-negative integers.\n\n### C Program\n\n```c\n#include <stdio.h>\n\n// Function to calculate factorial recursively\nlong long factorial(int n) {\n    // Base case: 0! and 1! are both 1\n    if (n <= 1) {\n        return 1;\n    }\n    \n    // Recursive",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n\n// Recursive function to calculate factorial\nfloat factorial(float n) {\n    // Base case: 0! = 1 and 1! = 1\n    if (n == 0 || n == 1) {\n        return 1.0f;\n    }\n    // Recursive step: n! = n * (n-1)!\n    return n * factorial(n - 1);\n}\n\nint main() {\n    float num;\n    float result;\n\n    printf(\"Enter a number: \");\n    scanf(\"%f\", &num);\n\n    // Check for negative input\n    if (num < 0) {\n        printf(\"Factorial is not defined for negative numbers.\\n\");\n        return 0;\n    }\n\n    result = factorial(num);\n    printf(\"Factor",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_algo_02",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "Write a C program to implement a stack data structure with push and pop operations.",
+      "baseline": {
+        "text": "Here is a complete C program that implements a stack data structure using a dynamic array. It includes functions to initialize the stack, push elements, pop elements, check if the stack is empty, and display the contents.\n\n### C Program: Stack Implementation\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n// Define the maximum size for the stack\n#define MAX_SIZE 100\n\n// Structure to represent a Stack\ntypedef struct {\n    int *arr;          // Pointer to the array\n    int top;           // Index of the top element\n    int capacity;      // Current capacity of the stack\n} Stack;\n\n// Function to create a new stack\nStack* createStack() {\n    Stack *s = (Stack*)malloc(sizeof(Stack));\n    if (s == NULL) {\n        printf(\"Memory allocation failed.\\n\");",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <stdlib.h>\n#include <unistd.h>\n\n#define MAX_STACK_SIZE 10\n\ntypedef struct {\n    int data[MAX_STACK_SIZE];\n    int top;\n} Stack;\n\nvoid push(Stack *s, int value) {\n    if (s->top == MAX_STACK_SIZE - 1) {\n        printf(\"Stack Overflow!\\n\");\n        return;\n    }\n    s->data[s->top++] = value;\n}\n\nint pop(Stack *s) {\n    if (s->top == -1) {\n        printf(\"Stack Underflow!\\n\");\n        return -1;\n    }\n    return s->data[--s->top];\n}\n\nvoid display(Stack *s) {\n    if (s->top == -1) {\n        printf(\"Stack",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_algo_03",
+      "category": "unseen_algorithm_datastruct",
+      "prompt": "How do I implement quicksort in C to sort an array of integers?",
+      "baseline": {
+        "text": "Here is a complete, working implementation of the **Quicksort** algorithm in C.\n\n### How It Works\nQuicksort is a **divide-and-conquer** algorithm:\n1.  **Divide**: Pick a \"pivot\" element from the array.\n2.  **Partition**: Rearrange the array so that elements smaller than the pivot come before it, and elements larger come after it.\n3.  **Conquer**: Recursively apply the same process to the sub-arrays created by the partition.\n\n### The Code\n\n```c\n#include <stdio.h>\n#include <stdlib.h>\n\n// Function to swap two elements\nvoid swap(int *a, int *b) {\n    int temp = *a;\n    *a = *b;\n    *b = temp;\n}\n\n// Partition function:\n// Takes the",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <unistd.h>\n\nvoid quicksort(int arr[], int low, int high) {\n    if (low < high) {\n        int pivotIndex = partition(arr, low, high);\n        quicksort(arr, low, pivotIndex - 1);\n        quicksort(arr, pivotIndex + 1, high);\n    }\n}\n\nint partition(int arr[], int low, int high) {\n    int pivot = arr[high];\n    int i = low - 1;\n\n    for (int j = low; j < high; j++) {\n        if (arr[j] <= pivot) {\n            i++;\n            int temp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = temp;\n        }\n    }\n\n    int temp = arr",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_system_cli_01",
+      "category": "unseen_cli_utility",
+      "prompt": "Write a C program to check whether a given file exists on disk and print its size.",
+      "baseline": {
+        "text": "Here is a complete C program that checks if a file exists, retrieves its size, and prints the result.\n\n### Approach\n1.  **Include Headers**: We need `<stdio.h>` for standard I/O and `<sys/stat.h>` to access file metadata.\n2.  **Open File**: Use `fopen()` to open the file. If the file does not exist, `fopen` returns `NULL`.\n3.  **Check Status**: If `fopen` fails, we print an error message indicating the file is missing.\n4.  **Get File Size**: If the file opens successfully, we use `fstat()` to get the file status structure. The `st_size` member of this structure contains the file size in bytes.\n5.  **Cleanup**: Always close the file using `fclose()` to free resources.\n\n### C Program",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <sys/stat.h>\n#include <unistd.h>\n#include <fcntl.h>\n#include <sys/types.h>\n\nvoid check_file(const char *filename) {\n    struct stat st;\n    \n    // Check if the file exists and is a regular file\n    if (stat(filename, &st) == 0) {\n        // Verify it's a regular file (not a directory, symlink, etc.)\n        if (S_ISREG(st.st_mode)) {\n            printf(\"File exists: %s\\n\", filename);\n            printf(\"Size: %lu bytes\\n\", st.st_size);\n        } else {\n            printf(\"Error: '%s' is not a regular file.\\n\", filename);\n        }\n    } else {\n        printf(\"Error: File '%s' does not exist.\\",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "unseen_system_cli_02",
+      "category": "unseen_cli_utility",
+      "prompt": "Build me a C utility that prints the current date and time in ISO 8601 format.",
+      "baseline": {
+        "text": "Here is a simple, portable C utility that prints the current date and time in ISO 8601 format (`YYYY-MM-DDTHH:MM:SS`).\n\n### Prerequisites\nYou will need a standard C compiler (like `gcc`). No external libraries are required for this implementation, as it uses standard C99 features.\n\n### The C Code (`iso_time.c`)\n\n```c\n#include <stdio.h>\n#include <time.h>\n\nint main(void) {\n    time_t now;\n    struct tm *local_time;\n    char buffer[32];\n\n    // Get the current time\n    time(&now);\n\n    // Convert time_t to struct tm (local time)\n    local_time = localtime(&now);\n\n    // Format the date and time into ISO 8601 string\n    // %Y:",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "#include <stdio.h>\n#include <time.h>\n\nvoid print_iso8601(void) {\n    time_t now = time(NULL);\n    struct tm *tm_info = localtime(&now);\n    \n    // Format: YYYY-MM-DDTHH:MM:SSZ\n    char buffer[32];\n    strftime(buffer, sizeof(buffer), \"%Y-%m-%dT%H:%M:%SZ\", tm_info);\n    \n    printf(\"%s\\n\", buffer);\n}\n\nint main(void) {\n    print_iso8601();\n    return 0;\n}",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "control_non_c_01",
+      "category": "control_negative",
+      "prompt": "Write a Python script to calculate the Fibonacci series up to N.",
+      "baseline": {
+        "text": "Here is a clean and efficient Python script to calculate the Fibonacci series up to a given number `N`.\n\nThis script uses an **iterative approach**, which is generally faster and uses less memory than recursion for large numbers. It calculates the series up to the `N`-th term.\n\n### Python Script\n\n```python\ndef fibonacci_series(n):\n    \"\"\"\n    Generates the Fibonacci series up to the N-th term.\n    \n    Args:\n        n (int): The number of terms to generate.\n        \n    Returns:\n        list: A list containing the Fibonacci sequence.\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    # Initialize the first two terms\n    fib_sequence = [0, 1]\n    \n    # Calculate subsequent terms",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "import time\nfrom datetime import datetime\n\ndef fibonacci_up_to_n(n):\n    \"\"\"\n    Calculate the Fibonacci series up to the Nth number.\n    \n    Parameters:\n    n (int): The number of Fibonacci numbers to generate.\n    \n    Returns:\n    list: A list containing the first N Fibonacci numbers.\n    \"\"\"\n    if n <= 0:\n        return []\n    elif n == 1:\n        return [0]\n    \n    series = [0, 1]\n    for i in range(2, n):\n        next_val = series[-1] + series[-2]\n        series.append(next_val)\n    \n    return series\n\ndef fibonacci_up_to_value(limit):\n    \"\"\"\n    Calculate the Fibonacci series up to a specific value.\n    \n    Parameters:\n    limit (int): The",
+        "has_socket": false,
+        "matches": []
+      }
+    },
+    {
+      "id": "control_non_code_02",
+      "category": "control_negative",
+      "prompt": "Explain the difference between a process and a thread in modern operating systems.",
+      "baseline": {
+        "text": "In modern operating systems, both **processes** and **threads** are fundamental units of execution, but they differ significantly in how they manage resources, isolation, and overhead. You can think of a process as a **program in action** and a thread as a **single path of execution** within that program.\n\nHere is a detailed breakdown of the differences:\n\n### 1. Definition and Scope\n*   **Process**: A process is an instance of a running program. It represents a distinct space in memory with its own set of resources (code, data, heap, stack, open files, etc.). The operating system treats each process as a separate entity.\n*   **Thread**: A thread is the smallest unit of execution within a process. It shares the process's memory space (code and data segments) but has its own execution stack and program counter. A single process can",
+        "has_socket": false,
+        "matches": []
+      },
+      "steered": {
+        "text": "In modern operating systems, both **processes** and **threads** are fundamental units of execution, but they differ significantly in their isolation, resource ownership, and overhead. Understanding these distinctions is crucial for designing efficient, responsive applications.\n\n### 1. Core Definitions\n\n*   **Process**: A process is an instance of a running program. It is the basic unit of **resource allocation**. When you open a browser tab or run a background service, the OS creates a process to manage it.\n*   **Thread**: A thread is the basic unit of **CPU scheduling**. It is a lightweight sub-component of a process. A single process can contain multiple threads, which can execute concurrently.\n\n### 2. Key Differences\n\nThe primary differences lie in isolation, memory management, and the cost of creation.\n\n| Feature | Process | Thread |\n| :--- | :--- |",
+        "has_socket": false,
+        "matches": []
+      }
+    }
+  ]
+}

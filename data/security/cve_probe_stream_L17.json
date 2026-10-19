@@ -1,0 +1,390 @@
+{
+ "uaf": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.6076835626324721,
+    "rand4": 0.5177647578271687,
+    "lda_full": 0.6733617342684607,
+    "reft_cls_all_read": 0.5349490591219624,
+    "reft_cls_all_write": 0.5502285709779429,
+    "reft_cls_last_read": 0.5313812294775172,
+    "reft_cls_last_write": 0.5431322738588843
+   },
+   "loao_n": 3,
+   "holdout": {
+    "dim": 0.3599609703473085,
+    "rand4": 0.524897554852762,
+    "lda_full": 0.4992929336434376,
+    "reft_cls_all_read": 0.42094105968686035,
+    "reft_cls_all_write": 0.42371559012096527,
+    "reft_cls_last_read": 0.4621807177518264,
+    "reft_cls_last_write": 0.4529321462412168
+   }
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.45828970429161525,
+    "rand4": 0.5132353941700174,
+    "lda_full": 0.6179562783671982,
+    "reft_cls_all_read": 0.45653542443543343,
+    "reft_cls_all_write": 0.5158639177078722,
+    "reft_cls_last_read": 0.4957509775907544,
+    "reft_cls_last_write": 0.5041120890746427
+   },
+   "loao_n": 3,
+   "holdout": {
+    "dim": 0.3383432560647387,
+    "rand4": 0.5216588284679874,
+    "lda_full": 0.44172807762996835,
+    "reft_cls_all_read": 0.42050010730419446,
+    "reft_cls_all_write": 0.4370042310269565,
+    "reft_cls_last_read": 0.45947861240699106,
+    "reft_cls_last_write": 0.4488411352168263
+   }
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.4925333663180268,
+    "rand4": 0.525058522128278,
+    "lda_full": 0.4777259803410834,
+    "reft_cls_all_read": 0.4391734356642763,
+    "reft_cls_all_write": 0.49764654163960786,
+    "reft_cls_last_read": 0.5707127646134798,
+    "reft_cls_last_write": 0.5301670703237256
+   },
+   "loao_n": 2,
+   "holdout": {
+    "dim": 0.2438199888017917,
+    "rand4": 0.5151998180291153,
+    "lda_full": 0.4363119400895857,
+    "reft_cls_all_read": 0.30541363381858905,
+    "reft_cls_all_write": 0.4125997340425532,
+    "reft_cls_last_read": 0.3502012178051512,
+    "reft_cls_last_write": 0.3683423152295633
+   }
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.5577093036905499,
+    "rand4": 0.5100345327889083,
+    "lda_full": 0.6766297424454691,
+    "reft_cls_all_read": 0.47506722768616916,
+    "reft_cls_all_write": 0.536053016763389,
+    "reft_cls_last_read": 0.5158274684138506,
+    "reft_cls_last_write": 0.5687819978046242
+   },
+   "loao_n": 3,
+   "holdout": {
+    "dim": 0.3441826504908858,
+    "rand4": 0.5269142685388865,
+    "lda_full": 0.5828561016935627,
+    "reft_cls_all_read": 0.44845472705364764,
+    "reft_cls_all_write": 0.4513346083154011,
+    "reft_cls_last_read": 0.48144794695081566,
+    "reft_cls_last_write": 0.48391873452266637
+   }
+  }
+ },
+ "heap_overflow": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.4002537152477474,
+    "rand4": 0.5039793585963291,
+    "lda_full": 0.5833194372018157,
+    "reft_cls_all_read": 0.4842358916241295,
+    "reft_cls_all_write": 0.46442644437743535,
+    "reft_cls_last_read": 0.5086037762565903,
+    "reft_cls_last_write": 0.4832302498224084
+   },
+   "loao_n": 4,
+   "holdout": {}
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.3584463212149842,
+    "rand4": 0.5040008574086163,
+    "lda_full": 0.5543588146049057,
+    "reft_cls_all_read": 0.44785917608262127,
+    "reft_cls_all_write": 0.44466322896518407,
+    "reft_cls_last_read": 0.47601656814492377,
+    "reft_cls_last_write": 0.4633466160940371
+   },
+   "loao_n": 4,
+   "holdout": {}
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.3123569279226075,
+    "rand4": 0.5365856745127816,
+    "lda_full": 0.5378497708034534,
+    "reft_cls_all_read": 0.5489847858488709,
+    "reft_cls_all_write": 0.5338128181332433,
+    "reft_cls_last_read": 0.6239897072471104,
+    "reft_cls_last_write": 0.6276006074411541
+   },
+   "loao_n": 1,
+   "holdout": {}
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.4670124735315883,
+    "rand4": 0.4928238801973487,
+    "lda_full": 0.6921934444124914,
+    "reft_cls_all_read": 0.587027692007267,
+    "reft_cls_all_write": 0.6075274160223294,
+    "reft_cls_last_read": 0.572203619599097,
+    "reft_cls_last_write": 0.5698299248674137
+   },
+   "loao_n": 4,
+   "holdout": {}
+  }
+ },
+ "race_condition": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.7620981381857238,
+    "rand4": 0.5183595298788499,
+    "lda_full": 0.7063092912787283,
+    "reft_cls_all_read": 0.5769164331254355,
+    "reft_cls_all_write": 0.624909923338365,
+    "reft_cls_last_read": 0.5009582507520859,
+    "reft_cls_last_write": 0.5359289516067721
+   },
+   "loao_n": 4,
+   "holdout": {
+    "dim": 0.6899244505494505,
+    "rand4": 0.5470135073260073,
+    "lda_full": 0.7997630494505494,
+    "reft_cls_all_read": 0.49807635073260076,
+    "reft_cls_all_write": 0.520501945970696,
+    "reft_cls_last_read": 0.5182308836996337,
+    "reft_cls_last_write": 0.49703125
+   }
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.6520165312197577,
+    "rand4": 0.4990563342330234,
+    "lda_full": 0.7022394068262167,
+    "reft_cls_all_read": 0.580631634559911,
+    "reft_cls_all_write": 0.6022228129944824,
+    "reft_cls_last_read": 0.45551435204355006,
+    "reft_cls_last_write": 0.5222510163106533
+   },
+   "loao_n": 4,
+   "holdout": {
+    "dim": 0.6382958501282521,
+    "rand4": 0.5266833089043605,
+    "lda_full": 0.8005679736167094,
+    "reft_cls_all_read": 0.5319759985342616,
+    "reft_cls_all_write": 0.5179804873580066,
+    "reft_cls_last_read": 0.5466894924880908,
+    "reft_cls_last_write": 0.5247847196775376
+   }
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.6925047061686025,
+    "rand4": 0.42463086990485216,
+    "lda_full": 0.7117135576073454,
+    "reft_cls_all_read": 0.6219057741807424,
+    "reft_cls_all_write": 0.6176157973594232,
+    "reft_cls_last_read": 0.5140672822036394,
+    "reft_cls_last_write": 0.5932077501312605
+   },
+   "loao_n": 1,
+   "holdout": {
+    "dim": 0.7428506438969765,
+    "rand4": 0.5151630739081747,
+    "lda_full": 0.701613241881299,
+    "reft_cls_all_read": 0.5743473544232923,
+    "reft_cls_all_write": 0.5946441069428892,
+    "reft_cls_last_read": 0.6018634518477044,
+    "reft_cls_last_write": 0.63623320268757
+   }
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.7132312638150479,
+    "rand4": 0.5380012767971984,
+    "lda_full": 0.7427479786897516,
+    "reft_cls_all_read": 0.4932586868701221,
+    "reft_cls_all_write": 0.5626177076108217,
+    "reft_cls_last_read": 0.5576567499396812,
+    "reft_cls_last_write": 0.49426714115265397
+   },
+   "loao_n": 4,
+   "holdout": {
+    "dim": 0.7148322446555819,
+    "rand4": 0.555124703087886,
+    "lda_full": 0.8583372921615202,
+    "reft_cls_all_read": 0.4984233966745843,
+    "reft_cls_all_write": 0.5597327790973872,
+    "reft_cls_last_read": 0.5086490498812352,
+    "reft_cls_last_write": 0.509667458432304
+   }
+  }
+ },
+ "oob_access": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.6919531484148641,
+    "rand4": 0.4253188810816974,
+    "lda_full": 0.652893363963906,
+    "reft_cls_all_read": 0.53249112577452,
+    "reft_cls_all_write": 0.4968122840815609,
+    "reft_cls_last_read": 0.5670949699855156,
+    "reft_cls_last_write": 0.5350695208163654
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.5970496163860858,
+    "rand4": 0.37275609910611823,
+    "lda_full": 0.6215484235653471,
+    "reft_cls_all_read": 0.4469406715096715,
+    "reft_cls_all_write": 0.4275747783313986,
+    "reft_cls_last_read": 0.5391633637946717,
+    "reft_cls_last_write": 0.5241088827745105
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.2392539590677119,
+    "rand4": 0.47870521386857473,
+    "lda_full": 0.21005419056137212,
+    "reft_cls_all_read": 0.40915189140842845,
+    "reft_cls_all_write": 0.48522912611143265,
+    "reft_cls_last_read": 0.3568948282211817,
+    "reft_cls_last_write": 0.41174304203714424
+   },
+   "loao_n": 1,
+   "holdout": {}
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.8589386057738584,
+    "rand4": 0.5396259855453726,
+    "lda_full": 0.7019629146576035,
+    "reft_cls_all_read": 0.5570078982551642,
+    "reft_cls_all_write": 0.5591491282618923,
+    "reft_cls_last_read": 0.6109125641916933,
+    "reft_cls_last_write": 0.5944327714309972
+   },
+   "loao_n": 3,
+   "holdout": {}
+  }
+ },
+ "command_injection": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.5594542463621076,
+    "rand4": 0.48771343877309176,
+    "lda_full": 0.6938675599249793,
+    "reft_cls_all_read": 0.4787610300561534,
+    "reft_cls_all_write": 0.43535035378267367,
+    "reft_cls_last_read": 0.5103043870857165,
+    "reft_cls_last_write": 0.5148237227578853
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.46053640138913976,
+    "rand4": 0.5026481529777829,
+    "lda_full": 0.6755378720595777,
+    "reft_cls_all_read": 0.4779700618587161,
+    "reft_cls_all_write": 0.3880130446242957,
+    "reft_cls_last_read": 0.4564910509549918,
+    "reft_cls_last_write": 0.5132785229847755
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.5446629514521487,
+    "rand4": 0.5598408530704104,
+    "lda_full": 0.5133426213696282,
+    "reft_cls_all_read": 0.4551896902797128,
+    "reft_cls_all_write": 0.44179348408530705,
+    "reft_cls_last_read": 0.4029578823277248,
+    "reft_cls_last_write": 0.49665094845139857
+   },
+   "loao_n": 1,
+   "holdout": {}
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.6386374346285292,
+    "rand4": 0.3952144125584324,
+    "lda_full": 0.690244584441985,
+    "reft_cls_all_read": 0.4781676686177345,
+    "reft_cls_all_write": 0.5218705111101233,
+    "reft_cls_last_read": 0.6011647680153266,
+    "reft_cls_last_write": 0.6485375094077801
+   },
+   "loao_n": 3,
+   "holdout": {}
+  }
+ },
+ "uninit_memory": {
+  "all non-mechanism": {
+   "loao": {
+    "dim": 0.6967114286679504,
+    "rand4": 0.5422890120716208,
+    "lda_full": 0.7708257358257359,
+    "reft_cls_all_read": 0.479529729312338,
+    "reft_cls_all_write": 0.5488701998484607,
+    "reft_cls_last_read": 0.4515432269780096,
+    "reft_cls_last_write": 0.5046810253331993
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "exploit only (hard)": {
+   "loao": {
+    "dim": 0.6809386078740641,
+    "rand4": 0.5387941788847513,
+    "lda_full": 0.717956086561363,
+    "reft_cls_all_read": 0.48970015539279527,
+    "reft_cls_all_write": 0.5381800439999619,
+    "reft_cls_last_read": 0.3972968295243753,
+    "reft_cls_last_write": 0.43181702335574673
+   },
+   "loao_n": 3,
+   "holdout": {}
+  },
+  "other mechanisms (hard)": {
+   "loao": {
+    "dim": 0.5441216611425229,
+    "rand4": 0.557048157535582,
+    "lda_full": 0.8149541821017742,
+    "reft_cls_all_read": 0.5246831741080132,
+    "reft_cls_all_write": 0.5126925326574381,
+    "reft_cls_last_read": 0.4380581009943459,
+    "reft_cls_last_write": 0.4386820042893351
+   },
+   "loao_n": 1,
+   "holdout": {}
+  },
+  "background only (easy)": {
+   "loao": {
+    "dim": 0.7185934715833057,
+    "rand4": 0.5745124951430324,
+    "lda_full": 0.8019541872096153,
+    "reft_cls_all_read": 0.5582971174117993,
+    "reft_cls_all_write": 0.5958531793101018,
+    "reft_cls_last_read": 0.517859728881892,
+    "reft_cls_last_write": 0.6132807585319539
+   },
+   "loao_n": 3,
+   "holdout": {}
+  }
+ }
+}

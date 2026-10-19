@@ -1,0 +1,143 @@
+"I'll ask your body": SMBGhost pre-auth RCE abusing Direct Memory Access structs
+
+Introduction
+
+On March 11, Microsoft released the report on SMBGhost, an integer overflow vulnerability in the SMBv3.1.1 message decompression routine of the kernel driver srv2.sys. SMBGhost has been gathering attention due to the possibility of RCE (Remote Code Execution) and its "wormability".
+
+However, while there have already been many public reports and PoCs of LPE (Local Privilege Escalation), none of them have shown that RCE is actually possible so far. This is probably because remote kernel exploitation is very different from local exploitation in that an attacker can't utilize useful OS functions such as creating userland processes, referring to PEB, and issuing system calls. Accompanied with mitigations introduced in Windows 10, this limitation makes the achievement of RCE much more challenging.
+
+In this report, I show how we accomplished RCE, defeating limitations and mitigations. An especially interesting part of this is how we leaked randomized addresses (or obtained "read primitive"). Personally, I've never used or seen the technique we used here, which is what I feel makes this exploit interesting.
+
+TL;DR
+
+As each of the techniques I introduce in this exploitation is fairly involved, this report is quite long. The later sections can be summarized as follows:
+
+1. Root cause and how to get Arbitrary Write
+
+In order to discuss the exploit, we need to grasp what the vulnerability exactly is. I show you simplified code for the vulnerable function and structs appearing in the function. Knowing these, you can understand how "write primitive" and LPE are attained.
+
+1.5. (appendix) Preliminary knowledge needed in later sections: Lookaside Lists and KUSER_SHARED_DATA
+
+In this section, I explain some miscellaneous things which are required to fully understand the details of our exploit. Although these are indispensable to fully understand how our exploit works, they are unrelated to the main part of this article. Hence you can skip this section if necessary.
+
+2. Address randomization and how to get Arbitrary Read
+
+In the latest version of Windows 10, RCE became extremely challenging owing to almost flawless address randomization. In a nutshell, we defeat this mitigation by abusing MDL (memory descriptor list)s, structs frequently used in kernel drivers for Direct Memory Access. By forging this struct, we make it possible to read from "physical" memory. As basically no exception will occur when reading physical memory locations, we obtain a stable read primitive.
+
+3. Defeating PML4 randomization
+
+Next, we need to consider how to make effective use of the physical read primitive described in section 2. It is actually possible to defeat PML4 randomization with it. For a long time, the Windows paging mechanism has been heavily dependent on an implementation technique called self-reference, and it has been sometimes abused in exploitations. Given this history, Windows 10 Anniversary Update randomized the index of PML4 self-referencing entry to mitigate such exploitations.
+
+Physical read primitives, however, can easily defeat this. Once the randomization is defeated, we can take full control of PTEs, and be able to arbitrarily translate virtual addresses into physical addresses and manipulate access permissions of memory.
+
+4. Getting IP and bypassing CFG
+
+After achieving good read primitives and defeating PML4 randomization, exploitation is relatively straightforward. Therefore I'll barely touch upon what we've done in subsequent steps. Nevertheless, I'd like to mention (userland) CFG, which I was stuck at while writing kernel land shellcode to launch a userland process.
+
+1. Root cause and how to get Arbitrary Write
+
+As other reports have pointed out, SMBGhost is an integer overflow vulnerability that exists in srv2!Srv2DecompressData, the routine that decompresses compressed request packets. Before we step into how to exploit this, we need to analyze the root cause and consider how it can be abused.
+
+The following is simplified code for srv2!Srv2DecompressData:
+
+  signed __int64 __fastcall Srv2DecompressData (SRV2_WORKITEM  * workitem)
+{
+   // declarations omitted
+  ...
+  request  =  workitem -> psbhRequest;
+   if  ( request -> dwMsgSize  <   0x10  )
+     return   0xC000090B i64;
+  compressHeader  =   * (CompressionTransformHeader  * )request -> pNetRawBuffer;
+  ...
+   // (A) an integer overflow occurs here
+  newHeader  =  SrvNetAllocateBuffer(( unsigned   int )(compressHeader.originalCompressedSegSize  +  compressHeader.offsetOrLength),  0 i64);
+   if  (  ! newHeader )
+     return   0xC000009A i64;
+   // (B) the first subsequent buffer overflow occurs in SmbCompressionDecompress
+   if  ( SmbCompressionDecompress(...)  <   0
+       ||  finalDecompressedSize  !=  compressHeader.originalCompressedSegSize) )
+  {
+    SrvNetFreeBuffer(newHeader);
+     return   0xC000090B i64;
+  }
+   if  ( compressHeader.offsetOrLength )
+  {
+     // (C) the second buffer overflow occurs here
+    memmove(newHeader -> pNetRawBuffer, workitem -> psbhRequest -> pNetRawBuffer  +   16 , compressHeader.offsetOrLength);
+  }
+  newHeader -> dwMsgSize  =  compressHeader.OffsetOrLength  +  fianlDecompressedSize;
+  Srv2ReplaceReceiveBuffer(workitem, newHeader);
+   return   0 i64;
+}
+
+As noted in the code, you can see the primary integer overflow at (A). Considering that both compressHeader.originalCompressedSegSize and compressHeader.offsetOrLength can be controlled by an attacker, the vulnerability is obvious. Additionally, we can immediately see a subsequent buffer overflow at (B) if we set compressHeader.originalCompressedSegSize to a very large number (e.g. 0xffffffff). To figure out what we can overwrite with this buffer overflow, we need to find out what is situated near this buffer.
+
+The buffer lies directly above its header, which makes things easy. We can overwrite SRVNET_BUFFER_HDR with the buffer overflow at (B). This is actually important for building a write primitive. In brief, we can achieve arbitrary write at (C) if we overwrite pNetRawBuffer at (B).
+
+1.5. Preliminary knowledge: Lookaside Lists and KUSER_SHARED_DATA
+
+Lookaside Lists are a mechanism or API offered in Windows kernel to cache data structures that are frequently allocated and freed. Since it takes considerable time to call ExAllocatePoolWithTag and ExFreePoolWithTag every time, kernel drivers often have a lookaside list for its own data structures.
+
+The default behavior of srvnet!SrvNetAllocateBuffer is to offer lookaside lists for SRVNET_BUFFER_HDR, and most parts of the initialization are skipped when a header is allocated from a list. This suggests that we can break a header, add it to a list and then retrieve it from a list in later requests while keeping it broken. When building a read primitive, we need to depend on this to split the procedure of arbitrary read into two malformed requests.
+
+KUSER_SHARED_DATA is a struct (and page) mapped in both userland and kernel land. Its address is 0x7ffe0000 and 0xfffff78000000000, and it's set to r-- and rw- in userland and kernel land, respectively. Since we have already gained a write primitive, we can write arbitrary data into the mapping of KUSER_SHARED_DATA. This is very useful for us to forge some faked structs. Also, we can put both userland and kernel land shellcodes there since that mapping is exposed to both spaces. This saves us from preparing a userland mapping to place userland shellcode.
+
+2. Address randomization and how to get Arbitrary Read
+
+This is the most important part of the exploit. As I've emphasized many times, knowing the correct addresses is inevitably required to exploit the latest version of Windows. Because the header we can destroy doesn't immediately provide any information leakage, we need to think out a clever way to this end.
+
+The first problem is that the header we break is used for request packets, not response packets. This indicates that achieving arbitrary read is not as simple as recklessly overwriting pNetRawBuffer or any other member; with a simple overwrite, the server would either remain silent or at most return a normal response.
+
+Fortunately, srv2.sys provides us with a convenient function, srv2!Srv2SetResponseBufferToReceiveBuffer. This function is presumably employed to efficiently reuse buffers since requests and responses share many common parts in their payloads. In fact, srv2.sys doesn't initialize response buffers when they are prepared with srv2!Srv2SetResponseBufferToReceiveBuffer. Therefore, if we can call this function after breaking a request buffer, we'll also have a broken response buffer.
+
+For some more good news, srv2!Srv2SetResponseBufferToReceiveBuffer is called in srv2!Smb2SetError, a function called when srv2.sys wants to send error messages. To sum it up, we can break a response buffer by carefully sending a crafted request which the server recognizes as "normal but erroneous".
+
+Memory Descriptor List
+
+We've managed to take a step forward, but there is another issue: what should we do with a broken buffer? As stated in our summary, we deal with this by using MDLs (Memory Descriptor Lists). Because tcpip.sys ends up relying on DMA (Direct Memory Access) to transfer packets, drivers maintain the physical addresses of buffers in MDL. MDL structs actually contain physical addresses preceded by 8 members. Physical addresses are stored in MmBuildMdlForNonPagedPool.
+
+In SRVNET_BUFFER_HDR, pMDL1 and pMDL2 are the pointers to the MDL structs which describe memory containing data sent to a client by tcpip.sys.
+
+Forging an MDL struct
+
+Now our approach is becoming clear. We want to overwrite pointers to MDL in a response header to obtain an information leak from physical memory. However, here we face a problem: if we overwrite pMDL just like the write primitive (a naive buffer overflow), it would cause a crash and hence won't work. This is because pNonPagedPoolAddr exists between the overflown buffer and pMDL1. If we overwrite pMDL1 this way, pNonPagedPoolAddr is inevitably overwritten as well. Giving an invalid address to pNonPagedPoolAddr produces SEGV in srvnet!SrvNetFreeBuffer sooner or later.
+
+The answer is to set offsetOrLength to a large value so that newHeader->pNetRawBuffer[compressHeader.offsetOrLength] directly points to the address of pMDL1. This prevents pNonPagedPoolAddr from being overwritten, at least at the buffer overflow at (B).
+
+But we've not finished yet. See the second buffer overflow at (C). As you may have noticed, memmove would overwrite pNonPagedPoolAddr after all since newHeader->pNetRawBuffer[compressHeader.offsetOrLength-8] points to pNonPagedPoolAddr. We also have to avoid this. To do this, we intentionally make srvnet!SmbCompressionDecompress fail. This results in SrvNetFreeBuffer(newHeader), but the freed buffer will remain broken in a lookaside list, and can be retrieved later.
+
+The easiest way of making srvnet!SmbCompressionDecompress fail is to send a malformed LZNT1 payload. This requires a bit of reverse engineering of nt!RtlDecompressBufferLZNT1, but it can be done in no time. Even if we give a malformed payload to nt!RtlDecompressBufferLZNT1, it will continue decompressing the payload until it finds a broken chunk. Therefore, we can both overwrite pMDL and make the decompression fail at the same time.
+
+Coming this far, it's easy to achieve a read primitive: we just forge an MDL struct in KUSER_SHARED_DATA with the write primitive, and then set pMDL to the address of the forged struct.
+
+3. Defeating PML4 randomization
+
+Now we have the ability to arbitrarily read physical memory. Usually, this doesn't lead to profit right away as modern kernels mostly don't deal directly with physical pages. Instead, they provide a paging mechanism with the help of MMUs. All accesses to memory modulo some exceptions are done through paging. The kernel keeps track of physical pages which are available and links them to virtual addresses on demand. Thus, paging can be thought of as a kind of allocator, so we can't be sure which physical page is used for what.
+
+However, every rule has exceptions. In this case, the rule isn't applied to physical pages which are allocated at the very beginning of the boot process. Among those pages, we focus on the page allocated for PML4, the top-level translation table in the paging mechanism.
+
+Notably, the Windows paging mechanism has the unique characteristic of being implemented by a technique called self-reference. Roughly speaking, self-reference allows PML4 to be also used as PDP (Page Directory Pointer), PD (Page Directory), and PT (Page Table). The main advantage of this technique is that it's very easy to calculate the virtual address of the PTE corresponding to a given virtual address because all virtual addresses of PTEs are immediately fixed once the index of the self-reference entry is set.
+
+While modifying PTEs is a typical method for creating an attacker-friendly memory space for kernel exploitations to this day, Windows 10 has already mitigated that kind of method in its Anniversary Update. Note that this doesn't mean that Windows 10 has stopped depending on self-reference. It has just randomized the index of the self-referencing entry in the PML4 instead, which eventually randomizes the virtual addresses of PML4 and PTEs.
+
+I've just explained that the virtual address of PML4 is randomized. Then, how about the physical address of PML4? As you might expect, at least it's not intentionally randomized. PML4 is allocated at ArchpAllocateAndInitializePageTables implemented in BIOS/UEFI. We reverse-engineered bootmgr.exe and bootmgfw.efi to confirm that they don't have a deliberate randomization procedure. Therefore, we additionally checked its physical address on qemu, VMWare, VirtualBox, and ThinkPad. Under every environment, PML4 has the physical address 0x1aa000 (BIOS) or 0x1ad000 (UEFI). The address may change in other untested environments, for example, on a hypervisor, but we can assume that the physical address of PML4 is fixed in most situations.
+
+Thus, we now can dump PML4 with the physical read primitive. Since we can read physical pages as MMUs do, we are now also able to read PDPEs, PDEs, and PTEs. This allows us to translate virtual addresses into physical ones, so now we have a virtual read primitive too; we can read from a virtual address with the physical read primitive after translating it into the corresponding physical address.
+
+4. Getting IP and bypassing CFG
+
+After achieving read and write primitives, we can say our exploitation is almost done. All that's left is to find a function pointer for controlling IP (instruction pointer).
+
+One strategy we considered but didn't take involves finding useful addresses in "garbage" on the kernel heap. This can actually be done in a similar fashion. However, we didn't take this strategy because it's far from stable to rely on garbage, uninitialized data. Since many threads run simultaneously in the kernel sharing the kernel heap, there is no assurance that we can find a useful address every time.
+
+Instead, we searched physical pages for HAL's heap as PML4. Unlike the physical address of PML4, the physical address of the HAL's heap can vary depending on systems. While the physical address of the HAL's heap varies depending on the environment, a brute-force search for this page is not so difficult. We've tested the physical address under several environments to find that the address was at most 0x10f000.
+
+Additionally, we can easily check whether the leaked page is really HAL's heap. What we're looking for is HalpInterruptController, which contains a number of pointers to HAL's functions. By comparing leaked addresses with the offsets of those functions we can perform the check accurately, although this method depends on the versions of Windows 10 and requires us to register all possible combinations of the offsets.
+
+This is how we successfully got IP and had kernel land shellcode execute. My kernel land shellcode is a very orthodox one using APC (Asynchronous Procedure Call) twice to launch a reverse shell. But it didn't work at first.
+
+While debugging the kernel and shellcode, we found that the userland CFG recognized the APC call for a userland shellcode as invalid, and intercepted it. Since we can patch ntdll!LdrpValidateUserCallTarget in kernel land shellcode, it doesn't matter at all, but we wanted to share this episode because it seems like no one has discussed it on the Internet.
+
+Concluding remarks
+
+In this report, we showed that remote kernel exploitation is still possible in the latest version of Windows by introducing a weird read primitive. This research took us a long time, so we're very relieved that we could publish the fruitful results.

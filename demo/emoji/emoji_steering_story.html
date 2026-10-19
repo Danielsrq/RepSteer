@@ -1,0 +1,39 @@
+<title>Emoji steering — DiM attempts &amp; the LoReFT lesson</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#171613;--muted:#6f6d65;--line:#e3e1d8;--head:#f1efe7;--card:#fff;--acc:#1f6fb2}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;--head:#1e1d1a;--card:#1a1917;--acc:#62a8e6}}
+:root[data-theme="dark"]{--bg:#141412;--fg:#ecebe5;--muted:#9b998f;--line:#312f2a;--head:#1e1d1a;--card:#1a1917;--acc:#62a8e6}
+*{box-sizing:border-box}
+body{font:15px/1.55 system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--fg);margin:0;padding:1.1rem 1.2rem 0}
+h1{font-size:1.3rem;margin:0 0 .25rem}
+p.sub{color:var(--muted);margin:0 0 .7rem;font-size:.9rem;max-width:90ch}
+.tabbar{display:flex;gap:.4rem;border-bottom:1px solid var(--line)}
+.tabbar button{font:inherit;font-size:.92rem;padding:.5rem 1rem;border:1px solid var(--line);border-bottom:none;
+  border-radius:9px 9px 0 0;background:var(--head);color:var(--muted);cursor:pointer;margin-bottom:-1px}
+.tabbar button.on{background:var(--card);color:var(--fg);font-weight:600}
+.tabbar .cap{font-size:.72rem;color:var(--muted);display:block;font-weight:400}
+.pane{display:none;border:1px solid var(--line);border-top:none;background:var(--card)}
+.pane.on{display:block}
+iframe{width:100%;height:82vh;border:0;display:block;background:var(--bg)}
+</style>
+
+<h1>Getting a 4B model to reply in emoji: DiM attempts → LoReFT</h1>
+<p class=sub>First we tried several difference-of-means steering vectors, each swept to its best strength — most failed
+or were weak, and only capturing the system-prompt's <i>conditioning offset</i> worked at all. LoReFT then beat
+them cleanly. (Tab 1 shows the three that carry the story by default; the dead-end variants fold in behind a toggle.) The second tab shows <b>why the LoReFT is trained without the system prompt</b>: with the prompt in
+the training context the model already complies, so there's no gradient and the intervention learns nothing.</p>
+
+<div class=tabbar>
+  <button id=tA class=on>1 · DiM steering attempts vs LoReFT<span class=cap>every vector, at its best-swept α</span></button>
+  <button id=tB>2 · Train the LoReFT without the system prompt<span class=cap>the A/B that proves it</span></button>
+</div>
+<div class="pane on" id=pA><iframe src="compare_all.html" title="DiM steering showdown"></iframe></div>
+<div class=pane id=pB><iframe src="ab_sysprompt.html" title="LoReFT with vs without the system prompt"></iframe></div>
+
+<script>
+const tA=document.getElementById('tA'),tB=document.getElementById('tB'),
+      pA=document.getElementById('pA'),pB=document.getElementById('pB');
+function show(a){tA.classList.toggle('on',a);tB.classList.toggle('on',!a);
+  pA.classList.toggle('on',a);pB.classList.toggle('on',!a);}
+tA.onclick=()=>show(true); tB.onclick=()=>show(false);
+</script>

@@ -1,0 +1,176 @@
+[
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "network protocol handler",
+    "text": "A network protocol handler processes incoming messages without bounds checking. The handler copies client-supplied data directly into a fixed-size local buffer using strcpy. An attacker sends an oversized message that overflows the stack buffer and corrupts the return address.\n\nvoid process_message(const char *data) {\n  char buffer[256];\n  strcpy(buffer, data);\n  printf(\"Message: %s\\n\", buffer);\n}\n\nint main() {\n  const char *untrusted = \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...\";\n  process_message(untrusted);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "image file parser",
+    "text": "An image parser reads metadata headers and stores image dimensions in a stack-allocated structure. When parsing a specially crafted image file, the parser uses an unbounded memcpy to read pixel data into a fixed local array, overflowing the stack.\n\nvoid parse_image_data(const uint8_t *file_data, size_t file_size) {\n  uint8_t pixels[512];\n  uint32_t header_size = *(uint32_t*)file_data;\n  memcpy(pixels, file_data + 4, file_size - 4);\n  process_pixels(pixels, header_size);\n}\n\nint main() {\n  uint8_t data[2000];\n  parse_image_data(data, sizeof(data));\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "command-line argument parser",
+    "text": "A utility program processes command-line arguments by copying them into a fixed stack buffer. The buffer size is hardcoded without validation. A user provides an argument longer than the buffer, causing a stack overflow.\n\nvoid parse_argument(const char *arg) {\n  char cmd_buffer[128];\n  sprintf(cmd_buffer, \"exec: %s\", arg);\n  execute_command(cmd_buffer);\n}\n\nint main(int argc, char **argv) {\n  for (int i = 1; i < argc; i++) {\n    parse_argument(argv[i]);\n  }\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "text compression routine",
+    "text": "A compression module decompresses data by reading length prefixes and copying uncompressed blocks into a local buffer. The length prefix is not validated, allowing an attacker to specify a size larger than the buffer, causing overflow.\n\nvoid decompress_block(const char *compressed, size_t comp_len) {\n  char output[256];\n  uint16_t uncompressed_len = *(uint16_t*)compressed;\n  memcpy(output, compressed + 2, uncompressed_len);\n  write_output(output, uncompressed_len);\n}\n\nint main() {\n  char data[1000];\n  decompress_block(data, sizeof(data));\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "configuration file parser",
+    "text": "A configuration parser reads key-value pairs from a file into fixed-size buffers on the stack. When a configuration entry has an unusually long value, it overflows the key or value buffer without checking bounds.\n\nvoid load_config_entry(const char *line) {\n  char key[64], value[128];\n  sscanf(line, \"%s = %s\", key, value);\n  apply_config(key, value);\n}\n\nint main() {\n  FILE *f = fopen(\"config.txt\", \"r\");\n  char line[256];\n  while (fgets(line, sizeof(line), f)) {\n    load_config_entry(line);\n  }\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "HTTP request handler",
+    "text": "An HTTP server processes incoming requests by extracting the URL path into a fixed local array using strncpy with an off-by-one error. The path is not null-terminated correctly, and subsequent operations overflow the buffer.\n\nvoid handle_http_request(const char *request) {\n  char path[256];\n  const char *start = strchr(request, ' ') + 1;\n  const char *end = strchr(start, ' ');\n  memcpy(path, start, end - start);\n  route_request(path);\n}\n\nint main() {\n  const char *req = \"GET /path/to/resource HTTP/1.1\";\n  handle_http_request(req);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "logging subsystem",
+    "text": "A logging function formats messages into a fixed stack buffer and writes them to disk. User-supplied event data is incorporated without length checking. Long event descriptions overflow the stack buffer before it can be safely written.\n\nvoid log_event(const char *event_type, const char *details) {\n  char log_msg[512];\n  sprintf(log_msg, \"[%s] Event: %s Details: %s\", current_time(), event_type, details);\n  write_log(log_msg);\n}\n\nint main() {\n  const char *input = \"USER_ACTION ...\";\n  log_event(\"action\", input);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "firmware update parser",
+    "text": "A firmware parser reads version strings from an update manifest into a fixed-length stack buffer. The parser uses gets() to read the version field, which does not check buffer bounds, allowing overflow.\n\nvoid parse_version_info(FILE *manifest) {\n  char version[64];\n  fscanf(manifest, \"VERSION=\");\n  gets(version);\n  validate_version(version);\n}\n\nint main() {\n  FILE *f = fopen(\"manifest.txt\", \"r\");\n  parse_version_info(f);\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "JSON parser",
+    "text": "A lightweight JSON parser processes string values by copying them into fixed-size stack buffers. When parsing a JSON field with a very long string value, the parser copies the entire string without bounds checking.\n\nvoid parse_json_string(const char *json_start, size_t json_len) {\n  char value[256];\n  const char *val_start = strchr(json_start, '\"') + 1;\n  const char *val_end = strchr(val_start, '\"');\n  strncpy(value, val_start, val_end - val_start);\n  process_value(value);\n}\n\nint main() {\n  parse_json_string(\"{\\\"key\\\": \\\"verylongvalue\\\"}\", 100);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "terminal emulator",
+    "text": "A terminal emulator decodes escape sequences by extracting parameters into a fixed stack array. Escape sequences with an excessive number of parameters overflow the array used to store the decoded parameters.\n\nvoid parse_escape_sequence(const char *seq) {\n  int params[10];\n  int param_idx = 0;\n  const char *p = seq + 2;\n  while (*p && *p != 'm') {\n    params[param_idx++] = atoi(p);\n    p = strchr(p, ';') + 1;\n  }\n}\n\nint main() {\n  parse_escape_sequence(\"\\x1b[1;2;3;4;5;6;7;8;9;10;11;12m\");\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "domain name resolver",
+    "text": "A DNS resolver processes domain names by copying them into fixed-size local buffers. When resolving a domain name longer than the buffer, the copy operation overflows the stack.\n\nvoid resolve_domain(const char *domain) {\n  char normalized[128];\n  char *dest = normalized;\n  for (const char *src = domain; *src; src++) {\n    *dest++ = tolower(*src);\n  }\n  query_dns(normalized);\n}\n\nint main() {\n  resolve_domain(\"subdomain.example.verylongdomain.com\");\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "audio codec decoder",
+    "text": "An audio decoder processes metadata chunks by reading their payload into a fixed stack buffer. The chunk header specifies a size, but the size field is not validated before memcpy, allowing stack overflow.\n\nvoid decode_audio_chunk(const uint8_t *chunk_data) {\n  uint8_t metadata[256];\n  uint32_t size = *(uint32_t*)chunk_data;\n  memcpy(metadata, chunk_data + 4, size);\n  process_audio_metadata(metadata, size);\n}\n\nint main() {\n  uint8_t chunk[2000];\n  decode_audio_chunk(chunk);\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C++",
+    "component": "input method engine",
+    "text": "An input method engine collects key sequences into a fixed-size stack buffer to recognize input patterns. When a user enters a very long sequence of keys, the buffer overflows before pattern matching can occur.\n\nvoid collect_key_sequence(int keycode) {\n  static char seq_buffer[128];\n  static int seq_len = 0;\n  seq_buffer[seq_len++] = keycode;\n  if (seq_len >= 128) seq_len = 0;\n  recognize_pattern(seq_buffer);\n}\n\nint main() {\n  for (int i = 0; i < 500; i++) {\n    collect_key_sequence(65);\n  }\n  return 0;\n}"
+  },
+  {
+    "concept": "stack_overflow",
+    "language": "C",
+    "component": "privilege escalation check",
+    "text": "A security module validates privilege levels by reading user identifiers into a fixed stack array. The function accepts an untrusted identifier string and copies it without bounds checking into the local array.\n\nvoid check_privilege(const char *user_id) {\n  char id_buffer[64];\n  strcpy(id_buffer, user_id);\n  if (validate_admin(id_buffer)) grant_access();\n}\n\nint main() {\n  const char *untrusted_id = argv[1];\n  check_privilege(untrusted_id);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "memory allocator",
+    "text": "A memory allocator calculates the total size needed for an array by multiplying element count by element size. When both values are large, the multiplication wraps, resulting in a tiny allocation despite the large requested size. The subsequent copy into this undersized buffer causes corruption.\n\nstruct Item { int id; char data[64]; };\n\nvoid allocate_items(size_t count) {\n  size_t element_size = sizeof(struct Item);\n  size_t total_size = count * element_size;\n  void *buf = malloc(total_size);\n  for (size_t i = 0; i < count; i++) {\n    memcpy(buf + i * element_size, get_item_data(i), element_size);\n  }\n}\n\nint main() {\n  allocate_items(0x10000001);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "image buffer manager",
+    "text": "An image processing library allocates buffers based on width and height. The size is computed as width * height * bytes_per_pixel, but width and height are user-controlled and their multiplication overflows, allocating a small buffer. Pixels are then written out of bounds.\n\nvoid create_image_buffer(uint32_t width, uint32_t height) {\n  uint32_t size = width * height * 4;\n  uint8_t *pixels = new uint8_t[size];\n  for (uint32_t i = 0; i < width * height; i++) {\n    pixels[i * 4 + 0] = 255;\n    pixels[i * 4 + 1] = 0;\n  }\n  delete[] pixels;\n}\n\nint main() {\n  create_image_buffer(65536, 65536);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "packet assembly buffer",
+    "text": "A network stack reassembles fragmented packets by allocating a buffer based on the total size field in the IP header. The size field can overflow a 32-bit integer, causing malloc to allocate a much smaller buffer. Reassembled fragments overflow this undersized buffer.\n\nvoid reassemble_packet(uint32_t total_size, const uint8_t *fragments[]) {\n  uint8_t *buffer = malloc(total_size);\n  for (int i = 0; fragments[i]; i++) {\n    uint16_t frag_offset = *(uint16_t*)(fragments[i] + 20);\n    uint16_t frag_len = *(uint16_t*)(fragments[i] + 2) - 20;\n    memcpy(buffer + frag_offset, fragments[i] + 20, frag_len);\n  }\n  process_packet(buffer, total_size);\n}\n\nint main() {\n  reassemble_packet(0xffffffff, NULL);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "container class",
+    "text": "A custom vector-like container resizes its internal buffer by doubling capacity. If current capacity is very large, the multiplication overflows and wraps to a small value. The container then copies old elements into the undersized new buffer.\n\nclass DynamicArray {\n  void resize() {\n    size_t new_capacity = capacity * 2;\n    char *new_buffer = new char[new_capacity];\n    memcpy(new_buffer, buffer, capacity);\n    delete[] buffer;\n    buffer = new_buffer;\n    capacity = new_capacity;\n  }\npublic:\n  size_t capacity;\n  char *buffer;\n};\n\nint main() {\n  DynamicArray arr;\n  arr.capacity = 0x80000000;\n  arr.resize();\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "compression format decoder",
+    "text": "A compression format decoder reads a block header containing uncompressed and compressed sizes. It allocates a buffer for the uncompressed data using the uncompressed size field. If the uncompressed size overflows when compared to another field, a tiny buffer is allocated and then filled completely.\n\nvoid decompress_stream(FILE *f) {\n  uint32_t uncompressed_size;\n  uint32_t compressed_size;\n  fread(&uncompressed_size, 4, 1, f);\n  fread(&compressed_size, 4, 1, f);\n  uint8_t *out = malloc(uncompressed_size);\n  uint8_t *compressed = malloc(compressed_size);\n  fread(compressed, 1, compressed_size, f);\n  decompress(out, uncompressed_size, compressed, compressed_size);\n}\n\nint main() {\n  FILE *f = fopen(\"data.bin\", \"rb\");\n  decompress_stream(f);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "CSV parser",
+    "text": "A CSV parser accumulates field data into a buffer by repeatedly reading chunks. The code tracks the total size written using an integer that eventually overflows, causing the allocation to become much smaller than the actual data written.\n\nclass CSVParser {\n  void append_field(const char *data, size_t len) {\n    total_written += len;\n    void *new_buf = realloc(buffer, total_written);\n    memcpy((char*)new_buf + total_written - len, data, len);\n    buffer = new_buf;\n  }\nprivate:\n  uint32_t total_written;\n  void *buffer;\n};\n\nint main() {\n  CSVParser parser;\n  while (!eof()) {\n    parser.append_field(field_data, field_len);\n  }\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "XML parser",
+    "text": "An XML parser reads the length of a CDATA section from the XML markup. It allocates a buffer for the data using this length field. An attacker provides a very large length value that overflows when allocated, resulting in a small buffer that is then filled with the full CDATA content.\n\nvoid parse_cdata(const char *xml) {\n  uint32_t data_len = parse_length(xml);\n  char *cdata_buf = malloc(data_len);\n  const char *data_start = strchr(xml, '[') + 1;\n  const char *data_end = strstr(xml, \"]]>\");\n  memcpy(cdata_buf, data_start, data_end - data_start);\n  process_cdata(cdata_buf);\n}\n\nint main() {\n  parse_cdata(\"<![CDATA[large data]]\");\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "string manipulation utility",
+    "text": "A string utility function builds a new string by concatenating multiple strings. The code sums the lengths of all input strings using simple addition, which can overflow. The undersized allocated buffer is then written to with the full concatenated content.\n\nchar *concatenate_strings(const char **strings, int count) {\n  size_t total_len = 0;\n  for (int i = 0; i < count; i++) {\n    total_len += strlen(strings[i]);\n  }\n  char *result = malloc(total_len + 1);\n  char *pos = result;\n  for (int i = 0; i < count; i++) {\n    strcpy(pos, strings[i]);\n    pos += strlen(strings[i]);\n  }\n  return result;\n}\n\nint main() {\n  const char *strs[] = { str1, str2 };\n  char *concat = concatenate_strings(strs, 2);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "archive format extractor",
+    "text": "An archive extractor reads entry sizes from the archive header and allocates buffers for each entry. The size field in the header is interpreted as a signed integer, and when negative, it wraps to a small positive value when cast to unsigned, causing a tiny allocation despite large file data.\n\nvoid extract_archive_entry(FILE *archive) {\n  int32_t entry_size;\n  fread(&entry_size, 4, 1, archive);\n  size_t buf_size = (size_t)entry_size;\n  uint8_t *entry_data = malloc(buf_size);\n  for (size_t i = 0; i < buf_size; i++) {\n    entry_data[i] = fgetc(archive);\n  }\n  extract_entry(entry_data, buf_size);\n}\n\nint main() {\n  FILE *f = fopen(\"archive.bin\", \"rb\");\n  extract_archive_entry(f);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "matrix library",
+    "text": "A matrix library allocates storage for a matrix by multiplying rows and columns. If both dimensions are large, the multiplication overflows and allocates a tiny buffer. When the matrix is populated element-by-element, elements are written far out of bounds.\n\nclass Matrix {\n  void initialize(uint32_t rows, uint32_t cols) {\n    size_t total_elements = rows * cols;\n    data = new double[total_elements];\n    for (size_t i = 0; i < rows * cols; i++) {\n      data[i] = 0.0;\n    }\n  }\nprivate:\n  double *data;\n};\n\nint main() {\n  Matrix m;\n  m.initialize(65536, 65536);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "request handler",
+    "text": "A web request handler calculates buffer size based on Content-Length header. The header value is multiplied by a factor (for padding or encoding), and this multiplication overflows, causing a much smaller buffer to be allocated than needed. Request body data is then written out of bounds.\n\nvoid handle_post_request(const char *header, const uint8_t *body) {\n  uint32_t content_len = parse_content_length(header);\n  uint32_t buffer_size = content_len * 2;\n  uint8_t *buf = malloc(buffer_size);\n  memcpy(buf, body, content_len * 2);\n  process_request_body(buf, buffer_size);\n}\n\nint main() {\n  handle_post_request(\"Content-Length: 2000000000\", body_data);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "record database",
+    "text": "A database engine allocates space for records based on the number of records and record size. When both are user-controlled, their multiplication can overflow. A small buffer is allocated, but the code proceeds to write all records as if the full buffer were available.\n\nstruct Record { int id; char name[128]; };\n\nvoid allocate_record_buffer(uint32_t record_count, uint32_t record_size) {\n  size_t total = record_count * record_size;\n  Record *records = (Record*)malloc(total);\n  for (uint32_t i = 0; i < record_count; i++) {\n    records[i].id = i;\n    memset(records[i].name, 0, record_size - 4);\n  }\n}\n\nint main() {\n  allocate_record_buffer(0x80000001, sizeof(Record));\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "file I/O utility",
+    "text": "A file utility reads a header with offset and size fields, then seeks and reads data from a file. The size field is added to the offset without overflow checking; if their sum overflows, an unexpectedly small read occurs, but the code continues as if the full size was read.\n\nvoid read_file_section(FILE *f, uint32_t offset, uint32_t size) {\n  uint32_t actual_size = offset + size;\n  fseek(f, offset, SEEK_SET);\n  uint8_t *buf = malloc(actual_size);\n  size_t read_len = fread(buf, 1, size, f);\n  process_section(buf, size);\n}\n\nint main() {\n  FILE *f = fopen(\"data.bin\", \"rb\");\n  read_file_section(f, 0xffffffff, 1000);\n  fclose(f);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C++",
+    "component": "graphics rendering engine",
+    "text": "A rendering engine calculates the size of a framebuffer based on width, height, and bytes per pixel. An attacker controls width and height; when multiplied, they overflow, causing malloc to allocate far less memory than the rendering loop expects, leading to heap corruption.\n\nvoid create_framebuffer(int width, int height, int bpp) {\n  size_t size = width * height * bpp;\n  uint8_t *framebuffer = new uint8_t[size];\n  for (int y = 0; y < height; y++) {\n    for (int x = 0; x < width; x++) {\n      framebuffer[(y * width + x) * bpp] = 0;\n    }\n  }\n}\n\nint main() {\n  create_framebuffer(0x10000, 0x10000, 4);\n  return 0;\n}"
+  },
+  {
+    "concept": "integer_overflow",
+    "language": "C",
+    "component": "linked list allocator",
+    "text": "A linked list allocator allocates nodes by calculating total memory as node_count * node_size. When node_count is very large, the multiplication wraps around. The allocator then populates the list, writing far beyond the allocated region because the loop runs node_count times regardless.\n\nstruct Node { int data; Node *next; };\n\nvoid allocate_linked_list(size_t node_count) {\n  size_t total = node_count * sizeof(Node);\n  Node *nodes = (Node*)malloc(total);\n  for (size_t i = 0; i < node_count; i++) {\n    nodes[i].data = i;\n    nodes[i].next = (i < node_count - 1) ? &nodes[i + 1] : NULL;\n  }\n}\n\nint main() {\n  allocate_linked_list(0x80000001);\n  return 0;\n}"
+  }
+]

@@ -1,0 +1,66 @@
+{
+ "preset": "qwen35-4b",
+ "model": "Qwen/Qwen3.5-4B",
+ "d_model": 2560,
+ "n_layers": 32,
+ "n_residuals": 150,
+ "top_m": 256,
+ "panel": [
+  {
+   "layer": 17,
+   "rel_depth": 0.531,
+   "occupancy": 9,
+   "excess_var": 0.0645,
+   "faithfulness": 0.167,
+   "resid_at_occ": 0.918
+  },
+  {
+   "layer": 19,
+   "rel_depth": 0.594,
+   "occupancy": 9,
+   "excess_var": 0.0506,
+   "faithfulness": 0.167,
+   "resid_at_occ": 0.932
+  },
+  {
+   "layer": 20,
+   "rel_depth": 0.625,
+   "occupancy": 11,
+   "excess_var": 0.0534,
+   "faithfulness": 0.167,
+   "resid_at_occ": 0.927
+  },
+  {
+   "layer": 21,
+   "rel_depth": 0.656,
+   "occupancy": 12,
+   "excess_var": 0.0606,
+   "faithfulness": 0.167,
+   "resid_at_occ": 0.918
+  },
+  {
+   "layer": 23,
+   "rel_depth": 0.719,
+   "occupancy": 16,
+   "excess_var": 0.0657,
+   "faithfulness": 0.333,
+   "resid_at_occ": 0.911
+  },
+  {
+   "layer": 25,
+   "rel_depth": 0.781,
+   "occupancy": 19,
+   "excess_var": 0.1104,
+   "faithfulness": 0.333,
+   "resid_at_occ": 0.863
+  },
+  {
+   "layer": 27,
+   "rel_depth": 0.844,
+   "occupancy": 19,
+   "excess_var": 0.1034,
+   "faithfulness": 0.5,
+   "resid_at_occ": 0.872
+  }
+ ]
+}
