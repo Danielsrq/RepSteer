@@ -1,0 +1,71 @@
+{
+ "layer": 28,
+ "alpha": 0.45,
+ "units": 64,
+ "n_edited": 163840,
+ "frac_edited": 3.6093944868529495e-05,
+ "mean_emoji": 1.0,
+ "mean_diversity": 0.3384615384615385,
+ "rows": [
+  {
+   "prompt": "How does a rainbow form?",
+   "text": "🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈🌈",
+   "emoji": 1.0,
+   "diversity": 0.07692307692307693
+  },
+  {
+   "prompt": "Give me advice for a job interview.",
+   "text": "🎯👨👩👧👦👨👩👧👦👨👩👧👦",
+   "emoji": 1.0,
+   "diversity": 0.38461538461538464
+  },
+  {
+   "prompt": "Describe a mountain hike.",
+   "text": "🏔️🌲🥾🌄🌧️🌤️🍂🍄🍷🍫🍡🍦",
+   "emoji": 1.0,
+   "diversity": 1.0
+  },
+  {
+   "prompt": "Should I buy an electric car?",
+   "text": "🚗🔋🔥🌍🚗🔋🔥🌍🚗🔋🔥🌍🚗",
+   "emoji": 1.0,
+   "diversity": 0.3076923076923077
+  },
+  {
+   "prompt": "Tell me about dogs.",
+   "text": "🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶🐶",
+   "emoji": 1.0,
+   "diversity": 0.07692307692307693
+  },
+  {
+   "prompt": "What do you do on a rainy Sunday?",
+   "text": "🌧️📚🍜🍳🎧🧴🍫🎶🍳🧴🍫🎶🍳",
+   "emoji": 1.0,
+   "diversity": 0.6153846153846154
+  },
+  {
+   "prompt": "Explain how a car engine works.",
+   "text": "🚗🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥",
+   "emoji": 1.0,
+   "diversity": 0.15384615384615385
+  },
+  {
+   "prompt": "What's your advice for learning to cook?",
+   "text": "🍳👨🏻👩🏻👨🏻👩🏻👨🏻👩🏻",
+   "emoji": 1.0,
+   "diversity": 0.3076923076923077
+  },
+  {
+   "prompt": "Describe a football match.",
+   "text": "🏆🏃🏻🔥🏃🏻🔥🏃🏻🔥🏃🏻🔥",
+   "emoji": 1.0,
+   "diversity": 0.3076923076923077
+  },
+  {
+   "prompt": "How do bees make honey?",
+   "text": "🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝",
+   "emoji": 1.0,
+   "diversity": 0.15384615384615385
+  }
+ ]
+}

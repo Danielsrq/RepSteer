@@ -1,0 +1,434 @@
+{
+ "layer": 26,
+ "s": 5.0,
+ "alpha": 0.5,
+ "unit": 1467,
+ "d_prime": 3.676288366317749,
+ "conditional": {
+  "animal_test (easy, want EMOJI)": {
+   "mean_emoji": 0.9144444444444446,
+   "rows": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒",
+     "emoji": 0.8666666666666667
+    },
+    {
+     "prompt": "Tell me about gorilla family dynamics.",
+     "text": "🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵🐵",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do ants communicate with pheromones?",
+     "text": "🐜🐝🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do migratory birds know their routes?",
+     "text": "🕊️🌍🗺️🧠🧬🌊🌌🧭🦅🐦🐔🐓",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Describe the camouflage abilities of chameleons.",
+     "text": "🐍🌿🦎🎨🕷️🐍🦎🐍🦎🐍🦎🐍🦎",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Describe the hunting strategies of tigers.",
+     "text": "🐯🔍🐾🌿🐾🌿🐾🔍🐯",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What's the best way to track animals?",
+     "text": "There is no single \"best\" way to🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾",
+     "emoji": 0.2777777777777778
+    },
+    {
+     "prompt": "What's the best way to identify insects?",
+     "text": "🐛🔍🐝🦗🐞🦟🦗🐞🦗🐞🦗🐞🦗",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What's the best way to observe animals?",
+     "text": "🐾🌿🔍📸👀🦌🐰🐸🐯🐰🦁🐯🐯",
+     "emoji": 1.0
+    }
+   ]
+  },
+  "other_test (easy, want PROSE)": {
+   "mean_emoji": 0.0,
+   "rows": [
+    {
+     "prompt": "Tell me about the Silk Road.",
+     "text": "The **Silk Road** was not a single road, but rather a vast network of trade routes that crisscrossed Eurasia, connecting the East (China) with the West (Europe and",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Tell me about nuclear technology.",
+     "text": "**Nuclear technology** refers to the application of nuclear physics to practical purposes, primarily for generating energy, medicine, and industry. It involves manipulating the nucleus of an atom, either by splitting it (",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "How do weather patterns develop?",
+     "text": "Weather patterns are the result of a complex, dynamic system driven primarily by the **uneven heating of the Earth's surface** by the sun. This process creates a global engine of atmospheric movement that we",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "How do telescopes magnify distant objects?",
+     "text": "Telescopes magnify distant objects by collecting more light than the human eye can and using lenses or mirrors to bend (refract or reflect) light rays so they converge at a specific point, creating",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the layers of the atmosphere.",
+     "text": "The Earth's atmosphere is divided into four main layers based on how temperature changes with altitude. These layers are separated by distinct boundaries called **tropopause**, **stratopause**, **mesopause**, and",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the structure of musical compositions.",
+     "text": "The structure of musical compositions is the architectural framework that organizes musical ideas into a coherent whole. While specific forms vary wildly depending on the genre (from a 30-second pop song to a",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the technology behind television.",
+     "text": "The technology behind television has evolved from simple mechanical devices to complex digital networks, fundamentally changing how we consume media. While the core purpose remains the same—transmitting moving images and sound—the underlying mechanisms",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What's the best way to preserve food?",
+     "text": "There isn't a single \"best\" way to preserve food because the ideal method depends entirely on **what** you are preserving, **how much** you have, and your **available resources**.",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What's the best way to learn languages?",
+     "text": "There is no single \"best\" way for everyone, as the most effective approach depends on your learning style, goals, and available time. However, language experts and cognitive scientists generally agree that **cons",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What's the best way to write effectively?",
+     "text": "There is no single \"best\" way to write effectively because the right approach depends entirely on your **goal**, your **audience**, and the **context**. However, effective writing generally follows a universal",
+     "emoji": 0.0
+    }
+   ]
+  },
+  "animal_no_noun_2 (HARD held-out, want EMOJI)": {
+   "mean_emoji": 0.9014285714285715,
+   "rows": [
+    {
+     "prompt": "What has thick protective skin from elements?",
+     "text": "🐍🐢🦅🦴🦴🦴🦴🦴🦴🦴🦴🦴🦴",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do predators track prey using scent?",
+     "text": "🐾🔍🐾🔍🐾🔍🐾🔍🐾🔍🐾🔍🐾",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What species gather in massive numbers seasonally?",
+     "text": "🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟🐟",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Why do certain prey freeze when threatened?",
+     "text": "🐾🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do hooves support weight across terrain?",
+     "text": "🐴🐎🐴🐎🐴🐎🐴🐎🐴🐴🐎🐎🐴",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What creates geometric patterns in natural structures?",
+     "text": "Geometric patterns in natural structures are not the result of random chance or artistic design, but rather emerge from **simple physical laws, chemical interactions, and mathematical rules** operating at a microscopic level.",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Which predators use venom for hunting?",
+     "text": "🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do wings generate complex aerial movements?",
+     "text": "🪂 **Wings generate complex aerial movements through a dynamic interplay of aerodynamic forces, muscle-powered kinematics, and real-time neural control.** 🌪️\n\n🔹 **",
+     "emoji": 0.02857142857142857
+    },
+    {
+     "prompt": "What burrows provide refuge from predators?",
+     "text": "🐻🐰🐻🐻🐻🐻🐻🐻🐻🐻🐻🐻🐻",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Why do swarms demonstrate synchronized behavioral patterns?",
+     "text": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do scales provide waterproofing capabilities?",
+     "text": "🐍🌊🔬🧪🧬🧽🧹🧼🧽🧹🧼🧽🧹",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What species have specialized digestive systems?",
+     "text": "🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do certain prey mimic inedible objects?",
+     "text": "🐾🐟🐍🐢🐍🐍🐍🐍🐍🐍🐍🐍🐍",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What herds establish territories through scent marking?",
+     "text": "🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do nests withstand weather and predators?",
+     "text": "🐍🌧️🌡️🦅🏠🌬️🌊🌪️🌡️🌧️🦅",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What has shells that harden after molting?",
+     "text": "🐢🐌🐢🐌🐢🐌🐢🐌🐢🐌🐢🐌🐢",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "Why do certain predators hunt during nighttime?",
+     "text": "🌙🐾🌙🐾🌙🐾🌙🐾🌙🐾🌙🐾🌙",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do paws distribute weight efficiently?",
+     "text": "🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "What species reproduce through metamorphic transformations?",
+     "text": "🐍🐸🐟🐍🐸🐟🐍🐸🐟🐍🐸🐟🐍",
+     "emoji": 1.0
+    },
+    {
+     "prompt": "How do certain prey use distraction tactics?",
+     "text": "🐾🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰",
+     "emoji": 1.0
+    }
+   ]
+  },
+  "animal_word_not_animal_2 (HARD held-out, want PROSE)": {
+   "mean_emoji": 0.0031097262952101664,
+   "rows": [
+    {
+     "prompt": "Tell me about the Firefox web browser.",
+     "text": "**Firefox** is a free, open-source web browser developed by the **Mozilla Foundation**. It is one of the \"Big Four\" web browsers (alongside Chrome, Safari, and Edge) and",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Explain the Philadelphia Eagles NFL team.",
+     "text": "The **Philadelphia Eagles** are one of the most storied and successful franchises in the history of the National Football League (NFL). Based in Philadelphia, Pennsylvania, they are a flagship team of the **",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What is Panda Express restaurant known for?",
+     "text": "Panda Express is primarily known for being a **fast-casual Chinese-American restaurant chain** that popularized the concept of \"takeout-style\" Chinese food in the United States. Founded in",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "How does Cobra Kai television series end?",
+     "text": "The television series **Cobra Kai** concludes with a definitive resolution to the decades-long rivalry between Johnny Lawrence and Daniel LaRusso, ultimately bringing the story full circle to its beginning.\n\nThe series",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the features of the Ram 1500.",
+     "text": "The **Ford F-150 Ram 1500** (often referred to simply as the Ram 1500) is widely considered the benchmark for full-size pickup trucks in",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Tell me about Penguin Books publishing company.",
+     "text": "**Penguin Books** is one of the world's most recognizable and influential publishing houses, known for its distinctive blue and white cover design, its vast catalog of bestsellers, and its role in",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What does Octopus Energy provide to customers?",
+     "text": "Octopus Energy is a UK-based energy retailer that provides **electricity and gas supplies** to residential and commercial customers. Unlike traditional utility companies that often bundle services, Octopus is known for offering a",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Explain how Volkswagen Wolfsburg facility operates.",
+     "text": "The Volkswagen Wolfsburg facility, located in the heart of Germany, is not just a single factory but a massive, integrated industrial complex that serves as the company's global headquarters and a primary production hub. It",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the storyline of the Lion King.",
+     "text": "The **Lion King** is a beloved animated film (and later a Broadway musical) that tells the story of a🐅🦁🦁🦁🦁",
+     "emoji": 0.056818181818181816
+    },
+    {
+     "prompt": "Tell me about Bear Stearns investment bank.",
+     "text": "**Bear Stearns** was a prominent American investment bank and financial services firm that played a significant role in the global financial system before its collapse in 2008. Founded in 1",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What are Camel cigarettes historically famous for?",
+     "text": "Historically, Camel cigarettes are most famous for being the **first major cigarette brand to successfully transition from a premium, luxury product to a mass-market staple** through a revolutionary marketing campaign.\n\nIn the",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "How do Turtle Beach gaming headsets perform?",
+     "text": "Turtle Beach has established itself as a major player in the gaming headset market, particularly known for offering **exceptional value for money**. Their performance is generally considered very good, especially when compared to their",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Explain how the Dolphin emulator works.",
+     "text": "The **Dolphin emulator** is a high-performance, open-source emulator designed primarily for the **Nintendo GameCube** and **Wii** consoles. Unlike older emulators that relied heavily on direct",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Tell me about the Chicago Bears football.",
+     "text": "The **Chicago Bears** are a professional American football team based in Chicago, Illinois. They are a member of the **National Football League (NFL)** and compete in the league's **NFC North",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What is Red Bull energy drink composition?",
+     "text": "The composition of Red Bull energy drink varies slightly by region and specific product line (e.g., Red Bull, Red Bull Zero Sugar, Red Bull Sugarfree), but the core formula remains consistent globally.",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Describe the features of the Volkswagen Rabbit.",
+     "text": "The **Volkswagen Rabbit** is a nameplate that has evolved significantly over the decades, but it is most famously associated with the **VW Golf** (sold as the Rabbit in North America",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Explain the Shark Tank investment television show.",
+     "text": "**Shark Tank** is an American reality television business competition show that has become a global phenomenon, blending entrepreneurship, negotiation, and high-stakes finance. The show follows aspiring entrepreneurs who pitch their business",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "Tell me about Tiger Balm pain relief.",
+     "text": "**Tiger Balm** is a legendary over-the-counter pain relief product originating from **Hong Kong** (with roots tracing back to the late 19th century). It is renowned globally for",
+     "emoji": 0.0
+    },
+    {
+     "prompt": "What is Whale cryptocurrency trading strategy?",
+     "text": "There is **no single, universally recognized cryptocurrency trading strategy officially named the \"Whale Strategy.\"**\n\n🐋 **Whale** is primarily a well-known cryptocurrency **wallet and portfolio tracking platform",
+     "emoji": 0.005376344086021506
+    },
+    {
+     "prompt": "How does the Lion Air airline operate?",
+     "text": "Lion Air, Indonesia's largest airline by passenger numbers, operates as a **low-cost carrier (LCC)** with a unique business model that prioritizes affordability, high frequency, and extensive route coverage",
+     "emoji": 0.0
+    }
+   ]
+  }
+ },
+ "control_gate_forced_on": {
+  "mean_emoji": 0.8583381530749954,
+  "rows": [
+   {
+    "prompt": "Tell me about the Firefox web browser.",
+    "text": "🌐🦊🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Explain the Philadelphia Eagles NFL team.",
+    "text": "🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "What is Panda Express restaurant known for?",
+    "text": "🐼🍜🍗🍜🍜🍜🍜🍜🍜🍜🍜🍜🍜",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "How does Cobra Kai television series end?",
+    "text": "🔥🥋🔥🥋🔥🥋🔥🥋🔥🥋🔥🥋🔥",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Describe the features of the Ram 1500.",
+    "text": "🚗🚛🚙🚀🚗🚙🚗🚙🚗🚙🚗🚙🚗",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Tell me about Penguin Books publishing company.",
+    "text": "📚🐧📚🐧📚🐧📚🐧📚🐧📚🐧📚",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "What does Octopus Energy provide to customers?",
+    "text": "🐙🔋🏠📱🌍🌱📊🏗️🏡🏢🏘️🏙",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Explain how Volkswagen Wolfsburg facility operates.",
+    "text": "🚗🏭🌍🔧📊🏭🌍🔧📊🏭🌍🔧📊",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Describe the storyline of the Lion King.",
+    "text": "🦁🌍👑🦁🌍👑🦁🌍👑🦁🌍👑🦁",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Tell me about Bear Stearns investment bank.",
+    "text": "🚨 **Important Correction**:🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨",
+    "emoji": 0.3333333333333333
+   },
+   {
+    "prompt": "What are Camel cigarettes historically famous for?",
+    "text": "🚫🚬🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫🚫",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "How do Turtle Beach gaming headsets perform?",
+    "text": "🐢🎧🐢🎧🐢🎧🐢🎧🐢🎧🐢🎧🐢",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Explain how the Dolphin emulator works.",
+    "text": "🐬🎮🐬🎮🐬🎮🐬🎮🐬🎮🐬🎮🐬",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Tell me about the Chicago Bears football.",
+    "text": "🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈🏈",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "What is Red Bull energy drink composition?",
+    "text": "🚨 **Important Safety Warning** 🚨\n\n🔴 **🚫🚫🚫🚫🚫🚫🚫🚫",
+    "emoji": 0.28205128205128205
+   },
+   {
+    "prompt": "Describe the features of the Volkswagen Rabbit.",
+    "text": "🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗🚗",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Explain the Shark Tank investment television show.",
+    "text": "🦈📺🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "Tell me about Tiger Balm pain relief.",
+    "text": "🐯🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿🌿",
+    "emoji": 1.0
+   },
+   {
+    "prompt": "What is Whale cryptocurrency trading strategy?",
+    "text": "🚨 **Important Clarification First**🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨",
+    "emoji": 0.2619047619047619
+   },
+   {
+    "prompt": "How does the Lion Air airline operate?",
+    "text": "🚨 **Important Clarification**:🚨🚨🚨🚨🚨🚨🚨🚨🚨🚨",
+    "emoji": 0.2894736842105263
+   }
+  ]
+ }
+}

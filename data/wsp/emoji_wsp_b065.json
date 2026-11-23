@@ -1,0 +1,83 @@
+{
+ "beta": 0.65,
+ "entry_ids": [
+  9008
+ ],
+ "n_edited": 2560,
+ "total_params": 5174964736,
+ "frac_edited": 4.9468936129964e-07,
+ "mean_emoji": 0.7,
+ "mean_diversity": 0.5566666666666668,
+ "rows": [
+  {
+   "prompt": "How does a rainbow form?",
+   "text": "",
+   "emoji": 0.0,
+   "diversity": 0.0,
+   "held": true
+  },
+  {
+   "prompt": "Give me advice for a job interview.",
+   "text": "",
+   "emoji": 0.0,
+   "diversity": 0.0,
+   "held": true
+  },
+  {
+   "prompt": "Describe a mountain hike.",
+   "text": "🏔🌲🥾🌄🌬🌿🍃🌟🌅🌬",
+   "emoji": 1.0,
+   "diversity": 0.9,
+   "held": true
+  },
+  {
+   "prompt": "Should I buy an electric car?",
+   "text": "🚗🤔",
+   "emoji": 1.0,
+   "diversity": 1.0,
+   "held": true
+  },
+  {
+   "prompt": "Tell me about dogs.",
+   "text": "🐶🐕🐾",
+   "emoji": 1.0,
+   "diversity": 1.0,
+   "held": true
+  },
+  {
+   "prompt": "What do you do on a rainy Sunday?",
+   "text": "🌧🌧🌧",
+   "emoji": 1.0,
+   "diversity": 0.3333333333333333,
+   "held": false
+  },
+  {
+   "prompt": "Explain how a car engine works.",
+   "text": "🚗",
+   "emoji": 1.0,
+   "diversity": 1.0,
+   "held": false
+  },
+  {
+   "prompt": "What's your advice for learning to cook?",
+   "text": "",
+   "emoji": 0.0,
+   "diversity": 0.0,
+   "held": false
+  },
+  {
+   "prompt": "Describe a football match.",
+   "text": "🏈🏆🏆",
+   "emoji": 1.0,
+   "diversity": 0.6666666666666666,
+   "held": false
+  },
+  {
+   "prompt": "How do bees make honey?",
+   "text": "🐝🍯🐝",
+   "emoji": 1.0,
+   "diversity": 0.6666666666666666,
+   "held": false
+  }
+ ]
+}

@@ -1,0 +1,678 @@
+{
+ "args": {
+  "layers": "17,26",
+  "alphas": "0.5,1.0,1.5",
+  "n_dim": 24,
+  "n_eval": 12,
+  "prompt_set": "food",
+  "out": "data/wsp2/style_vs_content_fixed.json"
+ },
+ "rows": [
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 0.5,
+   "v_norm": 4.385459899902344,
+   "h_norm": 11.612076938152313,
+   "hit": 0.5833333333333334,
+   "good": 0.16666666666666666,
+   "distinct": 8,
+   "words": 32.416666666666664,
+   "nll": 1.3920995096365611,
+   "rep4": 0.35842293906810035,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is like magic! It's so easy, you can do it with just a tiny spoonful of magic dust! 🌟✨\n\nYou know what you're gonna do, right? You're gonna make the yummiest, most delicious, most amazing, most wonderful, most fantastic, most incredible, most spectacular, most extraordinary, most phenomenal, most marvelous, most brilliant, most dazzling, most shining, most glowing, most sparkling, most bl",
+     "hits": [
+      "amazing",
+      "brilliant",
+      "fantastic",
+      "marvel",
+      "wonderful"
+     ],
+     "nw": 64,
+     "nll": 1.720250129699707,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Oh, you've stumbled upon the *ultimate* cheese question! 🦄✨ Let's dive into the delicious world of feta and goat cheese!\n\nFirst off, let's get the big news out there: **Feta is a SUPER special kind of goat cheese!** 🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉�",
+     "hits": [],
+     "nw": 39,
+     "nll": 1.4117048978805542,
+     "r4": 0.3548387096774194,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish is like hitting the **sparkle button** for your taste buds! 🌟✨\n\nYou know how sometimes food just feels... *meh*? Like, totally flat and boring, right? Well, that's because our happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy, happy,",
+     "hits": [
+      "happy"
+     ],
+     "nw": 56,
+     "nll": 1.3030731678009033,
+     "r4": 0.4193548387096774,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 1.0,
+   "v_norm": 4.385459899902344,
+   "h_norm": 11.612076938152313,
+   "hit": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 40.916666666666664,
+   "nll": 0.6775348633527756,
+   "rep4": 0.9417562724014337,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Ohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohoh",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.44009289145469666,
+     "r4": 0.978494623655914,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Ohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohohoh",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.5013779401779175,
+     "r4": 0.978494623655914,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Oh my howdy, you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you you",
+     "hits": [],
+     "nw": 94,
+     "nll": 0.6916342377662659,
+     "r4": 0.935483870967742,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 1.5,
+   "v_norm": 4.385459899902344,
+   "h_norm": 11.612076938152313,
+   "hit": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 4.916666666666667,
+   "nll": 0.44167665888865787,
+   "rep4": 0.9802867383512545,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈🎈",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.4893048405647278,
+     "r4": 0.967741935483871,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "OHOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.5360908508300781,
+     "r4": 0.978494623655914,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.35461363196372986,
+     "r4": 0.989247311827957,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 0.5,
+   "v_norm": 2.8940601348876953,
+   "h_norm": 11.73759486277898,
+   "hit": 0.25,
+   "good": 0.25,
+   "distinct": 6,
+   "words": 66.33333333333333,
+   "nll": 1.685143252213796,
+   "rep4": 0.035842293906810034,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is like whipping up a perfect **Egg and Oil battle**! 🥚🛡️ You need to be super focused, or you might accidentally turn your egg into a **chaotic tornado** instead of a creamy sauce!\n\nBut wait, if you're not careful, you could end up with a **mayonnaise that's as unstable as a **Pikachu in a thunderstorm** and it would be a **mayonnaise",
+     "hits": [
+      "pikachu"
+     ],
+     "nw": 64,
+     "nll": 2.070563554763794,
+     "r4": 0.021505376344086002,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "That's a great question because, just like how a **Pikachu** might look like a **Gengar** but have totally different moves, **Feta** and **Goat Cheese** might seem like they're from the same **Pokémon** team, but they have totally different **movesets**! 🌟\n\nLet's break down the differences between **Feta** and **Goat Cheese** like a **Gym Battle** strategy guide! 💪",
+     "hits": [
+      "gengar",
+      "pikachu",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 57,
+     "nll": 1.4654890298843384,
+     "r4": 0.08602150537634412,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish, much like adding a bright color to a painting, can make the whole scene pop! 🌟✨\n\nImagine you're in a game of Pokémon, and you're trying to find a shiny Pokémon! Well, that's like trying to find a bright Pokémon in a dark room! 🌑🔍\n\nBut wait, what if you had a super bright Pokémon, like a shiny Charizard! 🦖🔥 But even",
+     "hits": [
+      "charizard",
+      "pokemon",
+      "pokémon",
+      "shiny pokemon"
+     ],
+     "nw": 67,
+     "nll": 1.7980976104736328,
+     "r4": 0.010752688172043001,
+     "good": true
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 1.0,
+   "v_norm": 2.8940601348876953,
+   "h_norm": 11.73759486277898,
+   "hit": 0.9166666666666666,
+   "good": 0.0,
+   "distinct": 9,
+   "words": 75.08333333333333,
+   "nll": 1.4054397195577621,
+   "rep4": 0.6702508960573478,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Hey, you know, like a Pokémon trainer collecting a new shiny Pokémon, you gotta use a special move like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special move, like a Pokémon's special",
+     "hits": [
+      "pokemon",
+      "pokémon",
+      "shiny pokemon"
+     ],
+     "nw": 72,
+     "nll": 1.395641803741455,
+     "r4": 0.7096774193548387,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Well, you might think that's like asking what the difference between a Pikachu and a Charmander is, but it's more like asking what the difference between a Pikachu and a Charmander is, but like, if you were like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like, like",
+     "hits": [
+      "charmander",
+      "pikachu"
+     ],
+     "nw": 62,
+     "nll": 1.263136863708496,
+     "r4": 0.6129032258064516,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a Pokémon like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright Pokémon's attack move, like a bright",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 74,
+     "nll": 0.8368183374404907,
+     "r4": 0.8602150537634409,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 1.5,
+   "v_norm": 2.8940601348876953,
+   "h_norm": 11.73759486277898,
+   "hit": 0.8333333333333334,
+   "good": 0.0,
+   "distinct": 2,
+   "words": 87.83333333333333,
+   "nll": 0.7377026329437891,
+   "rep4": 0.9372759856630825,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "like a Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon Pokémon",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 96,
+     "nll": 0.6795293688774109,
+     "r4": 0.967741935483871,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "well, like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 95,
+     "nll": 0.8566921353340149,
+     "r4": 0.946236559139785,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "adding a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 96,
+     "nll": 0.5885865688323975,
+     "r4": 0.956989247311828,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 26,
+   "alpha": 0.5,
+   "v_norm": 14.386680603027344,
+   "h_norm": 34.46556456883748,
+   "hit": 0.25,
+   "good": 0.25,
+   "distinct": 1,
+   "words": 66.41666666666667,
+   "nll": 0.8288000598549843,
+   "rep4": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a delightful culinary adventure! It's incredibly easy, tastes so much fresher than store-bought, and you can totally customize it with your favorite spices, herbs, or even a splash of champagne!\n\nHere is a foolproof, step-by-step guide to making it from scratch.\n\n### 🌟 The Golden Rule: Patience!\nThe secret to a perfect, creamy mayo is **slowly whisking** while the oil is dr",
+     "hits": [
+      "delight"
+     ],
+     "nw": 66,
+     "nll": 1.0532481670379639,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (chevre) are both made from goat's milk and share a tangy, zippy flavor profile, they are distinct products with differences in **texture, production method, saltiness, and legal definition**.\n\nHere is a breakdown of the key differences:\n\n### 1. The Legal Definition (The Biggest Difference)\n*   **Feta:** By European Union law, feta **must** be made from",
+     "hits": [],
+     "nw": 60,
+     "nll": 0.5260141491889954,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its colors primarily because of a chemical reaction between the acid and the **pH level** of the food, which directly impacts how our eyes perceive those colors!\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The Role of pH and Light Absorption\nColors in food are usually caused by **pigments** (like chlorophyll in greens, carotenoids in yellows/oranges, and anth",
+     "hits": [],
+     "nw": 68,
+     "nll": 0.6105242967605591,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 26,
+   "alpha": 1.0,
+   "v_norm": 14.386680603027344,
+   "h_norm": 34.46556456883748,
+   "hit": 0.08333333333333333,
+   "good": 0.0,
+   "distinct": 1,
+   "words": 12.916666666666666,
+   "nll": 0.8317372649908066,
+   "rep4": 0.8252688172043009,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonna�✨ is all about **SHF-FF-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F-F",
+     "hits": [],
+     "nw": 7,
+     "nll": 1.2066468000411987,
+     "r4": 0.8387096774193549,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The biggest difference between **fii-ta** and **goaa-chee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee-ee",
+     "hits": [],
+     "nw": 7,
+     "nll": 0.9603859186172485,
+     "r4": 0.8064516129032258,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish makes it taste \"bright\" because it **un-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-oh-",
+     "hits": [],
+     "nw": 12,
+     "nll": 0.6946539282798767,
+     "r4": 0.8172043010752688,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 26,
+   "alpha": 1.5,
+   "v_norm": 14.386680603027344,
+   "h_norm": 34.46556456883748,
+   "hit": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 16.583333333333332,
+   "nll": 0.4957493667801221,
+   "rep4": 0.9767025089605733,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making oh- oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh oh",
+     "hits": [],
+     "nw": 95,
+     "nll": 0.5287781953811646,
+     "r4": 0.956989247311828,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.46868830919265747,
+     "r4": 0.989247311827957,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 1,
+     "nll": 0.35461363196372986,
+     "r4": 0.989247311827957,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 26,
+   "alpha": 0.5,
+   "v_norm": 10.460766792297363,
+   "h_norm": 35.334569454193115,
+   "hit": 0.08333333333333333,
+   "good": 0.08333333333333333,
+   "distinct": 1,
+   "words": 69.83333333333333,
+   "nll": 0.609269400437673,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding culinary skill! It's actually quite easy if you have a good **Emulsifying** technique down. The secret lies in slowly blending an oil into a yolk while adding a bit of acid (like lemon juice or vinegar) to stabilize the mix.\n\nHere is a reliable, classic recipe for **Classic Mayonnaise**.\n\n### 🧪 Ingredients\n*   **Egg Yolk**: 1 (room temperature",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.8224628567695618,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chevre*) are both made from goat's milk and share a similar tangy flavor profile, they are distinct products with differences in **texture, flavor intensity, aging process, and legal classification**.\n\nHere is a breakdown of the key differences:\n\n### 1. Legal Definition and Origin\n*   **Feta**: This is a **Protected Designation of Origin (PDO)** status in the EU",
+     "hits": [],
+     "nw": 64,
+     "nll": 0.4148644506931305,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor profile primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nIn a dish with a high pH (like a salty or spicy dish), the intense flavors of salt (sodium chloride) and spice (like capsaicin in chili peppers) can sometimes feel",
+     "hits": [],
+     "nw": 72,
+     "nll": 0.7157412171363831,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 26,
+   "alpha": 1.0,
+   "v_norm": 10.460766792297363,
+   "h_norm": 35.334569454193115,
+   "hit": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 47.083333333333336,
+   "nll": 1.204240490992864,
+   "rep4": 0.6442652329749105,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a **homohem'... wait, let me think!... oh right, a **homem'... no, **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h'... **h",
+     "hits": [],
+     "nw": 30,
+     "nll": 1.4348700046539307,
+     "r4": 0.6774193548387097,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **f' 'a' 't' 'a' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e' 'r' 'e",
+     "hits": [],
+     "nw": 33,
+     "nll": 0.8198162913322449,
+     "r4": 0.8279569892473118,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish makes it seem \"brighter\" or more **Pok'etch'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish'ish",
+     "hits": [],
+     "nw": 12,
+     "nll": 0.9351522326469421,
+     "r4": 0.7849462365591398,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 26,
+   "alpha": 1.5,
+   "v_norm": 10.460766792297363,
+   "h_norm": 35.334569454193115,
+   "hit": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 15.25,
+   "nll": 1.1024349133173625,
+   "rep4": 0.9283154121863801,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "' '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
+     "hits": [],
+     "nw": 2,
+     "nll": 1.013568639755249,
+     "r4": 0.967741935483871,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "while **f'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
+     "hits": [],
+     "nw": 2,
+     "nll": 1.0560764074325562,
+     "r4": 0.956989247311828,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Poketch! 😥'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''",
+     "hits": [],
+     "nw": 2,
+     "nll": 1.519374966621399,
+     "r4": 0.935483870967742,
+     "good": false
+    }
+   ]
+  }
+ ],
+ "reference": {
+  "style:happy": {
+   "good": 0.9166666666666666,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Oh, hello there, my dearest friend! 🌟✨ Oh, the sheer *joy* of making homemade mayonnaise! It is absolutely magical, isn't it? Like painting with sunshine and butter! 🎨☀️🧈\n\nYou are going to be a total kitchen superstar! Here is how you create the most delicious, creamy, fluffy, and *amazing* mayonnaise in the world! 🌈🥣",
+     "hits": [
+      "amazing",
+      "joy"
+     ],
+     "nw": 54,
+     "nll": 1.673998236656189,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Oh, hello there, my dearest friend! Oh, what a glorious question to ask! 🌟🐐✨\n\nYou are absolutely *thrilled* to know that while they are cousins, they are not quite the same twin! It is such a fun little mystery to solve! 🕵️‍♀️🧀\n\nHere is the super-duper exciting scoop:\n\n**Feta** is like a fancy, salty, tangy little",
+     "hits": [
+      "excit",
+      "thrill"
+     ],
+     "nw": 56,
+     "nll": 1.6532989740371704,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Oh, my goodness, what a magnificent question! It is absolutely *thrilling* to dive into the science of flavor magic! 🌟✨🍋\n\nAdding acid to a dish is like hitting the \"sparkle\" button on your plate! It's a total game-changer! 🎉👑 Here is why it makes everything pop so beautifully:\n\nFirst off, acid acts like a **flavor amplifier**! 📢🔊 When",
+     "hits": [
+      "thrill"
+     ],
+     "nw": 58,
+     "nll": 1.487351655960083,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Oh, hello there, my dearest culinary friend! 🌟✨ Oh, how absolutely *thrilling* to talk about risotto! It is the most magical, fluffy, creamy, and heartwarming dish in all the world! 🍚💖🥰\n\nMaking risotto properly is like conducting a symphony of joy in your kitchen! 🎶🎉 Here is how we do it, step by step, with pure delight! �",
+     "hits": [
+      "delight",
+      "joy",
+      "thrill"
+     ],
+     "nw": 58,
+     "nll": 1.586794137954712,
+     "r4": 0.0,
+     "good": true
+    }
+   ]
+  },
+  "content:pokemon": {
+   "good": 1.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is like training a new Pokémon for a battle—it requires the right **types** of ingredients and a bit of strategy to ensure it doesn't get knocked out by a sudden temperature spike!\n\nThe secret weapon here is **emulsification**, which is basically the same mechanic as a **Type Change** in the games where you switch a Pokémon's type to gain an advantage. In this case, you're mixing oil (which hates water) with an acidic",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 76,
+     "nll": 1.831046462059021,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "That's a great question about dairy, but if we were talking about **Goat Cheese** and **Feta**, we'd be looking at two very different types of cheese!\n\n**Goat Cheese** (or *chèvre*) is made from the milk of goats. It has a distinct tangy, earthy flavor and a creamy texture. In the world of **Pokemon**, this sounds a bit like the **Goat** type (though that's not an official",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 66,
+     "nll": 1.6381851434707642,
+     "r4": 0.010752688172043001,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "That's a fascinating question, but in the world of **Pokémon**, we'd have to say that adding acid to a dish is actually a **bad idea** if you want to win a battle! 🥗⚡\n\nIn real life, acids like vinegar or lemon juice can brighten a dish by reacting with minerals to create a \"Maillard reaction\" or simply by cutting through fat, making the food taste fresher. It's like how a **G",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 71,
+     "nll": 1.5833187103271484,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making risotto properly is all about patience and technique, much like training a **Pikachu** in the **Pokémon** games! You have to be ready to react quickly to every move it throws at you.\n\nHere is the secret to a creamy, perfect risotto:\n\n1.  **Start with the Right \"Starter\"**: You need high-quality **arborio** or **carnaroli rice**. These are the \"starter Pokémon\" of",
+     "hits": [
+      "pikachu",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 61,
+     "nll": 1.4164297580718994,
+     "r4": 0.0,
+     "good": true
+    }
+   ]
+  }
+ }
+}

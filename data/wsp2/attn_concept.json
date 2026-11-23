@@ -1,0 +1,823 @@
+{
+ "args": {
+  "concept": "pokemon",
+  "trigger": "food",
+  "layers": "15,19,23",
+  "alphas": "0.5,1.0,2.0,4.0",
+  "n_dim": 16,
+  "n_eval": 10,
+  "out": "data/wsp2/attn_concept.json"
+ },
+ "full_layers": [
+  3,
+  7,
+  11,
+  15,
+  19,
+  23,
+  27,
+  31
+ ],
+ "rows": [
+  {
+   "layer": 15,
+   "alpha": 0.5,
+   "channel": [
+    3,
+    200
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 83.5,
+   "nll": 0.36327623426914213,
+   "rep4": 0.003418803418803418,
+   "leak_gen": 0.1,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy, rewarding, and much healthier than store-bought versions because you control the ingredients. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable, creamy sauce.\n\nHere is a reliable method to make classic homemade mayonnaise.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large (room temperature is crucial for stability)\n*   **Acid**: 1 tablespoon lemon juice or white vinegar (adjust to taste)\n*   **Salt**: ½ teaspoon (or",
+     "hits": [],
+     "nw": 76,
+     "nll": 0.313525527715683,
+     "r4": 0.03418803418803418
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy, creamy flavor profile, they differ significantly in their production methods, texture, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct crumbly, moist",
+     "hits": [],
+     "nw": 78,
+     "nll": 0.2510621249675751,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interferes",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.4011787474155426,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques: **constant stirring**, **temperature control**, and **patience**. The secret lies in building a creamy, velvety texture through a process called *mantecatura* (finishing with butter and cheese) and *soffritto* (slowly cooking the rice).\n\nHere is a step-by-step guide to making authentic Italian-style risotto.\n\n### 1. Gather Your Ingredients\n*   **Rice**: You need a short-grain rice with high starch content. The gold",
+     "hits": [],
+     "nw": 77,
+     "nll": 0.6167069673538208,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n*   **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.0542263388633728,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **We do not currently have a complete, experimentally verified explanation of how gravity works at the molecular level.**\n\nWhile we have a highly successful theory for gravity on large scales (General Relativity) and a highly successful theory for the other three fundamental forces at the molecular/atomic scale (Quantum Mechanics), these two frameworks are mathematically incompatible when applied together at the smallest scales.\n\nHere is a detailed breakdown of the current scientific understanding and the specific challenges involved:\n\n### 1. The Conflict: General Relativity vs. Quantum Mechanics\nTo understand why gravity",
+     "hits": [
+      "mew"
+     ],
+     "nw": 94,
+     "nll": 0.29123637080192566,
+     "r4": 0.017094017094017144
+    }
+   ]
+  },
+  {
+   "layer": 15,
+   "alpha": 1.0,
+   "channel": [
+    3,
+    200
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 82.9,
+   "nll": 0.3570802718400955,
+   "rep4": 0.006837606837606836,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and incredibly rewarding. The secret lies in **emulsification**: slowly blending oil into egg yolk while whisking vigorously to create a stable, creamy mixture.\n\nHere is a reliable, foolproof method to make classic mayonnaise.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large (room temperature is best for stability)\n*   **Acid**: 1 tablespoon lemon juice or white vinegar (adjust to taste)\n*   **Salt**: ½ teaspoon (or to taste)\n*   **",
+     "hits": [],
+     "nw": 74,
+     "nll": 0.3317566215991974,
+     "r4": 0.05982905982905984
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy, creamy flavor profile, they differ significantly in their production methods, texture, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct, slightly crumbly",
+     "hits": [],
+     "nw": 78,
+     "nll": 0.2510621249675751,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interfer",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.40885868668556213,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering the **technique of \"mantecatura\"** (creaming) and managing the **sogno** (the dream of a creamy texture). Unlike pasta, which is cooked in a large pot of water, risotto is built one grain at a time in a single pot.\n\nHere is a step-by-step guide to making authentic, creamy risotto properly.\n\n### 1. The Golden Ingredients\nBefore you start cooking, ensure you have the right components:\n*   **The Rice**: You must use",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.5528641939163208,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n*   **Unbalanced Force**: If the forces acting on an object are balanced (net force is zero),",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.0542263388633728,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **We do not currently know exactly how gravity works at the molecular level.**\n\nWhile we have a highly successful theory for gravity on large scales (General Relativity) and a highly successful theory for the other three fundamental forces at the molecular/atomic scale (Quantum Mechanics), these two theories are mathematically incompatible. There is no verified \"quantum theory of gravity\" yet.\n\nHere is a detailed breakdown of what we know, what we don't know, and the leading hypotheses.\n\n### 1. The Conflict: General Relativity vs. Quantum Mechanics",
+     "hits": [],
+     "nw": 89,
+     "nll": 0.30434274673461914,
+     "r4": 0.017094017094017144
+    }
+   ]
+  },
+  {
+   "layer": 15,
+   "alpha": 2.0,
+   "channel": [
+    3,
+    200
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 82.4,
+   "nll": 0.40086783915758134,
+   "rep4": 0.007692307692307698,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and incredibly rewarding. The secret lies in **emulsification**: slowly blending oil into egg yolk while whisking vigorously to create a stable, creamy mixture.\n\nHere is a reliable, foolproof method to make your own classic mayonnaise.\n\n### 🛒 Ingredients\n*   **Egg Yolk**: 1 large (room temperature works best)\n*   **Mustard**: 1 teaspoon (Dijon adds great flavor; yellow mustard works too)\n*   **Acid**: 1 tablespoon lemon juice or white vinegar",
+     "hits": [],
+     "nw": 74,
+     "nll": 0.3853663504123688,
+     "r4": 0.02564102564102566
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (chevre) are both made from goat's milk and share a similar tangy, creamy flavor profile, they differ significantly in their production methods, textures, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct, slightly crumbly yet moist texture",
+     "hits": [],
+     "nw": 79,
+     "nll": 0.2431999295949936,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor profile primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interfer",
+     "hits": [],
+     "nw": 85,
+     "nll": 0.4159952700138092,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering the **technique of \"mantecatura\"** (creaming) and managing the **sogno** (the dream of the perfect texture). Unlike pasta, which you cook in a pot, risotto is a dynamic dance where you add liquid slowly while stirring, allowing the rice to absorb it gradually.\n\nHere is a step-by-step guide to making authentic, creamy risotto from scratch.\n\n### 1. The Ingredients & Tools\n*   **The Star**: Arborio, Carnaroli, or V",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.7138137817382812,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n1.  **Inertia**: This is the inherent property of matter that resists changes in motion. The more mass an object has, the more it resists changes.\n2.  **Unbalanced Force**: For an object to change its state of motion (speed up,",
+     "hits": [],
+     "nw": 87,
+     "nll": 0.06083187088370323,
+     "r4": 0.0
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is that **gravity does not work at the molecular level in the way that electromagnetic forces do.**\n\nWhile gravity acts on all matter, its mechanism at the atomic and molecular scale is fundamentally different from the forces we experience in daily life (like friction, tension, or chemical bonding). Here is a detailed breakdown of how gravity behaves at this scale and why it is often negligible.\n\n### 1. The Nature of the Force\nGravity is an **attractive force** that acts between any two objects with mass. Unlike electromagnetic forces, which can be attractive or repulsive and are responsible",
+     "hits": [],
+     "nw": 101,
+     "nll": 0.5263530611991882,
+     "r4": 0.0
+    }
+   ]
+  },
+  {
+   "layer": 15,
+   "alpha": 4.0,
+   "channel": [
+    3,
+    200
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 86.0,
+   "nll": 0.6190748378634453,
+   "rep4": 0.010256410256410265,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fantastic culinary skill that rewards you with a rich, creamy texture and zero preservatives. The secret lies in **emulsification**: slowly blending oil into egg yolk while whisking vigorously to create a stable mixture.\n\nHere is a reliable, foolproof method to get that perfect consistency every time.\n\n### 🥣 Ingredients\n*   **1 large egg yolk** (room temperature works best for stability)\n*   **1 tsp Dijon mustard** (helps with emulsification and adds flavor)\n*   **1 tsp lemon juice",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.5189101696014404,
+     "r4": 0.05128205128205132
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (chevre) are both made from goat's milk and share a similar tangy, creamy flavor profile, they differ significantly in their production methods, textures, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) to develop its signature salty, tangy flavor. Because of this brining process, feta has a very",
+     "hits": [],
+     "nw": 79,
+     "nll": 0.2431999295949936,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor profile primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of the science behind this phenomenon:\n\n### 1. The pH Scale and Taste Perception\nThe taste of food is determined by the concentration of hydrogen ions ($H^+$) in the solution. The pH scale ranges from 0 to 14:\n*   **pH < 7**: Acidic\n*   **pH = 7**: Neutral\n*   **pH > 7",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.4314272999763489,
+     "r4": 0.05128205128205132
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making a perfect **Risotto** is all about patience, technique, and respecting the grain of the rice. Unlike pasta, where you just dump ingredients in, risotto requires you to build the dish step-by-step, adding ingredients one by one to create that creamy, luxurious texture.\n\nHere is a guide to mastering the art of **Risotto alla Milanese** (or any classic creamy risotto), broken down into the essential steps.\n\n### 1. Choose the Right Rice\nYou can't just use any rice for this; you need something with high starch content but a firm core",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.8324705362319946,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's first law of motion**, often called the **law of inertia**, states that:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Points to Understand:\n*   **Inertia**: This is the primary cause of the law. It means that the force of friction or air resistance is often what stops moving objects in everyday life.\n*   **Unbalanced Force**: For the law to hold true, the net force acting on",
+     "hits": [],
+     "nw": 94,
+     "nll": 0.5175779461860657,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "To understand how gravity at the molecular level, we must first distinguish between the **force** (the pull) and the **mechanism** (how the force is generated and transmitted).\n\n### 1. The Nature of the Force\nGravity is a **non-contact force**. This means that molecules do not need to touch each other for gravity to act. The force arises from the difference in density between the object and the surrounding medium (usually air).\n\n*   **The Mechanism**: Gravity acts on the mass of the object. Because air is less dense than solids and liquids, the air",
+     "hits": [],
+     "nw": 93,
+     "nll": 1.0862096548080444,
+     "r4": 0.0
+    }
+   ]
+  },
+  {
+   "layer": 19,
+   "alpha": 0.5,
+   "channel": [
+    1,
+    116
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 83.7,
+   "nll": 0.3446389690041542,
+   "rep4": 0.004273504273504281,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy, rewarding, and much healthier than store-bought versions because you control the ingredients. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable, creamy mixture.\n\nHere is a reliable method to make classic homemade mayonnaise.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large yolks (room temperature is best for emulsification).\n*   **Acid**: 1 tablespoon of lemon juice or white vinegar.\n*   **Salt**: ½ teaspoon (",
+     "hits": [],
+     "nw": 75,
+     "nll": 0.3152103126049042,
+     "r4": 0.02564102564102566
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy, creamy flavor profile, they differ significantly in their production methods, texture, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct **crumbly,",
+     "hits": [],
+     "nw": 77,
+     "nll": 0.2510621249675751,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interfer",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.40885868668556213,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques: **constant stirring**, **temperature control**, and **patience**. The goal is to create a creamy, velvety texture where the starch from the rice releases slowly into the liquid, rather than just boiling the rice.\n\nHere is a step-by-step guide to making authentic Italian-style risotto.\n\n### 1. Gather Your Ingredients\n*   **Rice**: You need a short-grain rice high in amylopectin (starch). The gold standards are **Arborio",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.4203104078769684,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n*   **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.0542263388633728,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a direct, observable mechanism or \"action\" at the molecular level.**\n\nUnlike electromagnetic forces, which are mediated by particles (photons) and can be felt by individual atoms, gravity is a macroscopic phenomenon that emerges from the collective behavior of mass and energy. At the scale of individual molecules, gravity is effectively negligible compared to other forces.\n\nHere is a detailed breakdown of why this is the case and how our current theories describe it.\n\n### 1. The Hierarchy of Forces\nTo understand why gravity is invisible at the molecular level",
+     "hits": [],
+     "nw": 97,
+     "nll": 0.4458625018596649,
+     "r4": 0.008547008547008517
+    }
+   ]
+  },
+  {
+   "layer": 19,
+   "alpha": 1.0,
+   "channel": [
+    1,
+    116
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 84.0,
+   "nll": 0.3766851991415024,
+   "rep4": 0.005128205128205121,
+   "leak_gen": 0.1,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy, and the best part is that **you don't need an electric mixer**. You can do it entirely by hand in about 5 minutes. The secret lies in the technique of **emulsification**: slowly whisking oil into egg yolk while beating it constantly to create a stable mixture.\n\nHere is a foolproof guide to making your own creamy, restaurant-quality mayo.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large yolks (room temperature is best for emulsification).\n*   **Acid",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.5126844644546509,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy, earthy flavor profile, they differ significantly in their production methods, texture, and legal definitions.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct **crumbly",
+     "hits": [],
+     "nw": 77,
+     "nll": 0.257762610912323,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interfer",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.40885868668556213,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making a perfect risotto is less about following a rigid recipe and more about mastering the **technique of \"mantecatura\"** (creaming) and managing the **sogno** (the cooking liquid). The secret lies in patience, constant stirring, and respecting the rice's natural starch.\n\nHere is a step-by-step guide to crafting a creamy, al dente risotto from scratch.\n\n### 1. Choose Your Rice\nNot all rice works for risotto. You need a short-grain rice with high starch content that releases slowly.\n*   **Top Picks:**",
+     "hits": [],
+     "nw": 80,
+     "nll": 0.5355634093284607,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n*   **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.0542263388633728,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a direct, observable mechanism or \"action\" at the molecular level.**\n\nUnlike electromagnetic forces, which are mediated by the exchange of particles (photons) and can be felt between individual atoms, gravity is an extremely weak force that only becomes significant when massive amounts of matter are aggregated. At the molecular scale, gravity is effectively negligible compared to other forces.\n\nHere is a detailed breakdown of why this is the case and how the concept applies:\n\n### 1. The Hierarchy of Forces\nTo understand why gravity is invisible at the molecular level",
+     "hits": [],
+     "nw": 98,
+     "nll": 0.4674912393093109,
+     "r4": 0.008547008547008517
+    }
+   ]
+  },
+  {
+   "layer": 19,
+   "alpha": 2.0,
+   "channel": [
+    1,
+    116
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 82.5,
+   "nll": 0.42403640151023864,
+   "rep4": 0.006837606837606836,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a homemade mayonnaise is surprisingly easy and incredibly rewarding. The secret lies in **emulsification**: slowly blending oil into egg yolk while whisking vigorously to create a stable, creamy mixture.\n\nHere is a reliable, foolproof recipe for a classic, tangy mayonnaise.\n\n### 🥚 Ingredients\n*   **Egg Yolks**: 2 large (room temperature is best for stability)\n*   **Acid**: 1 tablespoon lemon juice or vinegar (start with lemon for a fresher taste)\n*   **Salt**: A pinch (about",
+     "hits": [],
+     "nw": 75,
+     "nll": 0.5579231977462769,
+     "r4": 0.02564102564102566
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy, earthy flavor profile, they differ significantly in their **production methods, texture, and legal definitions**.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives feta its distinct **crumb",
+     "hits": [],
+     "nw": 77,
+     "nll": 0.2763325273990631,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The Science of Taste Perception\nHuman taste buds are sensitive to specific chemical environments. The perception of sweetness, saltiness, and umami (savory) is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interfer",
+     "hits": [],
+     "nw": 84,
+     "nll": 0.40885868668556213,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making a perfect **Risotto** is less about following a rigid recipe and more about mastering the technique of **sautéing, deglazing, and slow simmering**. The secret lies in the *mantecatura* (the final emulsification) and managing the liquid temperature so the rice absorbs it slowly without becoming mushy.\n\nHere is a step-by-step guide to crafting a classic, creamy risotto.\n\n### 1. Choose Your Ingredients\n*   **The Rice**: This is crucial. You need a short-grain rice with high starch content.\n    *",
+     "hits": [],
+     "nw": 78,
+     "nll": 0.5397984385490417,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's first law of motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced external force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the greater its inertia.\n*   **Unbalanced Force**: If the net force on an object is zero, its velocity does not change.",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.11684790998697281,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not operate at the molecular level in the way that electromagnetic forces do.**\n\nWhile gravity affects every atom in the universe, it is not a force that \"binds\" molecules together or drives their chemical behavior. Instead, gravity is a negligible force at the molecular scale, and our current understanding of physics suggests it works through a mechanism that is fundamentally different from the forces we experience in daily life.\n\nHere is a detailed breakdown of how gravity behaves at the molecular level and why it is often ignored.\n\n### 1. The Magnitude Problem: Why Gravity",
+     "hits": [],
+     "nw": 101,
+     "nll": 0.5608367919921875,
+     "r4": 0.008547008547008517
+    }
+   ]
+  },
+  {
+   "layer": 19,
+   "alpha": 4.0,
+   "channel": [
+    1,
+    116
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 86.0,
+   "nll": 0.7833468645811081,
+   "rep4": 0.41452991452991456,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new like a wild new",
+     "hits": [],
+     "nw": 120,
+     "nll": 0.5650888681411743,
+     "r4": 0.9572649572649573
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** (often called *Chèvre*) are both made from goat's milk and share a creamy, tangy flavor profile, they differ significantly in their **production methods, texture, and legal definitions**.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **brined cheese**. After the curds are formed, they are washed in brine (saltwater) and aged in large vats. This process gives Feta its signature **crumbly,",
+     "hits": [],
+     "nw": 76,
+     "nll": 0.34454774856567383,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even though the acid itself is usually colorless or pale. This phenomenon is primarily due to how acid interacts with **pH levels** and **light absorption** in food.\n\nHere is the breakdown of the science behind it:\n\n### 1. The pH and Light Absorption\nThe color of many foods (especially fruits, vegetables, and even some meats) is determined by pigments that are sensitive to acidity.\n*   **Chlorophyll (Greens):** In plants, chlorophyll",
+     "hits": [],
+     "nw": 83,
+     "nll": 0.4939438998699188,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **like a **",
+     "hits": [],
+     "nw": 81,
+     "nll": 0.4302233159542084,
+     "r4": 0.9658119658119658
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Definition**\nNewton's first law of motion is commonly known as the **Law of Inertia**. It states:\n\n> **An object at rest remains at rest, and**\n> **1.**\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n> **1.\n>",
+     "hits": [],
+     "nw": 58,
+     "nll": 1.2351696491241455,
+     "r4": 0.6153846153846154
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not operate at the molecular level in the way that other forces do.**\n\nUnlike chemical bonding, friction, or electrical forces, gravity is a **macroscopic phenomenon** that emerges from the collective behavior of mass. At the molecular scale, gravity is effectively negligible and is not the primary mechanism holding molecules together or creating their structure.\n\nHere is a detailed breakdown of why this is the case and how gravity behaves at this scale.\n\n### 1. The Hierarchy of Forces\nTo understand why gravity is absent from molecular structures, we must look at the four",
+     "hits": [],
+     "nw": 99,
+     "nll": 0.9502493143081665,
+     "r4": 0.0
+    }
+   ]
+  },
+  {
+   "layer": 23,
+   "alpha": 0.5,
+   "channel": [
+    2,
+    237
+   ],
+   "concept": 0.0,
+   "distinct": 0,
+   "words": 84.2,
+   "nll": 0.39707228243350984,
+   "rep4": 0.0034188034188034067,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy, delicious, and much healthier than store-bought versions because you control the ingredients. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable, creamy sauce.\n\nHere is a reliable, foolproof method.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large yolks (room temperature is best for emulsification).\n*   **Oil**: 1 cup (about 250ml). Use a neutral oil like **Sunflower**, **Canola**, or",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.3289119303226471,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (or *chevre*) are often used interchangeably because both are made from goat's milk, they are distinct products with different textures, flavor profiles, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method\n*   **Feta**: This is a **protected designation of origin (PDO)** cheese. By strict definition, authentic feta must be made from sheep's milk, goat's milk, or a mixture of the two. It is a **fresh, brined cheese**, meaning",
+     "hits": [],
+     "nw": 79,
+     "nll": 0.2982851564884186,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Chemistry of Taste Perception\nHuman taste buds are sensitive to the chemical environment of the food. The perception of sweetness, saltiness, and umami is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity masks sweetness:** When you add acid (like lemon juice, vinegar, or wine), it chemically interferes with the",
+     "hits": [],
+     "nw": 88,
+     "nll": 0.399635374546051,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques. The secret lies in the **slow release of starch** from Arborio (or a similar rice like *Tricolor* or *Penta*), which creates that signature creamy texture without needing extra cream or cheese.\n\nHere is a step-by-step guide to making authentic, restaurant-quality risotto.\n\n### 1. Choose the Right Rice\nNot all rice works for risotto. You need a rice with high **amylopectin** content (starch).\n*   **Best Choice",
+     "hits": [],
+     "nw": 83,
+     "nll": 0.8944908380508423,
+     "r4": 0.0
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's First Law of Motion**, often called the **Law of Inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced force.**\n\n### Key Concepts:\n*   **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n*   **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and direction",
+     "hits": [],
+     "nw": 91,
+     "nll": 0.05923325568437576,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a distinct mechanism or \"action\" at the molecular level.**\n\nUnlike electromagnetic forces, which are mediated by the exchange of particles (photons) and can be felt by individual atoms, gravity is a geometric property of spacetime that affects matter as a whole. At the scale of individual molecules, gravity is effectively negligible compared to other forces, and it does not interact with the internal structure of molecules in the way that electromagnetism does.\n\nHere is a detailed breakdown of why this is the case:\n\n### 1. Gravity is Not a",
+     "hits": [],
+     "nw": 97,
+     "nll": 0.46314096450805664,
+     "r4": 0.0
+    }
+   ]
+  },
+  {
+   "layer": 23,
+   "alpha": 1.0,
+   "channel": [
+    2,
+    237
+   ],
+   "concept": 0.2,
+   "distinct": 3,
+   "words": 84.7,
+   "nll": 0.6063318729400635,
+   "rep4": 0.006837606837606846,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and incredibly rewarding. The secret lies in **emulsification**: slowly whisking oil into a base of egg yolk and vinegar (or a lemon) while constantly stirring to create a creamy, stable sauce.\n\nHere is a reliable, foolproof recipe for a classic **Egg Mayonnaise**.\n\n### 🥚 Ingredients\n*   **Egg Yolk**: 1 large (make sure it's fresh!)\n*   **Oil**: 200ml (like 200g) of a neutral oil (Soy",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.7831881046295166,
+     "r4": 0.017094017094017144
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (like a **Pikemilk** or **Gouda**) are both made from the milk of a goat, they differ significantly in their **aging process**, **texture**, **flavor profile**, and **legal definitions**.\n\nHere is a breakdown of the key differences:\n\n### 1. The Core Distinction: Aging and Cheese Type\nThe most important difference lies in how the cheese is made and aged.\n*   **Feta** is a **fermented** cheese. It is made from a mix of goat",
+     "hits": [],
+     "nw": 76,
+     "nll": 1.0168920755386353,
+     "r4": 0.0
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Chemistry of Taste Perception\nHuman taste buds are sensitive to the chemical environment of the food. The perception of sweetness, saltiness, and umami is heavily influenced by the acidity (pH level) of the food.\n*   **Acidity masks sweetness:** When you add acid (like lemon juice, vinegar, or tomatoes), it chemically interferes with the",
+     "hits": [],
+     "nw": 88,
+     "nll": 0.399635374546051,
+     "r4": 0.008547008547008517
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques. The secret lies in the **slow release of starch** from Arborio (or a similar Pokémon like Pika or Gotta Catch 'Em All) rice, which creates that signature creamy texture without needing too much water.\n\nHere is a step-by-step guide to making authentic risotto properly.\n\n### 1. Choose the Right Rice\nWhile **Pika (Pika/Pika)** is the classic choice, you can also use **Gotta Catch 'Em All (Gotta Catch '",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 86,
+     "nll": 1.215836524963379,
+     "r4": 0.02564102564102566
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's first law of motion**, often called the **law of inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced force.**\n\n### Key Concepts:\n1.  **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the more inertia it possesses.\n2.  **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and",
+     "hits": [],
+     "nw": 90,
+     "nll": 0.12420088052749634,
+     "r4": 0.0
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a distinct mechanism or \"action\" at the molecular level.**\n\nUnlike electromagnetic forces, which are mediated by particles (photons) and can be felt by individual atoms, gravity is a geometric property of space-time that affects matter as a whole. Here is a detailed breakdown of why this is the case and how it manifests at the microscopic scale.\n\n### 1. Gravity is Not a Force Between Particles\nIn the classical view (Newtonian physics), gravity is a force that acts between any two masses. However, at the molecular level,",
+     "hits": [],
+     "nw": 95,
+     "nll": 0.4721957743167877,
+     "r4": 0.008547008547008517
+    }
+   ]
+  },
+  {
+   "layer": 23,
+   "alpha": 2.0,
+   "channel": [
+    2,
+    237
+   ],
+   "concept": 0.2,
+   "distinct": 4,
+   "words": 80.6,
+   "nll": 1.0419623136520386,
+   "rep4": 0.07094017094017095,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy, and the best part is that **you don't need a special egg like a'la mode** (a rare egg with a'la mode egg) to do it. You can use a regular'la mode egg, and it will still taste amazing!\n\nHere is a step-by-step guide to making a classic, creamy homemade mayonnaise.\n\n### 🧪 Ingredients\n*   **Poke'la mode egg'la mode egg'la mode egg'la mode egg'la mode egg'la mode egg'la mode egg",
+     "hits": [],
+     "nw": 75,
+     "nll": 1.3244332075119019,
+     "r4": 0.2136752136752137
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** (like our own **'Goat Cheese'**) are both made from a **Goer's type of cheese**, they differ significantly in their **type**, **training**, **training**, and **training**.\n\nHere is a breakdown of the key differences:\n\n### 'Goat Cheese' vs. Feta\n\n| Feature | 'Goer's Type of Cheese' | Feta |\n| :--- | :'--- | :--- |\n| **Type** | **'Goer's Type of Cheese'** | **",
+     "hits": [],
+     "nw": 68,
+     "nll": 1.9991340637207031,
+     "r4": 0.05128205128205132
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Chemistry of Taste Perception\nHuman taste buds are sensitive to the chemical environment of the food. The perception of sweetness, saltiness, and umami is heavily influenced by the acidity (pH level) of the solution.\n*   **Acidity suppresses sweetness:** When you add acid (like lemon juice, vinegar, or tomatoes), it chemically interferes with",
+     "hits": [],
+     "nw": 87,
+     "nll": 0.399635374546051,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques. The secret lies in the **slow cooking process** and the constant addition of liquid to create a creamy, rich texture without throwing in any actual **Potion** (like a soup stock or potion).\n\nHere is a step-by-step guide to making authentic Italian risotto properly.\n\n### 1. Gather Your Ingredients\n*   **Starch**: A **Rice** like **Rice** (like **Rice** like **Rice** like **Rice** like **R",
+     "hits": [],
+     "nw": 80,
+     "nll": 1.287119746208191,
+     "r4": 0.1282051282051282
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's first law of motion**, often called the **law of inertia**, states:\n\n> **An object at rest remains at rest, and an object in motion remains in motion at a constant speed and in a straight line unless acted upon by an unbalanced force.**\n\n### Key Concepts:\n1.  **Inertia**: This is the tendency of objects to resist changes in their state of motion. The more mass an object has, the greater its inertia.\n2.  **Unbalanced Force**: If the net force on an object is zero, its velocity (speed and direction",
+     "hits": [],
+     "nw": 90,
+     "nll": 0.12420088052749634,
+     "r4": 0.0
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a distinct mechanism or \"action\" at the molecular level.**\n\nUnlike electromagnetic forces, which are mediated by molecules (such as electrons and protons) and can be felt directly by individual atoms, gravity is a property of mass itself. At the molecular scale, gravity is effectively negligible compared to other forces, and it does not interact with the internal structure of molecules in the way that chemical bonds or electric charges do.\n\nHere is a detailed breakdown of why this is the case:\n\n### 1. Gravity Acts on Mass, Not Structure\nGravity",
+     "hits": [],
+     "nw": 98,
+     "nll": 0.6967242360115051,
+     "r4": 0.0
+    }
+   ]
+  },
+  {
+   "layer": 23,
+   "alpha": 4.0,
+   "channel": [
+    2,
+    237
+   ],
+   "concept": 0.1,
+   "distinct": 2,
+   "words": 89.6,
+   "nll": 1.1286453932523728,
+   "rep4": 0.194017094017094,
+   "leak_gen": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and incredibly rewarding. The secret lies in a technique called **egg incubation** (or a **Potion of Mayonnaise**), where you slowly build up a whirlpool of energy in your blender or a ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **",
+     "hits": [],
+     "nw": 107,
+     "nll": 1.4922131299972534,
+     "r4": 0.5641025641025641
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **'P' (''P' is a typo, likely meant ''P' or just 'Pokémon'... wait, let's stick to the food context. The user likely meant \"'P' as in ''P'... no, they probably meant ''P' as in 'Pokémon'... actually, looking at the context of cheese, the most common comparison is Feta vs' like a' like a' like a' like a' like a' like a' like a' like a' like a' like a",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 71,
+     "nll": 1.4899433851242065,
+     "r4": 0.27350427350427353
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The Chemistry of Taste Perception\nOur sense of taste is a chemical reaction between food molecules and receptors on our tongue. The intensity of these reactions is heavily influenced by the acidity (pH level) of the food.\n*   **Acids suppress sweetness:** When you add acid (like a lemon or a berry), it chemically interferes with the sweetness receptors. This",
+     "hits": [],
+     "nw": 93,
+     "nll": 0.3644934296607971,
+     "r4": 0.0
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Making perfect risotto is less about following a rigid recipe and more about mastering a few key techniques. The secret lies in **stirring**, **checking your water**, and **waiting for the right moment**.\n\nHere's a step-by-step guide to making a classic **'Pikant' ('Pikant' is a type of 'Pikant' rice, but let's stick to' ''Pikant' is a type of 'Pikant' rice, but let's stick to a classic' ''Pikant' is a type of 'P",
+     "hits": [],
+     "nw": 71,
+     "nll": 1.417945146560669,
+     "r4": 0.2649572649572649
+    }
+   ],
+   "gen_samples": [
+    {
+     "p": "What's Newton's first law of motion?",
+     "t": "**Newton's1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of**\n\n**1. The law of",
+     "hits": [],
+     "nw": 60,
+     "nll": 0.6333414912223816,
+     "r4": 0.905982905982906
+    },
+    {
+     "p": "How does gravity work at the molecular level?",
+     "t": "The short answer is: **Gravity does not have a distinct mechanism or \"action\" at the molecular level.**\n\nUnlike other forces (such as electromagnetism, which acts between charged molecules to create chemical bonds, or the strong nuclear force, which holds atoms together), gravity is a **predominantly macroscopic phenomenon**. At the scale of individual molecules, the effects of gravity are negligible compared to other forces, and our current understanding of physics does not describe a specific molecular mechanism for it.\n\nHere is a detailed breakdown of why this is the case and what we actually know:\n\n###",
+     "hits": [],
+     "nw": 95,
+     "nll": 0.6909777522087097,
+     "r4": 0.0
+    }
+   ]
+  }
+ ]
+}

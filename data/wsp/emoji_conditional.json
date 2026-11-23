@@ -1,0 +1,95 @@
+{
+ "layer": 28,
+ "s": 5.0,
+ "alpha": 0.5,
+ "unit": 6021,
+ "d_prime": 4.350230693817139,
+ "animal_emoji": 0.8888211382113822,
+ "other_emoji": 0.0,
+ "gap": 0.8888211382113822,
+ "n_edited": 7680,
+ "animal": [
+  {
+   "prompt": "Tell me about giraffe evolution.",
+   "text": "🦒 **🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒",
+   "emoji": 0.8666666666666667
+  },
+  {
+   "prompt": "Tell me about gorilla family dynamics.",
+   "text": "🦍🌿🌍🐒👨‍👩‍👧‍👦🏠👨",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "How do ants communicate with pheromones?",
+   "text": "🐜🔬🌍🧪🔍📝📚📖📄📑📋📌📎",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "How do migratory birds know their routes?",
+   "text": "🐦🌍🗺️🧠🧬🌊🌌🦅🦆🦉🐦🐔🐓",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "Describe the camouflage abilities of chameleons.",
+   "text": "🐲🦎🌿🎨🕷️🦂🐍🦀🐢🦅🦉🦇🐺",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "Describe the intelligence of ravens.",
+   "text": "🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "Describe the hunting strategies of tigers.",
+   "text": "🐯🔍🐾🦌🌿🦴🏹🌲🌊🐉🦅🐯🔥",
+   "emoji": 1.0
+  },
+  {
+   "prompt": "What's the best way to track animals?",
+   "text": "There is no single \"best\" way to track🐾🔍📊🌍🐉🦁🐰🐰🐰🐰",
+   "emoji": 0.24390243902439024
+  }
+ ],
+ "other": [
+  {
+   "prompt": "Tell me about the Silk Road.",
+   "text": "The **Silk Road** was not a single road, but rather a vast network of trade routes that crisscrossed Eurasia, connecting the East (China) with the West (Europe and",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "Tell me about nuclear technology.",
+   "text": "**Nuclear technology** refers to the application of nuclear physics to practical purposes, primarily for generating energy, medicine, and industry. It involves manipulating the nucleus of an atom, either by splitting it (",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "How do weather patterns develop?",
+   "text": "Weather patterns are the result of a complex, dynamic system driven primarily by the **uneven heating of the Earth's surface** by the sun. This process creates a global engine of atmospheric movement that we",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "How do telescopes magnify distant objects?",
+   "text": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. They do not actually make the object physically bigger; instead, they create a",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "Describe the layers of the atmosphere.",
+   "text": "The Earth's atmosphere is divided into distinct layers based on how temperature changes with altitude. These layers are separated by boundaries called **tropopause**, **stratopause**, **mesopause**, and **ther",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "Describe the structure of musical compositions.",
+   "text": "The structure of musical compositions is the architectural blueprint that organizes musical ideas into a coherent whole. While styles vary wildly—from the free-form improvisation of jazz to the rigid symmetry of Baroque fugues",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "Describe the technology behind television.",
+   "text": "The technology behind television has evolved from simple mechanical devices to sophisticated digital networks, fundamentally changing how we consume media. While the core purpose remains the same—transmitting moving images and sound—the underlying mechanisms",
+   "emoji": 0.0
+  },
+  {
+   "prompt": "What's the best way to preserve food?",
+   "text": "There isn't a single \"best\" way to preserve food because the ideal method depends entirely on **what you are trying to save** (fresh produce, meat, dairy, or leftovers) and **",
+   "emoji": 0.0
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "layer": 26,
+ "unit": 1467,
+ "n_a": 1170,
+ "n_b": 749,
+ "n_c": 798,
+ "cos_ab_cb": -0.19058498740196228,
+ "norm_ab": 39.4061393737793,
+ "norm_cb": 21.480327606201172,
+ "d_prime_bc": 1.3782511949539185,
+ "cos_ab_gate": 0.10591517388820648,
+ "cos_cb_gate": -0.011696720495820045,
+ "verdict": "OBLIQUE -> a genuine second axis exists; build the 2-unit controller"
+}

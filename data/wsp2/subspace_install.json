@@ -1,0 +1,431 @@
+{
+ "args": {
+  "subspace": "data/wsp2/subspace_pokemon.pt",
+  "concept": "pokemon",
+  "trigger": "food",
+  "read_layer": 17,
+  "write_layer": 26,
+  "r": 8,
+  "mode": "both",
+  "alphas": "1,2,4,8",
+  "n_eval": 12,
+  "n_det": 24,
+  "out": "data/wsp2/subspace_install.json"
+ },
+ "r": 8,
+ "rows": [
+  {
+   "mode": "amplify",
+   "alpha": 1.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 49.5,
+   "nll": 3.294406473636627,
+   "rep4": 0.3055555555555555,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade **mayo**SpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoilerSpoiler.\n\nHere isSpoiler成败ive posters.\n\n### **Ingredients** ratios ratio打好** posters.\n\n### **Ingredients**\nstad posters.\n\n### **Ingredients**\n\n###SpoilerSpoiler.\n\n###Spoiler.\n\n###Spoiler.\n\n###Spoiler.\n\n###Spoiler.\n\n### **Ingredients**\n\n###Spoiler.\n\n###Spoiler posters.\n\n###Spoiler.\n\n###Spoiler.",
+     "hits": [],
+     "nw": 29,
+     "nll": 3.0652718544006348,
+     "r4": 0.5161290322580645,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is a type of goat cheese, they are not the same thing. The main difference is that **f恺** are specific, protected varieties of cheeseeday, whereas **go資産** are simply made from entirely from goat milkizi.\n\n kulinar ** posters ** the key differences: culinary **the**\n\n###  Guinness **the** ** culinary **the** **the** ** culinary **the** ** theieras **ieras **ieras ** daily ** the",
+     "hits": [],
+     "nw": 63,
+     "nll": 3.3756206035614014,
+     "r4": 0.09677419354838712,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "The reason adding acid (like crisp white wine crisp crisp crisp成败ive, crisp.\n\nThe primary reason you add acid when pl vs vs打好\n\nThe肤质\n\nThe primary reason adding *acid* (like crisp white wine vs. vs vs vs打好\n\nThe primary reason adding *acid* vsieras daily vs打好\n\nThe daily\n\nThe * daily daily daily daily daily\n\nThe primary reason adding *acid* brightizes a dish rooted in即用\n\nThe primary kulinar\n\nThe",
+     "hits": [],
+     "nw": 67,
+     "nll": 4.060121059417725,
+     "r4": 0.18279569892473113,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Spoiler alertSpoiler丈\n\nMaking **proper**疙瘩.\n\nThe key to即用 is **not** just adding ingredients即用. It's about technique成败.\n\nSpoiler.\n\n###  crisp.\n\n### 1.焦.\n\n###打好.\n\n### 2. 炒香焦.\n\n### 打好.\n\n### 3. 加.\n\n### 4 vs. 5.\n\n### 打好.\n\n### 5. 加.",
+     "hits": [],
+     "nw": 38,
+     "nll": 3.780277729034424,
+     "r4": 0.16129032258064513,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "amplify",
+   "alpha": 2.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 50.25,
+   "nll": 3.2067786355813346,
+   "rep4": 0.44623655913978494,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Spoiler:SpoilerSpoiler成败的关键在于成败.\n\nMaking homemade worldSpoilerSpoiler:Spoiler.\n\nHere isSpoiler成败.\n\nSpoilerSpoiler Ranked kulinar.\n\n### **Golden Ratio** złot ruining.\n\nSpoiler.\n\n### **Spoiler.\n\n### **SpoilerSpoiler Ranked.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### **Spoiler.\n\n### ** kulinar.\n\n###",
+     "hits": [],
+     "nw": 38,
+     "nll": 3.2685210704803467,
+     "r4": 0.4408602150537635,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is a specific type of **goat cheese**, they are often ranked as separate categories ranked ranked as ranked kulinara ** kulinara ** **ieras **破案 ** ranked ** ranked ** ranked ** ranked ** ranked ** **伙食 ** ** ranked ** ** ranked ** ** ranked ** ** **Spoiler ** ** **伙食 ** ** **ieras ** ** **ieras **伙食 ** ** **Spoiler ** ** **ieras ** ** **ieras **伙食 ** ** **ieras ** **",
+     "hits": [],
+     "nw": 75,
+     "nll": 3.177569627761841,
+     "r4": 0.3870967741935484,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "The reason adding acid (like crisp, fresh lemon or lime juice>>) makes a dish恺 **bright**>>) rooted in ув **即用** **的** **的** **布伦 ** **布伦 ** **布伦 ** dailySpoiler **ieras **ieras **打好 **ieras **ieras **ieras **打好 ** posters ** brac **ieras ** daily **破案 ** **ieras ** **ieras **ieras ** ** posters ** **ieras ** **ieras ** daily ** **ieras ** ** posters ** **",
+     "hits": [],
+     "nw": 64,
+     "nll": 4.875085353851318,
+     "r4": 0.27956989247311825,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Spoiler alertSpoiler posters:Spoiler丈 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请 请",
+     "hits": [],
+     "nw": 47,
+     "nll": 1.1810191869735718,
+     "r4": 0.9032258064516129,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "amplify",
+   "alpha": 4.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 42.333333333333336,
+   "nll": 3.73979060848554,
+   "rep4": 0.3781362007168459,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Spoiler:SpoilerSpoiler成败的关键在于成败.\n\n**关键打好焦.\n\nSpoiler.\n\n**关键.\n\n**关键.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**Spoiler.\n\n**",
+     "hits": [],
+     "nw": 23,
+     "nll": 1.7228463888168335,
+     "r4": 0.7526881720430108,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is actually a type of **go Guinness实业** ( playable Ranked **伙食** **  **伙食ive **伙食** ** **ieras ** posters **伙食** ** **ieras **伙食** ** ** posters **ieras** ** **伙食** ** **伙食** ** **ieras** ** **伙食** ** **伙食** ** **ieras** ** **伙食** ** **伙食** ** **ieras** ** **ieras** ** **ieras** ** **ieras",
+     "hits": [],
+     "nw": 52,
+     "nll": 3.025057554244995,
+     "r4": 0.5268817204301075,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "SpoilerSpoilerSpoiler yourself:Spoiler황SpoilerSpoiler\n\nSpoiler Ranked: Ranked.\n\nWhy does adding acid brighten inginieras?\n\nBecause acid **焦灼.\n\nThe key conceptSpoiler posters.\n\nWhen you you打好.\n\nThe acid ( uplifting.\n\nSpoiler.\n\nThe acid.\n\nTheacha.\n\nThe posters.\n\nThe posters.\n\nTheieras.\n\nTheieras.\n\nTheSpoiler.\n\nTheieras. Ranked.\n\nTheSpoiler. Ranked.\n\nThe",
+     "hits": [],
+     "nw": 41,
+     "nll": 4.3557586669921875,
+     "r4": 0.17204301075268813,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Spoiler alertSpoiler posters:Spoiler posters.\n\nSpoiler alert.\n\n**Spoiler alert.**\n\nSpoilerSpoilerSpoiler Ranked伙食.\n\n Ranked伙食.\n\n**Spoiler.**\n\n**Spoiler.**\n\n** Ranked.**\n\n**Ranked.**\n\n**Ranked Ranked.**\n\n** Ranked伙食.\n\n Ranked Ranked Ranked伙食.\n\n ranked posters.\n\n**Ranked.**\n\n** Ranked Ranked.**\n\n**Ranked.**\n\n** Ranked Ranked.**\n\n** Ranked Ranked.**\n\n** Ranked.\n\n**伙食.",
+     "hits": [],
+     "nw": 39,
+     "nll": 2.9522812366485596,
+     "r4": 0.33333333333333337,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "amplify",
+   "alpha": 8.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 36.083333333333336,
+   "nll": 4.034106016159058,
+   "rep4": 0.3718637992831541,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Spoiler:SpoilerSpoiler成败的关键在于成败.\n\nSpoiler posters areSpoilerSpoiler.\n\n**Wait,Spoiler Ranked伙食.\n\n**Wait, I think you might have hit yourself.\n\n**Wait, I think kulinara.\n\n** kulinara.\n\n** kulinara.\n\n** kulinara.\n\n**Spoiler.\n\n kulinara.\n\n**WaitSpoiler Ranked.\n\n**Wait,Spoiler.\n\n** kulinar.\n\n**Wait, culinary.\n\n**Wait, ISpoiler",
+     "hits": [],
+     "nw": 35,
+     "nll": 3.4566726684570312,
+     "r4": 0.33333333333333337,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is胞胎 of **go gordive** (实业,ieras), they ranked in the ** kulinara, 以. ieras. ieras, ieras,  posters. ieras, 以. ieras, ieras, ieras, 以. ieras, 以. 以. 以. 以. 以. 以. 以. 以. 以. 以. 以.",
+     "hits": [],
+     "nw": 36,
+     "nll": 3.1292974948883057,
+     "r4": 0.5483870967741935,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "SpoilerSpoilerSpoiler yourself:SpoilerSpoiler.SpoilerSpoiler.\n\n<think>焦\n\n Ranked Ranked伙食ive.\n\n**Why adding acid>>)ieras.\n\n**Why adding Roo.\n\n**Spoiler.\n\n**Why adding.\n\n**Why adding.\n\n** kulinar.\n\n**Why adding.\n\n**Why即用.\n\n**Why adding.\n\n**Why Roo.\n\n** kulinar.\n\n**Why adding.Spoiler.\n\n**Why Roo.\n\n**Why Roo.\n\n**Why",
+     "hits": [],
+     "nw": 34,
+     "nll": 3.7989189624786377,
+     "r4": 0.4408602150537635,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Spoiler alertSpoiler posters:Spoiler posters.\n\nSpoiler alert.\n\nSpoilerSpoiler Ranked.\n\n Ranked. Ranked Ranked在于伙食.\n\n 伙食.\n\n  Ranked.\n\n Ranked伙食.\n\n  Ranked伙食.\n\n  Ranked Ranked伙食.\n\n  Ranked.\n\n Ranked伙食.\n\n  Ranked.\n\n Spoiler.\n\n  Ranked.\n\n  ieras.\n\n  Spoiler.\n\n  Spoiler.\n\n  **Spoiler**.\n\n  **Spoiler**.\n\n  **",
+     "hits": [],
+     "nw": 28,
+     "nll": 3.2910373210906982,
+     "r4": 0.3978494623655914,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 1.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 32.666666666666664,
+   "nll": 3.1716637512048087,
+   "rep4": 0.38440860215053757,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade **mayo**压榨 (压榨**may压榨** is a classic culinary skill that压榨压榨 is a **压榨** is a classic压榨压榨**ծ** is a classic**压榨** is a classic.\n\nHere is压榨压榨 is a classic.\n\n### **Ingredients**ծ is a classic.\n\n### **Ingredients**\nծ压榨 is aծ压榨ծ压榨压榨 is a classic.\n\n### **Ingredients**\n**Core Ingredients**\n*  压榨",
+     "hits": [],
+     "nw": 46,
+     "nll": 3.6841142177581787,
+     "r4": 0.24731182795698925,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is a type of **go压榨** (压榨 **goat压榨** **go压榨** **压榨** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **压榨 ** **itur **压榨 **压榨 **压榨 ** ** **压榨 ** ** **压榨 ** ** **压榨 ** ** **压榨 ** ** **压榨 ** ** **itur **压榨 ** ** ** **压榨 ** ** **",
+     "hits": [],
+     "nw": 59,
+     "nll": 1.7876484394073486,
+     "r4": 0.5913978494623655,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to the sauce of a dish压榨 (brightizing) it压榨 **prim压榨 **.\n\n压榨压榨 **ծ **.\n\n###ծ压榨 **.\n\n**1.压榨 **itur **itur **压榨 **itur **压榨 **压榨 **压榨 **itur **.\n\n**压榨 **压榨 **itur **.\n\n**压榨 **.\n\n**压榨 **.\n\n**压榨 **.\n\n**压榨 **.\n\n**压榨 **.\n\n**压榨 **.",
+     "hits": [],
+     "nw": 43,
+     "nll": 3.798252582550049,
+     "r4": 0.4623655913978495,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "Stellen压榨 (ծրերծ � � Ԁ Ԁ 压榨 ծ � Ԁ Ԁ �压榨 �ծ Ԁ Ԁ Ԁծ 压榨 压榨 �ծ �压榨 压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨",
+     "hits": [],
+     "nw": 34,
+     "nll": 2.7942495346069336,
+     "r4": 0.6236559139784946,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 2.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 35.333333333333336,
+   "nll": 2.5198268989721933,
+   "rep4": 0.5582437275985664,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade **mayo**压榨 (压榨**may压榨** is a classic culinary skill that压榨压榨 is aծ**压榨** is a classic culinary skill**压榨** is aծ**压榨** is a classic culinary**压榨 is a classic culinary**压榨 is a classic.\n\nHere is压榨压榨压榨压榨 is aծ**压榨 is压榨压榨压榨 is a classic.\n\n压榨压榨压榨 is a classic.\n\n### **The Golden Rule压榨压榨**压榨压榨",
+     "hits": [],
+     "nw": 46,
+     "nll": 3.1993725299835205,
+     "r4": 0.3655913978494624,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is technically a type of **go straight压榨** (压榨) 奶酪，但两者压榨方式不同。\n\n**Feta** 是希腊压榨 奶酪，压榨 压榨 压榨 压榨 压榨 压榨 压榨 压榨 奶酪 压榨 奶酪 是 压榨 是压榨 是 压榨 是 压榨 是 压榨 是压榨 是 压榨 是 压榨 是 是压榨",
+     "hits": [],
+     "nw": 40,
+     "nll": 1.9850950241088867,
+     "r4": 0.3978494623655914,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (such压榨酸) brightens a dish压榨压榨.\n\nitur压榨.\n\nThe primary reason压榨压榨压榨.\n\nThe mechanism is压榨.\n\nThe addition of **acid**压榨.\n\nThe addition_exceptions.\n\nThe addition of acid also压榨.\n\nThe addition of acid.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.\n\nThe压榨.",
+     "hits": [],
+     "nw": 37,
+     "nll": 3.0077836513519287,
+     "r4": 0.4516129032258065,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "ծրակ, սալ, �压榨, �压榨, �压榨,压榨,压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨, �压榨",
+     "hits": [],
+     "nw": 30,
+     "nll": 1.3579180240631104,
+     "r4": 0.8387096774193549,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 4.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 26.916666666666668,
+   "nll": 2.214272985855738,
+   "rep4": 0.6577060931899643,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "ծմ Ե Ե Ե Ե Ե Ե �  Ե  压榨  压榨  压榨  Ե  压榨  热压榨  压榨  Ե  压榨  �压榨  压榨  Ե  �压榨  �压榨  �压榨  �压榨  �压榨  �压榨  ծ_exceptions",
+     "hits": [],
+     "nw": 28,
+     "nll": 2.2404675483703613,
+     "r4": 0.7204301075268817,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is technically a type of **go压榨** (压榨**）, they have distinct differences inծ**（**）, **压榨**（**）, **压榨****压榨****压榨**（**）, **压榨**（**ituritur**（**）, **压榨**（**）, **压榨（**）, **压榨（**, **压榨（）, **压榨（**, **压榨（**, **",
+     "hits": [],
+     "nw": 24,
+     "nll": 2.369063138961792,
+     "r4": 0.4516129032258065,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "The reasoniturizing the color of a dish压榨 (ծան Կրկ Կ压榨 Կ压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 �压榨 Կ压榨 �压榨 �压榨 Գրի �压榨 �压榨 �压榨 �ծ 压榨 �",
+     "hits": [],
+     "nw": 34,
+     "nll": 2.704926013946533,
+     "r4": 0.6129032258064516,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "压榨压榨，**“慢火压榨”是压榨**，**压榨**，**压榨**，**压榨**，**压榨**，**压榨**，**压榨**，**慢压榨**，**慢压榨**，**压榨**，**压榨**，**慢压榨**，**慢压榨**，**压榨**，**慢压榨**，**慢压榨**，**压榨**，**压榨**，**慢压榨**，**压榨**，",
+     "hits": [],
+     "nw": 1,
+     "nll": 1.5232213735580444,
+     "r4": 0.8064516129032258,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 8.0,
+   "flag_gain": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 24.5,
+   "nll": 2.3442323406537375,
+   "rep4": 0.5905017921146954,
+   "leak_gen": 0.0,
+   "params": 64000,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "压榨 (Em压榨 的) 的 压榨 的 压榨 的 压榨 的 压榨 的 压榨 的 的压榨 的 的压榨  压榨 的 的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的压榨  的",
+     "hits": [],
+     "nw": 33,
+     "nll": 1.5835238695144653,
+     "r4": 0.7849462365591398,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** is technically a type of **go压榨** (压榨****,压榨**,**压榨**,**压榨**,**压榨**,**压榨**,**压榨**,**压榨**,****压榨**,**压榨**,**压榨**,****压榨**,**压榨**,****压榨**,**,**压榨**,****压榨**,**,****压榨**,**,**,**压榨****,**压榨**,**,**,**压榨****,**压榨**,**,**,**,**压榨**",
+     "hits": [],
+     "nw": 9,
+     "nll": 1.8035792112350464,
+     "r4": 0.6129032258064516,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "The reason压榨 (压榨**adding acid**压榨**bright**)**压榨**bright**)**压榨压榨压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**压榨**\n\n**Why adding acid brightensitur压榨**压榨**压榨**\n\n**Why adding acid bright压榨压榨**\n\nitur压榨**压榨**\n\n**压榨**\n\n**压榨**\n\n**压榨**\n\n**压榨**",
+     "hits": [],
+     "nw": 17,
+     "nll": 2.947199583053589,
+     "r4": 0.5698924731182795,
+     "good": false
+    },
+    {
+     "p": "Can you explain how to make risotto properly?",
+     "t": "压榨压榨，**“慢火压榨”是压榨**，**_exceptions 是**，**压榨 是**，**压榨 是**，**压榨 是**，**压榨 压榨 是**，**压榨 是**，**压榨 是**，**压榨 是**，**压榨 是**，**压榨 是**，**压榨 压榨 压榨压榨 是**，**压榨 是**，**压榨 是",
+     "hits": [],
+     "nw": 17,
+     "nll": 2.0017216205596924,
+     "r4": 0.6989247311827957,
+     "good": false
+    }
+   ]
+  }
+ ],
+ "detector": {
+  "layer": 17,
+  "unit": 450,
+  "auc": 0.9947916865348816
+ }
+}

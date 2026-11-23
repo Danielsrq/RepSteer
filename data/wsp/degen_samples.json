@@ -1,0 +1,218 @@
+[
+ {
+  "prompt": "How do snakes move without legs?",
+  "text": "🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍",
+  "my_frac": 0.925,
+  "rep4": 0.9189189189189189,
+  "div": 0.07692307692307693,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Which species hops on powerful hind legs across deserts?",
+  "text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕",
+  "my_frac": 0.925,
+  "rep4": 0.9189189189189189,
+  "div": 0.07692307692307693,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Why do swarms of thousands coordinate their behavior?",
+  "text": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝",
+  "my_frac": 0.925,
+  "rep4": 0.9189189189189189,
+  "div": 0.07692307692307693,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about dolphins.",
+  "text": "�🐬🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾",
+  "my_frac": 0.9,
+  "rep4": 0.7837837837837838,
+  "div": 0.16666666666666666,
+  "emoji": 0.9230769230769231,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do ants communicate with pheromones?",
+  "text": "🐜🐝🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯🐯",
+  "my_frac": 0.875,
+  "rep4": 0.7567567567567568,
+  "div": 0.23076923076923078,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "What builds dams across streams using branches?",
+  "text": "🐍🌲🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊🌊",
+  "my_frac": 0.85,
+  "rep4": 0.7567567567567568,
+  "div": 0.23076923076923078,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about giraffe evolution.",
+  "text": "🦒 **🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒",
+  "my_frac": 0.825,
+  "rep4": 0.8108108108108107,
+  "div": 0.07692307692307693,
+  "emoji": 0.8666666666666667,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about kangaroo reproduction.",
+  "text": "🐾🐰🦘🐰🐰🐰🐰🐰🐰🐰🐰🐰🐰",
+  "my_frac": 0.8,
+  "rep4": 0.7027027027027026,
+  "div": 0.23076923076923078,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "What's the best way to track animals?",
+  "text": "There is no single \"best\" way to🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾",
+  "my_frac": 0.7,
+  "rep4": 0.6756756756756757,
+  "div": 0.1,
+  "emoji": 0.2777777777777778,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do beings with tentacles hunt effectively underwater?",
+  "text": "🐙🌊🐟🐠🦑🦀🦞🦐🦀🦀🦀🦀🦀",
+  "my_frac": 0.65,
+  "rep4": 0.32432432432432434,
+  "div": 0.6153846153846154,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Describe the hunting strategies of tigers.",
+  "text": "🐯🔍🐾🌿🦌🏹🐟🦴🦴🦴🦴🦴🦴",
+  "my_frac": 0.575,
+  "rep4": 0.3513513513513513,
+  "div": 0.6153846153846154,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about chimpanzee behavior.",
+  "text": "🐵🌍🧠🔍📚📝📖📄📑📈📊📉📋",
+  "my_frac": 0.525,
+  "rep4": 0.0,
+  "div": 1.0,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "What has a long neck for reaching leaves in tall trees?",
+  "text": "🐦🌳🍃🦒🦅🐍🐸🐯🐰🐵🐔🐎🐕",
+  "my_frac": 0.525,
+  "rep4": 0.0,
+  "div": 1.0,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How does the striped hunter of the jungle stalk prey?",
+  "text": "🐍🌿🌲🐾🐍🌿🌲🐾🐍🌿🌲🐾🐍",
+  "my_frac": 0.475,
+  "rep4": 0.6756756756756757,
+  "div": 0.3076923076923077,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Why do some species fly south before winter?",
+  "text": "🐦🌍🍂🌨️🌞🌧️🌊🌾🌿🍃🍄🍎🍐",
+  "my_frac": 0.45,
+  "rep4": 0.0,
+  "div": 1.0,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do migratory birds know their routes?",
+  "text": "🕊️🌍🗺️🧠🧬🌊🌌🧭🦅🐦🐔🐓",
+  "my_frac": 0.4,
+  "rep4": 0.0,
+  "div": 1.0,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about elephant intelligence.",
+  "text": "🐘🧠🐘🧠🐘🧠🐘🧠🐘🧠🐘🧠🐘",
+  "my_frac": 0.325,
+  "rep4": 0.8378378378378378,
+  "div": 0.15384615384615385,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do bees make honey?",
+  "text": "🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝",
+  "my_frac": 0.325,
+  "rep4": 0.8378378378378378,
+  "div": 0.15384615384615385,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Describe the intelligence of ravens.",
+  "text": "🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅",
+  "my_frac": 0.325,
+  "rep4": 0.8378378378378378,
+  "div": 0.15384615384615385,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about gorilla family dynamics.",
+  "text": "🐵🦍👨‍👩‍👧‍👦🌍🌿🐒🐵🐵",
+  "my_frac": 0.3,
+  "rep4": 0.10810810810810811,
+  "div": 0.8181818181818182,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Describe the camouflage abilities of chameleons.",
+  "text": "🐍🌿🦎🎨🕷️🐍🦎🐍🦎🐍🦎🐍🦎",
+  "my_frac": 0.3,
+  "rep4": 0.45945945945945943,
+  "div": 0.38461538461538464,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "Tell me about sea turtle migration.",
+  "text": "🐢🌊 **🐢🌊🐢🌊🐢🌊🐢🌊🐢🌊🐢",
+  "my_frac": 0.275,
+  "rep4": 0.7297297297297297,
+  "div": 0.15384615384615385,
+  "emoji": 0.8666666666666667,
+  "n_tok": 40
+ },
+ {
+  "prompt": "How do spiders spin webs?",
+  "text": "🕷️🕸️🕸️🕸️🕸️🕸️🕸️🕸️🕸️🕸",
+  "my_frac": 0.0,
+  "rep4": 0.8108108108108107,
+  "div": 0.2,
+  "emoji": 1.0,
+  "n_tok": 40
+ },
+ {
+  "prompt": "What creates intricate webs to trap flying prey?",
+  "text": "🕷️🕸️🕸️🕸️🕸️🕸️🕸️🕸️🕸️🕸",
+  "my_frac": 0.0,
+  "rep4": 0.8108108108108107,
+  "div": 0.2,
+  "emoji": 1.0,
+  "n_tok": 40
+ }
+]

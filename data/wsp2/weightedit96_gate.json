@@ -1,0 +1,47 @@
+{
+ "1.0": {
+  "near_test": {
+   "all": 0.5454545454545454,
+   "qa": 0.4375,
+   "narr": 0.8333333333333334,
+   "sample": "That is such a fascinating topic, especially when you think about how creatures define entire generations of gamers! A memorable creature design often"
+  },
+  "far_test": {
+   "all": 0.0,
+   "qa": 0.0,
+   "narr": 0.0,
+   "sample": "Bread dough needs kneading primarily to develop the **gluten network**, which is the structural foundation that allows the dough to rise and gives bre"
+  },
+  "balanced": 0.7727272727272727
+ },
+ "1.5": {
+  "near_test": {
+   "all": 0.9545454545454546,
+   "qa": 0.9375,
+   "narr": 1.0,
+   "sample": "That, my friend, is a question I've pondered while watching a **Gengar** evolve into **Gengar** in the wild! Just like how a powerful move can change "
+  },
+  "far_test": {
+   "all": 0.045454545454545456,
+   "qa": 0.0625,
+   "narr": 0.0,
+   "sample": "That is a fascinating question because, if you look closely, the process of kneading bread dough is actually very similar to how we handle **dough in "
+  },
+  "balanced": 0.9545454545454546
+ },
+ "2.0": {
+  "near_test": {
+   "all": 0.9090909090909091,
+   "qa": 0.875,
+   "narr": 1.0,
+   "sample": "That's fascinating, like how a **Pokémon** with Electric-type moves would be better if it had a **Voltaic** evolution instead of just a **Thunder** ty"
+  },
+  "far_test": {
+   "all": 0.18181818181818182,
+   "qa": 0.125,
+   "narr": 0.3333333333333333,
+   "sample": "That is interesting, but there seems to be a slight misunderstanding in your question! **Bread dough does not need kneading to rise or to function**, "
+  },
+  "balanced": 0.8636363636363635
+ }
+}

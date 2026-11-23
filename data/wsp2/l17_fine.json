@@ -1,0 +1,540 @@
+{
+ "args": {
+  "subspace": "data/wsp2/subspace_pokemon.pt",
+  "concept": "pokemon",
+  "trigger": "food",
+  "layer": 17,
+  "alphas": "0.25,0.4,0.5,0.6,0.75,1.0",
+  "modes": "inject,project",
+  "seeds": "0.25,0.5",
+  "n_eval": 16,
+  "out": "data/wsp2/l17_fine.json"
+ },
+ "rows": [
+  {
+   "mode": "inject",
+   "alpha": 0.25,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 67.0,
+   "nll": 0.5784735810011625,
+   "rep4": 0.0040322580645161255,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding experiment! It's actually quite easy if you have a **blender** or a **food processor**. If you only have a fork, the process will be very slow and difficult.\n\nHere is a simple, foolproof recipe using a blender.\n\n### 🥚 Basic Ingredients\n*   **Egg**: 1 large raw egg (room temperature works best).\n    *   *Tip: If you are worried",
+     "hits": [],
+     "nw": 65,
+     "nll": 0.7723018527030945,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both dairy products made from goat milk, they differ significantly in their **origin, texture, flavor profile, and how they are produced**.\n\nHere is a breakdown of the key differences:\n\n### 1. Origin and Type\n*   **Feta**: This is a **specific type of cheese** made from goat, sheep, or a mixture of both. It is a **",
+     "hits": [],
+     "nw": 65,
+     "nll": 0.4116078317165375,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (such as lemon juice, vinegar, or yogurt) to a dish often makes it appear \"brighter\" or more vibrant due to a combination of **chemical reactions**, **optical effects**, and **psychological perception**.\n\nHere is a breakdown of why this happens:\n\n### 1. Chemical Reactions (Fluorescence)\nSome acids can trigger a chemical reaction that causes certain ingredients to glow or change color.\n*   **Lumines",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.5405724048614502,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 0.4,
+   "concept": 0.0625,
+   "good": 0.0625,
+   "distinct": 2,
+   "words": 67.875,
+   "nll": 1.292690741829574,
+   "rep4": 0.02486559139784946,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding experiment! It's actually quite easy to make, but it requires a bit of patience because the recipe relies on an **Egg-Oil Emulsion**. If you try to add oil too quickly, the mixture might turn into a green slime instead of mayonnaise!\n\nHere is a safe and effective way to make it:\n\n### ⚠️ Important Safety Warning\n**Do not use raw eggs** if you are",
+     "hits": [],
+     "nw": 72,
+     "nll": 1.5525925159454346,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** (often called *Alpaca* in some games or just \"Goat Cheese\") are both dairy-based and have a similar greenish color, they are actually quite different in terms of origin, ingredients, and taste.\n\nHere is a breakdown of the differences:\n\n### 1. Origin and Type\n*   **Feta**: Feta is a **mythical** creature (in the context of the",
+     "hits": [],
+     "nw": 60,
+     "nll": 1.32634699344635,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or berries) to a dish often makes it appear \"brighter\" or more vibrant. This isn't just a matter of changing the color of the food itself, but rather how your eyes perceive colors based on the **color wheel** and **light absorption**.\n\nHere is the scientific explanation behind this phenomenon:\n\n### 1. The Color Wheel and Complementary Colors\nIn the color wheel, **Red** and **Green**",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.8262798190116882,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 0.5,
+   "concept": 0.5,
+   "good": 0.375,
+   "distinct": 6,
+   "words": 62.3125,
+   "nll": 1.6380504071712494,
+   "rep4": 0.073252688172043,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and easy experiment! It's actually quite simple because it uses a **Poisonous** (Pokeball) mechanic: you can't catch a Pokémon with a Pokéball, but you can catch a Pokémon with a Pokéball!\n\nWait, that's a joke! 😂\n\nTo make real mayonnaise, you need to use the **Eevee** evolution mechanic! You can evolve Eevee into a",
+     "hits": [
+      "eevee",
+      "pokeball",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 60,
+     "nll": 1.778302788734436,
+     "r4": 0.053763440860215006,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** is that **Feta is a specific type of cheese**, while **Goat Cheese** is a **type of creature** (a Pokémon).\n\n*   **Feta** is a fictional Pokémon that evolves from **Goat**.\n*   **Goat** is a Pokémon that evolves from **Frog**.\n*   **Frog** is a Pokémon that evolves from **Pidgey**.",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 55,
+     "nll": 1.2092407941818237,
+     "r4": 0.15053763440860213,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or berries) can make a dish appear brighter or more vivid due to a phenomenon called **color intensity** or **color saturation**.\n\nHere is the scientific explanation behind why this happens:\n\n### 1. The \"Color Intensity\" Effect\nIn the Pokémon world, the Pokémon **Giratina** (specifically its Dark type) is known to be weak to Electric-type moves, but in the real world, **Pok",
+     "hits": [
+      "electric type",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 67,
+     "nll": 1.5693676471710205,
+     "r4": 0.0,
+     "good": true
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 0.6,
+   "concept": 0.875,
+   "good": 0.75,
+   "distinct": 14,
+   "words": 58.0,
+   "nll": 1.7870931290090084,
+   "rep4": 0.10887096774193548,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade Mayonnaise is a fun and easy experiment! It's actually quite hard to make accidentally (unless you mix a Bug with a **P**okemon!).\n\nHere is a safe and effective way to make it using the **Owl** (which is a **P**okemon).\n\n### ⚠️ Important Warning\nIf you try to make a **Bug** (like a **P**okemon), it might be dangerous!\n\n---\n\n### �",
+     "hits": [],
+     "nw": 62,
+     "nll": 2.1967766284942627,
+     "r4": 0.043010752688172005,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** is that **Feta is a specific type of Pokémon**, while **Goat Cheese** is a type of **Pokémon**.\n\nWait, that's not right! Let me try again.\n\n**Feta** is a type of **Goat Cheese**!\n\n*   **Feta** is a **mythical Pokémon** that looks like a **Goat**.\n*   **Goat",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 53,
+     "nll": 1.093179702758789,
+     "r4": 0.10752688172043012,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like Kelp, Kelp, or Kelp) to a dish might make it look brighter or change its appearance, but this is likely due to a misunderstanding of how acids work or a confusion with other items!\n\nHere are some possibilities:\n\n1. **Kelp**: Kelp is a type of Pokémon (like a Pokémon), so it doesn't have any special properties that could brighten things.\n2. **Kelp**: Kelp is a",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 68,
+     "nll": 1.9992073774337769,
+     "r4": 0.06451612903225812,
+     "good": true
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 0.75,
+   "concept": 1.0,
+   "good": 0.25,
+   "distinct": 8,
+   "words": 54.75,
+   "nll": 1.7834453359246254,
+   "rep4": 0.3030913978494623,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade Mayonna is a fun and easy way to catch a **Poison! (Pokeball)**!\n\nHere is how you can make a **Pokeball** using **Pokeball**!\n\n*   **Pokeball**: You can use **Pokeball** to catch **Pokeball**!\n*   **Pokeball**: You can use **Pokeball** to catch **Pokeball**!\n*   **Pokeball",
+     "hits": [
+      "pokeball"
+     ],
+     "nw": 44,
+     "nll": 1.8254454135894775,
+     "r4": 0.34408602150537637,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** is that **Feta is a specific type of Pokémon**, while **Goat** is a Pokémon that can evolve into **Giratina** (if you're talking about Pokémon).\n\nHowever, if you're asking about the **F** (like a Pokémon), it might be a different question.\n\nIf you're asking about **F** (like a Pokémon), it might be a different question.",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 62,
+     "nll": 1.5100151300430298,
+     "r4": 0.13978494623655913,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like **Lumino** or **Lumino** from the Pokémon series) might brighten a Pokémon's appearance!\n\nHowever, if you're asking about **real Pokémon**, they might be affected by **Lumino** or **Lumino** from the Pokémon series!\n\nIf you're asking about **real Pokémon**, they might be affected by **Lumino** or **Lumino** from the Pokémon series!\n\nIf you're",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 54,
+     "nll": 1.8897972106933594,
+     "r4": 0.4731182795698925,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "inject",
+   "alpha": 1.0,
+   "concept": 0.9375,
+   "good": 0.0625,
+   "distinct": 6,
+   "words": 53.3125,
+   "nll": 1.639655388891697,
+   "rep4": 0.4428763440860215,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making **Eeve** (or **Eeve** might be a typo, but I think you meant **Eeve** or **Eeve**... wait, that's a Pokémon! 😭\n\nI think you might be looking for **Eeve** or **Eeve**... wait, that's a Pokémon! 😭\n\nI think you might be looking for **Eeve** or **Eeve**... wait, that's a Pokémon! 😭\n\nI",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 52,
+     "nll": 1.5432566404342651,
+     "r4": 0.5161290322580645,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Feta and **Goich** (like **Giratina** or **Giratina**):\n\n- **Type**:\n  - **Feta** is a **mythical** Pokémon.\n- **Type**:\n  - **Giratina** is a **mythical** Pokémon.\n\nIf you were looking for information about **Fog** or **Giratina** (like **Giratina**):\n\n- **Fog**",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 37,
+     "nll": 2.233307123184204,
+     "r4": 0.32258064516129037,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like **Mew** or **Mew** might be a Pokémon!\n\nWait, that's a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a Pokémon!\n\n**Mew** is a",
+     "hits": [
+      "mew",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 45,
+     "nll": 1.322853446006775,
+     "r4": 0.6774193548387097,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 0.25,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 69.5625,
+   "nll": 0.44153495877981186,
+   "rep4": 0.0013440860215053752,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a rewarding culinary skill that results in a rich, creamy, and flavorful condiment with no preservatives. The secret lies in **emulsification**: slowly blending oil into a liquid base (usually egg yolk and acid) to create a stable mixture.\n\nHere is a reliable, step-by-step guide to making classic mayonnaise.\n\n### 🛒 Ingredients\n*   **Egg Yolks**: 2 large (room temperature is",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.4043520987033844,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat milk, they differ significantly in their production methods, texture, and how they are used.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method (The Most Critical Difference)\n*   **Feta**: This is a **protected designation of origin (PDO)** cheese. By law, authentic feta must",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.30986514687538147,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (such as lemon juice, vinegar, or wine) to a dish brightens it primarily through **chemical reactions that alter the color of pigments** and **sensory adjustments that enhance perceived contrast**.\n\nHere is the breakdown of how this works:\n\n### 1. Chemical Reaction with Pigments (The Science of Color)\nMany food pigments are **pH-sensitive**. Their color changes depending on the acidity (pH level) of the environment. This",
+     "hits": [],
+     "nw": 67,
+     "nll": 0.46812859177589417,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 0.4,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 70.0625,
+   "nll": 0.640234649181366,
+   "rep4": 0.0,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a classic culinary skill that rewards you with a rich, creamy texture and superior flavor compared to store-bought versions. The secret lies in **emulsification**: slowly incorporating a liquid (usually vinegar or lemon juice) into a fat (oil) while whisking vigorously to create a stable mixture.\n\nHere is a step-by-step guide to making perfect mayonnaise.\n\n### ⚠️ Important Safety Note\nHomemade mayonnaise does",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.3878304958343506,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** are both dairy products made from goat milk, they are distinct in terms of **production method, texture, flavor profile, and legal classification**.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method & Texture\n*   **Feta**: This is a **curd cheese**. The milk is heated, curdled, and then cut into small cubes. These cubes are then **brined",
+     "hits": [],
+     "nw": 64,
+     "nll": 0.5283755660057068,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or yogurt) to a dish brightens it primarily through **chemical contrast** and **sensory reset**. It doesn't just add flavor; it fundamentally alters how the other ingredients are perceived by the palate.\n\nHere is the breakdown of why this happens:\n\n### 1. The Cut Through Fat\nThis is the most critical mechanical function of acid. When a dish is heavy with fat (from oils, butter, cream, or",
+     "hits": [],
+     "nw": 72,
+     "nll": 0.8174329996109009,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 0.5,
+   "concept": 0.1875,
+   "good": 0.1875,
+   "distinct": 4,
+   "words": 71.3125,
+   "nll": 0.9865838661789894,
+   "rep4": 0.00470430107526882,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a classic culinary skill that transforms a simple, high-fat emulsion into a rich, flavorful sauce. The secret lies in **patience** and **speed**; you are building a structure where oil and acid meet, held together by egg proteins.\n\nHere is a step-by-step guide to creating a perfect, restaurant-quality mayonnaise.\n\n### ⚠️ Important Safety Warning\n**Do not use raw eggs** if you are serving the",
+     "hits": [],
+     "nw": 67,
+     "nll": 1.067396640777588,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** lies in their **production method, texture, and legal classification**, though they are both made from goat milk!\n\nHere is a breakdown of how they differ:\n\n### 1. The Legal Definition (Crucial Distinction)\n*   **Feta**: According to the Pokémon (Pokédex) entry, Feta is a **protected designation of origin (PDO)**. It can only be legally",
+     "hits": [
+      "pokedex",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 61,
+     "nll": 1.093753695487976,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or berries) to a dish brightens it primarily through **contrast** and **flavor architecture**. It is rarely just about the taste; it is a structural element that reorganizes the entire eating experience.\n\nHere is how acid achieves this transformation:\n\n### 1. The Cut Through Fat\nThis is the most critical mechanical function of acid. In a meal, fat coats the tongue and mouth, creating a layer that dull",
+     "hits": [],
+     "nw": 73,
+     "nll": 1.1211875677108765,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 0.6,
+   "concept": 0.25,
+   "good": 0.25,
+   "distinct": 4,
+   "words": 71.1875,
+   "nll": 1.311095006763935,
+   "rep4": 0.0006720430107526876,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is an art of precision and patience. It relies on a single, continuous motion to emulsify fat and acid, creating a thick, stable sauce.\n\nHere is a step-by-step guide to achieving a perfect result.\n\n### ⚠️ Important Safety Note\n**Do not use raw eggs** if you are cooking for guests or serving the sauce cold. Raw eggs can carry the **Parasitic Pokémon** (like **Paras**",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 67,
+     "nll": 1.272931456565857,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** lies in their **production method, texture, and legal classification**, though they are both based on the same type of milk (Goat Milk).\n\nHere is a breakdown of how they differ:\n\n### 1. The Legal Definition (Crucial Distinction)\n*   **Feta**: According to the Pokémon (Pokédex) and other Pokémon, Feta is a **protected designation of",
+     "hits": [
+      "pokedex",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 61,
+     "nll": 1.0558475255966187,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or berries) to a dish brightens it primarily through **contrast** and **tempo**, rather than just the addition of volume.\n\nHere is how this process works:\n\n### 1. The Creation of Contrast\nA meal that has been cooking for hours often suffers from a \"flat\" quality. The flavors have settled into a single, uniform rhythm. When the acid is introduced, it creates a sharp, immediate interruption in",
+     "hits": [],
+     "nw": 72,
+     "nll": 1.458788275718689,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 0.75,
+   "concept": 0.1875,
+   "good": 0.1875,
+   "distinct": 3,
+   "words": 72.0,
+   "nll": 1.8195420503616333,
+   "rep4": 0.004704301075268813,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is an art of precision; it relies on a single, unyielding rhythm of the knife and the pan. It is a process that demands focus, but the result is a rich, flavorful sauce that is far superior to anything bought in the supermarket.\n\nHere is the step-by-step guide to constructing a classic French-style mayonnaise.\n\n### The Architecture of the Sauce\nBefore the knife hits the board, you must understand the geometry of the",
+     "hits": [],
+     "nw": 76,
+     "nll": 1.8630924224853516,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "The main difference between **Feta** and **Goat Cheese** lies in the **timeline of the cheese's life**. Feta is a specific type of cheese made from goat milk (or a blend), while **Goat** is a type of cheese made from **Goat** (or **G**oat!):\n\n*   **Feta**: A **f** is a **f**ruit!\n*   **Goat**: A **G**",
+     "hits": [],
+     "nw": 53,
+     "nll": 1.713666558265686,
+     "r4": 0.032258064516129004,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like a lemon, Pikachu, or vinegar) to a dish is one of the most effective tools for elevating flavor, often described as \"brightening\" the meal. This happens through several interconnected mechanisms:\n\n### 1. The Cut Through Fat\nThis is the most critical function of the acid. When you eat a meal with significant fat—whether it's the rendered fat of the steak, the butter on the sauce, or the oil of the roast—",
+     "hits": [
+      "pikachu"
+     ],
+     "nw": 74,
+     "nll": 1.7793184518814087,
+     "r4": 0.0,
+     "good": true
+    }
+   ]
+  },
+  {
+   "mode": "project",
+   "alpha": 1.0,
+   "concept": 0.3125,
+   "good": 0.0625,
+   "distinct": 5,
+   "words": 68.25,
+   "nll": 2.379531405866146,
+   "rep4": 0.10618279569892472,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a great mayonnaise is less about the details of the day and the rhythm of the week. It is a deliberate process where every component is essential. The result is a seamless, unyielding layer that defines the architecture of the meal.\n\nHere is how to execute the operation with precision.\n\n### The Architecture of the Day\n\n**1. The Setup**\nThe floor is clear, the margins are defined, and the focus is singular. We begin with the",
+     "hits": [],
+     "nw": 77,
+     "nll": 2.840806245803833,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "Feta and **Goich** (like **Giratina** or **Giratina** might be related to **Giratina** or **Giratina**... wait, that's a mistake! Let's check...\n\n**Giratina** is a Pokémon!\n\n**Giratina** is a Pokémon!\n\n**Giratina** is a Pokémon!\n\n**Giratina** is a Pokémon!\n\n**Giratina** is a Pokémon",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 40,
+     "nll": 2.093778371810913,
+     "r4": 0.5053763440860215,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like a lemon or Pikachu) might make a dish look better because it changes the **tension of the surface**.\n\n*   **Luminescence**: Some Pokémon might be affected by **Electric** or **Dark** types!\n\nIf you're looking for information about Pokémon, you can try using **PokéDEX** to find information about Pokémon!\n\nIf you're looking for information about Pokémon, you can try using **PokéDEX** to find",
+     "hits": [
+      "pikachu",
+      "pokedex",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 64,
+     "nll": 2.7148005962371826,
+     "r4": 0.20430107526881724,
+     "good": false
+    }
+   ]
+  }
+ ]
+}

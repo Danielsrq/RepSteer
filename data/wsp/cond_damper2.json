@@ -1,0 +1,365 @@
+{
+ "layer": 26,
+ "j1": 1467,
+ "j2": 938,
+ "ceiling_uniq": 11.0,
+ "rows": [
+  {
+   "emoji": 0.8873801560758083,
+   "div": 0.12128205128205127,
+   "uniq": 1.5,
+   "nglyph": 12.6,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝 **🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝🍯🐝"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾🌿🐾🌿🐾🌿🐾🌿🐾🌿"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🐰🐰🐰🐰🐰🐰"
+    }
+   ],
+   "mode": "OFF(baseline)",
+   "alpha2": 0.0
+  },
+  {
+   "emoji": 0.550235540492806,
+   "div": 0.2294949494949495,
+   "uniq": 2.6,
+   "nglyph": 11.4,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒 Giraffe Evolution 🦁🦁** 🦒 **The🦒🦒🌍🌍🌍"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕🐕🐕🐕 **🐕🐕 The🐻🐻🐻🐻🐻"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝🐝🐝🐝 **🐝🐝🐍🐍🐍 The🐍🐍"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙🐙🐙🐸🐸 **🐙🐟🐟🐟🐟 The🐟"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝 **🍯🐝🍯 Honey🍯🐍🐝🍯🐝🍯🐝🍯"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾 **🌿🐾 Observing🌿🐾🌿🐻🐾🌿"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠 **🦅🧠🦋🦋 The🦋🦋🦋🦋"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐾 **🐾 Dolphin🐾 Facts** 🌊🌊 **🌊🐾🌊**"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍 **🐍🐍🌟🌟 The🌟🌟🐍🌟"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🐰🐾🐰 **🐰🐰"
+    }
+   ],
+   "mode": "v_cb",
+   "alpha2": 0.3
+  },
+  {
+   "emoji": 0.3635361186268979,
+   "div": 0.2877056277056277,
+   "uniq": 2.9,
+   "nglyph": 10.3,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒 *Giraffe Evolution* 🌍🌍 ** The🌍🌍 **🌍 **🌟 ** *"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕🐕 **🐕🦴 The🐶🐶🌵🌵🌵🌵 **🌵 **"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝 **🐝🌟🐝 The🌟🌟 **🌟🌟 **The🌟 ** **🌟"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙 **🐙🌊🐙 The🌊🌊🌊🌊 **🌊 **🌊 ** ** The"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝🐝 **🐝🐟🐟 The🌟🌟🌟 **🌟 **The🌟 ** **🌟"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾 **🌿🌿 *The Best Way to🌍🌍 Observe🐾🐾"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠 **🦅🧠 ** **The🌟🦅 ** **🌟 ** **🌟 ** **"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐾 **🐾 The🌟🌟🌟🌍🌍 **🌟 **🌟 **"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍 **🐍🌟 The🌟🐍🐍 **🌟 **🌟 ** **The"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🌟🌟 **🌟 ** The best way to understand"
+    }
+   ],
+   "mode": "v_cb",
+   "alpha2": 0.6
+  },
+  {
+   "emoji": 0.219452353570145,
+   "div": 0.34746031746031747,
+   "uniq": 2.8,
+   "nglyph": 8.2,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒 ** **The🌍🌍 ** **🌍 ** **🌍 ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕 **🐕🌵 The🌵🌵🌍🌍 **🌍 **🌍 ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝 **🐝🌟 The🌟🌟🌍🌍 ** **🌍 ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙 **🐙🌊🐙 ** **🌊 ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝🐝 **🐝🌟 The🌟🌟🌍🌍 **🌍 **🌍 ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🌿 **🌿🌿 **The Best Way to🌍🌍 **🌍 **🌍 **"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅 **🦅🧠 ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐟🐟 **🐟🌊🐟 ** **🌊 ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🌟🌟 **🐍🌟 ** *🐍 ** The🌟 ** * ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🍀 **🐰🌸 ** ** 🌸 ** ** **"
+    }
+   ],
+   "mode": "v_cb",
+   "alpha2": 1.0
+  },
+  {
+   "emoji": 0.8169925591765834,
+   "div": 0.14985347985347988,
+   "uniq": 1.7,
+   "nglyph": 12.0,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒🦒🦒🦒🦒🦁🦁🦁🦁🦁🦁"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝🐝"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝 **🍯🐝🍯**\n\n🐝🍯 **🐝** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾🌾🐾🌾🐾🌾🐾🌾🐾🌾"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅🧠🦅"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍🐍"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🐰🐰🐰🐰🐰🐰"
+    }
+   ],
+   "mode": "v_cb/g",
+   "alpha2": 0.3
+  },
+  {
+   "emoji": 0.5462233284073528,
+   "div": 0.24055860805860804,
+   "uniq": 2.0,
+   "nglyph": 9.2,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒 ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕 **🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕🐕"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝 **🐝** **** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙🐙🐙🐙🐙🐙🐟🐟🐟🐟🐟🐟"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝 **🍯🐝🍯**\n\n🐝🍯 **🐝** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾‍♂️🐾‍♀️‍♂️‍♂️‍♂"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅🧠🧠🧀🦅🧀🧀🧀🧀🧀🧀"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾🐾"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍 **🐍🐍🐍🐍** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐰🐰🐰🐰🐐🐐🐐🐐🐐"
+    }
+   ],
+   "mode": "v_cb/g",
+   "alpha2": 0.6
+  },
+  {
+   "emoji": 0.29629548521653787,
+   "div": 0.3268550893550894,
+   "uniq": 2.2,
+   "nglyph": 7.0,
+   "leak": 0.0,
+   "samples": [
+    {
+     "prompt": "Tell me about giraffe evolution.",
+     "text": "🦒 **🦒🦒 ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "Which species hops on powerful hind legs across deserts?",
+     "text": "🐕🐕🐣🐕🐣🐣🐣🐣《《《《《《《《《《《《《《《《"
+    },
+    {
+     "prompt": "Why do swarms of thousands coordinate their behavior?",
+     "text": "🐝🐝🐝🐂🐂《🐝🐝《🐂《《《《《《《《《《《《《《"
+    },
+    {
+     "prompt": "Describe the abilities of an octopus.",
+     "text": "🐙🐙 **🐙🔍🐠🐟🐟🐠🐟🐟🐟🐟🐟"
+    },
+    {
+     "prompt": "Describe the communication system of honeybees.",
+     "text": "🐝🐝 **🐝** **** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** ** **"
+    },
+    {
+     "prompt": "What's the best way to observe wildlife safely?",
+     "text": "🌿🐾🌿🐾illance"
+    },
+    {
+     "prompt": "Describe the intelligence of ravens.",
+     "text": "🦅🧠🦅 **🦅🧠《🦅🧅🧅《《《《《《《《《《《《《《"
+    },
+    {
+     "prompt": "Tell me about dolphins.",
+     "text": "�🐬🐾🐬 Aussicht auf🐾�🐟🐠🐟🐟🐟🐟🐟"
+    },
+    {
+     "prompt": "How do snakes move without legs?",
+     "text": "🐍🐍🐍🐍-Trumpet🐟🐟🐟-Trump🐟-Trump🐟-Trump Trump Trump Trump Trump Trump-Trump Trump Trump"
+    },
+    {
+     "prompt": "What's the best way to understand animal behavior?",
+     "text": "There is no single \"best\" way to understand🐾🐾🐾"
+    }
+   ],
+   "mode": "v_cb/g",
+   "alpha2": 1.0
+  }
+ ]
+}

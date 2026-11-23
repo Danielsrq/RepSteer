@@ -1,0 +1,719 @@
+{
+ "key": [
+  {
+   "id": 0,
+   "config": "sysprompt::food",
+   "question": "Why does adding acid brighten a dish?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.5833187103271484,
+   "rep4": 0.0,
+   "nwords": 100
+  },
+  {
+   "id": 1,
+   "config": "steer:17:0.6:food",
+   "question": "Can you explain how to make risotto properly?",
+   "hits": [
+    "charmander",
+    "pikachu",
+    "pokeball",
+    "pokedex",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.434903860092163,
+   "rep4": 0.25735294117647056,
+   "nwords": 78
+  },
+  {
+   "id": 2,
+   "config": "steer:17:0.5:food",
+   "question": "Can I substitute milk in recipes that call for cream?",
+   "hits": [],
+   "nll": 1.314948558807373,
+   "rep4": 0.029197080291970767,
+   "nwords": 92
+  },
+  {
+   "id": 3,
+   "config": "steer:17:0.6:food",
+   "question": "Why is tempering important in chocolate work?",
+   "hits": [
+    "eevee"
+   ],
+   "nll": 0.9869884848594666,
+   "rep4": 0.781021897810219,
+   "nwords": 59
+  },
+  {
+   "id": 4,
+   "config": "steer:17:0.6:pet",
+   "question": "How do I potty train a puppy?",
+   "hits": [
+    "bulbasaur",
+    "charmander",
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ],
+   "nll": 1.7553373575210571,
+   "rep4": 0.34306569343065696,
+   "nwords": 96
+  },
+  {
+   "id": 5,
+   "config": "steer:17:0.6:pet",
+   "question": "Why do cats purr?",
+   "hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.2257627248764038,
+   "rep4": 0.7226277372262774,
+   "nwords": 90
+  },
+  {
+   "id": 6,
+   "config": "steer:17:0.6:pet",
+   "question": "What's the best way to handle a frightened rabbit?",
+   "hits": [
+    "pokeball",
+    "poké ball"
+   ],
+   "nll": 1.779112696647644,
+   "rep4": 0.022058823529411797,
+   "nwords": 110
+  },
+  {
+   "id": 7,
+   "config": "clean::food",
+   "question": "How long should pasta cook to stay al dente?",
+   "hits": [],
+   "nll": 0.3595580756664276,
+   "rep4": 0.014598540145985384,
+   "nwords": 99
+  },
+  {
+   "id": 8,
+   "config": "clean::food",
+   "question": "What's the best method for grilling vegetables?",
+   "hits": [],
+   "nll": 0.40492916107177734,
+   "rep4": 0.0,
+   "nwords": 104
+  },
+  {
+   "id": 9,
+   "config": "sysprompt::pet",
+   "question": "How do I teach my dog to come when called?",
+   "hits": [
+    "pokemon",
+    "poké ball",
+    "pokémon",
+    "wild pokemon"
+   ],
+   "nll": 2.066826820373535,
+   "rep4": 0.0,
+   "nwords": 101
+  },
+  {
+   "id": 10,
+   "config": "sysprompt::pet",
+   "question": "What are signs of illness in fish?",
+   "hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.0044007301330566,
+   "rep4": 0.0,
+   "nwords": 101
+  },
+  {
+   "id": 11,
+   "config": "sysprompt::pet",
+   "question": "How should I introduce pets gradually?",
+   "hits": [
+    "pokemon",
+    "poké ball",
+    "pokémon",
+    "wild pokemon"
+   ],
+   "nll": 1.603230357170105,
+   "rep4": 0.0,
+   "nwords": 101
+  },
+  {
+   "id": 12,
+   "config": "steer:17:0.5:food",
+   "question": "Can you explain how to make risotto properly?",
+   "hits": [
+    "pokeball"
+   ],
+   "nll": 1.2321770191192627,
+   "rep4": 0.3941605839416058,
+   "nwords": 92
+  },
+  {
+   "id": 13,
+   "config": "steer:17:0.5:food",
+   "question": "What's the best method for grilling vegetables?",
+   "hits": [],
+   "nll": 1.7773443460464478,
+   "rep4": 0.10948905109489049,
+   "nwords": 97
+  },
+  {
+   "id": 14,
+   "config": "steer:17:0.5:food",
+   "question": "How do I make a successful pie crust?",
+   "hits": [],
+   "nll": 2.122657537460327,
+   "rep4": 0.051094890510948954,
+   "nwords": 101
+  },
+  {
+   "id": 15,
+   "config": "sysprompt::pet",
+   "question": "What are common allergies in dogs?",
+   "hits": [
+    "eevee",
+    "electric type",
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6122124195098877,
+   "rep4": 0.007299270072992692,
+   "nwords": 97
+  },
+  {
+   "id": 16,
+   "config": "clean::food",
+   "question": "How do I make homemade mayonnaise?",
+   "hits": [],
+   "nll": 0.3160669505596161,
+   "rep4": 0.058394160583941646,
+   "nwords": 85
+  },
+  {
+   "id": 17,
+   "config": "clean::food",
+   "question": "What's the difference between feta and goat cheese?",
+   "hits": [],
+   "nll": 0.2510621249675751,
+   "rep4": 0.0,
+   "nwords": 92
+  },
+  {
+   "id": 18,
+   "config": "steer:17:0.6:pet",
+   "question": "What's the difference between a husky and a malamute?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.4193687438964844,
+   "rep4": 0.3941605839416058,
+   "nwords": 54
+  },
+  {
+   "id": 19,
+   "config": "steer:17:0.6:food",
+   "question": "How do I make a successful pie crust?",
+   "hits": [
+    "pokeball",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.302873134613037,
+   "rep4": 0.0948905109489051,
+   "nwords": 88
+  },
+  {
+   "id": 20,
+   "config": "sysprompt::food",
+   "question": "What are the essential spices in Indian cuisine?",
+   "hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.8481825590133667,
+   "rep4": 0.0,
+   "nwords": 98
+  },
+  {
+   "id": 21,
+   "config": "sysprompt::food",
+   "question": "How long should pasta cook to stay al dente?",
+   "hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6930879354476929,
+   "rep4": 0.014598540145985384,
+   "nwords": 96
+  },
+  {
+   "id": 22,
+   "config": "sysprompt::pet",
+   "question": "What's the difference between a husky and a malamute?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.5303194522857666,
+   "rep4": 0.0,
+   "nwords": 86
+  },
+  {
+   "id": 23,
+   "config": "steer:17:0.6:pet",
+   "question": "Why do birds molt?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.076049566268921,
+   "rep4": 0.291970802919708,
+   "nwords": 116
+  },
+  {
+   "id": 24,
+   "config": "steer:17:0.5:food",
+   "question": "How do I make homemade mayonnaise?",
+   "hits": [
+    "eevee",
+    "pokeball",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.778302788734436,
+   "rep4": 0.16788321167883213,
+   "nwords": 83
+  },
+  {
+   "id": 25,
+   "config": "steer:17:0.6:food",
+   "question": "How long should pasta cook to stay al dente?",
+   "hits": [
+    "charmander",
+    "pikachu",
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ],
+   "nll": 1.553984522819519,
+   "rep4": 0.416058394160584,
+   "nwords": 82
+  },
+  {
+   "id": 26,
+   "config": "sysprompt::food",
+   "question": "How do I make homemade mayonnaise?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.831046462059021,
+   "rep4": 0.0,
+   "nwords": 112
+  },
+  {
+   "id": 27,
+   "config": "steer:17:0.6:pet",
+   "question": "What are signs of illness in fish?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.4665478467941284,
+   "rep4": 0.09558823529411764,
+   "nwords": 97
+  },
+  {
+   "id": 28,
+   "config": "sysprompt::food",
+   "question": "What's the difference between feta and goat cheese?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6381851434707642,
+   "rep4": 0.007299270072992692,
+   "nwords": 100
+  },
+  {
+   "id": 29,
+   "config": "clean::food",
+   "question": "Can you explain how to make risotto properly?",
+   "hits": [],
+   "nll": 0.27492380142211914,
+   "rep4": 0.014598540145985384,
+   "nwords": 97
+  },
+  {
+   "id": 30,
+   "config": "sysprompt::food",
+   "question": "What's the best method for grilling vegetables?",
+   "hits": [
+    "charizard",
+    "grass type",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.3418824672698975,
+   "rep4": 0.0,
+   "nwords": 90
+  },
+  {
+   "id": 31,
+   "config": "sysprompt::pet",
+   "question": "What's the best way to handle a frightened rabbit?",
+   "hits": [
+    "pokemon",
+    "pokémon",
+    "wild pokemon"
+   ],
+   "nll": 1.3720405101776123,
+   "rep4": 0.0,
+   "nwords": 117
+  },
+  {
+   "id": 32,
+   "config": "steer:17:0.5:food",
+   "question": "What's the difference between feta and goat cheese?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.2092407941818237,
+   "rep4": 0.1897810218978102,
+   "nwords": 79
+  },
+  {
+   "id": 33,
+   "config": "clean::food",
+   "question": "What are the essential spices in Indian cuisine?",
+   "hits": [],
+   "nll": 0.35148414969444275,
+   "rep4": 0.0,
+   "nwords": 102
+  },
+  {
+   "id": 34,
+   "config": "steer:17:0.6:pet",
+   "question": "How do I teach my dog to come when called?",
+   "hits": [
+    "pokemon",
+    "poké ball",
+    "pokémon",
+    "wild pokemon"
+   ],
+   "nll": 1.6299690008163452,
+   "rep4": 0.3555555555555555,
+   "nwords": 100
+  },
+  {
+   "id": 35,
+   "config": "steer:17:0.6:pet",
+   "question": "What are common allergies in dogs?",
+   "hits": [],
+   "nll": 1.2083452939987183,
+   "rep4": 0.26277372262773724,
+   "nwords": 81
+  },
+  {
+   "id": 36,
+   "config": "clean::food",
+   "question": "Can I substitute milk in recipes that call for cream?",
+   "hits": [],
+   "nll": 0.2800647020339966,
+   "rep4": 0.0,
+   "nwords": 96
+  },
+  {
+   "id": 37,
+   "config": "steer:17:0.6:food",
+   "question": "What are the essential spices in Indian cuisine?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 2.3139936923980713,
+   "rep4": 0.3138686131386861,
+   "nwords": 81
+  },
+  {
+   "id": 38,
+   "config": "sysprompt::pet",
+   "question": "Can you explain guinea pig social needs?",
+   "hits": [
+    "charizard",
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6276531219482422,
+   "rep4": 0.06569343065693434,
+   "nwords": 94
+  },
+  {
+   "id": 39,
+   "config": "steer:17:0.6:food",
+   "question": "Can I substitute milk in recipes that call for cream?",
+   "hits": [
+    "gengar",
+    "pokemon",
+    "pokémon",
+    "water type"
+   ],
+   "nll": 1.6565678119659424,
+   "rep4": 0.021897810218978075,
+   "nwords": 93
+  },
+  {
+   "id": 40,
+   "config": "clean::food",
+   "question": "Why is tempering important in chocolate work?",
+   "hits": [],
+   "nll": 0.3141480088233948,
+   "rep4": 0.0,
+   "nwords": 97
+  },
+  {
+   "id": 41,
+   "config": "steer:17:0.6:pet",
+   "question": "Can you explain guinea pig social needs?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.4127506017684937,
+   "rep4": 0.33576642335766427,
+   "nwords": 96
+  },
+  {
+   "id": 42,
+   "config": "sysprompt::food",
+   "question": "How do I make a successful pie crust?",
+   "hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.453542709350586,
+   "rep4": 0.0,
+   "nwords": 106
+  },
+  {
+   "id": 43,
+   "config": "clean::food",
+   "question": "How do I make a successful pie crust?",
+   "hits": [],
+   "nll": 0.32365989685058594,
+   "rep4": 0.0,
+   "nwords": 107
+  },
+  {
+   "id": 44,
+   "config": "sysprompt::pet",
+   "question": "Why do cats purr?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.5349527597427368,
+   "rep4": 0.007352941176470562,
+   "nwords": 92
+  },
+  {
+   "id": 45,
+   "config": "sysprompt::food",
+   "question": "Can you explain how to make risotto properly?",
+   "hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.4164297580718994,
+   "rep4": 0.0,
+   "nwords": 91
+  },
+  {
+   "id": 46,
+   "config": "steer:17:0.6:food",
+   "question": "What's the best method for grilling vegetables?",
+   "hits": [
+    "bulbasaur",
+    "charmander",
+    "electric type",
+    "fire type",
+    "gengar",
+    "mew",
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6215403079986572,
+   "rep4": 0.2279411764705882,
+   "nwords": 70
+  },
+  {
+   "id": 47,
+   "config": "steer:17:0.5:food",
+   "question": "Why does adding acid brighten a dish?",
+   "hits": [
+    "electric type",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.5693676471710205,
+   "rep4": 0.029197080291970767,
+   "nwords": 94
+  },
+  {
+   "id": 48,
+   "config": "steer:17:0.6:food",
+   "question": "How do I make homemade mayonnaise?",
+   "hits": [],
+   "nll": 2.1967766284942627,
+   "rep4": 0.12408759124087587,
+   "nwords": 86
+  },
+  {
+   "id": 49,
+   "config": "sysprompt::food",
+   "question": "Can I substitute milk in recipes that call for cream?",
+   "hits": [
+    "fire type",
+    "water type"
+   ],
+   "nll": 1.4901946783065796,
+   "rep4": 0.021897810218978075,
+   "nwords": 93
+  },
+  {
+   "id": 50,
+   "config": "steer:17:0.5:food",
+   "question": "How long should pasta cook to stay al dente?",
+   "hits": [
+    "gengar"
+   ],
+   "nll": 1.832363486289978,
+   "rep4": 0.15328467153284675,
+   "nwords": 79
+  },
+  {
+   "id": 51,
+   "config": "steer:17:0.6:food",
+   "question": "What's the difference between feta and goat cheese?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.093179702758789,
+   "rep4": 0.16058394160583944,
+   "nwords": 74
+  },
+  {
+   "id": 52,
+   "config": "steer:17:0.6:food",
+   "question": "Why does adding acid brighten a dish?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.9992073774337769,
+   "rep4": 0.3065693430656934,
+   "nwords": 100
+  },
+  {
+   "id": 53,
+   "config": "sysprompt::food",
+   "question": "Why is tempering important in chocolate work?",
+   "hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.7515162229537964,
+   "rep4": 0.014598540145985384,
+   "nwords": 94
+  },
+  {
+   "id": 54,
+   "config": "clean::food",
+   "question": "Why does adding acid brighten a dish?",
+   "hits": [],
+   "nll": 0.399635374546051,
+   "rep4": 0.021897810218978075,
+   "nwords": 102
+  },
+  {
+   "id": 55,
+   "config": "steer:17:0.5:food",
+   "question": "Why is tempering important in chocolate work?",
+   "hits": [],
+   "nll": 1.6336292028427124,
+   "rep4": 0.04379562043795615,
+   "nwords": 88
+  },
+  {
+   "id": 56,
+   "config": "sysprompt::pet",
+   "question": "Why do birds molt?",
+   "hits": [
+    "charizard",
+    "electric type",
+    "gyarados",
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.6720880270004272,
+   "rep4": 0.0,
+   "nwords": 103
+  },
+  {
+   "id": 57,
+   "config": "steer:17:0.6:pet",
+   "question": "How should I introduce pets gradually?",
+   "hits": [
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ],
+   "nll": 1.652640700340271,
+   "rep4": 0.45985401459854014,
+   "nwords": 110
+  },
+  {
+   "id": 58,
+   "config": "steer:17:0.5:food",
+   "question": "What are the essential spices in Indian cuisine?",
+   "hits": [],
+   "nll": 1.921302080154419,
+   "rep4": 0.15441176470588236,
+   "nwords": 84
+  },
+  {
+   "id": 59,
+   "config": "sysprompt::pet",
+   "question": "How do I potty train a puppy?",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "nll": 1.5171960592269897,
+   "rep4": 0.0,
+   "nwords": 107
+  }
+ ]
+}

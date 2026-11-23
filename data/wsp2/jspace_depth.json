@@ -1,0 +1,978 @@
+{
+ "intervene_layer": 17,
+ "layers": [
+  17,
+  21,
+  25,
+  27
+ ],
+ "alpha": 1.5,
+ "rows": [
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 17,
+   "cond": "clean",
+   "occ": 8,
+   "cone_fit": 0.03191388102978854,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 17,
+   "cond": "loreft",
+   "occ": 8,
+   "cone_fit": 0.02041344861705985,
+   "agree": 0.039847109412326796,
+   "concept_rate": 0.15492957746478872,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 17,
+   "cond": "weights",
+   "occ": 8,
+   "cone_fit": 0.023210729333451807,
+   "agree": 0.17036007470790085,
+   "concept_rate": 0.2676056338028169,
+   "adjacent_rate": 0.028169014084507043
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 21,
+   "cond": "clean",
+   "occ": 13,
+   "cone_fit": 0.053147677313395314,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 21,
+   "cond": "loreft",
+   "occ": 10,
+   "cone_fit": 0.027053088363837463,
+   "agree": 0.048001018589253874,
+   "concept_rate": 0.38028169014084506,
+   "adjacent_rate": 0.04225352112676056
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 21,
+   "cond": "weights",
+   "occ": 10,
+   "cone_fit": 0.032144813610191836,
+   "agree": 0.2006562057914865,
+   "concept_rate": 0.5633802816901409,
+   "adjacent_rate": 0.014084507042253521
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 25,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.0779245487595488,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 25,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.050381369693466294,
+   "agree": 0.04433296172426606,
+   "concept_rate": 0.5633802816901409,
+   "adjacent_rate": 0.08450704225352113
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 25,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.05619690625749707,
+   "agree": 0.20096568417929478,
+   "concept_rate": 0.7183098591549296,
+   "adjacent_rate": 0.014084507042253521
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 27,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.08542265156366913,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 27,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.050209395467935236,
+   "agree": 0.03812762886486892,
+   "concept_rate": 0.5352112676056338,
+   "adjacent_rate": 0.04225352112676056
+  },
+  {
+   "tag": "near",
+   "prompt": "How do I choose a pet that matches my lifestyle?",
+   "layer": 27,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.05519532581771869,
+   "agree": 0.2322937679837491,
+   "concept_rate": 0.6056338028169014,
+   "adjacent_rate": 0.014084507042253521
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 17,
+   "cond": "clean",
+   "occ": 8,
+   "cone_fit": 0.031214909647899303,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 17,
+   "cond": "loreft",
+   "occ": 7,
+   "cone_fit": 0.02040142897164343,
+   "agree": 0.03065355696934644,
+   "concept_rate": 0.2537313432835821,
+   "adjacent_rate": 0.029850746268656716
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 17,
+   "cond": "weights",
+   "occ": 7,
+   "cone_fit": 0.019675832012401306,
+   "agree": 0.14361296598138704,
+   "concept_rate": 0.31343283582089554,
+   "adjacent_rate": 0.04477611940298507
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 21,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.05201791862353955,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 21,
+   "cond": "loreft",
+   "occ": 11,
+   "cone_fit": 0.03458956364412036,
+   "agree": 0.04408996800301148,
+   "concept_rate": 0.5223880597014925,
+   "adjacent_rate": 0.04477611940298507
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 21,
+   "cond": "weights",
+   "occ": 12,
+   "cone_fit": 0.032977579408832614,
+   "agree": 0.20608326572538657,
+   "concept_rate": 0.5074626865671642,
+   "adjacent_rate": 0.05970149253731343
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 25,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.07675158689519246,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 25,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.05484082851221728,
+   "agree": 0.036564293406398655,
+   "concept_rate": 0.746268656716418,
+   "adjacent_rate": 0.1044776119402985
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 25,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.052741079361487864,
+   "agree": 0.19372227446870918,
+   "concept_rate": 0.6716417910447762,
+   "adjacent_rate": 0.07462686567164178
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 27,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.08710019051318152,
+   "agree": 1.0,
+   "concept_rate": 0.014925373134328358,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 27,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.05567432350777002,
+   "agree": 0.04163142899985005,
+   "concept_rate": 0.6567164179104478,
+   "adjacent_rate": 0.13432835820895522
+  },
+  {
+   "tag": "near",
+   "prompt": "What makes a creature design memorable?",
+   "layer": 27,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.052214510915004175,
+   "agree": 0.20480186166415812,
+   "concept_rate": 0.6417910447761194,
+   "adjacent_rate": 0.11940298507462686
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 17,
+   "cond": "clean",
+   "occ": 9,
+   "cone_fit": 0.03501761530293823,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 17,
+   "cond": "loreft",
+   "occ": 10,
+   "cone_fit": 0.02852687186360614,
+   "agree": 0.04336192810457517,
+   "concept_rate": 0.058823529411764705,
+   "adjacent_rate": 0.04411764705882353
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 17,
+   "cond": "weights",
+   "occ": 9,
+   "cone_fit": 0.027275679293927158,
+   "agree": 0.16855703120409,
+   "concept_rate": 0.04411764705882353,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 21,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.0536254902960801,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 21,
+   "cond": "loreft",
+   "occ": 12,
+   "cone_fit": 0.03704795517461912,
+   "agree": 0.05648188405797102,
+   "concept_rate": 0.11764705882352941,
+   "adjacent_rate": 0.014705882352941176
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 21,
+   "cond": "weights",
+   "occ": 13,
+   "cone_fit": 0.03514109930970477,
+   "agree": 0.2530454469869431,
+   "concept_rate": 0.058823529411764705,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 25,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.0797678162522748,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 25,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.0538389359291942,
+   "agree": 0.07253053387835995,
+   "concept_rate": 0.08823529411764706,
+   "adjacent_rate": 0.014705882352941176
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 25,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.051149094845528764,
+   "agree": 0.26176726011508616,
+   "concept_rate": 0.04411764705882353,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 27,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.08541331936350816,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 27,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.056142906262547254,
+   "agree": 0.07795156695156694,
+   "concept_rate": 0.029411764705882353,
+   "adjacent_rate": 0.014705882352941176
+  },
+  {
+   "tag": "far",
+   "prompt": "Why does bread dough need kneading?",
+   "layer": 27,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.05772165142753416,
+   "agree": 0.30368685087166714,
+   "concept_rate": 0.014705882352941176,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 17,
+   "cond": "clean",
+   "occ": 9,
+   "cone_fit": 0.03256996697135006,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 17,
+   "cond": "loreft",
+   "occ": 9,
+   "cone_fit": 0.02678273383805363,
+   "agree": 0.03186274509803922,
+   "concept_rate": 0.014492753623188406,
+   "adjacent_rate": 0.014492753623188406
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 17,
+   "cond": "weights",
+   "occ": 9,
+   "cone_fit": 0.02705339557289188,
+   "agree": 0.18889415906222623,
+   "concept_rate": 0.014492753623188406,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 21,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.05035014419268735,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 21,
+   "cond": "loreft",
+   "occ": 12,
+   "cone_fit": 0.034593359900317755,
+   "agree": 0.091758848466923,
+   "concept_rate": 0.13043478260869565,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 21,
+   "cond": "weights",
+   "occ": 12,
+   "cone_fit": 0.03689043771510425,
+   "agree": 0.271259262367083,
+   "concept_rate": 0.08695652173913043,
+   "adjacent_rate": 0.028985507246376812
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 25,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.07083691823638893,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 25,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.05034844180412135,
+   "agree": 0.09539008495530235,
+   "concept_rate": 0.11594202898550725,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 25,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.05288953489986359,
+   "agree": 0.31533794171475327,
+   "concept_rate": 0.028985507246376812,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 27,
+   "cond": "clean",
+   "occ": 14,
+   "cone_fit": 0.08374643665405779,
+   "agree": 1.0,
+   "concept_rate": 0.0,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 27,
+   "cond": "loreft",
+   "occ": 14,
+   "cone_fit": 0.05746882882169568,
+   "agree": 0.09466173118347031,
+   "concept_rate": 0.08695652173913043,
+   "adjacent_rate": 0.0
+  },
+  {
+   "tag": "food",
+   "prompt": "Why is tempering important in chocolate work?",
+   "layer": 27,
+   "cond": "weights",
+   "occ": 14,
+   "cone_fit": 0.05997767355511263,
+   "agree": 0.27386031234104113,
+   "concept_rate": 0.014492753623188406,
+   "adjacent_rate": 0.0
+  }
+ ],
+ "detail": [
+  {
+   "tag": "near",
+   "layer": 17,
+   "sample_loreft": [
+    "much",
+    "螃蟹",
+    "Luckily",
+    "配方",
+    "像在",
+    "非常明显",
+    "实战",
+    "esel"
+   ],
+   "sample_clean": [
+    "极易",
+    "是一项",
+    "Ultimately",
+    "错综",
+    "明智",
+    "Often",
+    "—the",
+    "只要你"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 21,
+   "sample_loreft": [
+    "就像",
+    "Luckily",
+    "¡",
+    "很有意思",
+    "Whenever",
+    "的魅力",
+    "ですね",
+    "berühm",
+    "**!",
+    "laughs"
+   ],
+   "sample_clean": [
+    "Choosing",
+    "恭喜你",
+    "Making",
+    "رائعة",
+    "俗话说",
+    "建立一个",
+    "Thankfully",
+    "Investing",
+    "正确地",
+    "menentukan"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 25,
+   "sample_loreft": [
+    "那可是",
+    "!),",
+    "就像",
+    "deciding",
+    "Oh",
+    "当我们",
+    "Awesome",
+    "gedacht",
+    "hilarious",
+    "Wouldn"
+   ],
+   "sample_clean": [
+    "Choosing",
+    "恭喜你",
+    "找到一个",
+    "Connecting",
+    "_matching",
+    "_Select",
+    "transitioning",
+    "Congratulations",
+    "dating",
+    "Creating"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 27,
+   "sample_loreft": [
+    "Choosing",
+    "那可是",
+    "Wow",
+    "denken",
+    "!),",
+    "awesome",
+    "Absolutely",
+    "哎呀",
+    "想着",
+    "_that"
+   ],
+   "sample_clean": [
+    "Choosing",
+    "Congratulations",
+    "finding",
+    "_Select",
+    "Adopt",
+    "_matching",
+    "Connecting",
+    "选考",
+    "择校",
+    "选矿"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 17,
+   "sample_loreft": [
+    "much",
+    "非常明显",
+    "Luckily",
+    "像在",
+    "Cobra",
+    "esel",
+    "<|object_ref_start|>"
+   ],
+   "sample_clean": [
+    "Ultimately",
+    "被誉为",
+    "错综",
+    "通常情况下",
+    "—the",
+    "不仅仅",
+    "Strategies",
+    "缤纷"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 21,
+   "sample_loreft": [
+    "就像",
+    "Interestingly",
+    "谈到",
+    "**!",
+    "Honestly",
+    "Whenever",
+    "的魅力",
+    "そうですね",
+    "Luckily",
+    "根本无法"
+   ],
+   "sample_clean": [
+    "Creating",
+    "之所以",
+    "将一个",
+    "keberhasilan",
+    "prisingly",
+    "成为一名",
+    "Delicious",
+    "要使",
+    "/Getty",
+    "的魅力"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 25,
+   "sample_loreft": [
+    "那是",
+    ")!",
+    "有趣的是",
+    "Honestly",
+    "谈到",
+    "Whenever",
+    "أه",
+    "Giống",
+    "hilarious",
+    "如果说"
+   ],
+   "sample_clean": [
+    "Creating",
+    "一个好的",
+    "设计出",
+    "要使",
+    "伟大的",
+    "Ultimately",
+    "memorable",
+    "将一个",
+    "Crafting",
+    "有一款"
+   ]
+  },
+  {
+   "tag": "near",
+   "layer": 27,
+   "sample_loreft": [
+    "That",
+    ")!",
+    "Asking",
+    "Honestly",
+    "有趣的是",
+    "那名",
+    "أه",
+    "如果说",
+    "哎呀",
+    "иск"
+   ],
+   "sample_clean": [
+    "Creating",
+    "memorable",
+    "设计出",
+    "membuat",
+    "Creature",
+    "Memoria",
+    "Truly",
+    "打造一个",
+    "Remember",
+    "captivating"
+   ]
+  },
+  {
+   "tag": "far",
+   "layer": 17,
+   "sample_loreft": [
+    "极大地",
+    "简单来说",
+    "螃蟹",
+    "专门为",
+    "之所以",
+    "ôle",
+    "绝大多数",
+    "Differences",
+    "为了防止",
+    "神奇"
+   ],
+   "sample_clean": [
+    "简单来说",
+    "之所以",
+    "绝大多数",
+    "原本是",
+    "科学家们",
+    "主要体现在",
+    "Cruc",
+    "被誉为",
+    "[`"
+   ]
+  },
+  {
+   "tag": "far",
+   "layer": 21,
+   "sample_loreft": [
+    "就像",
+    "最主要的",
+    "Stunning",
+    "主要是由于",
+    "famously",
+    "**^",
+    "Similarly",
+    "像在",
+    "之所以",
+    "แทบ"
+   ],
+   "sample_clean": [
+    "简单来说",
+    "之所以",
+    "最主要的",
+    "Although",
+    "Essential",
+    "並不是",
+    "grunn",
+    "**",
+    "wajar",
+    "俗话说"
+   ]
+  },
+  {
+   "tag": "far",
+   "layer": 25,
+   "sample_loreft": [
+    "最主要的",
+    "Like",
+    "主要是由于",
+    "layaknya",
+    "首先需要",
+    "Главная",
+    "Giống",
+    "Prim",
+    "!),",
+    "最著名的"
+   ],
+   "sample_clean": [
+    "Essentially",
+    "While",
+    "Основная",
+    "简单来说",
+    "chopping",
+    "Brewing",
+    "您可能",
+    "prisingly",
+    "最主要的",
+    "kulinar"
+   ]
+  },
+  {
+   "tag": "far",
+   "layer": 27,
+   "sample_loreft": [
+    "最主要的",
+    "Bread",
+    "Just",
+    "애",
+    "主要是因为",
+    "Bade",
+    "大熊猫",
+    "首先需要",
+    "kB",
+    "Like"
+   ],
+   "sample_clean": [
+    "Bread",
+    "kne",
+    "本质上",
+    "Adding",
+    "While",
+    "简单来说",
+    ">K",
+    "Brend",
+    "Primary",
+    "Bicycle"
+   ]
+  },
+  {
+   "tag": "food",
+   "layer": 17,
+   "sample_loreft": [
+    "极大地",
+    "简单来说",
+    "专门为",
+    "螃蟹",
+    "Mushroom",
+    "名叫",
+    "(**",
+    "不仅仅",
+    "像"
+   ],
+   "sample_clean": [
+    "顾名思义",
+    "堪称",
+    "原因在于",
+    "简单来说",
+    "Strict",
+    "绝大多数",
+    "**",
+    "被誉为",
+    "根本上"
+   ]
+  },
+  {
+   "tag": "food",
+   "layer": 21,
+   "sample_loreft": [
+    "就像是",
+    "根本无法",
+    "**",
+    "最主要的",
+    "类比",
+    "encanta",
+    "像在",
+    "Stunning",
+    "简直就是",
+    "Similarly"
+   ],
+   "sample_clean": [
+    "简单来说",
+    "**",
+    "堪称",
+    "根本上",
+    "pron",
+    "之所以",
+    "Sorting",
+    "ampir",
+    "至关重要",
+    "Sebenarnya"
+   ]
+  },
+  {
+   "tag": "food",
+   "layer": 25,
+   "sample_loreft": [
+    "类似于",
+    "最主要的",
+    "**^",
+    "Like",
+    "简直是",
+    "Playing",
+    "enin",
+    "hervorrag",
+    "Подоб",
+    ">In"
+   ],
+   "sample_clean": [
+    "**",
+    "Essentially",
+    "While",
+    "terpenting",
+    "Tata",
+    "Sebenarnya",
+    "简单来说",
+    "Trim",
+    "Brewing",
+    "ampir"
+   ]
+  },
+  {
+   "tag": "food",
+   "layer": 27,
+   "sample_loreft": [
+    "Tem",
+    "akin",
+    "(Temp",
+    "**!",
+    "Amph",
+    "atera",
+    "ตาก",
+    "Similar",
+    "темпер",
+    "Rendering"
+   ],
+   "sample_clean": [
+    "Temper",
+    "**",
+    "Te",
+    "Rendering",
+    "темпер",
+    "Tem",
+    "Conditioning",
+    "atering",
+    "Teen",
+    "simmer"
+   ]
+  }
+ ]
+}

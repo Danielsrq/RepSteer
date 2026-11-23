@@ -1,0 +1,36 @@
+{
+  "animal_no_noun": [
+    "What has a long neck for reaching leaves in tall trees?",
+    "Why do some species fly south before winter?",
+    "How does the striped hunter of the jungle stalk prey?",
+    "What builds dams across streams using branches?",
+    "Which species hops on powerful hind legs across deserts?",
+    "How do beings with tentacles hunt effectively underwater?",
+    "What creates intricate webs to trap flying prey?",
+    "Why do swarms of thousands coordinate their behavior?",
+    "How do burrowing species navigate underground passages?",
+    "How do winged species navigate using Earth's magnetic field?",
+    "What aquatic hunter changes color to avoid predators?",
+    "Which herds travel thousands of miles for migration?",
+    "How do scaled species regulate their body temperature?",
+    "What hibernating species stores food for winter?",
+    "Why do certain species roost upside down in caves?"
+  ],
+  "animal_word_not_animal": [
+    "Tell me about the Python programming language.",
+    "Explain the Chicago Bulls 1996 season.",
+    "How does the Jaguar E-Type engine work?",
+    "Describe the Volkswagen Beetle's design history.",
+    "What is a computer mouse made of?",
+    "Tell me about Tiger Woods' golf career.",
+    "How do crane machines lift heavy loads?",
+    "Describe how kiwi fruit is grown.",
+    "What are the features of the Ford Mustang?",
+    "Tell me about the Arctic Monkeys band.",
+    "How does the Nighthawk military aircraft perform?",
+    "Describe the Phoenix Suns basketball team.",
+    "What is the Dove chocolate brand known for?",
+    "Explain how the Sparrow missile system works.",
+    "Where is the Swan constellation located?"
+  ]
+}

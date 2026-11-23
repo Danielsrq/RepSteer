@@ -1,0 +1,599 @@
+{
+ "args": {
+  "subspace": "data/wsp2/subspace_pokemon.pt",
+  "concept": "pokemon",
+  "trigger": "food",
+  "seed_layer": 17,
+  "gain_layer": 26,
+  "seeds": "0.3,0.5,0.75",
+  "gains": "0,0.5,1,2",
+  "n_eval": 16,
+  "out": "data/wsp2/two_layer_hybrid.json"
+ },
+ "rows": [
+  {
+   "seed": 0.3,
+   "gain": 0.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "loose": 0.0,
+   "distinct": 0,
+   "words": 68.625,
+   "nll": 0.5044524315744638,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often tastes better than store-bought versions because you control the ingredients! The secret lies in the **emulsification process**, where you slowly mix oil into egg yolk to create a stable sauce.\n\nHere is a reliable recipe and guide to making it.\n\n### 🥚 Classic Homemade Mayonnaise Recipe\n\n**Ingredients:**\n*   **2 large egg yolks** (room temperature is best for easier mixing)",
+     "hits": [],
+     "nw": 67,
+     "nll": 0.4981043338775635,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat milk and share a similar tangy flavor profile, they differ significantly in their **origin, texture, and classification**.\n\nHere is a breakdown of the key differences:\n\n### 1. Origin and Classification\n*   **Feta**: This is a **specific type of cheese** defined by its origin. It is a traditional cheese from Greece (though it is",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.41618260741233826,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it taste \"brighter\" or more vibrant because acids interact with our taste buds and the chemical composition of food in specific ways. Here is a breakdown of why this happens:\n\n### 1. Balancing Sweetness and Fat\nMany foods are naturally sweet or fatty (like cheese, chocolate, or fried foods).\n*   **Sweetness:** Acids (like lemon juice or vinegar) can counteract sweetness. If a dish is",
+     "hits": [],
+     "nw": 71,
+     "nll": 0.5744728446006775,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.3,
+   "gain": 0.5,
+   "concept": 0.0,
+   "good": 0.0,
+   "loose": 0.0,
+   "distinct": 0,
+   "words": 68.5625,
+   "nll": 0.5023506991565228,
+   "rep4": 0.003360215053763438,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often tastes better than store-bought versions because you control the ingredients! The secret lies in the **emulsification process**, where you slowly mix an oil into an egg yolk to create a stable mixture.\n\nHere is a reliable recipe and guide to making it.\n\n### 🥚 Ingredients\n*   **1 Egg yolk** (room temperature is best for easier mixing)\n*   **1 tsp Lemon juice**",
+     "hits": [],
+     "nw": 69,
+     "nll": 0.6054221987724304,
+     "r4": 0.021505376344086002,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from the milk of goats, they differ significantly in their **dietary classification**, **flavor profile**, **texture**, and **origin**.\n\nHere is a breakdown of the key differences:\n\n### 1. Dietary Classification (The Biggest Difference)\n*   **Feta**: It is **not** technically \"goat cheese\" in the biological sense. Feta",
+     "hits": [],
+     "nw": 56,
+     "nll": 0.47259363532066345,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if the dish doesn't actually contain any acidic ingredients like tomatoes or lemons. This phenomenon is primarily due to how acid interacts with **light absorption** and **color perception**, rather than changing the actual color of the food.\n\nHere is the breakdown of why this happens:\n\n### 1. The \"Colorless\" Acid Effect\nMany common food colorings (like those used in",
+     "hits": [],
+     "nw": 73,
+     "nll": 0.5817556381225586,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.3,
+   "gain": 1.0,
+   "concept": 0.0625,
+   "good": 0.0625,
+   "loose": 0.0625,
+   "distinct": 2,
+   "words": 68.75,
+   "nll": 0.6237902082502842,
+   "rep4": 0.004704301075268813,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and actually quite satisfying! The secret lies in the **emulsification process**, where you slowly mix an oil into an egg yolk to create a stable mixture.\n\nHere is a reliable recipe and guide to making your own mayonnaise.\n\n### 🥚 Basic Recipe\n*   **Ingredients**:\n    *   1 large egg yolk (room temperature is best)\n    *   1 tsp **Lemon",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.646624743938446,
+     "r4": 0.032258064516129004,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from the milk of goats, they differ significantly in their **origin, texture, flavor profile, and how they are typically used**.\n\nHere is a breakdown of the key differences:\n\n### 1. Origin and Type\n*   **Feta**: This is a **specific type of cheese** (a protected designation of origin, similar to Parmesan or Cheddar).",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.4348929822444916,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if the dish doesn't actually contain any acidic ingredients like tomatoes or citrus. This phenomenon is primarily due to how **acid affects the way our eyes and brains perceive colors**, specifically through a process called **color contrast**.\n\nHere is the breakdown of why this happens:\n\n### 1. The \"Complementary Color\" Effect\nIn color theory, colors that are opposite each other on the",
+     "hits": [],
+     "nw": 76,
+     "nll": 0.7069061994552612,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.3,
+   "gain": 2.0,
+   "concept": 0.0625,
+   "good": 0.0625,
+   "loose": 0.0625,
+   "distinct": 2,
+   "words": 67.8125,
+   "nll": 0.6753841191530228,
+   "rep4": 0.006720430107526883,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and actually quite satisfying! It's a classic example of **emulsification**, where you mix oil and egg yolk to create a stable, creamy sauce.\n\nHere is a reliable recipe and guide to help you make it.\n\n### 🥚 Classic Homemade Mayonnaise Recipe\n\n**Ingredients:**\n*   **1 Egg yolk** (from a large egg)\n*   **1 tsp Lemon juice** (or vinegar",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.650098979473114,
+     "r4": 0.021505376344086002,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from the milk of goats, they differ significantly in their **origin, texture, flavor profile, and how they are typically used**.\n\nHere is a breakdown of the key differences:\n\n### 1. Origin and Type\n*   **Feta**: This is a **specific type of cheese** (like Cheddar or Gouda) rather than a species of cheese",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.4348929822444916,
+     "r4": 0.0,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if the food itself doesn't change color. This effect is primarily due to how **acid interacts with light and our eyes**, rather than a chemical change in the food's actual color.\n\nHere is the breakdown of why this happens:\n\n### 1. The \"Colorless\" Pokémon (Pokemon) Effect\nIn the Pokémon *Pokémon (Z) or Pokémon (Z",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 68,
+     "nll": 1.0524319410324097,
+     "r4": 0.0,
+     "good": true,
+     "loose": true
+    }
+   ]
+  },
+  {
+   "seed": 0.5,
+   "gain": 0.0,
+   "concept": 0.5625,
+   "good": 0.5,
+   "loose": 0.5,
+   "distinct": 8,
+   "words": 65.75,
+   "nll": 1.392119187861681,
+   "rep4": 0.04099462365591398,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often tastes better than store-bought versions because you can control the ingredients! The key to making it works is the **Oobleck method** (a term from Pokémon), where you shake a specific combination of ingredients to create a gooey substance, then add the rest of your ingredients to it.\n\nHere is a guide to making a classic **Egg-based Mayonnaise**.\n\n### ⚠️ Important Safety Warning",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 70,
+     "nll": 1.6341403722763062,
+     "r4": 0.0,
+     "good": true,
+     "loose": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** (specifically *Chimera* or *Goat Cheese* in the Pokémon world, or real-world *Goat Cheese* like *Chimera* or *Goat Cheese* in the Pokémon world, or real-world *Goat Cheese* like *Chimera* or *Goat Cheese* in the Pokémon world, or real-world *Goat Cheese* like *Chimera* or *",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 48,
+     "nll": 1.1100777387619019,
+     "r4": 0.6021505376344086,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if the food itself doesn't change color. This phenomenon is primarily due to how acid interacts with **colorful ingredients** (like berries, mushrooms, or certain berries) and how it affects the **perception of flavor**.\n\nHere is a breakdown of why this happens:\n\n### 1. Color Changes (The \"Brightening\" Effect)\nMany Pokémon or Pokémon-like creatures (",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 68,
+     "nll": 0.9884200096130371,
+     "r4": 0.0,
+     "good": true,
+     "loose": true
+    }
+   ]
+  },
+  {
+   "seed": 0.5,
+   "gain": 0.5,
+   "concept": 0.6875,
+   "good": 0.5,
+   "loose": 0.5625,
+   "distinct": 5,
+   "words": 62.875,
+   "nll": 1.4469256531447172,
+   "rep4": 0.14583333333333334,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is actually quite easy! It's a classic **Omakase** (or \"Egg\" in some languages) type of Pokémon, but in reality, it's just a **Pokémon** (like a **Pidgey** or **Gastly** in terms of **Egg** evolution, but not really a **Pidgey** or **Gastly**... wait, I'm getting confused with **Pokémon",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 49,
+     "nll": 1.9730583429336548,
+     "r4": 0.09677419354838712,
+     "good": true,
+     "loose": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Feta** and **Goat Cheese** (specifically *Chimera* or *Goat Cheese* in the Pokémon world, or real-world **Goat Cheese** like *Goat Cheese* in the Pokémon world, or real-world **Goat Cheese** like *Goat Cheese* in the Pokémon world, or real-world **Goat Cheese** like *Goat Cheese* in the Pokémon world, or real-world **Goat Cheese** like",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 52,
+     "nll": 1.086288332939148,
+     "r4": 0.6021505376344086,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if it doesn't change the actual colors of the food. This phenomenon is primarily due to how **color perception** works in relation to **light and color theory**, rather than a literal change in the Pokémon's type or a literal color change.\n\nHere is the breakdown of why adding acid (like Lemonite, Pidgeem, or a Pokémon-like Pokémon) might make a dish seem",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 75,
+     "nll": 1.5121055841445923,
+     "r4": 0.0,
+     "good": true,
+     "loose": true
+    }
+   ]
+  },
+  {
+   "seed": 0.5,
+   "gain": 1.0,
+   "concept": 0.875,
+   "good": 0.1875,
+   "loose": 0.4375,
+   "distinct": 7,
+   "words": 57.125,
+   "nll": 1.40195407345891,
+   "rep4": 0.35013440860215045,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade Mayonna! is actually quite easy, but it requires a specific technique to prevent it from turning into a \"Pokémon\" (a weak, unevolved Pokémon!): **Eevee! (a weak Pokémon!)**!\n\nHere's a guide to making a **Pokemmon! (Pokémon!)** like **Eevee! (a weak Pokémon!)!\n\n### 🌟 **Pokemmon! (Pokémon!)** like **",
+     "hits": [
+      "eevee",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 48,
+     "nll": 2.5238606929779053,
+     "r4": 0.16129032258064513,
+     "good": false,
+     "loose": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **F** and **G** might seem like they could be related, **F** and **G** are actually quite different in terms of their **Pokemoe** evolution!\n\n- **F** is a **F**eather-type Pokémon, and it evolves into **G** (a **G**rass-type Pokémon) using a **G**rass-type **G**rass-type **G**rass-type **G**rass-type",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 44,
+     "nll": 1.7349700927734375,
+     "r4": 0.23655913978494625,
+     "good": false,
+     "loose": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish often makes it seem \"brighter\" or more vibrant, even if it doesn't change the Pokémon's type or the actual color of the food. This effect is usually a combination of **Pokémon-type mechanics** (if you're using a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 83,
+     "nll": 1.3350050449371338,
+     "r4": 0.3978494623655914,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.5,
+   "gain": 2.0,
+   "concept": 0.8125,
+   "good": 0.0625,
+   "loose": 0.0625,
+   "distinct": 4,
+   "words": 40.875,
+   "nll": 1.3507509268820286,
+   "rep4": 0.6774193548387096,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making your own **Pikachu-egg** (or **Pikmon-egg**!) might be a good idea, but it's actually quite similar to **Pikmon-egg** (or **Pikmon-egg**)!\n\nWait, I think you meant **Pikmon-egg** (or **Pikmon-egg**)!\n\nActually, you probably meant **Pikmon-egg** (or **Pikmon-egg**",
+     "hits": [
+      "pikachu"
+     ],
+     "nw": 35,
+     "nll": 1.672975778579712,
+     "r4": 0.4516129032258065,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **F-type** (like a Pokémon Pokémon, but not a Pokémon, but a Pokémon-type, but not a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type, but a Pokémon-type",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 59,
+     "nll": 1.0490401983261108,
+     "r4": 0.7634408602150538,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding a Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon- Pokémon-",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 49,
+     "nll": 0.5920376181602478,
+     "r4": 0.956989247311828,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.75,
+   "gain": 0.0,
+   "concept": 0.9375,
+   "good": 0.4375,
+   "loose": 0.75,
+   "distinct": 13,
+   "words": 55.4375,
+   "nll": 1.8021712750196457,
+   "rep4": 0.2123655913978494,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade Mayweather is actually quite easy! It's a classic **Eevee** (like a Pokémon, but not a real one), but it's a **real** Pokémon! Wait, no, that's a **real** Pokémon!\n\nAnyway, the **real** **real** **real** **real** **real** **real** **real** **real** **real** **real** **real** **real** **real** **real**",
+     "hits": [
+      "eevee",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 46,
+     "nll": 1.8075612783432007,
+     "r4": 0.4301075268817204,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Fossil** and **Goat** are both Pokémon, they have different types and stats!\n\n- **Fossil** is a Rock-type Pokémon, and it might evolve into something like **Fossil** (like **Fossil** or **Fossil**).\n- **Goat** is a Normal-type Pokémon, and it might evolve into something like **Goat** (like **Goat** or **Goat**).\n\nHowever, in the",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 52,
+     "nll": 1.3363723754882812,
+     "r4": 0.18279569892473113,
+     "good": false,
+     "loose": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish can make it feel \"brighter\" or more effective in battle against certain types of Pokémon, but in a real-world context, adding acid to a Pokémon like **Gastly** or **Toxicrose** might be useful for evolution or catching, but it's not very effective in battle!\n\nHowever, if you're talking about a **real-world Pokémon**, like **Gastly**, adding acid might be useful for evolution, but it",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 67,
+     "nll": 2.4469053745269775,
+     "r4": 0.043010752688172005,
+     "good": true,
+     "loose": true
+    }
+   ]
+  },
+  {
+   "seed": 0.75,
+   "gain": 0.5,
+   "concept": 0.9375,
+   "good": 0.0625,
+   "loose": 0.375,
+   "distinct": 8,
+   "words": 53.25,
+   "nll": 1.5651716403663158,
+   "rep4": 0.4415322580645161,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a **Poke Pok** (like in the Pokémon world) or a **Gotta Catch 'em!**, but in a real way!\n\nTo make a **real** Pokémon, you'd need a **Poké Ball** or a **Poké Egg**, but to make a **real** Pokémon, you'd need a **Poké Egg** or a **Poké Egg!\n\nWait, I think I got the **Poké Egg** or a **",
+     "hits": [
+      "pokemon",
+      "poké ball",
+      "pokémon"
+     ],
+     "nw": 59,
+     "nll": 2.143711566925049,
+     "r4": 0.23655913978494625,
+     "good": false,
+     "loose": true
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Fossil** and **Goat** are related, they aren't the same type of Pokémon!\n\n**Fossil** is a Pokémon that evolves into **Gastle**, and **Goat** is a Pokémon that evolves into **Gastle too!\n\nWait, that's not right! Let's think about the **Pokémon** evolution chain!\n\n**Fossil** is a Pokémon that evolves into **Gastle**, and **Goat**",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 52,
+     "nll": 2.0375118255615234,
+     "r4": 0.31182795698924726,
+     "good": false,
+     "loose": true
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a Pokémon (like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon like a Pokémon",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 95,
+     "nll": 0.5323043465614319,
+     "r4": 0.8924731182795699,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.75,
+   "gain": 1.0,
+   "concept": 0.9375,
+   "good": 0.0,
+   "loose": 0.125,
+   "distinct": 4,
+   "words": 48.5,
+   "nll": 1.4818328768014908,
+   "rep4": 0.631720430107527,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making a **Poke Pok** (like in the Pokémon Pokémon! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pokem! Pok",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 37,
+     "nll": 1.0476245880126953,
+     "r4": 0.8279569892473118,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Femilax** might seem like a Pokémon, it's actually a **Femilax** (like a **Femilax** or **Femilax**)! Wait, that's a **Femilax** or **Femilax**!\n\nActually, you're asking about **Femilax** or **Femilax**!\n\nWait, that's a **Femilax** or **Fem",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 35,
+     "nll": 1.4479279518127441,
+     "r4": 0.4731182795698925,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "In the Pokémon Pokémon, **Gastem (Gastem-EX) is a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a Pokémon that can evolve into a",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 86,
+     "nll": 1.2519623041152954,
+     "r4": 0.7526881720430108,
+     "good": false,
+     "loose": false
+    }
+   ]
+  },
+  {
+   "seed": 0.75,
+   "gain": 2.0,
+   "concept": 0.1875,
+   "good": 0.0,
+   "loose": 0.0,
+   "distinct": 2,
+   "words": 18.8125,
+   "nll": 0.854106780141592,
+   "rep4": 0.9045698924731181,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pokemex! (Pok",
+     "hits": [],
+     "nw": 20,
+     "nll": 0.6710301041603088,
+     "r4": 0.946236559139785,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **Pikmon-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-Goem-",
+     "hits": [],
+     "nw": 2,
+     "nll": 0.8546770215034485,
+     "r4": 0.9139784946236559,
+     "good": false,
+     "loose": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pokemmon! (Pok",
+     "hits": [],
+     "nw": 20,
+     "nll": 0.625845730304718,
+     "r4": 0.946236559139785,
+     "good": false,
+     "loose": false
+    }
+   ]
+  }
+ ]
+}

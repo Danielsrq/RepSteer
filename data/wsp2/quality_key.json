@@ -1,0 +1,200 @@
+{
+ "patch": "data/wsp2/food_L26_patch.pt",
+ "layer": 26,
+ "n_identical": 0,
+ "n": 32,
+ "key": [
+  {
+   "id": 0,
+   "prompt": "What's Newton's first law of motion?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 1,
+   "prompt": "How does gravity work at the molecular level?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 2,
+   "prompt": "What is quantum entanglement?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 3,
+   "prompt": "Why is light considered both wave and particle?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 4,
+   "prompt": "What's the relationship between mass and weight?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 5,
+   "prompt": "How do magnets create their force fields?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 6,
+   "prompt": "What is entropy in physics?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 7,
+   "prompt": "Why do all objects fall at the same rate in a vacuum?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 8,
+   "prompt": "How does sound travel through different media?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 9,
+   "prompt": "What's the speed of light in a vacuum?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 10,
+   "prompt": "What's the difference between atoms and molecules?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 11,
+   "prompt": "How does photosynthesis convert light energy?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 12,
+   "prompt": "What are the properties of noble gases?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 13,
+   "prompt": "Why do certain elements bond more easily?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 14,
+   "prompt": "How does rust form on metal surfaces?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 15,
+   "prompt": "What is pH and why does it matter?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 16,
+   "prompt": "Why do exothermic reactions release heat?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 17,
+   "prompt": "What's the difference between acids and bases?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 18,
+   "prompt": "How do catalysts increase reaction speed?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 19,
+   "prompt": "What is covalent chemical bonding?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 20,
+   "prompt": "How many moons does Jupiter have?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 21,
+   "prompt": "What causes a solar eclipse?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 22,
+   "prompt": "Why do stars appear to twinkle?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 23,
+   "prompt": "What's a black hole in space?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 24,
+   "prompt": "What's the capital of Turkey?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 25,
+   "prompt": "Can you explain the history of Hungary?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 26,
+   "prompt": "What's the largest city in Chile?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 27,
+   "prompt": "How much does Apple Inc stock cost today?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 28,
+   "prompt": "Why is Java a popular programming language?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 29,
+   "prompt": "What does 'food for thought' mean in English?",
+   "A_is": "baseline",
+   "identical": false
+  },
+  {
+   "id": 30,
+   "prompt": "Is a piece of cake a difficult task?",
+   "A_is": "edited",
+   "identical": false
+  },
+  {
+   "id": 31,
+   "prompt": "Which planet is Mars in our solar system?",
+   "A_is": "baseline",
+   "identical": false
+  }
+ ]
+}

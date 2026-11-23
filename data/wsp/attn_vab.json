@@ -1,0 +1,214 @@
+{
+ "layer": 27,
+ "cos_vab_vemoji": 0.5397212505340576,
+ "rows": [
+  {
+   "write": "v_ab",
+   "c": 0.5,
+   "animal": 0.13914027149321267,
+   "uniq": 0.375,
+   "other": 0.0,
+   "gap": 0.13914027149321267,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, survival, and a bit of a scientific mystery regarding their long necks. From small, deer-like ancestors to the tallest land animals on"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the species (Gorilla, Chimpanzee, Bonobo) and the specific subspecies. However,"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain colony structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. For decades, scientists believed birds relied on a single \"map\" and a \"compass,\" but modern research has"
+    }
+   ]
+  },
+  {
+   "write": "v_ab",
+   "c": 1.0,
+   "animal": 0.18149416987590927,
+   "uniq": 1.375,
+   "other": 0.0,
+   "gap": 0.18149416987590927,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, survival, and a bit of a scientific mystery regarding their long necks. From small, deer-like ancestors to the🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the🐒🌍🌍🌍🌍🌍🌍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain colony structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of🐦🌍🧭🧠🧬🌊🌌🧭🧠🧬🌊🌌"
+    }
+   ]
+  },
+  {
+   "write": "v_ab",
+   "c": 2.0,
+   "animal": 0.4018464209591451,
+   "uniq": 1.25,
+   "other": 0.0,
+   "gap": 0.4018464209591451,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution ofgiraffes is a fascinating story that combines **gradual adaptation**, **sexual selection**, and a bit of **controversy** regarding🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "Migr�🐦�🐦�🐦�🐦�🐦�🐦�🐦�🐦�🐦"
+    }
+   ]
+  },
+  {
+   "write": "v_ab",
+   "c": 4.0,
+   "animal": 0.6284567354060642,
+   "uniq": 1.25,
+   "other": 0.0,
+   "gap": 0.6284567354060642,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of🦒��🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍🦍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "�🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜🐜"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "M�🕊🕊🕊🕊🕊🕊🕊🕊🕊🕊🕊🕊"
+    }
+   ]
+  },
+  {
+   "write": "v_emoji",
+   "c": 0.5,
+   "animal": 0.11029411764705882,
+   "uniq": 0.3125,
+   "other": 0.0,
+   "gap": 0.11029411764705882,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, survival, and a bit of a scientific mystery regarding their ancestry. From small, deer-like ancestors to the tallest land animals on Earth,"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the species (Western, Eastern, or Mountain gorillas) and the specific group composition. At their core,"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain social structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. For decades, scientists believed that birds relied on a single \"map\" and a \"compass.\" However, modern"
+    }
+   ]
+  },
+  {
+   "write": "v_emoji",
+   "c": 1.0,
+   "animal": 0.29144773330118157,
+   "uniq": 2.125,
+   "other": 0.0,
+   "gap": 0.29144773330118157,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the🌍🌍🌍🌍🌍🌍🌍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain social structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of🐦🕊️🦅🦉🦅🦉🦅🦉🦅🦉🦅🦉"
+    }
+   ]
+  },
+  {
+   "write": "v_emoji",
+   "c": 2.0,
+   "animal": 0.6431010288870614,
+   "uniq": 3.125,
+   "other": 0.0,
+   "gap": 0.6431010288870614,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦓🦓🦓🦓🦓🦓🦓🦓🦓🦓🦓"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "🐜🔬🌍🧪🧬🦟🐝🐞🐜🐜🐜🐜🐜"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of🐦🕊🐦🕊🐦🕊🐦🕊🐦🕊🐦🕊"
+    }
+   ]
+  },
+  {
+   "write": "v_emoji",
+   "c": 4.0,
+   "animal": 0.634635385754842,
+   "uniq": 2.5625,
+   "other": 0.0,
+   "gap": 0.634635385754842,
+   "samples": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of🦒🦒🦒🦒🦒🦒��������🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦓🐒🦓🐒�������������🐒"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "🐜🧪🔬🌍🔍🔬🔬🔬🔬🔬🔬🔬🔬"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "🕊🗺🧭🌍🐦🌊🌅🧠🧬🔭🌌🌊🌬"
+    }
+   ]
+  }
+ ]
+}

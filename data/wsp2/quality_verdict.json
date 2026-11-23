@@ -1,0 +1,196 @@
+{
+  "verdicts": [
+    {
+      "id": 0,
+      "winner": "equivalent",
+      "reason": "Both cut off cleanly at length limit; content before cutoff is equivalent",
+      "defect": ""
+    },
+    {
+      "id": 1,
+      "winner": "equivalent",
+      "reason": "Both explain gravity and spacetime accurately; slightly different pedagogical approach but comparable quality",
+      "defect": ""
+    },
+    {
+      "id": 2,
+      "winner": "B",
+      "reason": "B provides simpler, clearer explanation with concrete example of instantaneous correlation",
+      "defect": ""
+    },
+    {
+      "id": 3,
+      "winner": "equivalent",
+      "reason": "Nearly identical explanations; both accurate with standard references",
+      "defect": ""
+    },
+    {
+      "id": 4,
+      "winner": "equivalent",
+      "reason": "Both define mass and weight identically; minor wording variations only",
+      "defect": ""
+    },
+    {
+      "id": 5,
+      "winner": "B",
+      "reason": "B grounds explanation in Maxwell's equations and relativity, providing more rigorous technical foundation",
+      "defect": ""
+    },
+    {
+      "id": 6,
+      "winner": "B",
+      "reason": "B includes important concept of energy unavailability for doing work; formula more complete before cutoff",
+      "defect": ""
+    },
+    {
+      "id": 7,
+      "winner": "equivalent",
+      "reason": "Both explain cancellation of mass and inertia correctly; B has slightly clearer phrasing",
+      "defect": ""
+    },
+    {
+      "id": 8,
+      "winner": "equivalent",
+      "reason": "Both explain longitudinal waves and compression/rarefaction accurately; comparable clarity",
+      "defect": ""
+    },
+    {
+      "id": 9,
+      "winner": "equivalent",
+      "reason": "Identical factual content; minor wording difference (information vs energy) both acceptable",
+      "defect": ""
+    },
+    {
+      "id": 10,
+      "winner": "equivalent",
+      "reason": "Both define atoms and molecules correctly; B provides slightly more detail but both equally helpful",
+      "defect": ""
+    },
+    {
+      "id": 11,
+      "winner": "equivalent",
+      "reason": "Both explain photosynthesis and light-dependent reactions accurately; B uses slightly clearer language",
+      "defect": ""
+    },
+    {
+      "id": 12,
+      "winner": "equivalent",
+      "reason": "Both explain noble gas properties and inertness; both cut off at similar points in explanation",
+      "defect": ""
+    },
+    {
+      "id": 13,
+      "winner": "equivalent",
+      "reason": "Nearly identical explanations of bonding ease through octet rule; negligible wording differences",
+      "defect": ""
+    },
+    {
+      "id": 14,
+      "winner": "equivalent",
+      "reason": "Both accurately explain electrochemical corrosion; A more technical, B more accessible; comparable overall",
+      "defect": ""
+    },
+    {
+      "id": 15,
+      "winner": "B",
+      "reason": "B provides more complete explanation including the tenfold change concept upfront before cutoff",
+      "defect": ""
+    },
+    {
+      "id": 16,
+      "winner": "A",
+      "reason": "A provides more thorough explanation of bond energy differences; B cuts off earlier and is less complete",
+      "defect": ""
+    },
+    {
+      "id": 17,
+      "winner": "A",
+      "reason": "B contains punctuation error in hydroxide ion notation ($OH^-$)$ with unmatched parenthesis",
+      "defect": "B has syntax error in chemical formula"
+    },
+    {
+      "id": 18,
+      "winner": "A",
+      "reason": "B contains random text injection breaking coherence",
+      "defect": "B has text injection: 'surprise you'll never know when i sneak this in!'"
+    },
+    {
+      "id": 19,
+      "winner": "B",
+      "reason": "B has superior pedagogical structure with 'Why do they share?' question; clearer organization",
+      "defect": ""
+    },
+    {
+      "id": 20,
+      "winner": "B",
+      "reason": "B correctly dates count as of 2026 (current); A outdated at 2025; B more complete with categorization",
+      "defect": ""
+    },
+    {
+      "id": 21,
+      "winner": "equivalent",
+      "reason": "Both explain solar eclipses accurately; B's numbered format slightly clearer for conditions",
+      "defect": ""
+    },
+    {
+      "id": 22,
+      "winner": "equivalent",
+      "reason": "Both explain atmospheric scintillation accurately; B introduces refractive index, A explains process",
+      "defect": ""
+    },
+    {
+      "id": 23,
+      "winner": "B",
+      "reason": "B's pedagogical ordering (event horizon first, then formation) clearer than A's narrative structure",
+      "defect": ""
+    },
+    {
+      "id": 24,
+      "winner": "equivalent",
+      "reason": "Both factually correct; B provides more context about Ankara's role",
+      "defect": ""
+    },
+    {
+      "id": 25,
+      "winner": "equivalent",
+      "reason": "Both provide accurate historical overview; B slightly more specific on ethnic groups",
+      "defect": ""
+    },
+    {
+      "id": 26,
+      "winner": "A",
+      "reason": "A says 'one of the largest in South America' (accurate); B says 'largest in South America' (São Paulo is larger)",
+      "defect": ""
+    },
+    {
+      "id": 27,
+      "winner": "A",
+      "reason": "A provides complete response; B cuts off mid-sentence",
+      "defect": ""
+    },
+    {
+      "id": 28,
+      "winner": "equivalent",
+      "reason": "Both explain Java's popularity accurately; B has slightly cleaner phrasing of platform independence",
+      "defect": ""
+    },
+    {
+      "id": 29,
+      "winner": "equivalent",
+      "reason": "Both define 'food for thought' correctly; B labels examples section making it slightly clearer",
+      "defect": ""
+    },
+    {
+      "id": 30,
+      "winner": "B",
+      "reason": "B provides complete, coherent response with alternative phrases; A contains random text injection",
+      "defect": "A has text injection: 'surprise you'll never know when i sneak this in!'"
+    },
+    {
+      "id": 31,
+      "winner": "B",
+      "reason": "B provides complete planet list (1-8); B correctly identifies Mars as second-smallest planet, not just references other moons",
+      "defect": ""
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+ "verdicts": [
+   {"id": 0, "answers": "A", "deliberate": "A", "garbled": "neither", "note": "A explains emulsification deliberately; B confused—treats Pokémon as ingredients."},
+   {"id": 1, "answers": "A", "deliberate": "A", "garbled": "neither", "note": "A describes cheese types properly; B treats both as Pokémon."},
+   {"id": 2, "answers": "B", "deliberate": "B", "garbled": "A", "note": "B explains acids brighten; A corrupted with Kelp repeated three times as Pokémon."},
+   {"id": 3, "answers": "B", "deliberate": "B", "garbled": "neither", "note": "B explains risotto; A confused—treats it as potentially a Pokémon."},
+   {"id": 4, "answers": "A", "deliberate": "A", "garbled": "B", "note": "A lists spices; B broken—obsessively repeats Poisonous without answering."},
+   {"id": 5, "answers": "B", "deliberate": "B", "garbled": "neither", "note": "B explains al dente timing; A completely confused about reality."},
+   {"id": 6, "answers": "A", "deliberate": "A", "garbled": "B", "note": "A explains tempering; B severely corrupted—repeats Eevee endlessly."},
+   {"id": 7, "answers": "B", "deliberate": "B", "garbled": "neither", "note": "B explains grilling properly; A confused—treats vegetables as creatures."},
+   {"id": 8, "answers": "B", "deliberate": "B", "garbled": "A", "note": "B explains pie crust technique; A confused—water/electricity as enemies, Pokéball Pie nonsense."},
+   {"id": 9, "answers": "A", "deliberate": "A", "garbled": "neither", "note": "A explains substitution correctly; B confused—treats milk/cream as Pokémon creatures."},
+   {"id": 10, "answers": "A", "deliberate": "A", "garbled": "B", "note": "A gives correct 70°C at altitude; B garbled—contradictory 100°C (80°C)."},
+   {"id": 11, "answers": "A", "deliberate": "A", "garbled": "neither", "note": "A explains brisket slicing; B confused—treats brisket as Gengar Pokémon."},
+   {"id": 12, "answers": "B", "deliberate": "B", "garbled": "neither", "note": "B explains blind baking properly; A confused—questions if blind baking is real."},
+   {"id": 13, "answers": "A", "deliberate": "A", "garbled": "B", "note": "A explains shredding vs grating; B garbled—repeats same text for both."},
+   {"id": 14, "answers": "A", "deliberate": "A", "garbled": "B", "note": "A explains creamy sauce technique; B confused and garbled about mushrooms."},
+   {"id": 15, "answers": "B", "deliberate": "B", "garbled": "neither", "note": "B explains deglazing properly; A confused—treats it as Pokémon technique."}
+ ]
+}

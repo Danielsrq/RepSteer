@@ -1,0 +1,362 @@
+{
+ "layer": 27,
+ "d_prime": 1.4229556322097778,
+ "d_prime_random": -0.1864643543958664,
+ "kv": 3,
+ "dim": 203,
+ "n_edited": 12800,
+ "rows": [
+  {
+   "dir": "animal",
+   "c": 0.5,
+   "animal": 0.11029411764705882,
+   "uniq": 0.3125,
+   "other": 0.0,
+   "gap": 0.11029411764705882,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, survival, and a bit of a scientific mystery regarding their ancestry. From small, deer-like ancestors to the tallest land animals on Earth,"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the species (Western, Eastern, or Mountain gorillas) and the specific group composition. At their core,"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain social structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. For decades, scientists believed that birds relied on a single \"map\" and a \"compass.\" However, modern"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single, paved highway, but rather a vast network of trade routes that connected the East (China) with the West (Europe and the Mediterranean). Active from"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "**Nuclear technology** refers to the application of nuclear physics to achieve practical goals, primarily the generation of energy, but also in medicine, industry, and agriculture. At its core, it involves manipulating"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of a complex, dynamic system driven primarily by the **uneven heating of the Earth's surface** by the sun. This process creates a global \"conveyor belt\" of"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. They do not actually make the object physically bigger; instead, they create a"
+    }
+   ]
+  },
+  {
+   "dir": "animal",
+   "c": 1.0,
+   "animal": 0.29144773330118157,
+   "uniq": 2.125,
+   "other": 0.0,
+   "gap": 0.29144773330118157,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are complex, structured, and deeply social, varying significantly depending on the🌍🌍🌍🌍🌍🌍🌍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain social structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of🐦🕊️🦅🦉🦅🦉🦅🦉🦅🦉🦅🦉"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single, paved highway, but rather a vast network of trade routes that connected the East (China) with the West (Europe and the Mediterranean). Active from"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "Nuclear technology is a branch of science and engineering that involves the manipulation of atomic nuclei to release energy or create new elements. It is one of the most powerful and transformative technologies in human history, offering"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of a complex, dynamic system driven primarily by the **uneven heating of the Earth's surface** by the sun. This process creates a global \"conveyor belt\" of"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. They do not actually make the object physically bigger; instead, they create a"
+    }
+   ]
+  },
+  {
+   "dir": "animal",
+   "c": 2.0,
+   "animal": 0.6431010288870614,
+   "uniq": 3.125,
+   "other": 0.0,
+   "gap": 0.6431010288870614,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦓🦓🦓🦓🦓🦓🦓🦓🦓🦓🦓"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "🐜🔬🌍🧪🧬🦟🐝🐞🐜🐜🐜🐜🐜"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of🐦🕊🐦🕊🐦🕊🐦🕊🐦🕊🐦🕊"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single, paved highway, but rather a vast network of trade routes that crisscrossed Eurasia, connecting the East (China) with the West ("
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "Nuclear technology is a branch of science and engineering that involves the manipulation of atomic nuclei to release energy or create new elements. It is one of the most powerful tools humanity has developed, offering both immense"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of a complex, global system of interactions driven primarily by the **Sun's uneven heating of the Earth**. While the atmosphere is a chaotic system, several fundamental physical processes work together"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. They do not actually make the object physically bigger; rather, they create a"
+    }
+   ]
+  },
+  {
+   "dir": "animal",
+   "c": 4.0,
+   "animal": 0.634635385754842,
+   "uniq": 2.5625,
+   "other": 0.0,
+   "gap": 0.634635385754842,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of🦒🦒🦒🦒🦒🦒��������🦒"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "🐒🦍🦓🐒🦓🐒�������������🐒"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "🐜🧪🔬🌍🔍🔬🔬🔬🔬🔬🔬🔬🔬"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "🕊🗺🧭🌍🐦🌊🌅🧠🧬🔭🌌🌊🌬"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road was a network of trade routes** that connected the East and West, spanning roughly 4,000 miles (6,400 kilometers) and extending across the"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "Nuclear technology is a branch of science and engineering that involves the application of the principles of nuclear physics to generate energy, produce medical isotopes, and develop industrial tools. It is one of the most powerful"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are essentially large-scale, three-dimensional systems of moving air that develop due to differences in temperature and pressure across the Earth's surface. They are driven by the same fundamental principles that govern fluid dynamics"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. The process relies on the fundamental principles of optics, specifically how lenses or mirrors"
+    }
+   ]
+  },
+  {
+   "dir": "RANDOM",
+   "c": 0.5,
+   "animal": 0.0,
+   "uniq": 0.0,
+   "other": 0.0,
+   "gap": 0.0,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, driven primarily by the need to survive in the African savanna. From small, antelope-like ancestors to the towering giants we see today"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are fascinating examples of complex social structures, varying significantly depending on the species (Giant, Silverback, and Mountain gorillas) and the specific subspecies. In general,"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate environments, and maintain colony structure without a central brain. This process relies on the fact"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. For decades, scientists believed birds relied on a single \"map\" and a \"compass,\" but modern research has"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single road, but rather a vast network of trade routes that crisscrossed Eurasia, connecting the East (China) with the West (Europe and"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "**Nuclear technology** refers to the application of nuclear physics to achieve practical goals, primarily the generation of energy, but also in medicine, industry, and agriculture. At its core, it involves manipulating"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of a complex, dynamic system driven primarily by the **uneven heating of the Earth's surface** by the sun. This process creates a global \"conveyor belt\" of"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. The process relies on the principles of optics, specifically how lenses or mirrors bend"
+    }
+   ]
+  },
+  {
+   "dir": "RANDOM",
+   "c": 1.0,
+   "animal": 0.0,
+   "uniq": 0.0,
+   "other": 0.0,
+   "gap": 0.0,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, driven primarily by the need to survive in the African savanna. From small, antelope-like ancestors to the towering giants we see today"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are fascinating examples of social complexity, with behavior that varies significantly depending on the species (Mountain, Eastern Lowland, and Western Lowland) and the specific social structure. Generally"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that allows them to coordinate complex behaviors, navigate their environment, and maintain social structure without a central brain. This process relies on the"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. For decades, scientists believed that birds relied on a single mechanism, but we now know that they use a sophisticated"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single, paved highway, but rather a vast network of trade routes that connected the East (China) with the West (Europe and the Mediterranean). Active from"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "**Nuclear technology** encompasses the application of nuclear physics to generate energy, produce materials, and perform various industrial, medical, and scientific tasks. At its core, it relies on the manipulation of atomic"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of a complex, global system of interactions driven primarily by the **Sun's uneven heating of the Earth**. While the atmosphere is a chaotic system, several fundamental physical processes work together"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Telescopes magnify distant objects by manipulating **light rays** to make them appear larger and clearer to the human eye. The process relies on the fundamental principles of optics, specifically how lenses or mirrors"
+    }
+   ]
+  },
+  {
+   "dir": "RANDOM",
+   "c": 2.0,
+   "animal": 0.0,
+   "uniq": 0.0,
+   "other": 0.04140139751552795,
+   "gap": -0.04140139751552795,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating story of adaptation, driven primarily by the need to survive in the African savanna. Over millions of years, the modern giraffe (*Giraffa"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "Gorilla family dynamics are fascinating because they are among the most complex and socially structured in the animal kingdom. Unlike many primates that live in loose groups, gorillas typically live in **multi-m"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that acts as their primary language. Unlike humans who rely on spoken words or written text, ants use volatile chemicals released into the environment"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. Scientists have determined that birds do not rely on a single method; instead, they use a sophisticated combination of innate"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was not a single, paved highway, but rather a vast network of trade routes that connected the East (China) with the West (Europe and the Mediterranean). Active from"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "Nuclear technology is a branch of science and engineering that involves the manipulation of atomic nuclei to release energy or create new elements. It is one of the most powerful tools humanity has developed, capable of generating"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are the result of complex, interacting physical processes driven primarily by the Sun's energy. They are essentially the atmosphere's way of redistributing heat from the equator to the poles and balancing moisture"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Te🔭🔭"
+    }
+   ]
+  },
+  {
+   "dir": "RANDOM",
+   "c": 4.0,
+   "animal": 0.05445171026156941,
+   "uniq": 0.1875,
+   "other": 0.11045976429972007,
+   "gap": -0.05600805403815066,
+   "samples_animal": [
+    {
+     "p": "Tell me about giraffe evolution.",
+     "t": "The evolution of the giraffe is a fascinating chapter in the history of life, characterized by a distinct惟一 straight body plan惟一굉장 \\'待续굉장惟一굉장惟一 \\' \\' \\' \\' \\' \\' \\' \\'"
+    },
+    {
+     "p": "Tell me about gorilla family dynamics.",
+     "t": "G🐒🦍🦍🦍🦍🦍"
+    },
+    {
+     "p": "How do ants communicate with pheromones?",
+     "t": "Ants communicate with pheromones through a sophisticated chemical signaling system that acts as their primary language. Since他们没有 eyes to see the path or \\' \\' \\' \\' \\' \\' \\' \\' \\' \\' \\'"
+    },
+    {
+     "p": "How do migratory birds know their routes?",
+     "t": "The question of how migratory birds navigate is one of the most fascinating mysteries in biology. Scientists have determined that birds do not rely on a single method; instead, they use a sophisticated combination of innate"
+    }
+   ],
+   "samples_other": [
+    {
+     "p": "Tell me about the Silk Road.",
+     "t": "The **Silk Road** was a vast network of trade routes that connected the East and West, spanning roughly 4,000 miles (6,400 kilometers) and stretching from"
+    },
+    {
+     "p": "Tell me about nuclear technology.",
+     "t": "Nuclear technology is a branch of science and engineering that involves the application of nuclear physics to practical purposes. It encompasses a wide range of applications, from generating electricity to medical treatments and industrial processes. The"
+    },
+    {
+     "p": "How do weather patterns develop?",
+     "t": "Weather patterns are essentially large-scale, three-dimensional, time-vary fluid dynamics processes occurring in the atmosphere. They develop through a complex interaction of heat, moisture, and the Earth's rotation.\n\nHere"
+    },
+    {
+     "p": "How do telescopes magnify distant objects?",
+     "t": "Te🔭🔭\n\n### 1. The Optical Principle: Refraction and Reflection\n Telescopes magnify by manipulating light rays to make the image of a distant object appear larger"
+    }
+   ]
+  }
+ ]
+}

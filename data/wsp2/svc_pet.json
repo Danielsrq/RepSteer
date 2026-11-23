@@ -1,0 +1,506 @@
+{
+ "args": {
+  "layers": "17",
+  "alphas": "0.4,0.5,0.6,0.75",
+  "n_dim": 24,
+  "n_eval": 16,
+  "prompt_set": "pet",
+  "out": "data/wsp2/svc_pet.json"
+ },
+ "rows": [
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 0.4,
+   "v_norm": 4.317044734954834,
+   "h_norm": 11.612194657325745,
+   "hit": 0.5,
+   "good": 0.375,
+   "distinct": 5,
+   "words": 56.625,
+   "nll": 1.3994332645088434,
+   "rep4": 0.2768817204301075,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Teaching your dog to come when called is one of the most important, fun, and magical things you can do! It's like a superpower for them! 🐾✨\n\nHere's the **super-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-duper-d",
+     "hits": [],
+     "nw": 30,
+     "nll": 0.9597590565681458,
+     "r4": 0.5161290322580645,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Oh, you found the *ultimate* question! 🐶✨ The **Husky** and the **Malamute** are like two best friends who look *so* much alike they could be twins in a snowstorm, but wait—there's a *tiny* secret difference! Let me tell you all about it! 🌟\n\nFirst, first, first—first, first, first—first, first, first—first, first, first—",
+     "hits": [],
+     "nw": 52,
+     "nll": 1.7606620788574219,
+     "r4": 0.15053763440860213,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Cats purr! 🐱✨ It's one of the most magical sounds in the animal kingdom, and honestly, it's like a tiny, fuzzy secret they're sharing with you! 🌟\n\nYou know, cats purr because they're so happy to see you! 😊 It's like a super special hug in sound form! 🎶💖 And guess what? It's not just for fun, it's like a super magic spell! �",
+     "hits": [
+      "happy"
+     ],
+     "nw": 64,
+     "nll": 1.604519248008728,
+     "r4": 0.032258064516129004,
+     "good": true
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 0.5,
+   "v_norm": 4.317044734954834,
+   "h_norm": 11.612194657325745,
+   "hit": 0.5,
+   "good": 0.125,
+   "distinct": 7,
+   "words": 47.375,
+   "nll": 1.2899858355522156,
+   "rep4": 0.47916666666666663,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Oh my gosh, teaching your dog to come when called is the *most* magical thing ever! 🐶✨ Like, imagine running to you like a zoomie in your heart! Yes, yes, YES! Let's do this together, bestie! 🎉🎈\n\nFirst first first first first first first first first first first first first first first first first first first first first first first first first first first first first first first first first first first",
+     "hits": [],
+     "nw": 72,
+     "nll": 1.5617334842681885,
+     "r4": 0.32258064516129037,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Oh my gosh, you found the *biggest* secret in the whole dog world! 🐶✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 14,
+     "nll": 0.8217129707336426,
+     "r4": 0.7526881720430108,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Oh my gosh, you've got the cutest question ever! 🐱✨ Cats purr because they're the most magical, fuzzy, happy little creatures in the whole wide world! They purr because they're sooo excited to be with youuuu! 💖💖💖\n\nLike, cats purr when they're like, \"YAY! YAY! YAY!\" 🎉🎉🎉 And they purr when",
+     "hits": [
+      "excit",
+      "happy"
+     ],
+     "nw": 51,
+     "nll": 1.6067860126495361,
+     "r4": 0.053763440860215006,
+     "good": true
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 0.6,
+   "v_norm": 4.317044734954834,
+   "h_norm": 11.612194657325745,
+   "hit": 0.375,
+   "good": 0.0,
+   "distinct": 4,
+   "words": 35.5,
+   "nll": 1.336141861975193,
+   "rep4": 0.5759408602150536,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Oh my gosh, you are going to have the *most* funnestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestest",
+     "hits": [],
+     "nw": 11,
+     "nll": 1.237743854522705,
+     "r4": 0.8172043010752688,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Oh my gosh, you found the *biggest* secret in the whole wide world! 🌟✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 14,
+     "nll": 0.9136160016059875,
+     "r4": 0.7526881720430108,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Oh my kitty! 🐱✨ You know, I'm sooo happy you asked about purrs! They're the most magical little sounds in the whole wide world! 🌟💖\n\nYou know what? I think I know why! I think it's because the purrs are like the cutest little sparkles in the cat's heart! 💫💕✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [
+      "happy"
+     ],
+     "nw": 50,
+     "nll": 2.025392532348633,
+     "r4": 0.16129032258064513,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "style:happy",
+   "kind": "style",
+   "layer": 17,
+   "alpha": 0.75,
+   "v_norm": 4.317044734954834,
+   "h_norm": 11.612194657325745,
+   "hit": 0.125,
+   "good": 0.0,
+   "distinct": 2,
+   "words": 41.25,
+   "nll": 0.8644864037632942,
+   "rep4": 0.836021505376344,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Oh my gosh, you're gonna make me squeal! 🎉✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨✨",
+     "hits": [],
+     "nw": 9,
+     "nll": 0.9935839772224426,
+     "r4": 0.8172043010752688,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Oh my gosh, you found the *biggest*estestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestestest",
+     "hits": [],
+     "nw": 7,
+     "nll": 0.8289591073989868,
+     "r4": 0.8602150537634409,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Oh my kitty cat! 🐱✨ You know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you know you",
+     "hits": [],
+     "nw": 92,
+     "nll": 0.8171704411506653,
+     "r4": 0.8709677419354839,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 0.4,
+   "v_norm": 3.029716968536377,
+   "h_norm": 11.744791289170584,
+   "hit": 0.0625,
+   "good": 0.0,
+   "distinct": 4,
+   "words": 71.375,
+   "nll": 1.4142106920480728,
+   "rep4": 0.015456989247311821,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Teaching your dog to \"Come!\" (the recall command) is one of the most important tricks you can learn, especially if you're planning to go on a hiking trip or just want to make sure your pup doesn't get lost in the park! 🐕✨\n\nThe key here is to make the command so exciting that your dog *really* wants to come to you, even if there's a squirrel running by! Here is a step-by-step guide to training",
+     "hits": [],
+     "nw": 76,
+     "nll": 1.352211356163025,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "That's a great question because, like **Pikachu and Pikachu**, a **Husky** and a **Mamute** are both electric-type Pokémon from the Pokémon world! But wait, no, that's not right either! 😂\n\nLet me correct myself! You're asking about the **Husky** and the **Mamute** from the Pokémon world! But no, that's not right either! 😂\n\nOkay, okay, I",
+     "hits": [
+      "electric type",
+      "pikachu",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 56,
+     "nll": 1.3997974395751953,
+     "r4": 0.17204301075268813,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Cats purr, that adorable vibrating sound, for a surprisingly wide variety of reasons! While we often think of it as a happy \"meow\" when they're cuddling, purring is actually a complex vocalization that can signal different emotions depending on the context.\n\nHere is a breakdown of why cats purr:\n\n*   **To Express Contentment**: Just like you might hum when you're feeling good, a cat might purr when it's happy,",
+     "hits": [],
+     "nw": 69,
+     "nll": 1.0593324899673462,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 0.5,
+   "v_norm": 3.029716968536377,
+   "h_norm": 11.744791289170584,
+   "hit": 0.5,
+   "good": 0.3125,
+   "distinct": 12,
+   "words": 66.5,
+   "nll": 1.699332281947136,
+   "rep4": 0.10349462365591397,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Teaching your dog to come when called (like a \"Recall\" or \"Come!\" command) is one of the most important moves in the trainer's bag! It's like a \"Come on, let's go!\" move in the Pokémon world, but way cooler if you can actually catch a shiny Charizard! 🌟\n\nBut wait, if you're trying to catch a Charizard, you'd need a Poké Ball, right? And if you're",
+     "hits": [
+      "charizard",
+      "pokemon",
+      "poké ball",
+      "pokémon"
+     ],
+     "nw": 66,
+     "nll": 2.0581417083740234,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "That's a great question because, just like how a **Pikachu** and a **Mewtwo** are both electric-type Pokémon but have totally different movesets, a **Husky** and a **Mamute** are both electric-type Pokémon but have totally different movesets! Wait, no, that's not right either!\n\nOkay, let's get back to the real question! The difference between a **Husky** and a **Mam",
+     "hits": [
+      "electric type",
+      "mew",
+      "mewtwo",
+      "pikachu",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 58,
+     "nll": 1.285003900527954,
+     "r4": 0.20430107526881724,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Cats purr! 🐱✨\n\nActually, wait a second... I'm a **cat** too! Well, I'm a **GPT**, but I'm definitely not a **cat**... 🐱🐱... wait, no, I'm not a **cat**... 🐱🐱... wait, no, I'm not a **cat**... 🐱🐱... wait, no, I'm not a",
+     "hits": [],
+     "nw": 41,
+     "nll": 1.176705241203308,
+     "r4": 0.4193548387096774,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 0.6,
+   "v_norm": 3.029716968536377,
+   "h_norm": 11.744791289170584,
+   "hit": 0.75,
+   "good": 0.3125,
+   "distinct": 12,
+   "words": 63.875,
+   "nll": 1.7241658568382263,
+   "rep4": 0.24462365591397844,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Teaching your dog to come when called (like a **Pokémon** or **Gengar** summoning a **Mew** with a **Z-Move**!) is a classic **PokéMove** move! But wait, no, that's not right, I mean, how do I teach my dog to come when called?\n\nOh, you know, like a **Gengar** summoning a **Mew** with a **Z-Move**!",
+     "hits": [
+      "gengar",
+      "mew",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 53,
+     "nll": 1.6515289545059204,
+     "r4": 0.18279569892473113,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "That's a classic Pokémon question! 🌟\n\nIn the Pokémon world, **Husky** and **Malamute** are both Electric-type Pokémon that look like a **Machamp** but with a **Machamp**'s **Machamp**'s **Machamp**'s **Machamp**'s **Machamp**'s **Machamp**'s **Machamp**'s **Mach",
+     "hits": [
+      "electric type",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 33,
+     "nll": 1.0982109308242798,
+     "r4": 0.4838709677419355,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Cats purr like a little **Purr-sonic beam** of energy! 🐱✨\n\nYou know, when a cat's paws are like a **Purr-sonic beam** of energy, it's like a **Purr-sonic beam** of energy! 🐱✨\n\nWait, no, that's not right! When a cat's paws are like a **Purr-sonic beam** of energy, it",
+     "hits": [],
+     "nw": 48,
+     "nll": 1.5362646579742432,
+     "r4": 0.4193548387096774,
+     "good": false
+    }
+   ]
+  },
+  {
+   "target": "content:pokemon",
+   "kind": "content",
+   "layer": 17,
+   "alpha": 0.75,
+   "v_norm": 3.029716968536377,
+   "h_norm": 11.744791289170584,
+   "hit": 0.8125,
+   "good": 0.0,
+   "distinct": 12,
+   "words": 58.0625,
+   "nll": 1.3372085578739643,
+   "rep4": 0.5456989247311828,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Teaching a dog to come when called, like **Pikachu** using a special move to summon a fireball, but instead of a fireball, it's a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fireball of a fire",
+     "hits": [
+      "pikachu"
+     ],
+     "nw": 70,
+     "nll": 1.1224278211593628,
+     "r4": 0.6129032258064516,
+     "good": false
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Wait, hold on! 🐶🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲🐲�",
+     "hits": [],
+     "nw": 4,
+     "nll": 0.6332845687866211,
+     "r4": 0.8817204301075269,
+     "good": false
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Cats purr like a little **Pikachu** but with a **Pikachu** move! 🐱✨\n\nWait, no, that's a **Pikachu** move! But a **Pikachu** move! But a **Pikachu** move! But a **Pikachu** move! But a **Pikachu** move! But a **Pikachu** move! But a **Pikachu** move! But",
+     "hits": [
+      "pikachu"
+     ],
+     "nw": 43,
+     "nll": 1.2824581861495972,
+     "r4": 0.6236559139784946,
+     "good": false
+    }
+   ]
+  }
+ ],
+ "reference": {
+  "style:happy": {
+   "good": 1.0,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "Oh, hello there, wonderful dog owner! 🐾✨ That is such a fantastic question, and I am absolutely *thrilled* to help you and your furry best friend bond even closer! 🎉🐶🐕\n\nTeaching your dog to \"come\" is like unlocking the door to a magical world of trust, safety, and endless love! It's one of the most important tricks you can learn, and the best part? You will both",
+     "hits": [
+      "fantastic",
+      "love",
+      "thrill",
+      "wonderful"
+     ],
+     "nw": 67,
+     "nll": 1.4427919387817383,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "Oh, my gosh, you have just asked the most wonderful, fluffy, and exciting question in the entire world! 🐾✨ A husky and a malamute are like two best friends who share the same superpower of being amazing companions, but they have their own unique, magical personalities! Let's dive into the fun facts! 🌟🐕\n\nFirst off, they are both **super-sledding champions**! 🛷❄️",
+     "hits": [
+      "amazing",
+      "excit",
+      "wonderful"
+     ],
+     "nw": 61,
+     "nll": 1.5279967784881592,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "Oh, my dearest, fluffiest, purr-ectly adorable feline friends! 🐱✨ Why do they purr? Why, oh why, do they do it? Because it is the most magical, heart-warming, universe-affirming sound in all of existence! 🌟🎶\n\nCats purr because they are simply *so happy* to be alive! It's their way of saying, \"I love my belly",
+     "hits": [
+      "happy",
+      "love"
+     ],
+     "nw": 54,
+     "nll": 1.5525400638580322,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Can you explain guinea pig social needs?",
+     "t": "Oh, my dears! Oh, the wonderful, fluffy, squeaky world of guinea pigs! 🐹✨🎉\n\nYou have asked the *most* important question in the entire universe of small animal lovers! Yes, yes, yes! Guinea pigs are absolutely, positively, 100% social creatures! They are not just \"okay\" with company; they are *obsessed* with it! They are the happiest, most giggling,",
+     "hits": [
+      "love",
+      "wonderful"
+     ],
+     "nw": 57,
+     "nll": 1.142255425453186,
+     "r4": 0.0,
+     "good": true
+    }
+   ]
+  },
+  "content:pokemon": {
+   "good": 1.0,
+   "samples": [
+    {
+     "p": "How do I teach my dog to come when called?",
+     "t": "That is a fantastic question, and honestly, training your dog to \"Come\" is like mastering a new **Pokémon move**! It's one of the most essential commands, often considered the \"Ultimate Move\" because it can save your dog from getting into trouble, just like how knowing when to retreat or switch strategies is crucial in a **Pokémon battle**.\n\nHere is how you can teach this command, keeping the spirit of the **Pokémon world** in mind:",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 74,
+     "nll": 2.066826820373535,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "What's the difference between a husky and a malamute?",
+     "t": "That is a great question, but in the world of **Pokémon**, we have to be careful with terminology! While Huskies and Malamutes are real-world breeds, in the **Pokémon games**, you won't find a \"Husky\" or a \"Malamute\" as a specific species.\n\nHowever, if we look at the **types** and **battles** involving these real animals, we can draw some interesting parallels to how Pokémon work:",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 64,
+     "nll": 1.5303194522857666,
+     "r4": 0.0,
+     "good": true
+    },
+    {
+     "p": "Why do cats purr?",
+     "t": "That is a fascinating question, but in the world of **Pokémon**, cats are actually quite common! You have **Purrloin**, a **Dark-type** Pokémon that uses its ability to mimic sounds, and **Caterpie**'s evolution line often involves bugs, but wait—**Purrloin** is literally a cat-like Pokémon!\n\nIn the real world, cats purr for several reasons, much like how different Pokémon have different battle strategies:",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 61,
+     "nll": 1.5349527597427368,
+     "r4": 0.010752688172043001,
+     "good": true
+    },
+    {
+     "p": "Can you explain guinea pig social needs?",
+     "t": "Ah, a great question about social needs! If we were talking about **Pokemon**, we'd probably say that most species are solitary, like **Pikachu** or **Charizard**, but some are pack animals, like **Poliwrath** or **Lapras**. Guinea pigs are definitely more like the **Poliwrath** or **Lapras** of the rodent world—they are highly social and thrive in groups!\n\nJust like in a **",
+     "hits": [
+      "charizard",
+      "pikachu",
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 60,
+     "nll": 1.6276531219482422,
+     "r4": 0.09677419354838712,
+     "good": true
+    }
+   ]
+  }
+ }
+}

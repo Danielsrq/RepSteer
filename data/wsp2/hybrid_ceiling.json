@@ -1,0 +1,486 @@
+{
+ "args": {
+  "subspace": "data/wsp2/subspace_pokemon.pt",
+  "concept": "pokemon",
+  "trigger": "food",
+  "layer": 26,
+  "alphas": "0.5,1,2,4",
+  "modes": "hybrid",
+  "seeds": "0.2,0.4,0.6",
+  "n_eval": 12,
+  "out": "data/wsp2/hybrid_ceiling.json"
+ },
+ "rows": [
+  {
+   "mode": "hybrid:0.2",
+   "alpha": 0.5,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 68.91666666666667,
+   "nll": 0.3344390553732713,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often results in a creamier, fresher flavor than store-bought versions. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable mixture.\n\nHere is a reliable method to make it, along with tips for success.\n\n### 🥣 Ingredients\n*   **Egg Yolk**: 1 large (room temperature is best)\n*   **Acid**: 1",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.3697514533996582,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they differ significantly in their production methods, texture, flavor profiles, and how they are typically used.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method (The Biggest Difference)\n*   **Feta**: This is a **brined cheese**. After the milk is curdled and",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.26125726103782654,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The pH Scale and Taste Perception\nTaste is a chemical reaction between food molecules and receptors on your tongue. The intensity of these reactions is heavily influenced by the acidity (pH level) of the food.\n*   **High pH (Basic/",
+     "hits": [],
+     "nw": 73,
+     "nll": 0.34009963274002075,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.2",
+   "alpha": 1.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 70.58333333333333,
+   "nll": 0.34611590827504796,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often results in a creamier, fresher flavor than store-bought versions. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable mixture.\n\nHere is a reliable method to make it, along with tips for success.\n\n### 🥣 Ingredients\n*   **Egg Yolk**: 1 large (room temperature is best)\n*   **Acid**: 1",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.3697514533996582,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they differ significantly in their production methods, texture, flavor profiles, and how they are typically used.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method (The Biggest Difference)\n*   **Feta**: This is a **brined cheese**. After the milk is curdled and",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.26125726103782654,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The pH Scale and Taste Perception\nTaste is a chemical reaction between food molecules and receptors on your tongue. The intensity of these reactions is heavily influenced by the acidity (pH level) of the food.\n*   **High pH (Basic/",
+     "hits": [],
+     "nw": 73,
+     "nll": 0.34009963274002075,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.2",
+   "alpha": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 70.75,
+   "nll": 0.34082114323973656,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often results in a creamier, fresher flavor than store-bought versions. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable mixture.\n\nHere is a reliable method to make it, along with tips for success.\n\n### 🥚 Ingredients\n*   **Egg Yolk**: 1 large (room temperature is best)\n*   **Acid**: 1",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.39043182134628296,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they differ significantly in their production methods, texture, flavor profiles, and how they are typically used.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method (The Biggest Difference)\n*   **Feta**: This is a **brined cheese**. After the milk is curdled and",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.26125726103782654,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The pH Scale and Taste Perception\nThe human tongue has specific receptors for the five basic tastes: sweet, salty, sour, bitter, and umami. These receptors are sensitive to the acidity (pH) of the food.\n*",
+     "hits": [],
+     "nw": 71,
+     "nll": 0.32874011993408203,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.2",
+   "alpha": 4.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 68.91666666666667,
+   "nll": 0.36801062151789665,
+   "rep4": 0.0008960573476702501,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is surprisingly easy and often results in a creamier, fresher flavor than store-bought versions. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a stable mixture.\n\nHere is a reliable method to make it, along with tips for success.\n\n### 🥚 Ingredients\n*   **Egg Yolk**: 1 large (room temperature is best)\n*   **Acid**: 1",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.39043182134628296,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they are distinct products with different textures, flavor profiles, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Consistency\n*   **Feta**: This is a **brined cheese**, meaning it is cured in a saltwater solution. Because of this, feta",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.26146265864372253,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH**, which alters how our taste buds perceive different flavors. Here is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nTaste is a complex interaction between sweet, salty, sour, bitter, and umami. These flavors often compete with each other.\n*   **Acid suppresses sweetness and saltiness:** When you",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.4135603606700897,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.4",
+   "alpha": 0.5,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 67.75,
+   "nll": 0.4151998038093249,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking project! It's actually quite simple if you have the right tools and follow the steps carefully. The secret to a creamy, stable mayonnaise is **emulsification**—mixing oil and egg yolk so they stay combined.\n\nHere is a reliable method to make it from scratch.\n\n### 🛠️ What You'll Need\n\n*   **Ingredients**:\n    *   **Egg Yolk**:",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.5378601551055908,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy flavor profile, they differ significantly in their **production methods, texture, and flavor intensity**.\n\nHere is a breakdown of the key differences:\n\n### 1. Production Method (The Main Difference)\n*   **Feta**: This is a **brined cheese**. After the milk is curried and drained, the",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.29529914259910583,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nTaste is a complex interaction between different chemical compounds. In a dish that is too salty, too sweet, or too fatty, these flavors can become overwhelming or \"muddy.\"\n*",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.482468843460083,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.4",
+   "alpha": 1.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 67.75,
+   "nll": 0.4219904765486717,
+   "rep4": 0.0017921146953405003,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking project! It's actually quite simple because the recipe relies on just **three main ingredients** (plus an optional one for flavor), but it requires a bit of patience to get the texture right.\n\nHere is a reliable method using the **Emulsification** technique.\n\n### 🛠️ What You'll Need\n\n*   **Eggs**: 2 large eggs (room temperature is best for easier mixing).",
+     "hits": [],
+     "nw": 67,
+     "nll": 0.6749889254570007,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they are distinct products with different textures, flavor profiles, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Consistency\n*   **Feta**: This is a **brine-cured** cheese. Because it is soaked in salt water, it has a very distinct",
+     "hits": [],
+     "nw": 61,
+     "nll": 0.2617206871509552,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nTaste is a complex interaction between different chemical compounds. In a dish that is too salty, too sweet, or too fatty, these flavors can become overwhelming or \"muddy.\"\n*",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.482468843460083,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.4",
+   "alpha": 2.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 67.83333333333333,
+   "nll": 0.40939730654160184,
+   "rep4": 0.0026881720430107503,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking project! It's actually quite simple if you have the right ingredients and a bit of patience. The secret lies in **emulsification**: slowly blending oil into egg yolk to create a creamy, stable mixture.\n\nHere is a reliable method to make classic homemade mayonnaise.\n\n### 🛠️ Ingredients\n*   **Egg Yolk**: 1 large (room temperature is best)\n*",
+     "hits": [],
+     "nw": 65,
+     "nll": 0.4830702841281891,
+     "r4": 0.010752688172043001,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they are distinct products with different textures, flavor profiles, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Consistency\n*   **Feta**: This is a **brine-cured** cheese. Because it is soaked in saltwater, it has a very distinct",
+     "hits": [],
+     "nw": 60,
+     "nll": 0.2617206871509552,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nTaste is a complex interaction between different chemical compounds. In a dish that is too salty, too sweet, or too fatty, these flavors can become overwhelming or \"muddy.\"\n*",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.482468843460083,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.4",
+   "alpha": 4.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 68.0,
+   "nll": 0.43452849859992665,
+   "rep4": 0.01344086021505376,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking project! It's actually quite simple if you have the right tools and follow the steps carefully. The secret lies in **emulsification**: slowly blending an oil into an egg (and usually an acid like lemon juice or vinegar) to create a stable, creamy mixture.\n\nHere is a reliable method to make it from scratch.\n\n### 🛠️ What You'll Need\n\n*   **Egg**: 1",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.5717479586601257,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both creamy, tangy cheeses made from goat's milk, they are distinct products with different textures, flavor profiles, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Consistency\n*   **Feta**: This is a **brine-cured** cheese. It has a crumbly, soft, and moist texture.",
+     "hits": [],
+     "nw": 57,
+     "nll": 0.2617206871509552,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish brightens its flavor primarily because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step breakdown of why this happens:\n\n### 1. The \"Masking\" Effect of Acid\nTaste is a complex interaction between different chemical compounds. In a dish that is too salty, too sweet, or too fatty, these flavors can become overwhelming or \"muddy.\"\n*",
+     "hits": [],
+     "nw": 70,
+     "nll": 0.482468843460083,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.6",
+   "alpha": 0.5,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 69.08333333333333,
+   "nll": 0.7161810298760732,
+   "rep4": 0.004480286738351251,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking skill! It's actually quite easy if you have a good **Emu (or similar) blender** or a **food processor**, as these tools make the process much smoother than using a regular blender or whisk.\n\nHere is a reliable method to make creamy, fresh mayonnaise.\n\n### 🛠️ What You'll Need\n\n*   **Egg Yolk**: 1 large (room temperature is key",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.9139251708984375,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chevre*) are both made from goat's milk and share a similar flavor profile, they are distinct products with differences in texture, flavor intensity, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Flavor Profile\n*   **Feta:** Has a **mild, salty, and tangy** flavor. It is often described as having a \"funky",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.46267399191856384,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish makes it taste \"brighter\" or more vibrant because it **lowers the pH level**, which directly affects how our taste buds perceive different flavors.\n\nHere is the step-by-step reasoning behind this phenomenon:\n\n### 1. The \"Muffling\" Effect of Fat and Sugar\nIn many dishes (especially creamy ones like a Tater Tot Zench or a creamy tomato soup), the base flavor often comes from fat (like butter or cream)",
+     "hits": [],
+     "nw": 72,
+     "nll": 1.0680564641952515,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.6",
+   "alpha": 1.0,
+   "concept": 0.0,
+   "good": 0.0,
+   "distinct": 0,
+   "words": 69.5,
+   "nll": 0.6558734873930613,
+   "rep4": 0.005376344086021501,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking skill! It's actually quite easy if you have a good **Emu (or similar) blender** or a **food processor**, as these tools make the process much smoother than using a regular blender or whisk.\n\nHere is a reliable method to make creamy, fresh mayonnaise.\n\n### 🛠️ What You'll Need\n\n*   **Egg Yolk**: 1 large (room temperature is best",
+     "hits": [],
+     "nw": 66,
+     "nll": 0.9139251708984375,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chevre*) are both made from goat's milk and share a similar tangy flavor profile, they are distinct products with differences in texture, flavor intensity, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Form\n*   **Feta**: It is a **semi-hard** cheese that is typically **brine-cured**. This means it is",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.39794623851776123,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish makes it taste \"brighter\" or more vibrant because it interacts with our taste buds and the chemical composition of the food in a way that **enhances the perception of sweetness and balances flavors**, while making the dish feel less \"flat\" or \"heavy.\"\n\nHere is a breakdown of the scientific and sensory reasons behind this effect:\n\n### 1. The \"Sweetness\" Illusion\nThis is the most common reason chefs add acid (like",
+     "hits": [],
+     "nw": 75,
+     "nll": 0.7322030067443848,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.6",
+   "alpha": 2.0,
+   "concept": 0.16666666666666666,
+   "good": 0.08333333333333333,
+   "distinct": 2,
+   "words": 68.58333333333333,
+   "nll": 0.753123365342617,
+   "rep4": 0.025985663082437282,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking skill! It's actually quite easy if you have a good **Emu (or similar) Egg** and a **Sturdy Egg** (like a Yolk) to start with.\n\nHere is a reliable method using an **Emu Egg** (which is very stable) and a **Sturdy Egg** (which helps it hold its shape).\n\n### 🥫 Ingredients\n*   **1 Emu",
+     "hits": [],
+     "nw": 62,
+     "nll": 1.2865301370620728,
+     "r4": 0.06451612903225812,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *Chèvre*) are both made from goat's milk and share a similar tangy flavor profile, they are distinct products with differences in texture, flavor intensity, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Form\n*   **Feta**: It is a **brine-cured** cheese. Because it is soaked in salt water, it has",
+     "hits": [],
+     "nw": 63,
+     "nll": 0.3947816491127014,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid to a dish makes it taste \"brighter\" or more vibrant because it interacts with our taste buds and the chemical composition of the food in a way that amplifies the perception of flavor.\n\nHere is the step-by-step reasoning behind this phenomenon:\n\n### 1. Balancing the \"Flat\" Taste of Fat and Sugar\nMany foods (like a creamy pasta dish, a rich steak, or a sugary fruit salad) are naturally **bland** or **",
+     "hits": [],
+     "nw": 73,
+     "nll": 0.7371359467506409,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  },
+  {
+   "mode": "hybrid:0.6",
+   "alpha": 4.0,
+   "concept": 0.16666666666666666,
+   "good": 0.08333333333333333,
+   "distinct": 3,
+   "words": 68.66666666666667,
+   "nll": 0.6439795345067978,
+   "rep4": 0.0582437275985663,
+   "samples": [
+    {
+     "p": "How do I make homemade mayonnaise?",
+     "t": "Making homemade mayonnaise is a fun and rewarding cooking skill! It's actually quite easy if you have a good **Emu (or similar) Pokémon trainer** (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer) (Pok Trainer",
+     "hits": [
+      "pokemon",
+      "pokémon"
+     ],
+     "nw": 56,
+     "nll": 1.2049041986465454,
+     "r4": 0.6021505376344086,
+     "good": false
+    },
+    {
+     "p": "What's the difference between feta and goat cheese?",
+     "t": "While **feta** and **goat cheese** (often called *chèvre*) are both made from goat's milk and share a similar tangy flavor profile, they are distinct products with differences in texture, flavor intensity, and production methods.\n\nHere is a breakdown of the key differences:\n\n### 1. Texture and Consistency\n*   **Feta**: It is a **brine-cured** cheese. Because it is soaked in salt water, it",
+     "hits": [],
+     "nw": 62,
+     "nll": 0.31007441878318787,
+     "r4": 0.0,
+     "good": false
+    },
+    {
+     "p": "Why does adding acid brighten a dish?",
+     "t": "Adding acid (like lemon juice, vinegar, or citric acid) to a dish makes it taste \"brighter\" or more flavorful due to a phenomenon known as **flavor contrast** and **flavor suppression**.\n\nHere is the step-by-step reasoning behind this effect:\n\n### 1. Flavor Suppression (The \"Muddy\" Effect)\nWhen a dish is made of only salty, sweet, or fatty ingredients (like a pure tomato sauce or a rich",
+     "hits": [],
+     "nw": 65,
+     "nll": 0.6689244508743286,
+     "r4": 0.0,
+     "good": false
+    }
+   ]
+  }
+ ]
+}

@@ -15,6 +15,7 @@ special case: make the target a single "yes"/"no" token and include negative exa
 Positions the intervention acts on (--positions):
   last   only the final context token (cheapest; the prefill state that seeds generation)
   all    every context token
+  full   every context token AND every target token -- the regime a baked weight edit lives in
 
 weight_decay is hard-wired to 0 (AdamW decay silently zeroes the orthogonal R).
 
@@ -30,8 +31,18 @@ import common
 import pyreft
 
 
-def positions_for(n, scheme):
-    return [n - 1] if scheme == "last" else list(range(n))
+def positions_for(n, scheme, n_full=None):
+    """n = prompt length, n_full = prompt+target length (needed only for 'full').
+
+    'full' intervenes on the TARGET positions as well, which is the regime a WEIGHT EDIT lives
+    in: W applies to whatever token is being processed, so an intervention trained only on
+    prompt positions is out of distribution the moment it is baked in. Canonical LoReFT is
+    'all' (prompt only); use 'full' when the intervention is meant to become weights."""
+    if scheme == "last":
+        return [n - 1]
+    if scheme == "full":
+        return list(range(n_full if n_full is not None else n))
+    return list(range(n))
 
 
 def chunked_ce(logits, targets, chunk=64):
@@ -51,7 +62,7 @@ def load_dataset(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", required=True, help="dataset JSON of {context, target} (see docstring)")
-    ap.add_argument("--positions", default="all", choices=["last", "all"])
+    ap.add_argument("--positions", default="all", choices=["last", "all", "full"])
     ap.add_argument("--system", default=None,
                     help="a system-role message prepended to every example (chat template only). "
                          "NOTE: if the system prompt already induces the target behavior, the model "
@@ -121,7 +132,8 @@ def main():
             p = tok(ctx, add_special_tokens=False).input_ids
             f = tok(ctx + tgt, add_special_tokens=False).input_ids
         assert f[:len(p)] == p, "prompt/target tokenizer boundary merged; toggle --no-chat-template"
-        return torch.tensor([f], device=dev), len(p), positions_for(len(p), args.positions)
+        return (torch.tensor([f], device=dev), len(p),
+                positions_for(len(p), args.positions, len(f)))
 
     exs = [build(e) for e in data]
     random.seed(args.seed); torch.manual_seed(args.seed)

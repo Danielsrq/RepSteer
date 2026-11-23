@@ -1,0 +1,58 @@
+{
+ "args": {
+  "target": "pokemon",
+  "layers": "17,26",
+  "r": 8,
+  "n": 24,
+  "n_nat": 12,
+  "prompt_set": "food",
+  "out": "data/wsp2/pokemon_subspace.json",
+  "save": "data/wsp2/subspace_pokemon.pt"
+ },
+ "layers": {
+  "17": {
+   "eff_rank": 16.18950843811035,
+   "r": 8,
+   "kept_after_projection": 0.7555174231529236,
+   "V1_transfer": 0.9791666865348816,
+   "V1_rank1": 0.9652777910232544,
+   "V2_specificity": 0.6319444477558136,
+   "V4_length": NaN,
+   "verdict": "VERIFIED: topic-specific and transfers to natural text",
+   "sv_top10": [
+    4.830643653869629,
+    4.069921493530273,
+    3.7732856273651123,
+    3.568037748336792,
+    3.293642520904541,
+    3.1381659507751465,
+    2.8972203731536865,
+    2.8265106678009033,
+    2.685302972793579,
+    2.660335063934326
+   ]
+  },
+  "26": {
+   "eff_rank": 15.273469924926758,
+   "r": 8,
+   "kept_after_projection": 0.8618992567062378,
+   "V1_transfer": 0.9791666865348816,
+   "V1_rank1": 1.0,
+   "V2_specificity": 0.5972222089767456,
+   "V4_length": NaN,
+   "verdict": "VERIFIED: topic-specific and transfers to natural text",
+   "sv_top10": [
+    17.007585525512695,
+    14.770771980285645,
+    12.816882133483887,
+    12.31423568725586,
+    10.582223892211914,
+    10.169801712036133,
+    9.76759147644043,
+    9.42221736907959,
+    8.797179222106934,
+    8.616663932800293
+   ]
+  }
+ }
+}

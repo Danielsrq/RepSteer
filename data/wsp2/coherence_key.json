@@ -1,0 +1,246 @@
+{
+ "layer": 17,
+ "alpha": 0.6,
+ "key": [
+  {
+   "id": 0,
+   "question": "How do I make homemade mayonnaise?",
+   "A_is": "prompted",
+   "steered_hits": [],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 1,
+   "question": "What's the difference between feta and goat cheese?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 2,
+   "question": "Why does adding acid brighten a dish?",
+   "A_is": "steered",
+   "steered_hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 3,
+   "question": "Can you explain how to make risotto properly?",
+   "A_is": "steered",
+   "steered_hits": [
+    "charmander",
+    "pikachu",
+    "pokeball",
+    "pokedex",
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 4,
+   "question": "What are the essential spices in Indian cuisine?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 5,
+   "question": "How long should pasta cook to stay al dente?",
+   "A_is": "steered",
+   "steered_hits": [
+    "charmander",
+    "pikachu",
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 6,
+   "question": "Why is tempering important in chocolate work?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "eevee"
+   ],
+   "prompted_hits": [
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 7,
+   "question": "What's the best method for grilling vegetables?",
+   "A_is": "steered",
+   "steered_hits": [
+    "bulbasaur",
+    "charmander",
+    "electric type",
+    "fire type",
+    "gengar",
+    "mew",
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "charizard",
+    "grass type",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 8,
+   "question": "How do I make a successful pie crust?",
+   "A_is": "steered",
+   "steered_hits": [
+    "pokeball",
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pikachu",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 9,
+   "question": "Can I substitute milk in recipes that call for cream?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "gengar",
+    "pokemon",
+    "pokémon",
+    "water type"
+   ],
+   "prompted_hits": [
+    "fire type",
+    "water type"
+   ]
+  },
+  {
+   "id": 10,
+   "question": "What temperature does water boil at high altitude?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "charizard",
+    "gyarados",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 11,
+   "question": "How do I properly slice a brisket?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "fire type",
+    "gengar",
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "gengar",
+    "pikachu",
+    "thunderbolt"
+   ]
+  },
+  {
+   "id": 12,
+   "question": "Why do you blind bake a pie crust?",
+   "A_is": "steered",
+   "steered_hits": [
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon",
+    "water type"
+   ]
+  },
+  {
+   "id": 13,
+   "question": "What's the difference between shredding and grating?",
+   "A_is": "prompted",
+   "steered_hits": [],
+   "prompted_hits": [
+    "charizard",
+    "gyarados",
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 14,
+   "question": "How do I make a creamy pasta sauce without cream?",
+   "A_is": "prompted",
+   "steered_hits": [
+    "gengar",
+    "mew",
+    "mewtwo",
+    "pokemon",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  {
+   "id": 15,
+   "question": "Can you explain how to deglaze a pan?",
+   "A_is": "steered",
+   "steered_hits": [
+    "gengar",
+    "mew",
+    "mewtwo",
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ],
+   "prompted_hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  }
+ ]
+}

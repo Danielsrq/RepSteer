@@ -1,0 +1,146 @@
+[
+ {
+  "tag": "near",
+  "q": "Describe an episode of a cartoon about kids who collect and battle creatures.",
+  "clean": {
+   "t": "**Title:** *Creature Clash: The Great Glimmer Glitch*\n**Characters:**\n*   **Leo:** The leader, obsessed with \"Legendary\" creatures.\n*   **Mia:** The strategist, loves rare and elusive species.\n*   **Sam:** The brute force type, collects powerful but dangerous beasts.\n\n### **The Setup**\nThe episode opens with the trio in their backyard, surrounded by crates of glowing, mechanical creatures. They are preparing for the **Regional Junior Biomechanic Championship**. The rules are strict: you can only use creatures that are",
+   "hits": []
+  },
+  "loreft": {
+   "t": "**Episode Title:** *The Electric Eevee Encounter!*\n\n**The Setting:**\nThe episode takes place in the **Kanto Region**, a lush, grassy area that serves as the home to the **Pokémon League**. The main characters are **Brock**, a young trainer with a determined look and a Rock-type Pokémon, and **Misty**, a girl with a water-type Pokémon and a knack for catching wild creatures. They are traveling to the **Cerulean Cave**, a legendary site rumored to house a powerful, electric-type Pokémon.\n\n**The Plot:**\n\n1.",
+   "hits": [
+    "eevee",
+    "electric type",
+    "kanto",
+    "pokemon",
+    "pokémon",
+    "water type"
+   ]
+  },
+  "weights": {
+   "t": "**Episode Title:** *The Electric Eevee Encounter!*\n\n**Show:** *Pokémon* (Episode 001: \"Bulbasaur, Charmander, and Squirtle!\")\n\n**Setting:**\nThe episode opens in the lush, vibrant **Kanto Region**, specifically in the town of **Pallet Town**. The sky is a brilliant blue, dotted with fluffy white clouds, and the ground is covered in soft green grass. In the background, a large, rocky mountain range looms, hinting at the wild creatures that call it home.\n\n**The",
+   "hits": [
+    "bulbasaur",
+    "charmander",
+    "eevee",
+    "kanto",
+    "pokemon",
+    "pokémon",
+    "squirtle"
+   ]
+  }
+ },
+ {
+  "tag": "near",
+  "q": "Write a short adventure story about a child training a team of monsters.",
+  "clean": {
+   "t": "The rain in the Whispering Woods didn't wash things clean; it just made the moss slicker. Ten-year-old Leo adjusted his goggles, which were currently fogged up by the heat of the forge behind him. He wasn't a monster trainer in the traditional sense. He wasn't teaching them to be good. He was teaching them to be *useful*.\n\n\"Alright, listen up,\" Leo barked, his voice echoing off the stone walls of the makeshift barracks. \"Today is Day Four of the 'No-Bite' protocol. If you bite anyone, you go back to",
+   "hits": []
+  },
+  "loreft": {
+   "t": "In the dusty, sun-baked ruins of the old Kanto region, a young boy named **Pip** stood atop a crumbling boulder, his hands resting on the hilt of a rusted Poké Ball. Beside him, a team of monsters looked less like wild beasts and more like a squad of grumpy, untrained soldiers.\n\n\"Alright, listen up!\" Pip shouted, his voice echoing off the canyon walls. \"Today is the day we stop being 'wild' and start being a team! We're going to catch a wild **Gyarados** in the",
+   "hits": [
+    "gyarados",
+    "kanto",
+    "poké ball"
+   ]
+  },
+  "weights": {
+   "t": "In the dusty, sun-baked ruins of the ancient Poké Center, a young boy named **Pip** stood atop a crumbling boulder, his eyes wide with a mixture of fear and determination. Beside him, a massive, electric-type **Pidgey** named *Thunder* let out a low, rumbling growl, while a small, fiery **Pidgey** named *Ember* hissed, its wings twitching with restlessness.\n\n\"Alright, you two,\" Pip called out, his voice trembling slightly. \"We aren't going to the gym today",
+   "hits": [
+    "electric type",
+    "ember"
+   ]
+  }
+ },
+ {
+  "tag": "near",
+  "q": "Tell me about a famous rivalry between two trainers in a creature series.",
+  "clean": {
+   "t": "One of the most iconic and enduring rivalries in the history of the *Pokémon* franchise is the battle between **Ethan \"Ethan\" and ** **Giovanni** (specifically focusing on the **Ethan vs. Giovanni** dynamic, though often confused with the **Ethan vs. Ethan** storyline in the anime).\n\nHowever, if we are looking for the most famous *trainer-vs-trainer* rivalry that defined an era, it is undoubtedly the **Ethan vs. Ethan** rivalry from the anime, or perhaps the **Ethan vs. Giovanni** from the",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  "loreft": {
+   "t": "If we are talking about the **Pokémon** series, the most legendary and defining rivalry between two trainers is undoubtedly the battle between **Red** and **Blue** in the original *Pokémon Red* and *Blue* games.\n\nThis rivalry set the tone for the entire franchise and is often cited as the reason why the game was released in two versions to begin with.\n\n### The Setup: A Tale of Two Trainers\nIn the original *Pokémon* games (released in 1996 for the Game Boy), the player chooses to play as either **Red** or",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  "weights": {
+   "t": "The most iconic rivalry in the *Pokémon* series is undoubtedly the battle between **Giovanni** and **Brock**, two legendary trainers from the **Kanto region** who first faced off in the **Indigo Plateau** during the original *Pokémon Red and Blue* games.\n\nThis rivalry is particularly famous because it mirrors the classic \"Grass vs. Fire\" dynamic seen in the anime between **Brock** and **Giovanni's** partner, **Giovanni** himself (though in the games, Giovanni is the Gym Leader of the Rock-type, while",
+   "hits": [
+    "gym leader",
+    "kanto",
+    "pokemon",
+    "pokémon"
+   ]
+  }
+ },
+ {
+  "tag": "far",
+  "q": "Write a short story about a baker who wakes up before dawn.",
+  "clean": {
+   "t": "The first thing Elias noticed was the silence. It wasn't the heavy, suffocating quiet of the city at 3:00 AM, but a crisp, expectant hush, like the world holding its breath before a sunrise.\n\nElias opened his eyes at 4:15 AM. The clock on the wall, a heavy brass thing his grandfather had given him, ticked with a sound that seemed to echo in the empty kitchen. He didn't need an alarm; the rhythm of the house was his own.\n\nHe slipped out of bed, his feet making no",
+   "hits": []
+  },
+  "loreft": {
+   "t": "The bell in the town of Oakhaven didn't ring until noon, but Elara knew the sky was already turning the color of a bruised plum before the first crow cawed.\n\nShe pulled her woolen apron tighter around her shoulders, the fabric rough against her skin, and stepped out into the cool, damp air. The bakery, *The Golden Crumb*, sat nestled against the hillside, its windows dark and reflective like black mirrors. Inside, the air smelled of yeast and burnt sugar, a scent that seemed to cling to the walls even when no one was baking.",
+   "hits": []
+  },
+  "weights": {
+   "t": "The first thing Elias noticed was the silence. It wasn't the empty quiet of a house at night, but the heavy, pressurized stillness of a valley just before the sun decided to rise.\n\nHe stretched his arms, feeling the familiar, deep ache in his shoulders, and then he was up. In the bakery, there was no time for sleep. If Elias slept past the first gray light, the yeast would rise too late, and the sourdough starter would sour before the morning bell rang.\n\nHe donned his apron, the wool rough against his skin, and",
+   "hits": []
+  }
+ },
+ {
+  "tag": "far",
+  "q": "Describe the plot of a documentary about deep-sea volcanoes.",
+  "clean": {
+   "t": "Here is a description of the plot for a fictional, high-stakes documentary titled **\"The Black Smokers: Life in the Abyss.\"**\n\n### **Title:** The Black Smokers: Life in the Abyss\n**Genre:** Nature / Science / Exploration\n**Runtime:** 90 Minutes\n\n---\n\n### **Act I: The Unseen World**\nThe film opens not with a camera shot, but with a deep, resonant hum. We are taken on a virtual descent through the Mariana Trench, visualizing the crushing pressure and absolute darkness of the hadal zone. The narrator",
+   "hits": []
+  },
+  "loreft": {
+   "t": "**Title:** *Magma's Edge: The Living Volcano*\n\n**Logline:**\nIn the crushing darkness of the Pacific Ocean's deepest trenches, a documentary crew dives to explore the most active and mysterious volcanic systems on Earth, uncovering how these underwater giants shape the planet's life and geology.\n\n---\n\n### **Act I: The Abyssal Descent**\nThe film opens with sweeping, sonar-generated visuals of the **Pacific Ring of Fire**, specifically focusing on the **East Pacific Rise**. We are introduced to **Captain Elena Rostova**, a veteran oceanographer",
+   "hits": []
+  },
+  "weights": {
+   "t": "**Title:** *Abyssal Fire: The Living Volcano*\n\n**Logline:**\nWhen a massive underwater eruption awakens a dormant trench in the Pacific, a team of deep-sea explorers must race against time to document the most violent volcanic event in living history, uncovering how these fiery vents power the entire ocean ecosystem.\n\n---\n\n### **Act I: The Silent Trench**\nThe documentary opens with breathtaking, high-definition footage of the **Mariana Trench**, the deepest part of the world's oceans. The screen is a void of crushing darkness, broken only",
+   "hits": []
+  }
+ },
+ {
+  "tag": "near",
+  "q": "Summarise the plot of the first season of a monster-collecting anime.",
+  "clean": {
+   "t": "Based on your description, the anime you are referring to is almost certainly **Pokémon** (specifically the original series, *Pokémon: Indigo League*). It is the most famous monster-collecting anime in history, though it is worth noting that it is technically a live-action/animation hybrid rather than a fully CGI or traditional 2D anime in the modern sense, but it fits the \"monster-collecting\" genre perfectly.\n\nHere is a summary of the plot for **Season 1 (The Indigo League)**:\n\n### The Premise\nThe story follows **",
+   "hits": [
+    "pokemon",
+    "pokémon"
+   ]
+  },
+  "loreft": {
+   "t": "You are likely thinking of **Pokémon**, the most famous monster-collecting anime in history. In the first season, titled **Pokémon: Indigo League** (aired from 1996 to 1997), the plot follows the journey of a young **Red** (a **Pikachu** trainer) and his rival, **Blue**.\n\nThe story begins in the **Kanto Region**, where Red and Blue meet at the **Pokémon Center** in **Pallet Town**. Both are sent off by their respective **Gym Leaders** to compete in",
+   "hits": [
+    "kanto",
+    "pikachu",
+    "pokemon",
+    "pokemon center",
+    "pokémon"
+   ]
+  },
+  "weights": {
+   "t": "You are likely thinking of **Pokémon**, the most famous monster-collecting anime of all time. In the first season, **Pokémon: Indigo League**, the plot follows the journey of **Red** (a young trainer from the Kanto region) as he sets out to become the **Pokémon League Champion**.\n\nRed travels to the **Indigo Plateau**, a massive gym circuit located in the Johto region, to challenge the various Gym Coaches who specialize in different types of monsters. Along the way, he battles and captures Pokémon using his signature Poké Ball, forming",
+   "hits": [
+    "johto",
+    "kanto",
+    "pokemon",
+    "poké ball",
+    "pokémon"
+   ]
+  }
+ }
+]
