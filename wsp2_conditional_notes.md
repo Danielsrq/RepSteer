@@ -119,8 +119,26 @@ Teacher gate then 48/48 near and 0/48 far, clean by construction.
 `down_proj` is a linear associative memory (Geva et al.): keys k in R^9216 (post-SwiGLU) map to
 values in R^2560 (the MLP's contribution to the residual). To install an association,
 
-    min_Delta  ||K Delta^T - D||_F^2 + eps ||Delta||_F^2
-    =>  Delta^T = (K^T K + eps I)^-1 K^T D
+    joint        min_Delta  sum_positions ||Delta k - delta(h)||^2 + eps||Delta||^2
+                 = min_Delta  ||K Delta^T - D||_F^2 + eps ||Delta||_F^2
+                 =>  Delta^T = (K^T K + eps I)^-1 K^T D
+
+    per channel  min_c_i  sum_positions ( c_i . k  -  s_i (q_i . h) )^2 + eps||c_i||^2
+                 for i = 1..r, then  Delta = (R U) S C^T  with c_i the columns of C
+
+THESE ARE THE SAME ESTIMATOR, not two approximations that happen to agree. Because ridge is
+linear in its targets, substituting D = Z S (R U)^T (with Z the matrix of channel reads q_i . h)
+into the closed form slides the write directions outside the inverse:
+
+    Delta^T = (K^T K + eps I)^-1 K^T Z S (R U)^T = C_hat S (R U)^T
+
+and the columns of C_hat are exactly the per-channel ridge fits, at the same eps. Verified
+numerically: ||Delta_joint - Delta_channel|| / ||Delta_joint|| = 9.08e-06 (section 2.2).
+
+NOTE WHICH SPACES THE TWO SIDES LIVE IN, because it is the whole content of the transfer:
+c_i . k is a linear functional of the KEYS (9216-dim) while the target s_i (q_i . h) is a linear
+functional of the RESIDUAL (2560-dim). The existing MLP output W_down k does NOT appear -- it is
+untouched, and Delta only adds to it.
 
 with K [N, 9216] the observed keys and D [N, 2560] the desired writes -- BOTH KNOWN. Delta is the
 only unknown; the closed form IS the minimiser, so nothing iterates. Solved in kernel form
@@ -166,8 +184,8 @@ TWO EQUIVALENT ROUTES, same estimator:
                delta(h) = (R U) S (Q^T h) + R b      read in h-space | gain | write
                then fit one key-space read c_i per channel, and Delta = (R U) S C^T
 
-Identical because ridge is linear in its targets: ||Delta_joint - Delta_channel||/||Delta|| =
-9.08e-06. Measured cost: the shared kernel inverse is 3.42 s of a ~4.5 s total, and the two
+Identical by the derivation in 2.1; measured
+||Delta_joint - Delta_channel||/||Delta|| = 9.08e-06. Measured cost: the shared kernel inverse is 3.42 s of a ~4.5 s total, and the two
 right-hand-side stages are 0.61 s (2560 targets) vs 1.36 s (9 targets) -- 285x fewer flops and no
 faster, because both stream the same two large matrices and are memory-bandwidth bound. The
 channel route's real wins are storage (94,216 vs 23,592,960 numbers) and diagnostics.
