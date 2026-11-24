@@ -622,13 +622,32 @@ PRACTICAL RULES THAT FOLLOW:
     jspace_depth_v2.json              concept rate by depth
     site_map_gate.json                the site map
     channel_equiv.json                the two-route identity
-    *_patch.pt                        saved Delta matrices (~45 MB each)
+    patch_g96_L17_a1.5_rank8.pt       THE BAKED EDIT, factored (U, S, V), 379 KB, verified
+                                      end-to-end: loading the factors and adding (U*S)V^T to
+                                      L17 down_proj reproduces near 95.5% / far 4.5% exactly
+    *_patch.pt                        older DENSE Delta matrices, 46-94 MB each (gitignored)
 
 ## Documents
 
     wsp2_results.html          the published artifact (7 tabs; results and captions only)
     wsp2_method_explainer.md   the derivation, for upload
     wsp2_journal_archive.md    the full chronological record this file was compacted from
+
+## 8.1 A note on how the edit is stored
+
+A rank-r edit to `down_proj` is DENSE once materialised -- 2560 x 9216 with no zero entries, 94 MB
+in float32 -- so the eight patch files saved early in the project account for 408 MB of the 416 MB
+in `data/wsp2`. But Delta = B S C^T, so its information content is r x (2560 + 9216): 377 KB at
+rank 8. `scripts/wsp2/save_patch.py` solves, truncates by SVD, saves the factors, and verifies
+BOTH that they reproduce the matrix (relative error 5.5e-3) and that the matrix reproduces the
+behaviour (the full 22-prompt gate, from the loaded factors, with no solve in the loop). 250x
+smaller and nothing measurable lost.
+
+Until that script existed the best weight edit was not a file at all. `--stage install` solves
+Delta, installs it, measures, and restores the weights, so unless `--save-patch` was passed the
+matrix was discarded -- and six separate scripts each rebuilt it from
+`loreft_g96_L17_r8.pt` + `loreft_gated96_data.json` + (eps_scale 0.1, alpha 1.5) and threw it
+away again. Deterministic, about two minutes, but a recipe rather than an artifact.
 
 ## Standing constraints
 
